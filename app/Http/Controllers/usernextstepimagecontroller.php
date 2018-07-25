@@ -120,7 +120,7 @@ $validator = Validator::make($fileArray, $rules);
 
    $destinationPath = 'uploads';
    $file->move($destinationPath,$file->getClientOriginalName());
-   DB::table('users')->where('name',$user)->update(['imgpath' => $destinationPath.$file->getClientOriginalName()]);
+   DB::table('users')->where('name',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
 
  }
 
