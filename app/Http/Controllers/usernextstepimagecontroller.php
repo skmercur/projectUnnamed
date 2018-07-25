@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class usernextstepimagecontroller extends Controller
 {
@@ -86,6 +87,7 @@ class usernextstepimagecontroller extends Controller
     }
 
     public function saveUploadFile(Request $request){
+      $user = $request->input('user');
    $file = $request->file('image');
     $fileArray = array('image' => $file);
    $rules = array(
@@ -115,9 +117,11 @@ $validator = Validator::make($fileArray, $rules);
    //Move Uploaded File
 
  }else {
+
    $destinationPath = 'uploads';
    $file->move($destinationPath,$file->getClientOriginalName());
-   
+   DB::table('users')->where('name',$user)->update(['imgpath' => $destinationPath.$file->getClientOriginalName()]);
+
  }
 
 
