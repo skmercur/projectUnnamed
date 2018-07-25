@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Session;
 
 class RedirectIfAuthenticated
 {
@@ -18,7 +20,10 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+          $email = $request->input('email');
+        $impath =  DB::table('users')->where('email',$email)->select('imgpath')->get();
+        Session::flash('imgpath',$impath);
+            return redirect('/')->with(['imgpath'=>$impath]);
         }
 
         return $next($request);
