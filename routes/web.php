@@ -20,3 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/auth/nextstep','usernextstepimagecontroller@saveUploadFile');
 Route::get('/auth/nextstep','usernextstepimagecontroller@index');
+Route::get('{slug}', [
+    'uses' => 'PageController@getPage'
+])->where('slug', '([A-Za-z0-9\-\/]+)');
