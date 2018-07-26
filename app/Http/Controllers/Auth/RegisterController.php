@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/auth/nextstep';
+    protected $redirectTo = '/auth/register';
 
     /**
      * Create a new controller instance.
@@ -58,11 +58,11 @@ class RegisterController extends Controller
 
         ]);
     }
-    public function index() {
-        $listspi = Spiciality::all();
-        return view('auth.register')->with('spi' , $listspi);
-
-    }
+    // public function index() {
+    //     $listspi = Spiciality::all();
+    //     return view('auth.register')->with('listspi' , $listspi);
+    //
+    // }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -79,8 +79,8 @@ class RegisterController extends Controller
             'namespi'=>$data['namesp'],
             'password' => Hash::make($data['password']),
             'imgpath'=> 'uploads/default.png',
-            
+
         ]);
     }
- 
+
 }

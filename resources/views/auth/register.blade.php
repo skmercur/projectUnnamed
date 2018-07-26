@@ -12,8 +12,8 @@
                         @csrf
 
                         <div class="form-group row">
-                         
-                           
+
+
                                 <div class="col-md-6 mb-3">
                                    <label for="firstName">{{ __('First name') }}</label>
                                        <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" placeholder="" value="{{ old('firstname') }}" required="">
@@ -29,8 +29,8 @@
                             <div class="col-md-6 mb-3">
                                 <label for="lastname">{{ __('Last name') }}</label>
                                 <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" placeholder="" value="{{ old('lastname') }}" required="">
-                                
-                               
+
+
                                 @if ($errors->has('lastname'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('lastname') }}</strong>
@@ -39,11 +39,11 @@
                              <div class="invalid-feedback">
                              Valid last name is required.
                          </div>
-                        
+
                     </div>
 
 
-          
+
                         </div>
 
                                                 <div class="form-group row">
@@ -89,15 +89,16 @@
                             </div>
                         </div>
 
-                    @foreach($listspi as $spi)
+
                     <select class="form-control">
-                    
-                       <option>choose your speciality</option>
-                       <option value="">{{$spi->namespi}}</option>
-                       
+                      <option>choose your speciality</option>
+  @foreach($spec as $spi)
+
+                       <option value="{{$spi->namespi}}">{{$spi->namespi}}</option>
+  @endforeach
                     </select>
-                    @endforeach
-                    
+
+
 
 
                         <div class="form-group row">
@@ -105,11 +106,11 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                              
+
                             </div>
                         </div>
                         <br>
-                        
+
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

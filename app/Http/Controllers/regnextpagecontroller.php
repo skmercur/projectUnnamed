@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 
-class usernextstepimagecontroller extends Controller
+class regnextpagecontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +13,7 @@ class usernextstepimagecontroller extends Controller
      */
     public function index()
     {
-      return view('auth/nextstep');
+        //
     }
 
     /**
@@ -28,11 +24,6 @@ class usernextstepimagecontroller extends Controller
     public function create()
     {
         //
-    }
-    public function getSpeciality(){
-      $spec=   DB::table('spicialitys')->get();
-
-return view('auth/register')->with('spec',$spec);
     }
 
     /**
@@ -90,45 +81,4 @@ return view('auth/register')->with('spec',$spec);
     {
         //
     }
-
-    public function saveUploadFile(Request $request){
-      $user = $request->input('user');
-   $file = $request->file('image');
-    $fileArray = array('image' => $file);
-   $rules = array(
-     'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000' // max 10000kb
-   );
-$validator = Validator::make($fileArray, $rules);
-
-   //Display File Name
-   echo 'File Name: '.$file->getClientOriginalName();
-   echo '<br>';
-
-   //Display File Extension
-   echo 'File Extension: '.$file->getClientOriginalExtension();
-   echo '<br>';
-
-   //Display File Real Path
-   echo 'File Real Path: '.$file->getRealPath();
-   echo '<br>';
-
-   //Display File Size
-   echo 'File Size: '.$file->getSize();
-   echo '<br>';
-
-   //Display File Mime Type
- if($validator->fails()){
-   echo "sorry your file is not supported";
-   //Move Uploaded File
-
- }else {
-
-   $destinationPath = 'uploads';
-   $file->move($destinationPath,$file->getClientOriginalName());
-   DB::table('users')->where('name',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
-
- }
-
-
-}
 }
