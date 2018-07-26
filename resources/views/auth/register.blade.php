@@ -12,17 +12,38 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
+                         
+                           
+                                <div class="col-md-6 mb-3">
+                                   <label for="firstName">{{ __('First name') }}</label>
+                                       <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" placeholder="" value="{{ old('firstname') }}" required="">
+                                       @if ($errors->has('firstname'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('firstname') }}</strong>
+                                    </span>
+                                    @endif
+                                          <div class="invalid-feedback">
+                                               Valid first name is required.
+                                          </div>
+                                </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastname">{{ __('Last name') }}</label>
+                                <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" placeholder="" value="{{ old('lastname') }}" required="">
+                                
+                               
+                                @if ($errors->has('lastname'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('lastname') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                             <div class="invalid-feedback">
+                             Valid last name is required.
+                         </div>
+                        
+                    </div>
+
+
+          
                         </div>
 
                                                 <div class="form-group row">
@@ -68,6 +89,17 @@
                             </div>
                         </div>
 
+                    @foreach($listspi as $spi)
+                    <select class="form-control">
+                    
+                       <option>choose your speciality</option>
+                       <option value="">{{$spi->namespi}}</option>
+                       
+                    </select>
+                    @endforeach
+                    
+
+
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
@@ -76,6 +108,8 @@
                               
                             </div>
                         </div>
+                        <br>
+                        
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

@@ -49,14 +49,20 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:191',
+            'firstname' => 'required|string|max:191',
+            'lastname' => 'required|string|max:191',
             'username' => 'required|string|max:30|unique:users',
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'namesp' => 'required|string|min:6|max:191',
 
         ]);
     }
+    public function index() {
+        $listspi = Spiciality::all();
+        return view('auth.register')->with('spi' , $listspi);
 
+    }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -66,11 +72,15 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
             'username' => $data['username'],
             'email' => $data['email'],
+            'namespi'=>$data['namesp'],
             'password' => Hash::make($data['password']),
             'imgpath'=> 'uploads/default.png',
+            
         ]);
     }
+ 
 }
