@@ -54,15 +54,11 @@ class RegisterController extends Controller
             'username' => 'required|string|max:30|unique:users',
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'namesp' => 'required|string|min:6|max:191',
+            'namesp' => 'required|string|max:191',
 
         ]);
     }
-    // public function index() {
-    //     $listspi = Spiciality::all();
-    //     return view('auth.register')->with('listspi' , $listspi);
-    //
-    // }
+
     /**
      * Create a new user instance after a valid registration.
      *

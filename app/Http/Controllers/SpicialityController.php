@@ -8,10 +8,12 @@ class SpicialityController extends Controller
 {
     //
     public function index() {
-        $listspi = Spiciality::all();
-        return view('auth/registre',['spi'=>$listspi]);
+        $spec=   DB::table('spicialitys')->get();
+  
+        return view('auth/register')->with('spec',$spec);
 
     }
+    
 
     //
     public function create() {

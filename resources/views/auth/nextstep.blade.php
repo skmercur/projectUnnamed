@@ -12,12 +12,15 @@
 
                     @endif
                     <form method="post" action="nextstep" enctype="multipart/form-data">
-                    @foreach($listapi as $spi)
+                   
                     <select class="form-control">
-                       <option>choose your speciality</option>
-                       <option value="">{{$spi->namespi}}</option>
+                    <option>choose your speciality</option>
+                    @foreach($spec as $spi)
+                       
+                       <option value="{{$spi->namespi}}">{{$spi->namespi}}</option>
+                       @endforeach
                     </select>
-                    @endforeach
+                    
                     <br>
 
 
