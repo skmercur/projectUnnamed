@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/auth/register';
+    protected $redirectTo = '/auth/nextstep';
 
     /**
      * Create a new controller instance.
@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'username' => 'required|string|max:30|unique:users',
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'namesp' => 'required|string|max:191',
+            // 'namesp' => 'required|string|max:191',
 
         ]);
     }
@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'lastname' => $data['lastname'],
             'username' => $data['username'],
             'email' => $data['email'],
-            'namespi'=>$data['namesp'],
+            'namesp'=>'default',
             'password' => Hash::make($data['password']),
             'imgpath'=> 'uploads/default.png',
 

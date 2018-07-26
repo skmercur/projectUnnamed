@@ -32,7 +32,7 @@ class usernextstepimagecontroller extends Controller
     public function getSpeciality(){
       $spec=   DB::table('spicialitys')->get();
 
-return view('auth/register')->with('spec',$spec);
+return view('auth/nextstep')->with('spec',$spec);
     }
 
     /**
