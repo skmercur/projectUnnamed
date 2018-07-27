@@ -8,9 +8,12 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    @if (session('status'))
 
-                    @endif
+@if(Auth::user() == '')
+<script type="text/javascript">
+window.location = "/login";
+</script>
+@else
 
                     @if(Auth::user()->name !== '')
                     <form method="post" action="nextstep" enctype="multipart/form-data">
@@ -46,10 +49,9 @@
 
 
                     </form>
-                  @else
-                  <script type="text/javascript">
-    window.location = "/login";//here double curly bracket
-</script>
+
+@endif
+
 @endif
 
 
