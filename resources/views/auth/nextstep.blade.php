@@ -12,10 +12,10 @@
 
                     @endif
 
-                    @if (Session::has('user'))
+                    @if(Auth::user()->name !== '')
                     <form method="post" action="nextstep" enctype="multipart/form-data">
 
-                    <select class="form-control">
+                    <select class="form-control" name="namesp">
                     <option>choose your speciality</option>
                     @foreach($spec as $spi)
 
@@ -38,7 +38,7 @@
 </div>
                       <input type="hidden" name="_token" value="{{csrf_token()}}" />
 
-                      <input type="hidden" name="user" value="{{ Auth::user()->name }}" />
+                      <input type="hidden" name="user" value="{{ Auth::user()->username }}" />
 
 
 

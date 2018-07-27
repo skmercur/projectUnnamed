@@ -93,6 +93,7 @@ return view('auth/nextstep')->with('spec',$spec);
 
     public function saveUploadFile(Request $request){
       $user = $request->input('user');
+      $namespi = $request->input('namesp');
    $file = $request->file('image');
     $fileArray = array('image' => $file);
    $rules = array(
@@ -125,7 +126,9 @@ $validator = Validator::make($fileArray, $rules);
 
    $destinationPath = 'uploads';
    $file->move($destinationPath,$file->getClientOriginalName());
-   DB::table('users')->where('name',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
+   DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
+    DB::table('users')->where('username',$user)->update(['namesp' =>$namespi]);
+
 
  }
 

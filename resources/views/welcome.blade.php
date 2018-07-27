@@ -63,20 +63,11 @@
 
                             <img src="uploads/{{ Auth::user()->imgpath}}" alt="">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
                             <li class="nav-item dropdown">
 
 
 
->>>>>>> 05769baad901938378f364834357184f32649605
-=======
->>>>>>> fe48c54d9548649f635d7b10e8d82fa183213657
->>>>>>> 6dda66ff14b445fd8e0b6e1ca38b8f035483d2b3
-=======
->>>>>>> fe48c54d9548649f635d7b10e8d82fa183213657
->>>>>>> 4034f1d4b6c2588f5b02ac63a95976962ad05722
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
