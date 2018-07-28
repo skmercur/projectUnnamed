@@ -15,7 +15,7 @@ class CreateSpicialitysTable extends Migration
     {
         Schema::create('spicialitys', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('namespi')->unique();
+            $table->string('namespi',30)->unique();
             $table->timestamps();
         });
     }

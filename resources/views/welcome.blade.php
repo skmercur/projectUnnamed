@@ -51,7 +51,7 @@
 
 
                           </li>
-                      
+
 
                             <li class="nav-item dropdown">
 
@@ -87,11 +87,11 @@
     </div>
     <hr>
     <hr>
-    <form action=""style="margin-top: 300px;">
+    <form action="search"style="margin-top: 300px;" method="get">
 
     <div class="input-group mb-12 center">
-  <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-right: 15%;" placeholder="Recherche">
-
+  <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-right: 15%;" placeholder="Recherche" name="q">
+<!-- <input type="hidden" name="_token" value="{{csrf_token()}}" /> -->
 
 
 
@@ -99,7 +99,7 @@
 <br>
   <br>
 <div class="input-group" >
-    <button class="form-control btn btn-success" style="margin-left: 30%;margin-right: 30%;" type="button" id="button-addon2">Recherche</button>
+    <button class="form-control btn btn-success" style="margin-left: 30%;margin-right: 30%;" type="submit" id="button-addon2">Search</button>
   </div>
 
 

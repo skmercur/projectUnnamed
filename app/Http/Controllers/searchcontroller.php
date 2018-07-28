@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
-
-
-class PageController extends Controller
+class searchcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,19 +13,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        return view('resaults');
     }
-    public function getPage(Request $request)
-   {
-     $value = $request['slug'];
-
-$user =   DB::table('users')->where('username',$value)->first();
-$files = DB::table('files')->where('author',$value)->get();
-
-return view('userprofile')->with(['user'=>$user,'files'=>$files]);
-
-}
-
 
     /**
      * Show the form for creating a new resource.
@@ -51,7 +36,11 @@ return view('userprofile')->with(['user'=>$user,'files'=>$files]);
     {
         //
     }
-
+public function search(Request $request){
+$value = $request->q;
+  $resaults=   DB::table('files')->where('title','LIKE','%'.$value.'%')->orWhere('description','LIKE','%'.$value.'%')->get();
+  return view('resaults')->with('resaults',$resaults);
+}
     /**
      * Display the specified resource.
      *

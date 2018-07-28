@@ -16,7 +16,7 @@
           </div>
           <div class="row">
 			<div class="col-md-4 text-center">
-              <img class="img-circle avatar avatar-original" style="-webkit-user-select:none; 
+              <img class="img-circle avatar avatar-original" style="-webkit-user-select:none;
               display:block; height: 140px; margin:auto;" src="{{ $user->imgpath}}" style="">
             </div>
             <div class="col-md-8">
@@ -43,7 +43,7 @@
               </div>
             </div>
           </div>
-         
+
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@
           </div>
           <div class="row">
 			<div class="col-md-4 text-center">
-              <img class="img-circle avatar avatar-original" style="-webkit-user-select:none; 
+              <img class="img-circle avatar avatar-original" style="-webkit-user-select:none;
               display:block; height: 140px; margin:auto;" src="{{ Auth::user()->imgpath}}" style="">
             </div>
             <div class="col-md-8">
@@ -100,31 +100,33 @@
         </div>
         <hr>
         <br>
-        <form action="" method="GET">
+        <form action="" method="POST" enctype="multipart/form-data">
           <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">Title</span>
   </div>
-  <input type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1" name="title">
 </div>
 <div class="input-group">
   <div class="input-group-prepend">
     <span class="input-group-text">Description</span>
   </div>
-  <textarea class="form-control" aria-label="Description"></textarea>
+  <textarea class="form-control" aria-label="Description" name="description"></textarea>
 </div>
 <br>
 <div class="input-group">
   <div class="custom-file">
-    <input type="file" class="custom-file-input input-group-prepend" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+    <input type="file" class="custom-file-input input-group-prepend" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="file">
     <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
   </div>
-  
+<input type="hidden" name="username" value="{{Auth::user()->username}}" />
+    <input type="hidden" name="_token" value="{{csrf_token()}}" />
   <div class="input-group-append">
-    <button class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">Submit</button>
+    <button class="btn btn-outline-primary" type="submit" id="inputGroupFileAddon04">Upload</button>
   </div>
 </div>
 </div>
+
 </form>
       </div>
     </div>
@@ -141,13 +143,14 @@
     </tr>
   </thead>
   <tbody>
+    @foreach($files as $file)
     <tr>
-      <th scope="row">1</th>
-      <td>test</td>
-      <td>This is test description</td>
-      <td><button type="button" class="btn btn-outline-success">Download</button> <button type="button" class="btn btn-outline-warning">View</button></td>
+      <th scope="row">{{$file->id}}</th>
+      <td>{{$file->title}}</td>
+      <td>{{$file->description}}</td>
+      <td><a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" > Download</button></a> <button type="button" class="btn btn-outline-warning">View</button></td>
     </tr>
-   
+@endforeach
   </tbody>
 </table>
 @endif
