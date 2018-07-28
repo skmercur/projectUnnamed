@@ -12,7 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-   
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -44,25 +44,14 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 4034f1d4b6c2588f5b02ac63a95976962ad05722
-                            <li class="nav-item dropdown">
-
-
-
-=======
-<<<<<<< HEAD
->>>>>>> 6dda66ff14b445fd8e0b6e1ca38b8f035483d2b3
-=======
->>>>>>> 4034f1d4b6c2588f5b02ac63a95976962ad05722
 
                             <li class="nav-item dropdown">
 
-                            <img src="uploads/{{ Auth::user()->imgpath}}" alt="">
+
+
+                            <li class="nav-item dropdown">
+
+                            <img src="{{ Auth::user()->imgpath}}" height="50" width="50" alt="">
 
                             <li class="nav-item dropdown">
 
@@ -70,7 +59,7 @@
 
 
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->lastname }},{{ Auth::user()->firstname }}   <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -102,10 +91,10 @@
 
     <div class="input-group mb-12 center">
   <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-right: 15%;" placeholder="Recherche">
-  
-  
-  
-  
+
+
+
+
 </div>
 <br>
   <br>
@@ -114,7 +103,7 @@
   </div>
 
 
-  
+
 </form>
 
     </body>
