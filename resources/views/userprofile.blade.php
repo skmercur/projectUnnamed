@@ -96,11 +96,60 @@
               <button class="btn btn-outline-primary"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
             </div>
           </div>
+
         </div>
+        <hr>
+        <br>
+        <form action="" method="GET">
+          <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Title</span>
+  </div>
+  <input type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1">
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Description</span>
+  </div>
+  <textarea class="form-control" aria-label="Description"></textarea>
+</div>
+<br>
+<div class="input-group">
+  <div class="custom-file">
+    <input type="file" class="custom-file-input input-group-prepend" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+  </div>
+  
+  <div class="input-group-append">
+    <button class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">Submit</button>
+  </div>
+</div>
+</div>
+</form>
       </div>
     </div>
   </div>
 </div>
+<hr>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">File</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>test</td>
+      <td>This is test description</td>
+      <td><button type="button" class="btn btn-outline-success">Download</button> <button type="button" class="btn btn-outline-warning">View</button></td>
+    </tr>
+   
+  </tbody>
+</table>
 @endif
 @endguest
 @endsection
