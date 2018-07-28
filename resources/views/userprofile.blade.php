@@ -3,7 +3,11 @@
 @guest
 <h3>error , it seeams that you are not connected  </h3>
 @else
+@if(empty($user->username))
+<h3>error , user doesn't exist </h3>
+@else
 @if($user->username != Auth::user()->username)
+<<<<<<< HEAD
 <h3> Welcome to , {{$user->name}} profile</h3>
 <br>
 <div class="container">
@@ -99,6 +103,15 @@
     </div>
   </div>
 </div>
+=======
+<h3> Welcome to  {{$user->lastname}} {{$user->firstname}} profile</h3>
+<img src="{{$user->imgpath}}" width="120" height="120" />
+
+@else
+<h3> Welcome, {{Auth::user()->lastname}} {{Auth::user()->firstname}}</h3>
+<img src="{{Auth::user()->imgpath}}" width="120" height="120" />
+@endif
+>>>>>>> 7cd6406d8daf2b7f54e76725f3af51d20f4b3e5a
 @endif
 @endguest
 @endsection
