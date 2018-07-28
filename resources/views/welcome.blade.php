@@ -44,25 +44,18 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 4034f1d4b6c2588f5b02ac63a95976962ad05722
-                            <li class="nav-item dropdown">
-
-
-
-=======
-<<<<<<< HEAD
->>>>>>> 6dda66ff14b445fd8e0b6e1ca38b8f035483d2b3
-=======
->>>>>>> 4034f1d4b6c2588f5b02ac63a95976962ad05722
 
                             <li class="nav-item dropdown">
 
-                            <img src="uploads/{{ Auth::user()->imgpath}}" alt="">
+<img src="{{ Auth::user()->imgpath}}" alt="" style="height: 40px;">
+
+
+                          </li>
+                            <li class="nav-item dropdown">
+
+                            
+                            <a class="nav-link">{{ Auth::user()->username}}</a>
+                            </li>
 
                             <li class="nav-item dropdown">
 
