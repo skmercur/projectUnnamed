@@ -1,10 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.layout')
 @section('content')
 @guest
 <h3>error , it seeams that you are not connected  </h3>
 @else
 @if($user->username != Auth::user()->username)
-
+<br>
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">Toggle Menu</a>
+            </div>
+        </div>
+<br>
 <br>
 <div class="container">
   <div class="row">
@@ -50,7 +56,12 @@
   </div>
 </div>
 @else
-
+<br>
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">Toggle Menu</a>
+            </div>
+        </div>
 <br>
 <div class="container">
   <div class="row">
@@ -76,7 +87,7 @@
                   <span class="text-muted">Email:</span> {{Auth::user()->email}}<br>
                   <span class="text-muted">Birth date:</span> 01.01.2001<br>
                   <span class="text-muted">Gender:</span> male<br><br>
-                  <small class="text-muted">Created: 01.01.2015</small>
+                  <small class="text-muted">Created: {{Auth::user()->created_at}}</small>
                 </div>
                 <div class="col-md-6">
                   <div class="activity-mini">
@@ -127,11 +138,8 @@
 </div>
 </form>
       </div>
-    </div>
-  </div>
-</div>
-<hr>
-<table class="table table-hover">
+      <hr>
+      <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -150,6 +158,13 @@
    
   </tbody>
 </table>
+    </div>
+    
+  </div>
+  
+</div>
+
+
 @endif
 @endguest
 @endsection
