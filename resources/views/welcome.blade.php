@@ -51,15 +51,7 @@
 
 
                           </li>
-                            <li class="nav-item dropdown">
-
-<<<<<<< HEAD
-                            
-                            <a class="nav-link">{{ Auth::user()->username}}</a>
-                            </li>
-=======
-                            <img src="{{ Auth::user()->imgpath}}" height="50" width="50" alt="">
->>>>>>> 7cd6406d8daf2b7f54e76725f3af51d20f4b3e5a
+                      
 
                             <li class="nav-item dropdown">
 
