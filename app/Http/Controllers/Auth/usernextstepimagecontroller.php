@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class usernextstepimagecontroller extends Controller
 {
@@ -87,6 +88,7 @@ class usernextstepimagecontroller extends Controller
 
     public function saveUploadFile(Request $request){
    $file = $request->file('image');
+   $user = $request->input('user');
     $fileArray = array('image' => $file);
    $rules = array(
      'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000' // max 10000kb
@@ -115,9 +117,9 @@ $validator = Validator::make($fileArray, $rules);
    //Move Uploaded File
 
  }else {
-   $destinationPath = 'uploads';
-   $file->move($destinationPath,$file->getClientOriginalName());
-   
+   $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
+      $destinationPath = "usersdata/".md5('uploads'.$user)."/";
+      $file->move($destinationPath,$hash);
  }
 
 

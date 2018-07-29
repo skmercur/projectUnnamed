@@ -72,15 +72,16 @@ $validator = Validator::make($fileArray, $rules);
    //Move Uploaded File
 
  }else {
+$hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
+   $destinationPath = "usersdata/".md5('uploads'.$username)."/";
+   $file->move($destinationPath,$hash);
 
-   $destinationPath = 'uploads';
-   $file->move($destinationPath,$file->getClientOriginalName());
    fileupload::create([
        'filename' => $file->getClientOriginalName(),
        'author' => $username,
        'title' => $title,
        'description' =>$description,
-       'location'=>'uploads/'.$file->getClientOriginalName(),
+       'location'=>$destinationPath.$hash,
 
 
    ]);

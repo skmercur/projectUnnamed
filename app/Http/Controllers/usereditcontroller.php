@@ -65,9 +65,9 @@ class usereditcontroller extends Controller
         DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass]);
 return back();
      }else {
-
-       $destinationPath = 'uploads';
-       $file->move($destinationPath,$file->getClientOriginalName());
+       $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
+          $destinationPath = "usersdata/".md5('uploads'.$user)."/";
+          $file->move($destinationPath,$hash);
        DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
         DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass]);
 return back();

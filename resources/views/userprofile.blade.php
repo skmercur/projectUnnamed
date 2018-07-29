@@ -211,7 +211,9 @@
     <tr>
       <th scope="row">{{$file->id}}</th>
       <td>{{$file->title}}</td>
-      <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."..."; ?></td>
+      <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
+        echo $file->description;
+      } ?></td>
       <td><a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" > Download</button></a> <button type="button" class="btn btn-outline-warning">View</button></td>
     </tr>
 @endforeach
