@@ -12,8 +12,8 @@
                 <div class="row">
                     <div class="col-sm-9">
                         <h4 class="search-result-item-heading"><a href="#">{{$resault->title}}</a></h4>
-                        
-                        <p class="description">{{$resault->description}}.</p>
+
+                        <p class="description"><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."..."; ?></p>
                     </div>
                 </div>
             </div>
