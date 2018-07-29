@@ -1,5 +1,24 @@
+@extends('layouts.layout')
 @foreach($resaults as $resault)
-<p>{{$resault->title}}</p>
-<p>{{$resault->description}}</p>
-</br>
+
+
+
+<div class="container">
+	<div class="col-md-9 col-md-pull-3">
+        <h1 class="search-results-count" style="margin-top: 7%;margin-left: 50%;">Searsh Results</h1>
+        <section class="search-result-item">
+            @foreach($resaults as $resault)
+            <div class="search-result-item-body">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h4 class="search-result-item-heading"><a href="#">{{$resault->title}}</a></h4>
+                        
+                        <p class="description">{{$resault->description}}.</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </section>
+    </div>
+</div>
 @endforeach
