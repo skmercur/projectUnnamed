@@ -91,6 +91,7 @@ $validator = Validator::make($fileArray, $rules);
    //  DB::table('users')->where('username',$user)->update(['namesp' =>$namespi]);
 
 }
+return back();
  }
 
     /**

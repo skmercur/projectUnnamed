@@ -118,7 +118,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="edit" method="POST" enctype="multipart/form-data">
+        <form action="edit" method="post" enctype="multipart/form-data" id="useredit">
 
           <div class="form-group">
             <label for="email" class="col-form-label">Email:</label>
@@ -127,10 +127,6 @@
           <div class="form-group">
             <label for="image" class="col-form-label">Photo profil:</label>
             <input type="file" class="form-control" id="image" name="image">
-          </div>
-          <div class="form-group">
-            <label for="pass1" class="col-form-label">current password:</label>
-            <input type="password" class="form-control" id="pass1" name="cpass">
           </div>
           <div class="form-group">
             <label for="pass" class="col-form-label">new password:</label>
@@ -142,17 +138,22 @@
             <input type="hidden" value="{{Auth::user()->username}}" name="username" />
             <input type="hidden" name="_token" value="{{csrf_token()}}" />
           </div>
-
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" onclick="form_submit()" type="submit">Edit</button>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" type="submit">Edit</button>
+
       </div>
     </div>
   </div>
 </div>
 
+  <script type="text/javascript">
+  function form_submit() {
+    document.getElementById("search_form").submit();
+   }
+  </script>
 
             </div>
           </div>
