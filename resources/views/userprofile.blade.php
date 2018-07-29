@@ -213,9 +213,28 @@
       <td>{{$file->title}}</td>
       <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
         echo $file->description;
-      } ?></td>
+      } ?><a href=""data-toggle="modal" data-target="#Modal">.....View Detail</a></td>
       <td><a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" > Download</button></a> <button type="button" class="btn btn-outline-warning">View</button></td>
     </tr>
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <p class="description">{{$file->description}}.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
 @endforeach
   </tbody>
 </table>
