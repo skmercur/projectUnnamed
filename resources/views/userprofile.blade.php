@@ -118,34 +118,36 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="" method="POST">
-          
+        <form action="edit" method="POST" enctype="multipart/form-data">
+
           <div class="form-group">
             <label for="email" class="col-form-label">Email:</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" id="email" name="email">
           </div>
           <div class="form-group">
             <label for="image" class="col-form-label">Photo profil:</label>
-            <input type="file" class="form-control" id="image">
+            <input type="file" class="form-control" id="image" name="image">
           </div>
           <div class="form-group">
             <label for="pass1" class="col-form-label">current password:</label>
-            <input type="password" class="form-control" id="pass1">
+            <input type="password" class="form-control" id="pass1" name="cpass">
           </div>
           <div class="form-group">
             <label for="pass" class="col-form-label">new password:</label>
-            <input type="password" class="form-control" id="pass">
+            <input type="password" class="form-control" id="pass" name="npass">
           </div>
           <div class="form-group">
             <label for="confirme-pass" class="col-form-label">Confirme Password:</label>
-            <input type="password" class="form-control" id="confirm-pass">
+            <input type="password" class="form-control" id="confirm-pass" name="cnpass">
+            <input type="hidden" value="{{Auth::user()->username}}" name="username" />
+            <input type="hidden" name="_token" value="{{csrf_token()}}" />
           </div>
-          
+
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Edit</button>
+        <button type="button" class="btn btn-primary" type="submit">Edit</button>
       </div>
     </div>
   </div>
@@ -159,7 +161,7 @@
         <br>
         <hr>
         <br>
-        
+
         <form action="" method="POST" enctype="multipart/form-data">
           <div class="input-group mb-3">
   <div class="input-group-prepend">
@@ -188,11 +190,12 @@
 </div>
 
 </form>
+
       </div>
-     
+
       <hr>
-      
-      
+
+
       <table class="table table-hover" style="margin-top: 10%;">
   <thead>
     <tr>

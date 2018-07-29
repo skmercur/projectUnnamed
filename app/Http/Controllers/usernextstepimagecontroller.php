@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class usernextstepimagecontroller extends Controller
 {
@@ -131,7 +132,57 @@ $validator = Validator::make($fileArray, $rules);
 
 
  }
-
-
 }
+
+public function useredit(Request $request){
+  $user = $request->input('username');
+  $cpass = $request->input('cpass');
+  $npass = $request->input('npass');
+  $email = $request->input('email');
+  $file = $request->input('image');
+  $vuser = DB::table('users')->where('username',$user)->get();
+  if(!empty($vuser->username)){
+    if($vuser->password === Hash::make($cpass)){
+      if($cpass === $npass){
+    $fileArray = array('image' => $file);
+   $rules = array(
+     'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000' // max 10000kb
+   );
+$validator = Validator::make($fileArray, $rules);
+
+   //Display File Name
+   echo 'File Name: '.$file->getClientOriginalName();
+   echo '<br>';
+
+   //Display File Extension
+   echo 'File Extension: '.$file->getClientOriginalExtension();
+   echo '<br>';
+
+   //Display File Real Path
+   echo 'File Real Path: '.$file->getRealPath();
+   echo '<br>';
+
+   //Display File Size
+   echo 'File Size: '.$file->getSize();
+   echo '<br>';
+
+   //Display File Mime Type
+ if($validator->fails()){
+   echo "sorry your file is not supported";
+   DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
+    DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass]);
+
+ }else {
+
+   $destinationPath = 'uploads';
+   $file->move($destinationPath,$file->getClientOriginalName());
+   DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
+    DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass]);
+
+  }
+}
+}
+}
+}
+
 }
