@@ -102,15 +102,64 @@
           </div>
           <div class="row">
             <div class="col-md-12">
+            <br>
               <hr>
-              <hr>
-              <button class="btn btn-outline-primary"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+              <br>
+              <button class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+          
+          <div class="form-group">
+            <label for="email" class="col-form-label">Email:</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <div class="form-group">
+            <label for="image" class="col-form-label">Photo profil:</label>
+            <input type="file" class="form-control" id="image">
+          </div>
+          <div class="form-group">
+            <label for="pass1" class="col-form-label">current password:</label>
+            <input type="password" class="form-control" id="pass1">
+          </div>
+          <div class="form-group">
+            <label for="pass" class="col-form-label">new password:</label>
+            <input type="password" class="form-control" id="pass">
+          </div>
+          <div class="form-group">
+            <label for="confirme-pass" class="col-form-label">Confirme Password:</label>
+            <input type="password" class="form-control" id="confirm-pass">
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
             </div>
           </div>
 
         </div>
+        <br>
         <hr>
         <br>
+        
         <form action="" method="POST" enctype="multipart/form-data">
           <div class="input-group mb-3">
   <div class="input-group-prepend">
@@ -140,8 +189,11 @@
 
 </form>
       </div>
+     
       <hr>
-      <table class="table table-hover">
+      
+      
+      <table class="table table-hover" style="margin-top: 10%;">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -161,6 +213,7 @@
 @endforeach
   </tbody>
 </table>
+
     </div>
 
   </div>
