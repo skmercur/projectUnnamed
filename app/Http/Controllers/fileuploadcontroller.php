@@ -82,6 +82,7 @@ $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOrigi
        'title' => $title,
        'description' =>$description,
        'location'=>$destinationPath.$hash,
+       'downloads'=>0,
 
 
    ]);

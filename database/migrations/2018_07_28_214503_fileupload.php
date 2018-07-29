@@ -20,6 +20,7 @@ class Fileupload extends Migration
           $table->string('title',100);
           $table->longText('description');
           $table->string('location',191);
+          $table->integer('downloads');
           $table->timestamps();
       });
     }

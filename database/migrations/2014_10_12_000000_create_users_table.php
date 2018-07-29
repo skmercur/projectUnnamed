@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email',191)->unique();
             $table->string('password');
             $table->string('imgpath');
-            $table->integer('namespi')->default(1);
+              $table->string('namespi',191);
             $table->rememberToken();
             $table->timestamps();
         });
