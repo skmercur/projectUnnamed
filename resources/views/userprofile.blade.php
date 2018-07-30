@@ -5,11 +5,11 @@
 @else
 @if($user->username != Auth::user()->username)
 <br>
-<div id="page-content-wrapper">
+<!-- <div id="page-content-wrapper">
             <div class="container-fluid">
                 <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">Toggle Menu</a>
             </div>
-        </div>
+        </div> -->
 <br>
 <br>
 <div class="container">
@@ -57,11 +57,11 @@
 </div>
 @else
 <br>
-<div id="page-content-wrapper">
+<!-- <div id="page-content-wrapper">
             <div class="container-fluid">
                 <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">Toggle Menu</a>
             </div>
-        </div>
+        </div> -->
 <br>
 <div class="container">
   <div class="row">
@@ -214,7 +214,21 @@
       <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
         echo $file->description;
       } ?><a href=""data-toggle="modal" data-target="#Modal">.....View Detail</a></td>
-      <td><a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" > Download</button></a> <button type="button" class="btn btn-outline-warning">View</button></td>
+      <td>
+    
+      
+      
+      
+      <form class="form-inline" action="" method="post">
+      <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" >Download</button></a> 
+       <button type="button" class="btn btn-outline-warning">View</button> 
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                                </form>
+      
+      
+      </td>
     </tr>
     <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

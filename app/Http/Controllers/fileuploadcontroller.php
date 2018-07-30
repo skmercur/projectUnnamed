@@ -138,6 +138,12 @@ return back();
      */
     public function destroy($id)
     {
-        //
+       
+        $file = fileupload::find($id);
+        if($file->delete()){// this Is Soft Delete
+            return redirect()->back()->with('message_success',"Delete Successfully");
+        }else{
+            return redirect()->back()->with('message_success',"Sorry please try again");
+        }
     }
 }
