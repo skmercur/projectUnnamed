@@ -3,7 +3,6 @@
 @guest
 <h3>error , it seeams that you are not connected  </h3>
 @else
-
 @if($user->username != Auth::user()->username)
 
 <br>
@@ -60,7 +59,11 @@
 
 
 @else
-
+@if($user->status == 0)
+<script type="text/javascript">
+    window.location.href = "/confirm";
+</script>
+@endif
 <br>
 <!-- <div id="page-content-wrapper">
             <div class="container-fluid">
