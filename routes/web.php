@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/auth/nextstep','usernextstepimagecontroller@saveUploadFile');
 Route::get('/auth/nextstep','usernextstepimagecontroller@getSpeciality');
 Route::post('/edit','usereditcontroller@userEdit');
+Route::post('/delete','fileuploadcontroller@delete');
 Route::get('/search','searchcontroller@search');
 Route::get('{slug}', [
     'uses' => 'PageController@getPage'
@@ -29,4 +30,3 @@ Route::post('{slug}', [
     'uses' => 'fileuploadcontroller@saveUploadFile'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');
 Route::post('/processing','fileuploadcontroller@saveUploadFile');
-Route::get('/delete/{id}',['as'=>'deleteFile','uses' => 'fileuploadcontroller@destroy']);
