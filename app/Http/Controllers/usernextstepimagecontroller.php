@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectRespons;
+use Mail;
 
 class usernextstepimagecontroller extends Controller
 {
@@ -118,6 +119,13 @@ $validator = Validator::make($fileArray, $rules);
       $file->move($destinationPath,$hash);
    DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
     DB::table('users')->where('username',$user)->update(['namespi' =>$namespi]);
+    $db =   DB::table('users')->where('username',$user)->first();
+
+    Mail::send(['text'=>'mail'],['name','support'],function($message){
+      $message->to($db->email,'to'.$db->firstname.",".$db->lastname)->subject('Your activation code');
+      $message->from('support@thefreeedu.com','support');
+    });
+
 return redirect($user);
 
  }

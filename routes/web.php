@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/auth/nextstep','usernextstepimagecontroller@saveUploadFile');
 Route::get('/auth/nextstep','usernextstepimagecontroller@getSpeciality');
+Route::get('/send','emailController@send');
 Route::post('/edit','usereditcontroller@userEdit');
 Route::post('/delete','fileuploadcontroller@delete');
 Route::get('/search','searchcontroller@search');

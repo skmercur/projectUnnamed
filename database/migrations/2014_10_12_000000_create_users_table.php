@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('imgpath');
               $table->string('namespi',191);
+              $table->integer('status');
+              $table->integer('code');
             $table->rememberToken();
             $table->timestamps();
         });

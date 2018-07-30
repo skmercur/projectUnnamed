@@ -75,6 +75,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'imgpath'=> 'uploads/default.png',
               'namespi'=>'default',
+              'status'=>'0',
+              'code'=>mt_rand(1000,9999),
 
         ]);
     }
