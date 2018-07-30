@@ -32,6 +32,26 @@ class usernextstepimagecontroller extends Controller
     {
         //
     }
+    public function confirm(Request $request)
+    {
+
+
+   $codeu = $request->input('codeu');
+   $user = $request->input('user');
+   if(!empty($user)){
+   $val = DB::table('users')->where('username',$user)->first();
+    $code = $val->code;
+   if($val->code == $codeu){
+     DB::table('users')->where('username',$user)->update(['status' => 1]);
+     return redirect('/'.$user);
+   }else {
+     return back();
+   }
+ }else{
+   return back();
+ }
+    }
+
     public function getSpeciality(){
       $spec=   DB::table('spicialitys')->get();
 
@@ -119,10 +139,19 @@ $validator = Validator::make($fileArray, $rules);
       $file->move($destinationPath,$hash);
    DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
     DB::table('users')->where('username',$user)->update(['namespi' =>$namespi]);
-    $db =   DB::table('users')->where('username',$user)->first();
-
-    Mail::send(['text'=>'mail'],['name','support'],function($message){
-      $message->to($db->email,'to'.$db->firstname.",".$db->lastname)->subject('Your activation code');
+    $val = DB::table('users')->where('username',$user)->first();
+ $code = $val->code;
+ $email = $val->email;
+ $firstname = $val->firstname;
+ $lastname = $val->lastname;
+ $data = array(
+    'code'=>$code,
+    'email'=>$email,
+    'firstname'=>$firstname,
+    'lastname'=>$lastname
+);
+    Mail::send('mail',$data,function($message) use ($email){
+      $message->to($email)->subject('Your activation code');
       $message->from('support@thefreeedu.com','support');
     });
 

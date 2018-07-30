@@ -21,6 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/auth/nextstep','usernextstepimagecontroller@saveUploadFile');
 Route::get('/auth/nextstep','usernextstepimagecontroller@getSpeciality');
 Route::get('/send','emailController@send');
+Route::get('/confirm',function(){
+  return view('auth/confirm');
+});
+Route::post('/confirm','usernextstepimagecontroller@confirm');
 Route::post('/edit','usereditcontroller@userEdit');
 Route::post('/delete','fileuploadcontroller@delete');
 Route::get('/search','searchcontroller@search');
