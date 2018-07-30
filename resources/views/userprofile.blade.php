@@ -73,6 +73,17 @@
           </div>
           <div class="row">
 			<div class="col-md-4 text-center">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- userprofile -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1253446609392565"
+     data-ad-slot="7624838184"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
               <img class="img-circle avatar avatar-original" style="-webkit-user-select:none;
               display:block; height: 140px; margin:auto;" src="{{ Auth::user()->imgpath}}" style="">
             </div>
@@ -213,7 +224,7 @@
       <td>{{$file->title}}</td>
       <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
         echo $file->description;
-      } ?><a href=""data-toggle="modal" data-target="#Modal">.....View Detail</a></td>
+      } ?></td>
       <td>
 
 
@@ -221,7 +232,7 @@
 
 
       <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" >Download</button></a>
-       <button type="button" class="btn btn-outline-warning">View</button>
+       <a href=""data-toggle="modal" data-target="#Modal"> <button type="button" class="btn btn-outline-warning">View</button></a>
 
                                                       <form class="form-inline" action="delete" method="post">
 
