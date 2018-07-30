@@ -41,6 +41,14 @@ $value = $request->q;
   $resaults=   DB::table('files')->where('title','LIKE','%'.$value.'%')->orWhere('description','LIKE','%'.$value.'%')->get();
   return view('resaults')->with('resaults',$resaults);
 }
+public function usearch(Request $request){
+$value = $request->q;
+  $resaults=   DB::table('files')->where('title','LIKE','%'.$value.'%')->orWhere('description','LIKE','%'.$value.'%')->get();
+    $users=   DB::table('users')->where('firstname','LIKE','%'.$value.'%')->orWhere('lastname','LIKE','%'.$value.'%')->get();
+  return view('resaultsuser')->with(['resaults'=>$resaults,'users'=>$users]);
+}
+
+
     /**
      * Display the specified resource.
      *

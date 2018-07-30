@@ -28,7 +28,7 @@
             <div class="col-md-8">
               <div class="row">
                 <div class="col-md-12">
-                  <h1 class="only-bottom-margin">{{$user->firstname}}{{$user->lastname}}</h1>
+                  <h1 class="only-bottom-margin">{{$user->firstname}} {{$user->lastname}}</h1>
                 </div>
               </div>
               <div class="row">

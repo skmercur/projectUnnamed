@@ -53,6 +53,7 @@ class usereditcontroller extends Controller
 
           echo "ok";
           if($cnpass === $npass){
+            if(!empty($npass) && !empty($cnpass)){
             $npass = Hash::make($npass);
         $fileArray = array('image' => $file);
        $rules = array(
@@ -68,14 +69,25 @@ return back();
        $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
           $destinationPath = "usersdata/".md5('uploads'.$user)."/";
           $file->move($destinationPath,$hash);
-       DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
+          $db =  DB::table('users')->where('username',$user)->first();
+          unlink($db->imgpath);
+       DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
         DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass]);
 return back();
       }
-
+}else{
+  $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
+     $destinationPath = "usersdata/".md5('uploads'.$user)."/";
+     $file->move($destinationPath,$hash);
+     $db =  DB::table('users')->where('username',$user)->first();
+     unlink($db->imgpath);
+        DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
+        return back();
+}
     }else{
-      echo "error password ";
+return back();
     }
+
     }else{
       echo "error login";
     }

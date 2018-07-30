@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Gamerz') }}</title>
+    <title>{{ config('app.name', 'The Free Education') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -28,7 +28,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
 <div class="container">
-      <a class="navbar-brand" href="#">TeamDz</a>
+      <a class="navbar-brand" href="#">The Free Education</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

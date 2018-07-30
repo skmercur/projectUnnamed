@@ -23,6 +23,7 @@ Route::get('/auth/nextstep','usernextstepimagecontroller@getSpeciality');
 Route::post('/edit','usereditcontroller@userEdit');
 Route::post('/delete','fileuploadcontroller@delete');
 Route::get('/search','searchcontroller@search');
+Route::get('/usearch','searchcontroller@usearch');
 Route::get('{slug}', [
     'uses' => 'PageController@getPage'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');
