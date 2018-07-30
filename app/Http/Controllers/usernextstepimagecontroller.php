@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectRespons;
 
 class usernextstepimagecontroller extends Controller
 {
@@ -103,33 +104,21 @@ return view('auth/nextstep')->with('spec',$spec);
 $validator = Validator::make($fileArray, $rules);
 
    //Display File Name
-   echo 'File Name: '.$file->getClientOriginalName();
-   echo '<br>';
 
-   //Display File Extension
-   echo 'File Extension: '.$file->getClientOriginalExtension();
-   echo '<br>';
-
-   //Display File Real Path
-   echo 'File Real Path: '.$file->getRealPath();
-   echo '<br>';
-
-   //Display File Size
-   echo 'File Size: '.$file->getSize();
-   echo '<br>';
 
    //Display File Mime Type
  if($validator->fails()){
    echo "sorry your file is not supported";
-   //Move Uploaded File
+   return back();
 
  }else {
 
-   $destinationPath = 'uploads';
-   $file->move($destinationPath,$file->getClientOriginalName());
-   DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
-    DB::table('users')->where('username',$user)->update(['namesp' =>$namespi]);
-
+   $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
+      $destinationPath = "usersdata/".md5('uploads'.$user)."/";
+      $file->move($destinationPath,$hash);
+   DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
+    DB::table('users')->where('username',$user)->update(['namespi' =>$namespi]);
+return redirect($user);
 
  }
 }
