@@ -25,9 +25,11 @@ class PageController extends Controller
 
 $user =   DB::table('users')->where('username',$value)->first();
 $files = DB::table('files')->where('author',$value)->get();
-
+if(!empty($user->username)){
 return view('userprofile')->with(['user'=>$user,'files'=>$files]);
-
+}else {
+  return back();
+}
 }
 
 

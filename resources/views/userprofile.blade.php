@@ -3,7 +3,9 @@
 @guest
 <h3>error , it seeams that you are not connected  </h3>
 @else
+
 @if($user->username != Auth::user()->username)
+
 <br>
 <!-- <div id="page-content-wrapper">
             <div class="container-fluid">
@@ -55,7 +57,10 @@
     </div>
   </div>
 </div>
+
+
 @else
+
 <br>
 <!-- <div id="page-content-wrapper">
             <div class="container-fluid">
