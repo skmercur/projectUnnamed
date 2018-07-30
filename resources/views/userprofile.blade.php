@@ -215,19 +215,24 @@
         echo $file->description;
       } ?><a href=""data-toggle="modal" data-target="#Modal">.....View Detail</a></td>
       <td>
-    
-      
-      
-      
-      <form class="form-inline" action="" method="post">
-      <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" >Download</button></a> 
-       <button type="button" class="btn btn-outline-warning">View</button> 
-                                                    @csrf
-                                                    @method('delete')
+
+
+
+
+
+      <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" >Download</button></a>
+       <button type="button" class="btn btn-outline-warning">View</button>
+
+                                                      <form class="form-inline" action="delete" method="post">
+
+                                                      @csrf
+                                                      <input type="hidden" value="{{$file->id}}" name="fileid" />
+                                                      <input type="hidden" name="username" value="{{Auth::user()->username}}" />
+                                                          <input type="hidden" name="_token" value="{{csrf_token()}}" />
                                                     <button type="submit" class="btn btn-outline-danger">Delete</button>
                                                 </form>
-      
-      
+
+
       </td>
     </tr>
     <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -244,7 +249,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        
+
       </div>
     </div>
   </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use App\fileupload;
 
 class fileuploadcontroller extends Controller
@@ -136,14 +137,18 @@ return back();
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete(Request $request)
     {
-       
-        $file = fileupload::find($id);
-        if($file->delete()){// this Is Soft Delete
-            return redirect()->back()->with('message_success',"Delete Successfully");
-        }else{
-            return redirect()->back()->with('message_success',"Sorry please try again");
-        }
+      $user = $request->input('username');
+      if(!empty($user)){
+        $id = $request->input('fileid');
+        $db =DB::table('files')->where('id',$id)->first();
+        $location = $db->location;
+        unlink($location);
+DB::table('files')->where('id',$id)->delete();
+return back();
+}else{
+  echo "error you are not connected";
+}
     }
 }
