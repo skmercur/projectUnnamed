@@ -6,7 +6,15 @@
 <div class="container">
 	<div class="col-md-9 col-md-pull-3">
         <h1 class="search-results-count" style="margin-top: 7%;margin-left: 50%;">Search Results</h1>
-
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- search -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-1253446609392565"
+				     data-ad-slot="1840236457"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
         <section class="search-result-item">
 @foreach($resaults as $resault)
             <div class="search-result-item-body">
