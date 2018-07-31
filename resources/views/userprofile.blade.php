@@ -34,9 +34,8 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <span class="text-muted">Email:</span> {{$user->email}}<br>
-                  <span class="text-muted">Birth date:</span> 01.01.2001<br>
-                  <span class="text-muted">Gender:</span> male<br><br>
+                <span class="text-muted fa fa-envelope"> :</span> {{Auth::user()->email}}<br>
+                  <span class="text-muted fa fa-male"> :</span> male<br><br>>
                   <small class="text-muted">Created: {{$user->created_at}} </small>
                 </div>
                 <div class="col-md-6">
@@ -56,6 +55,53 @@
     </div>
   </div>
 </div>
+<table class="table table-hover" style="margin-top: 10%;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">File</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($files as $file)
+    <tr>
+      <th scope="row">{{$file->id}}</th>
+      <td>{{$file->title}}</td>
+      <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
+        echo $file->description;
+      } ?></td>
+      <td>
+
+<a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
+       <a href=""data-toggle="modal" data-target="#Modal"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
+
+
+      </td>
+    </tr>
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <p class="description">{{$file->description}}.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
+  </tbody>
+</table>
 
 
 @else
@@ -77,7 +123,7 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
-            <div class="col-md-12 lead">User profile<hr></div>
+            <div class="col-md-12 lead"><h3>User Profile</h3><hr></div>
           </div>
           <div class="row">
 			<div class="col-md-4 text-center">
@@ -103,9 +149,8 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <span class="text-muted">Email:</span> {{Auth::user()->email}}<br>
-                  <span class="text-muted">Birth date:</span> 01.01.2001<br>
-                  <span class="text-muted">Gender:</span> male<br><br>
+                <span class="text-muted fa fa-envelope"> </span> {{Auth::user()->email}}<br>
+                  <span class="text-muted fa fa-male"> </span> male<br><br>
                   <small class="text-muted">Created: {{Auth::user()->created_at}}</small>
                   <div class="progress">
    <div class="progress-bar" role="progressbar" aria-valuenow="{{ceil(($user->tsize * 100)/100) }}"
@@ -257,16 +302,17 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
 
 
 
-      <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" >Download</button></a>
-       <a href=""data-toggle="modal" data-target="#Modal"> <button type="button" class="btn btn-outline-warning">View</button></a>
-
+      
                                                       <form class="form-inline" action="delete" method="post">
+                                                      <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
+       <a href=""data-toggle="modal" data-target="#Modal"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
+
 
                                                       @csrf
                                                       <input type="hidden" value="{{$file->id}}" name="fileid" />
                                                       <input type="hidden" name="username" value="{{Auth::user()->username}}" />
                                                           <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-outline-danger fa fa-trash-alt" ></button>
                                                 </form>
 
 
