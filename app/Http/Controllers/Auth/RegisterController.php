@@ -70,13 +70,16 @@ class RegisterController extends Controller
         return User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
-            'username' => $data['username'],
+            'username' => preg_replace('/[^\da-z]/i','',str_replace(' ','',$data['username'])),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'imgpath'=> 'uploads/default.png',
               'namespi'=>'default',
               'status'=>'0',
               'code'=>mt_rand(1000,9999),
+              'type'=>'basic',
+              'nfiles'=>'100',
+              'tsize'=>'100',
 
         ]);
     }

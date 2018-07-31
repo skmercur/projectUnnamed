@@ -8,6 +8,6 @@ class fileupload extends Model
 {
   public $table = 'files';
   protected $fillable = [
-      'filename','author','title', 'description', 'location','downloads',
+      'filename','author','title', 'description', 'location','downloads','size',
   ];
 }

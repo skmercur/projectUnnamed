@@ -64,7 +64,7 @@ $validator = Validator::make($fileArray, $rules);
    echo '<br>';
 
    //Display File Size
-   echo 'File Size: '.$file->getSize();
+  $size =  ceil($file->getSize()/(1024*1024));
    echo '<br>';
 
    //Display File Mime Type
@@ -84,9 +84,14 @@ $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOrigi
        'description' =>$description,
        'location'=>$destinationPath.$hash,
        'downloads'=>0,
+       'size'=>$size,
 
 
    ]);
+   $val = DB::table('users')->where('username',$username)->first();
+$newsize = $val->tsize - $size;
+$newnumber = $val->nfiles - 1;
+DB::table('users')->where('username',$username)->update(['tsize'=>$newsize,'nfiles'=>$newnumber]);
 
 
    return back();
@@ -145,7 +150,12 @@ return back();
         $db =DB::table('files')->where('id',$id)->first();
         $location = $db->location;
         unlink($location);
+        $val = DB::table('users')->where('username',$user)->first();
+     $newsize = $val->tsize + $db->size;
+     $newnumber = $val->nfiles + 1;
+     DB::table('users')->where('username',$user)->update(['tsize'=>$newsize,'nfiles'=>$newnumber]);
 DB::table('files')->where('id',$id)->delete();
+
 return back();
 }else{
   echo "error you are not connected";

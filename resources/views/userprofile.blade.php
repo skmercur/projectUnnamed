@@ -107,7 +107,21 @@
                   <span class="text-muted">Birth date:</span> 01.01.2001<br>
                   <span class="text-muted">Gender:</span> male<br><br>
                   <small class="text-muted">Created: {{Auth::user()->created_at}}</small>
+                  <div class="progress">
+   <div class="progress-bar" role="progressbar" aria-valuenow="{{ceil(($user->tsize * 100)/100) }}"
+   aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->tsize * 100)/100) }}%">
+     <span class="sr-only"></span>
+   </div>
+  </div>
+  <br>
+  <div class="progress">
+<div class="progress-bar" role="progressbar" aria-valuenow="{{ceil(($user->nfiles * 100)/100) }}"
+aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/100) }}%">
+<span class="sr-only"></span>
+</div>
+</div>
                 </div>
+
                 <div class="col-md-6">
                   <div class="activity-mini">
                     <i class="glyphicon glyphicon-comment text-muted"></i> 500
@@ -145,7 +159,7 @@
           </div>
           <div class="form-group">
             <label for="image" class="col-form-label">Photo profil:</label>
-            <input type="file" class="form-control" id="image" name="image">
+            <input type="file" class="form-control" id="image" name="image" accept="image/jpeg,image/x-png,image/gif">
           </div>
           <div class="form-group">
             <label for="pass" class="col-form-label">new password:</label>
@@ -198,13 +212,17 @@
 <br>
 <div class="input-group">
   <div class="custom-file">
-    <input type="file" class="custom-file-input input-group-prepend" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="file">
+    <input type="file" class="custom-file-input input-group-prepend" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="file" accept="application/pdf,.docx">
     <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
   </div>
 <input type="hidden" name="username" value="{{Auth::user()->username}}" />
     <input type="hidden" name="_token" value="{{csrf_token()}}" />
   <div class="input-group-append">
-    <button class="btn btn-outline-primary" type="submit" id="inputGroupFileAddon04">Upload</button>
+    @if(($user->tsize  <= 0) || ($user->nfiles <= 0))
+    <button class="btn btn-outline-primary" type="submit" id="inputGroupFileAddon04" disabled="true" >Upload</button>
+    @else
+      <button class="btn btn-outline-primary" type="submit" id="inputGroupFileAddon04"   >Upload</button>
+      @endif
   </div>
 </div>
 </div>

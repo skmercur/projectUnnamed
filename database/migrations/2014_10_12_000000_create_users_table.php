@@ -24,6 +24,9 @@ class CreateUsersTable extends Migration
               $table->string('namespi',191);
               $table->integer('status');
               $table->integer('code');
+              $table->string('type',10);
+              $table->integer('nfiles');
+              $table->integer('tsize');
             $table->rememberToken();
             $table->timestamps();
         });
