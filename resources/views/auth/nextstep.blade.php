@@ -32,7 +32,7 @@ window.location = "/login";
 
                     <div class="input-group">
   <div class="custom-file">
-  <input type="file" class="custom-file-input" name="image">
+  <input type="file" class="custom-file-input" name="image"  accept="image/jpeg,image/x-png,image/gif">
     <label class="custom-file-label" value="{{csrf_token()}}" for="image">Choose file</label>
   </div>
   <div class="input-group-append">
