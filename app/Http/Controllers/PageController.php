@@ -25,8 +25,12 @@ class PageController extends Controller
 
 $user =   DB::table('users')->where('username',$value)->first();
 $files = DB::table('files')->where('author',$value)->get();
+$downloads=0;
+foreach ($files as $file) {
+  $downloads = $downloads + $file->downloads;
+}
 if(!empty($user->username)){
-  return view('userprofile')->with(['user'=>$user,'files'=>$files]);
+  return view('userprofile')->with(['user'=>$user,'files'=>$files,'downloads'=>$downloads]);
 }else {
 
   return back();

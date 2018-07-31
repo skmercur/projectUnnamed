@@ -169,10 +169,12 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
 
                 <div class="col-md-6">
                   <div class="activity-mini">
-                    <i class="glyphicon glyphicon-comment text-muted"></i> 500
+                    <i class="glyphicon glyphicon-comment text-muted"></i> You have uploaded {{100 - $user->nfiles}} files
                   </div>
                   <div class="activity-mini">
-                    <i class="glyphicon glyphicon-thumbs-up text-muted"></i> 1500
+                    <?php $i=0; ?>
+
+                    <i class="glyphicon glyphicon-thumbs-up text-muted"></i> You have {{$downloads}} downloads
                   </div>
                 </div>
               </div>
@@ -302,7 +304,7 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
 
 
 
-      
+
                                                       <form class="form-inline" action="delete" method="post">
                                                       <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
        <a href=""data-toggle="modal" data-target="#Modal"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>

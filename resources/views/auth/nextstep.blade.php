@@ -18,7 +18,7 @@ window.location = "/login";
                     @if(Auth::user()->name !== '')
                     <form method="post" action="nextstep" enctype="multipart/form-data">
 
-                    <select class="form-control" name="namesp">
+                    <select class="form-control" data-live-search="true" name="namesp">
                     <option>choose your speciality</option>
                     @foreach($spec as $spi)
 

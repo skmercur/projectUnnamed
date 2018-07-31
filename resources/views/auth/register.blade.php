@@ -12,8 +12,8 @@
                         @csrf
 
                         <div class="form-group row">
-                         
-                           
+
+
                                 <div class="col-md-6 mb-3">
                                    <label for="firstName">{{ __('First name') }}</label>
                                        <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" placeholder="" value="{{ old('firstname') }}" required="">
@@ -29,8 +29,8 @@
                             <div class="col-md-6 mb-3">
                                 <label for="lastname">{{ __('Last name') }}</label>
                                 <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" placeholder="" value="{{ old('lastname') }}" required="">
-                                
-                               
+
+
                                 @if ($errors->has('lastname'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('lastname') }}</strong>
@@ -39,11 +39,11 @@
                              <div class="invalid-feedback">
                              Valid last name is required.
                          </div>
-                        
+
                     </div>
 
 
-          
+
                         </div>
 
                                                 <div class="form-group row">
@@ -59,6 +59,18 @@
                                                         @endif
                                                     </div>
                                                 </div>
+                                                <div class="form-group row">
+                                                    <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
+
+                                                    <div class="col-md-6">
+                                                      <select name="gender" class="form-control" data-live-search="true">
+                                                        <option value="male">male</option>
+                                                        <option value="female">female</option>
+                                                        <option value="other">other</option>
+                                                      </select>
+                                                    </div>
+                                                </div>
+
 
 
                         <div class="form-group row">
@@ -89,8 +101,8 @@
                             </div>
                         </div>
 
-                   
-                    
+
+
 
 
                         <div class="form-group row">
@@ -98,11 +110,11 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                              
+
                             </div>
                         </div>
                         <br>
-                        
+
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
