@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
               $table->string('type',10);
               $table->integer('nfiles');
               $table->integer('tsize');
+              $table->string('gender',7);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -88,6 +88,7 @@
     </div>
     <hr>
     <hr>
+    @guest
     <form action="search"style="margin-top: 300px;" method="get">
 
     <div class="input-group mb-12 center">
@@ -106,6 +107,26 @@
 
 
 </form>
+@else
+<form action="usearch"style="margin-top: 300px;" method="get">
+
+<div class="input-group mb-12 center">
+<input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-right: 15%;" placeholder="Recherche" name="q">
+<!-- <input type="hidden" name="_token" value="{{csrf_token()}}" /> -->
+
+
+
+</div>
+<br>
+<br>
+<div class="input-group" >
+<button class="form-control btn btn-success" style="margin-left: 30%;margin-right: 30%;" type="submit" id="button-addon2">Search</button>
+</div>
+
+
+
+</form>
+@endguest
 
 
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
@@ -115,16 +136,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          
+
           <li class="nav-item">
             <a class="nav-link" href="#">Conatct</a>
-       
+
           <li class="nav-item dropup">
             <a class="nav-link dropdown-toggle" href="https://getbootstrap.com" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Abouts</a>
             <div class="dropdown-menu" aria-labelledby="dropdown10">
               <a class="dropdown-item" href="#">About The Free Education</a>
               <a class="dropdown-item" href="#">About us</a>
-              
+
             </div>
           </li>
         </ul>
