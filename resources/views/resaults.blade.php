@@ -47,7 +47,7 @@
                                                       <input type="hidden" value="{{$resault->id}}" name="fileid" />
                                                       <input type="hidden" name="username" value="{{Auth::user()->username}}" />
                                                           <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                                                    <button type="submit" class="btn btn-outline-danger fa fa-trash-alt" ></button>
+                                                   
                                                 </form>
 
 
