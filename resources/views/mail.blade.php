@@ -1,5 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.maillayout')
 @section('content')
-<h4>Good day to you dear, {{$firstname}} {{$lastname}} </h4>
-<p>Here is you activation code <b>{{$code}}</b> </p>
+<div class="container">
+
+
+<h4>Dear, {{$firstname}} {{$lastname}} </h4>
+<h6>Good day to you,</h6>
+<div class="well">
+<p>Here is you activation code: <b>{{$code}}</b></p>
+</div>
+<footer>
+<p>From The Free Education team</p>
+</footer>
+</div>
 @endsection

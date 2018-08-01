@@ -35,7 +35,7 @@
               <div class="row">
                 <div class="col-md-6">
                 <span class="text-muted fa fa-envelope"> :</span> {{Auth::user()->email}}<br>
-                  <span class="text-muted fa fa-male"> :</span> male<br><br>>
+                <span class="text-muted fa fa-male"> </span> {{Auth::user()->gender}}<br><br>
                   <small class="text-muted">Created: {{$user->created_at}} </small>
                 </div>
                 <div class="col-md-6">
@@ -150,7 +150,7 @@
               <div class="row">
                 <div class="col-md-6">
                 <span class="text-muted fa fa-envelope"> </span> {{Auth::user()->email}}<br>
-                  <span class="text-muted fa fa-male"> </span> male<br><br>
+                <span class="text-muted fa fa-male"> </span> {{Auth::user()->gender}}<br><br>
                   <small class="text-muted">Created: {{Auth::user()->created_at}}</small>
                   <div class="progress">
    <div class="progress-bar" role="progressbar" aria-valuenow="{{ceil(($user->tsize * 100)/100) }}"
