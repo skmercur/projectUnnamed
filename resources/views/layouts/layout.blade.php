@@ -14,7 +14,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>The Free Education</title>
+    <title>{{ config('app.name', 'The Free Education') }}</title>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -64,7 +64,7 @@
                           </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                      {{ Auth::user()->lastname }},{{ Auth::user()->firstname }} <span class="caret"></span>
+                                    {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -81,17 +81,10 @@
                             </li>
                         @endguest
                     </ul>
-                    @guest
                     <form class="form-inline my-2 my-lg-0" method="get" action="search">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-    @else
-    <form class="form-inline my-2 my-lg-0" method="get" action="usearch">
-<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
-@endguest
 
 
 </div>

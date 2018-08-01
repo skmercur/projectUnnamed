@@ -14,14 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/mail', function () {
-//     return view('mail');
-// });
-
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/about', 'HomeController@index')->name('about');
+// Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/auth/nextstep','usernextstepimagecontroller@saveUploadFile');
 Route::get('/auth/nextstep','usernextstepimagecontroller@getSpeciality');
 Route::get('/send','emailController@send');
