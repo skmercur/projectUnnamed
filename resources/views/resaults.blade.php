@@ -20,7 +20,7 @@
 
 
 
-<<<<<<< HEAD
+
 	<div class="container">
 		<div class="row">
 @foreach($resaults as $resault)
@@ -67,10 +67,11 @@
 											</div>
 											</td>
 											<td>
-
-												<a href ="{{$resault->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
+<form method="get" action="check" >
+	<input type="hidden" value="{{$resault->location}}" name="f">
+											<button type="submit" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
 												       <a href=""data-toggle="modal" data-target="#Modal"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
-
+</form>
 
 												      </td>
 												    </tr>
@@ -106,38 +107,34 @@
 
 
 	</section>
+	<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+		<p class="description">{{$resault->description}}.</p>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+		</div>
+	</div>
+</div>
+
+</div>
 		  @endforeach
-=======
-                                                      @csrf
-                                                      <input type="hidden" value="{{$resault->id}}" name="fileid" />
-                                                      <input type="hidden" name="username" value="{{Auth::user()->username}}" />
-                                                          <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                                                   
-                                                </form>
+
+
 
 
       </td>
-    
-    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <p class="description">{{$resault->description}}.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
-      </div>
-    </div>
-  </div>
->>>>>>> 8f166a35f5d4cd24ca02d03d4e68105116f7f2cb
-</div>
+
 
 
 

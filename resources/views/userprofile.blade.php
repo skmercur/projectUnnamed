@@ -40,10 +40,10 @@
                 </div>
                 <div class="col-md-6">
                   <div class="activity-mini">
-                    <i class="glyphicon glyphicon-comment text-muted"></i> data
+                    <i class="glyphicon glyphicon-comment text-muted"></i>{{$user->firstname}} {{$user->lastname}} has uploaded {{$uploads}} files
                   </div>
                   <div class="activity-mini">
-                    <i class="glyphicon glyphicon-thumbs-up text-muted"></i> data
+                    <i class="glyphicon glyphicon-thumbs-up text-muted"></i>{{$user->firstname}} {{$user->lastname}} has  {{$downloads}} downloads
                   </div>
                 </div>
               </div>

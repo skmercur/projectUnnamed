@@ -28,6 +28,21 @@ class fileuploadcontroller extends Controller
     {
         //
     }
+    public function check(Request $request)
+    {
+
+        if(!empty($request->f)){
+          $data = $request->f;
+$val = DB::table('files')->where('location',$data)->first();
+$downloads = $val->downloads +1;
+DB::table('files')->where('location',$data)->update(['downloads'=>$downloads]);
+return redirect($data);
+
+        }else{
+          return back();
+        }
+
+    }
 
     /**
      * Store a newly created resource in storage.
