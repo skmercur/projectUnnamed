@@ -34,16 +34,16 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                <span class="text-muted fa fa-envelope"> :</span> {{Auth::user()->email}}<br>
-                <span class="text-muted fa fa-male"> </span> {{Auth::user()->gender}}<br><br>
+                <span class="text-muted fa fa-envelope"> :</span> {{$user->email}}<br>
+                <span class="text-muted fa fa-male"> </span> {{$user->gender}}<br><br>
                   <small class="text-muted">Created: {{$user->created_at}} </small>
                 </div>
                 <div class="col-md-6">
                   <div class="activity-mini">
-                    <i class="glyphicon glyphicon-comment text-muted"></i> 500
+                    <i class="glyphicon glyphicon-comment text-muted"></i> data
                   </div>
                   <div class="activity-mini">
-                    <i class="glyphicon glyphicon-thumbs-up text-muted"></i> 1500
+                    <i class="glyphicon glyphicon-thumbs-up text-muted"></i> data
                   </div>
                 </div>
               </div>

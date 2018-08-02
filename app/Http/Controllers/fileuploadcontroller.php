@@ -51,23 +51,12 @@ class fileuploadcontroller extends Controller
    );
 $validator = Validator::make($fileArray, $rules);
 
-   //Display File Name
-   echo 'File Name: '.$file->getClientOriginalName();
-   echo '<br>';
 
-   //Display File Extension
-   echo 'File Extension: '.$file->getClientOriginalExtension();
-   echo '<br>';
 
-   //Display File Real Path
-   echo 'File Real Path: '.$file->getRealPath();
-   echo '<br>';
-
-   //Display File Size
   $size =  ceil($file->getSize()/(1024*1024));
-   echo '<br>';
 
-   //Display File Mime Type
+
+
  if($validator->fails()){
    echo "sorry your file is not supported";
    //Move Uploaded File

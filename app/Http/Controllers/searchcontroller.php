@@ -38,8 +38,8 @@ class searchcontroller extends Controller
     }
 public function search(Request $request){
 $value = $request->q;
-  $resaults=   DB::table('files')->where('title','LIKE','%'.$value.'%')->orWhere('description','LIKE','%'.$value.'%')->get();
-  return view('resaults')->with('resaults',$resaults);
+  $resaults=   DB::table('files')->select('files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->get();
+  return view('resaults')->with(['resaults'=>$resaults,'value'=>$value]);
 }
 public function usearch(Request $request){
 $value = $request->q;
