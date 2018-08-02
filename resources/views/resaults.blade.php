@@ -20,6 +20,7 @@
 
 
 
+<<<<<<< HEAD
 	<div class="container">
 		<div class="row">
 @foreach($resaults as $resault)
@@ -106,6 +107,36 @@
 
 	</section>
 		  @endforeach
+=======
+                                                      @csrf
+                                                      <input type="hidden" value="{{$resault->id}}" name="fileid" />
+                                                      <input type="hidden" name="username" value="{{Auth::user()->username}}" />
+                                                          <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                                                   
+                                                </form>
+
+
+      </td>
+    
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <p class="description">{{$resault->description}}.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+>>>>>>> 8f166a35f5d4cd24ca02d03d4e68105116f7f2cb
 </div>
 
 
