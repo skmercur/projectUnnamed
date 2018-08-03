@@ -120,9 +120,9 @@
             </div>
         </div> -->
 <br>
-<div class="container center-block"  style="margin-left:auto; margin-right:auto; width:80%" >
+<div class="container center-block"   >
   <div class="row">
-    <div class="card">
+    <div class="card" style="margin-left:auto; margin-right:auto;">
 
   <div class="card-body">
     <div class="col-md-35">
