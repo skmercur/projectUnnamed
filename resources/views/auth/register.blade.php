@@ -114,6 +114,17 @@
 
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="checkbox-confirm" class="col-md-4 col-form-label text-md-right">Check the checkbox to accept our terms and conditions</label>
+
+                            <div class="col-md-6">
+                                <input id="checkbox-confirm" type="checkbox" class="form-control" name="checkbox_confirmation" required>
+                                <br>
+                                <a href="">Terms and conditions</a>
+
+                            </div>
+
+                        </div>
                         <br>
 
 
