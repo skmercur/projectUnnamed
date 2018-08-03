@@ -52,7 +52,26 @@
         <h2 class="font-weight-light mb-0">Education web site</h2>
       </div>
     </header>
+<style>
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: 'Noto Serif', serif; letter-spacing: 0px; font-size: 16px; color: #55595d; font-weight: 400; line-height: 32px; }
 
+p { margin: 0 0 20px; line-height: 1.7; }
+p:last-child { margin: 0px; }
+ul, ol { font-family: 'Montserrat', sans-serif; }
+a { text-decoration: none; color: #55595d; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; }
+a:focus, a:hover { text-decoration: none; color: #c38d3f; }
+.content{padding-top:80px; padding-bottom:80px;}
+.mb40{margin-bottom:40px;}
+
+.team-block { }
+.team-img { margin-bottom: 20px; position: relative; }
+.team-img img { width: 100%; }
+.team-img img.border { border-color: #fff !important; }
+.social-media { position: absolute; bottom: 36px; opacity: 0; }
+.social-icon-box { margin-bottom: 5px; background-color: #193e6b; width: 46px; height: 46px; color: #ffffff; font-size: 16px; padding: 15px 19px 26px 16px; display: inline-block; line-height: 1.2; }
+.team-img:hover .social-media { opacity: 1; transition: 2s ease; }
+.team-block.active .social-media { opacity: 1; transition: 2s ease; }
+</style>
     <!-- About Section -->
     <section class="bg-primary text-white mb-0" id="about">
       <div class="container">
@@ -74,6 +93,92 @@
         </div>
       </div>
     </section>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+<div class="content" >
+    <div class="container" style="margin-left:25%;">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb40 text-center">
+                <h1 class="page-title" style="margin-right:26%;">DEVELOPER TEAM</h1>
+                <!-- /.section-title -->
+            </div>
+        </div>
+        <div class="row">
+
+            <!-- team-block -->
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb30">
+                <div data-aos="fade-up" class="team-block">
+                    <div class="team-img">
+                        <a href="#">
+                            <img src="{{asset('assets/img/Sofiane.jpg')}}" alt="" class="img-fluid">
+                            <div class="social-media">
+                                <a href="#" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
+                                <br>
+                                <a href="#" class="social-icon-box"><i class="fab fa-twitter"></i></a>
+                                <br>
+                                <a href="#" class="social-icon-box"><i class="fab fa-google-plus-g"></i></a>
+                                <br>
+                                <a href="#" class="social-icon-box"><i class="fab fa-pinterest-p"></i></a>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="team-content">
+                        <h4>Sofiane Khoudour </h4>
+                    </div>
+                </div>
+            </div>
+            <!-- /.team-block -->
+            <!-- team-block -->
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb30">
+                <div data-aos="fade-up" class="team-block">
+                    <div class="team-img">
+                        <a href="#">
+                            <img src="{{asset('assets/img/Hichem.jpg')}}" alt="" class="img-fluid">
+                            <div class="social-media">
+                                <a href="#" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
+                                <br>
+                                <a href="#" class="social-icon-box"><i class="fab fa-twitter"></i></a>
+                                <br>
+                                <a href="#" class="social-icon-box"><i class="fab fa-google-plus-g"></i></a>
+                                <br>
+                                <a href="#" class="social-icon-box"><i class="fab fa-pinterest-p"></i></a>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="team-content">
+                        <h4>Hichem Merniz</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- /.team-block -->
+            <!-- team-block -->
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb30">
+                <div data-aos="fade-up" class="team-block">
+                    <div class="team-img">
+                        <a href="#">
+                            <img src="{{asset('assets/img/Walid.jpg')}}" alt="" class="img-fluid">
+                            <div class="social-media">
+                                <a href="#" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
+                                <br>
+                                <a href="#" class="social-icon-box"><i class="fab fa-twitter"></i></a>
+                                <br>
+                                <a href="#" class="social-icon-box"><i class="fab fa-google-plus-g"></i></a>
+                                <br>
+                                <a href="#" class="social-icon-box"><i class="fab fa-pinterest-p"></i></a>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="team-content">
+                        <h4>Walid Msili</h4>
+                    </div>
+                </div>
+               <!-- /.team-block -->
+            </div>
+            
+        </div><div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mt-4"> 
+              Created for <a href="https://easetemplate.com/downloads/lawyer-website-template-practical/" target="_blank" class="text-primary">easetemplate</a>
+              </div></div>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact">

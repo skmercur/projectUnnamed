@@ -91,9 +91,10 @@
     <hr>
     @guest
     <form action="search"style="margin-top: 300px;" method="get">
-
+    <img src="{{asset('assets/img/logo.png')}}" alt="" style="margin-top:  -14%;margin-left: 26%;width: 46%;height: 446px;">
     <div class="input-group mb-12 center">
-  <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-right: 15%;" placeholder="type here to search for documents" name="q">
+    
+  <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-top: -10%;margin-right: 15%;height:2%;" placeholder="type here to search for documents" name="q">
 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}" /> -->
 
 
@@ -102,7 +103,7 @@
 <br>
   <br>
 <div class="input-group" >
-    <button class="form-control btn btn-success" style="margin-left: 30%;margin-right: 30%;" type="submit" id="button-addon2">Search</button>
+    <button class="form-control btn btn-success" style="margin-top:  -9%;margin-left: 30%;margin-right: 30%;height:;height: 1%;" type="submit" id="button-addon2">Search</button>
   </div>
 
 
@@ -110,9 +111,9 @@
 </form>
 @else
 <form action="usearch"style="margin-top: 300px;" method="get">
-
+<img src="{{asset('assets/img/logo.png')}}" alt="" style="margin-top:  -14%;margin-left: 26%;width: 46%;height: 446px;">
 <div class="input-group mb-12 center">
-<input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-right: 15%;" placeholder="Type here to search for documents and users" name="q">
+<input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-top: -10%;margin-right: 15%;height:2%;" placeholder="Type here to search for documents and users" name="q">
 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}" /> -->
 
 
@@ -121,7 +122,7 @@
 <br>
 <br>
 <div class="input-group" >
-<button class="form-control btn btn-success" style="margin-left: 30%;margin-right: 30%;" type="submit" id="button-addon2">Search</button>
+<button class="form-control btn btn-success" style="margin-top:  -9%;margin-left: 30%;margin-right: 30%;height:;height: 1%;" type="submit" id="button-addon2">Search</button>
 </div>
 
 
