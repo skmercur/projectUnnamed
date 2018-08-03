@@ -84,6 +84,7 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
+                                <p style="font-size:7pt">Your email will be visible to the public</p>
                             </div>
                         </div>
 

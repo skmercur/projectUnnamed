@@ -24,6 +24,7 @@
 	<div class="container">
 		<div class="row">
 @foreach($resaults as $resault)
+
 			<section class="content">
 				<h3>{{$resault->title}}</h3>
 				<div class="col-md-8 col-md-offset-2">
@@ -36,15 +37,6 @@
 								<table class="table table-filter">
 									<tbody>
 										<tr data-status="pagado">
-											<td>
-												<div class="ckbox">
-
-													<label for="checkbox1"></label>
-												</div>
-											</td>
-											<td>
-
-											</td>
 											<td>
 												<div class="media">
 													<a href="/login" class="pull-left">
@@ -75,24 +67,24 @@
 
 												      </td>
 												    </tr>
-												    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-												  <div class="modal-dialog" role="document">
-												    <div class="modal-content">
-												      <div class="modal-header">
-												        <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
-												        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												          <span aria-hidden="true">&times;</span>
-												        </button>
-												      </div>
-												      <div class="modal-body">
-												      <p class="description">{{$resault->description}}.</p>
-												      </div>
-												      <div class="modal-footer">
-												        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+														<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+													<div class="modal-dialog" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-body">
+															<p class="description">{{$resault->description}}.</p>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
-												      </div>
-												    </div>
-												  </div>
+															</div>
+														</div>
+													</div>
 												</div>
 
 
@@ -107,26 +99,6 @@
 
 
 	</section>
-	<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-	<div class="modal-content">
-		<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-		<div class="modal-body">
-		<p class="description">{{$resault->description}}.</p>
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
-		</div>
-	</div>
-</div>
-
-</div>
 		  @endforeach
 
 

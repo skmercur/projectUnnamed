@@ -8,31 +8,31 @@ class SpicialityController extends Controller
 {
     //
     public function index() {
-        $spec=   DB::table('spicialitys')->get();
-  
+        $spec=   DB::table('spicialitys')->orderBy('namespi', 'asc')->get();
+
         return view('auth/register')->with('spec',$spec);
 
     }
-    
+
 
     //
     public function create() {
-        
+
     }
 
     public function store() {
-        
+
     }
 
     public function edit() {
-        
+
     }
 
     public function update() {
-        
+
     }
 
     public function destroy() {
-        
+
     }
 }

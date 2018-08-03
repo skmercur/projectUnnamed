@@ -13,9 +13,12 @@
         </div> -->
 <br>
 <br>
-<div class="container">
+<div class="container center-block" >
   <div class="row">
-    <div class="col-md-9">
+    <div class="card " style="margin-left:auto; margin-right:auto;">
+
+  <div class="card-body">
+    <div class="col-md-35">
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
@@ -29,7 +32,7 @@
             <div class="col-md-8">
               <div class="row">
                 <div class="col-md-12">
-                  <h1 class="only-bottom-margin">{{$user->firstname}} {{$user->lastname}}</h1>
+                  <h1 class="only-bottom-margin" >{{$user->firstname}} {{$user->lastname}}</h1>
                 </div>
               </div>
               <div class="row">
@@ -117,13 +120,18 @@
             </div>
         </div> -->
 <br>
-<div class="container">
+<div class="container center-block"  style="margin-left:auto; margin-right:auto; width:80%" >
   <div class="row">
-    <div class="col-md-9">
+    <div class="card">
+
+  <div class="card-body">
+    <div class="col-md-35">
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
-            <div class="col-md-12 lead"><h3>User Profile</h3><hr></div>
+         <div class="col-md-12 lead"><h3>User Profile</h3><hr></div>
+
+
           </div>
           <div class="row">
 			<div class="col-md-4 text-center">
@@ -143,12 +151,12 @@
             </div>
             <div class="col-md-8">
               <div class="row">
-                <div class="col-md-12">
-                  <h1 class="only-bottom-margin">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h1>
+                <div class="col-md-32">
+                  <h1 class="only-bottom-margin" >{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h1>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-25">
                 <span class="text-muted fa fa-envelope"> </span> {{Auth::user()->email}}<br>
                 <span class="text-muted fa fa-male"> </span> {{Auth::user()->gender}}<br><br>
                   <small class="text-muted">Created: {{Auth::user()->created_at}}</small>
@@ -205,8 +213,9 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
             <input type="email" class="form-control" id="email" name="email">
           </div>
           <div class="form-group">
-            <label for="image" class="col-form-label">Photo profil:</label>
-            <input type="file" class="form-control" id="image" name="image" accept="image/jpeg,image/x-png,image/gif">
+            <label for="image" class="col-form-label">Profile picture :</label>
+            <input type="file" class="file-input" id="image" name="image" accept="image/jpeg,image/x-png,image/gif">
+            <label for="image" class="col-form-label" style="font-size:7pt;">Recomended picture size 160px x 160px</label>
           </div>
           <div class="form-group">
             <label for="pass" class="col-form-label">new password:</label>
@@ -239,6 +248,8 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
           </div>
 
         </div>
+      </div>
+    </div>
         <br>
         <hr>
         <br>
@@ -280,8 +291,12 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
 
       <hr>
 
+      <div class="container center-block" style="margin-top: 10%;" >
+        <div class="row">
+          <div class="card " style="margin-left:auto; margin-right:auto;">
 
-      <table class="table table-hover" style="margin-top: 10%;">
+        <div class="card-body">
+      <table class="table table-hover" >
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -348,6 +363,12 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
   </div>
 
 </div>
+</div>
+
+</div>
+
+</div>
+
 
 
 @endif

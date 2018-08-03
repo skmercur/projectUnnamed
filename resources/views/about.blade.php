@@ -173,10 +173,10 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
                 </div>
                <!-- /.team-block -->
             </div>
-            
+
         </div><div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mt-4"> 
-              Created for <a href="https://easetemplate.com/downloads/lawyer-website-template-practical/" target="_blank" class="text-primary">easetemplate</a>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mt-4">
+            
               </div></div>
     </div>
 

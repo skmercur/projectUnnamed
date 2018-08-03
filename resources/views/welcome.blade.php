@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 </head>
-<body  style="background-image:url({{asset('assets/img/2270.jpg')}})">
+<body  >
 <div id="app">
 
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
@@ -90,11 +90,15 @@
     <hr>
     <hr>
     @guest
-    <form action="search"style="margin-top: 300px;" method="get">
-    <img src="{{asset('assets/img/logo.png')}}" alt="" style="margin-top:  -14%;margin-left: 26%;width: 46%;height: 446px;">
+    <form action="search"style="margin-top: 15px;" method="get">
+      <div class="container">
+<div class="row">
+    <img src="{{asset('assets/img/logo.png')}}" class="center-block" alt="" align="middle" style="margin-left:auto; margin-right: auto;max-width: 400px;max-height: 400px;">
+  </div>
+</div>
     <div class="input-group mb-12 center">
-    
-  <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-top: -10%;margin-right: 15%;height:2%;" placeholder="type here to search for documents" name="q">
+
+  <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-top: -10%; margin-bottom: 1%;margin-right: 15%;height:2%;" placeholder="type here to search for documents" name="q">
 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}" /> -->
 
 
@@ -103,7 +107,7 @@
 <br>
   <br>
 <div class="input-group" >
-    <button class="form-control btn btn-success" style="margin-top:  -9%;margin-left: 30%;margin-right: 30%;height:;height: 1%;" type="submit" id="button-addon2">Search</button>
+    <button class="form-control btn btn-success" style="margin-top:  -9%; margin-bottom: 10%;margin-left: 30%;margin-right: 30%;height:;height: 1%;" type="submit" id="button-addon2">Search</button>
   </div>
 
 
@@ -111,7 +115,11 @@
 </form>
 @else
 <form action="usearch"style="margin-top: 300px;" method="get">
-<img src="{{asset('assets/img/logo.png')}}" alt="" style="margin-top:  -14%;margin-left: 26%;width: 46%;height: 446px;">
+  <div class="container">
+<div class="row">
+<img src="{{asset('assets/img/logo.png')}}" class="center-block" alt="" align="middle" style="margin-left:auto; margin-right: auto;max-width: 400px;max-height: 400px;">
+</div>
+</div>
 <div class="input-group mb-12 center">
 <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-top: -10%;margin-right: 15%;height:2%;" placeholder="Type here to search for documents and users" name="q">
 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}" /> -->
