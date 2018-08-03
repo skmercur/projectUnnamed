@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Free Education is the best place where you can share your knowledge with the world or you can learn new things by reading what other people shared">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -92,7 +93,7 @@
     <form action="search"style="margin-top: 300px;" method="get">
 
     <div class="input-group mb-12 center">
-  <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-right: 15%;" placeholder="Recherche" name="q">
+  <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-right: 15%;" placeholder="type here to search for documents" name="q">
 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}" /> -->
 
 
@@ -111,7 +112,7 @@
 <form action="usearch"style="margin-top: 300px;" method="get">
 
 <div class="input-group mb-12 center">
-<input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-right: 15%;" placeholder="Recherche" name="q">
+<input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-right: 15%;" placeholder="Type here to search for documents and users" name="q">
 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}" /> -->
 
 

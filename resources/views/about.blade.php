@@ -10,6 +10,7 @@
 
     <title>The Free Education - About</title>
 
+
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -124,49 +125,35 @@
       </div>
     </section>
 
+
+
+
+
+
     <!-- Footer -->
     <footer class="footer text-center">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Location</h4>
-            <p class="lead mb-0">2215 John Daniel Drive
-              <br>Clark, MO 65243</p>
-          </div>
+
           <div class="col-md-4 mb-5 mb-lg-0">
             <h4 class="text-uppercase mb-4">Around the Web</h4>
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.facebook.com/thefreeedu">
                   <i class="fa fa-fw fa-facebook"></i>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
-                  <i class="fa fa-fw fa-google-plus"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://twitter.com/TheFreeEducati1">
                   <i class="fa fa-fw fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
-                  <i class="fa fa-fw fa-linkedin"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
-                  <i class="fa fa-fw fa-dribbble"></i>
                 </a>
               </li>
             </ul>
           </div>
           <div class="col-md-4">
             <h4 class="text-uppercase mb-4">About The free Education</h4>
-            <p class="lead mb-0">The free Education is a web site for study
-              <a href="http://thefreeedu.com">Start The free Education</a>.</p>
+            <p class="lead mb-0">The free Education is a web site for sharing knowledge and learning new things
+              <a href="https://thefreeedu.com">Start using The free Education</a>.</p>
           </div>
         </div>
       </div>
@@ -174,7 +161,7 @@
 
     <div class="copyright py-4 text-center text-white">
       <div class="container">
-        <small>Copyright &copy; The free Education 2018</small>
+        <small>Copyright &copy; The free Education </small>
       </div>
     </div>
 

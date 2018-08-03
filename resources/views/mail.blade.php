@@ -3,13 +3,21 @@
 <div class="container">
 
 
-<h4>Dear, {{$firstname}} {{$lastname}} </h4>
-<h6>Good day to you,</h6>
-<div class="well">
-<p>Here is you activation code: <b>{{$code}}</b></p>
-</div>
-<footer>
-<p>From The Free Education team</p>
-</footer>
+  <form action="/charge" method="post" id="payment-form">
+    @csrf
+    <div class="form-row">
+      <label for="card-element">
+        Credit or debit card
+      </label>
+      <div id="card-element">
+        <!-- A Stripe Element will be inserted here. -->
+      </div>
+
+      <!-- Used to display form errors. -->
+      <div id="card-errors" role="alert"></div>
+    </div>
+
+    <button>Submit Payment</button>
+  </form>
 </div>
 @endsection

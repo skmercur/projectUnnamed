@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/about', 'HomeController@index')->name('about');
+Route::get('/about', function(){
+  return view('about');
+});
 Route::get('/check', 'fileuploadcontroller@check');
 Route::post('/sendcontact','emailController@send');
 // Route::get('/home', 'HomeController@index')->name('home');
