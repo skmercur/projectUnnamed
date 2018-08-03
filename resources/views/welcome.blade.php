@@ -114,7 +114,7 @@
 
 </form>
 @else
-<form action="usearch"style="margin-top: 300px;" method="get">
+<form action="usearch"style="margin-top: 15px;" method="get">
   <div class="container">
 <div class="row">
 <img src="{{asset('assets/img/logo.png')}}" class="center-block" alt="" align="middle" style="margin-left:auto; margin-right: auto;max-width: 400px;max-height: 400px;">
