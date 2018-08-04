@@ -1,5 +1,12 @@
 @extends('layouts.layout')
 @section('content')
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1253446609392565",
+          enable_page_level_ads: true
+     });
+</script>
 @guest
 <h3>error , it seeams that you are not connected  </h3>
 @else
@@ -39,6 +46,7 @@
                 <div class="col-md-6">
                 <span class="text-muted fa fa-envelope"> :</span> {{$user->email}}<br>
                 <span class="text-muted fa fa-male"> </span> {{$user->gender}}<br><br>
+                <span class="text-muted fa fa-university"></span>{{$user->namespi}}<br><br>
                   <small class="text-muted">Created: {{$user->created_at}} </small>
                 </div>
                 <div class="col-md-6">
@@ -135,17 +143,7 @@
           </div>
           <div class="row">
 			<div class="col-md-4 text-center">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- userprofile -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1253446609392565"
-     data-ad-slot="7624838184"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+
               <img class="img-circle avatar avatar-original" style="-webkit-user-select:none;
               display:block; height: 140px; margin:auto;" src="{{ Auth::user()->imgpath}}" style="">
             </div>
@@ -159,6 +157,7 @@
                 <div class="col-md-25">
                 <span class="text-muted fa fa-envelope"> </span> {{Auth::user()->email}}<br>
                 <span class="text-muted fa fa-male"> </span> {{Auth::user()->gender}}<br><br>
+                <span class="text-muted fa fa-university"></span>{{$user->namespi}}<br><br>
                   <small class="text-muted">Created: {{Auth::user()->created_at}}</small>
                   <div class="progress">
    <div class="progress-bar" role="progressbar" aria-valuenow="{{ceil(($user->tsize * 100)/100) }}"

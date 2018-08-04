@@ -98,11 +98,13 @@ return redirect($user);
 
 
 
-    $to      = 'support@thefreeedu.com';
-    $subject = 'report';
+
+
+    $to      = 'report@thefreeedu.com';
+    $subject = 'report user :'.$user;
     $message = $user.' ##cause = '.$cause.' ## detail = '.$detail;
-$headers = 'From: '.$to.'' . "\r\n" .
-        'Reply-To: '.$to.'' . "\r\n" .
+$headers = 'From: <support@thefreeedu.com>'.
+        'Reply-To: <support@thefreeedu.com>' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
     mail($to, $subject, $message, $headers);
