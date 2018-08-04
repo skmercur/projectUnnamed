@@ -1,19 +1,28 @@
 @extends('layouts.layout')
 
 
-
-
-<div class="container">
+<br>
+<div class="container" style="margin-top:3%">
+	<div class="card">
+	<div class="card-header">
 	<div class="col-md-9 col-md-pull-3">
-        <h1 class="search-results-count" style="margin-top: 7%;margin-left: 50%;">Search Results for {{$value}}</h1>
-        <h2> Users : </h2>
+        <h3 class="search-results-count" style="margin-top: 7%;margin-left: 50%;">Search Results for : {{$value}}</h3>
+			</div>
+		</div>
+		</div>
+		<br>
+		<div class="card">
+			<div class="card-header">
+		<h2> Users : </h2>
+	</div>
+	<div class="card-body">
         <section class="search-result-item">
       @foreach($users as $user)
       @if($user->username != '')
             <div class="search-result-item-body">
                 <div class="row">
-                    <div class="col-sm-9">
-                        <a href="/{{$user->username}}"><img src="{{$user->imgpath}}" height="80" width="80" /> </a> <h4 class="search-result-item-heading"><a href="/{{$user->username}}">{{$user->firstname}} {{$user->lastname}}</a></h4>
+                    <div class="col-md-9">
+                        <a href="/{{$user->username}}"><img src="{{$user->imgpath}}" height="80" width="80" /> </a> <h5 class="search-result-item-heading"><a href="/{{$user->username}}">{{$user->firstname}} {{$user->lastname}}</a></h4>
                     </div>
                 </div>
             </div>
@@ -28,8 +37,14 @@
             @endif
       @endforeach
         </section>
+			</div>
+		</div>
 				<br>
+				<div class="card">
+					<div class="card-header">
         <h2> Files : </h2>
+			</div>
+			<div class="card-body">
         <section class="search-result-item">
 					<div class="container">
 						<div class="row">
@@ -40,7 +55,25 @@
 									<div class="panel panel-default">
 										<div class="panel-body">
 											<div class="pull-right">
+												<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+											 <div class="modal-dialog" role="document">
+											  <div class="modal-content">
+											 	 <div class="modal-header">
+											 		 <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
+											 		 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											 			 <span aria-hidden="true">&times;</span>
+											 		 </button>
+											 	 </div>
+											 	 <div class="modal-body">
+											 	 <p class="description">{{$resault->description}}.</p>
+											 	 </div>
+											 	 <div class="modal-footer">
+											 		 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
+											 	 </div>
+											  </div>
+											 </div>
+											 </div>
 											</div>
 											<div class="table-container">
 												<table class="table table-filter">
@@ -85,25 +118,7 @@
 
 																      </td>
 																    </tr>
-																    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-																  <div class="modal-dialog" role="document">
-																    <div class="modal-content">
-																      <div class="modal-header">
-																        <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
-																        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																          <span aria-hidden="true">&times;</span>
-																        </button>
-																      </div>
-																      <div class="modal-body">
-																      <p class="description">{{$resault->description}}.</p>
-																      </div>
-																      <div class="modal-footer">
-																        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
-																      </div>
-																    </div>
-																  </div>
-																</div>
 
 
 										</td>
@@ -117,25 +132,11 @@
 
 
 					</section>
-					<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-						<p class="description">{{$resault->description}}.</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
-						</div>
-					</div>
-				</div>
 
 				</div>
 						  @endforeach
+</div>
+</div>
+</div>
 </div>

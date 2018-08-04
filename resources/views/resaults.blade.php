@@ -4,8 +4,12 @@
 
 
 <div class="container">
+	<div class="card-body">
 	<div class="col-md-9 col-md-pull-3">
         <h3 class="search-results-count" style="margin-top: 7%;margin-left: 50%;">Search Results for {{$value}}</h3>
+			</div>
+		</div>
+
 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 				<!-- search -->
 				<ins class="adsbygoogle"
@@ -15,18 +19,25 @@
 				<script>
 				(adsbygoogle = window.adsbygoogle || []).push({});
 				</script>
+
+
+
+
         <section class="search-result-item">
 
 
 
 
-
+<div class="card">
 	<div class="container">
 		<div class="row">
 @foreach($resaults as $resault)
 
 			<section class="content">
+				<div class="card-header">
 				<h3>{{$resault->title}}</h3>
+			</div>
+			<div class="card-body">
 				<div class="col-md-8 col-md-offset-2">
 					<div class="panel panel-default">
 						<div class="panel-body">
@@ -99,8 +110,10 @@
 
 
 	</section>
-		  @endforeach
 
+		  @endforeach
+		</div>
+		<br>
 
 
 
