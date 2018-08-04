@@ -60,6 +60,7 @@ return redirect($data);
       $title= $request->input('title');
       $description = $request->input('description');
    $file = $request->file('file');
+   if(!empty($title) || !empty($description) || !empty($file)){
     $fileArray = array('file' => $file);
    $rules = array(
      'file' => 'mimes:pdf,docx|required|max:5000' // max 10000kb
@@ -101,7 +102,10 @@ DB::table('users')->where('username',$username)->update(['tsize'=>$newsize,'nfil
    return back();
    // DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
    //  DB::table('users')->where('username',$user)->update(['namesp' =>$namespi]);
-
+}
+return back();
+}else{
+  return back();
 }
 return back();
  }

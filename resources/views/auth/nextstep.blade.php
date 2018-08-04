@@ -16,7 +16,7 @@ window.location = "/login";
 @else
 
                     @if(Auth::user()->username !== '')
-                    @if(Auth::user()->status != 0)
+
                     <form method="post" action="nextstep" enctype="multipart/form-data">
 
                     <select class="form-control" data-live-search="true" name="namesp">
@@ -58,7 +58,6 @@ window.location = "/login";
 
 @endif
 
-@endif
 
 
 

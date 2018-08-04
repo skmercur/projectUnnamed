@@ -279,17 +279,45 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
     @if(($user->tsize  <= 0) || ($user->nfiles <= 0))
     <button class="btn btn-outline-primary" type="submit" id="inputGroupFileAddon04" disabled="true" >Upload</button>
     @else
-      <button class="btn btn-outline-primary" type="submit" id="inputGroupFileAddon04"   >Upload</button>
+      <button class="btn btn-outline-primary" type="button"  id="inputGroupFileAddon04"  data-target="#whatIcanUploadModal" data-toggle="modal"  >Upload</button>
       @endif
   </div>
 </div>
 </div>
 
-</form>
+
 
       </div>
 
       <hr>
+      <div class="modal fade" id="whatIcanUploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">What can i upload ?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>You can only upload files that are yours and files you have the rights to share</p>
+              <p>Here are an exemple of files you can upload : </p>
+              <ul class="list-group">
+  <li class="list-group-item">Courses that are free and free to share</li>
+  <li class="list-group-item">Codes that you have wrote and saved either in pdf or docx</li>
+  <li class="list-group-item">Books that are free to share</li>
+
+</ul>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Upload</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="container center-block" style="margin-top: 10%;" >
         <div class="row">

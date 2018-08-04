@@ -55,25 +55,7 @@
 									<div class="panel panel-default">
 										<div class="panel-body">
 											<div class="pull-right">
-												<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-											 <div class="modal-dialog" role="document">
-											  <div class="modal-content">
-											 	 <div class="modal-header">
-											 		 <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
-											 		 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											 			 <span aria-hidden="true">&times;</span>
-											 		 </button>
-											 	 </div>
-											 	 <div class="modal-body">
-											 	 <p class="description">{{$resault->description}}.</p>
-											 	 </div>
-											 	 <div class="modal-footer">
-											 		 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
-											 	 </div>
-											  </div>
-											 </div>
-											 </div>
 											</div>
 											<div class="table-container">
 												<table class="table table-filter">
@@ -90,7 +72,7 @@
 															</td>
 															<td>
 																<div class="media">
-																	<a href="/login" class="pull-left">
+																	<a href="/{{$resault->author}}" class="pull-left">
 																	<img src="{{$resault->imgpath}}" class="media-photo" height="60" width="60">
 																	</a>
 																</td>
@@ -99,7 +81,7 @@
 																	<div class="media-body">
 																		<span class="media-meta pull-right" style="font-size:12">{{$resault->created_at}}</span>
 																		<h6 class="title">
-																			{{$resault->author}}
+																			published by : <a href="/{{$resault->author}}">{{$resault->author}}</a>
 
 																		</h6>
 																		<p class="summary"><?php if(strlen($resault->description)>200) echo substr($resault->description,0,200)."...";else{
@@ -112,12 +94,33 @@
 															<td>
 				<form method="get" action="check" >
 					<input type="hidden" value="{{$resault->location}}" name="f">
+															<div class="btn-group">
 															<button type="submit" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
-																       <a href=""data-toggle="modal" data-target="#Modal"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
-				</form>
+																			</form>
+																			<a href=""data-toggle="modal" data-target="#Modal{{$resault->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button></a>
+				</div>
+																			</td>
+																		</tr>
+																		<div class="modal fade" id="Modal{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+																	<div class="modal-dialog" role="document">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<h5 class="modal-title" id="exampleModalLabel">Descrption for {{$resault->title}}</h5>
+																				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																					<span aria-hidden="true">&times;</span>
+																				</button>
+																			</div>
+																			<div class="modal-body">
+																			<p class="description">{{$resault->description}}</p>
+																			</div>
+																			<div class="modal-footer">
+																				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
-																      </td>
-																    </tr>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+
 
 
 

@@ -21,11 +21,14 @@ Route::get('/about', function(){
   return view('about');
 });
 Route::get('/check', 'fileuploadcontroller@check');
+Route::get('/auth/nextstep', 'usernextstepimagecontroller@index');
 Route::post('/sendcontact','emailController@send');
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/auth/nextstep','usernextstepimagecontroller@saveUploadFile');
 Route::get('/auth/nextstep','usernextstepimagecontroller@getSpeciality');
 Route::get('/send','emailController@send');
+Route::post('/resend','emailController@resend');
+Route::post('/reportcause','emailController@report');
 Route::get('/confirm',function(){
   return view('auth/confirm');
 });
