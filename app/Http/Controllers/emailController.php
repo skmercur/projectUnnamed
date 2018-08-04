@@ -99,9 +99,9 @@ return redirect($user);
 
 
     $to      = 'support@thefreeedu.com';
-    $subject = 'contact us';
+    $subject = 'report';
     $message = $user.' ##cause = '.$cause.' ## detail = '.$detail;
-    $headers = 'From: support@thefreeedu.com' . "\r\n" .
+$headers = 'From: '.$to.'' . "\r\n" .
         'Reply-To: '.$to.'' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
