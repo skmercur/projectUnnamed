@@ -68,7 +68,12 @@
     </div>
   </div>
 </div>
-<table class="table table-hover" style="margin-top: 10%;">
+<br>
+<div class="container center-block"style="margin-top: 10%;" >
+  <div class="row">
+<div class="card" style="margin-left:auto; margin-right:auto;">
+  <div class="card-body" >
+<table class="table table-hover" >
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -88,12 +93,12 @@
       <td>
 <div class="btn-group">
 <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
-       <a href=""data-toggle="modal" data-target="#Modal"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 2%;"></button></a>
+       <a href=""data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 2%;"></button></a>
 </div>
 
       </td>
     </tr>
-    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal fade" id="Modal{{$file->id}}"  tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -115,8 +120,10 @@
 @endforeach
   </tbody>
 </table>
-
-
+</div>
+</div>
+</div>
+</div>
 @else
 @if($user->status == 0)
 <script type="text/javascript">
@@ -351,7 +358,7 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
 
                                                       <form class="form-inline" action="delete" method="post">
                                                       <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
-       <a href=""data-toggle="modal" data-target="#Modal"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
+       <a href=""data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
 
 
                                                       @csrf
@@ -364,7 +371,7 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
 
       </td>
     </tr>
-    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal fade" id="Modal{{$file->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

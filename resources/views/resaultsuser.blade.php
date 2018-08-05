@@ -23,14 +23,15 @@
 	</div>
 	<div class="card-body">
         <section class="search-result-item">
+					<div class="row">
       @foreach($users as $user)
       @if($user->username != '')
             <div class="search-result-item-body">
-                <div class="row">
-                    <div class="col-md-9">
+                <td>
+                    <div class="col-sm-9">
                         <a href="/{{$user->username}}"><img src="{{$user->imgpath}}" height="80" width="80" /> </a> <h5 class="search-result-item-heading"><a href="/{{$user->username}}">{{$user->firstname}} {{$user->lastname}}</a></h4>
                     </div>
-                </div>
+
             </div>
             @else
             <div class="search-result-item-body">
@@ -82,8 +83,8 @@
 																	<img src="{{$resault->imgpath}}" class="media-photo" height="60" width="60">
 																	</a>
 																</td>
-																<td>
-																	<div class="col-md-12 col-md-offset-2">
+																<td style="width:700px">
+																	<div class="col-md-12 col-md-offset-10">
 																	<div class="media-body">
 																		<span class="media-meta pull-right" style="font-size:12">{{$resault->created_at}}</span>
 																		<h6 class="title">
@@ -193,9 +194,9 @@
 
 					</section>
 
-
+@endforeach
 				</div>
-						  @endforeach
+
 </div>
 </div>
 </div>

@@ -51,7 +51,7 @@
 													<img src="{{$resault->imgpath}}" class="media-photo" height="60" width="60">
 													</a>
 												</td>
-												<td>
+												<td style="width:700px;">
 													<div class="col-md-12 col-md-offset-2">
 													<div class="media-body">
 														<span class="media-meta pull-right" style="font-size:12">{{$resault->created_at}}</span>
