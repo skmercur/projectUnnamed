@@ -16,11 +16,22 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::post('/resetpassword', 'emailController@resetpass');
+Route::get('/reset', function (){
+  return view('auth/reset');
+});
+Route::get('/recover', function (){
+  return view('auth/recover');
+});
+Route::get('/rpcc', 'emailController@resetpasscheck');
+Route::post('/frpc', 'emailController@finalpass');
 
 Route::get('/about', function(){
   return view('about');
 });
 Route::get('/check', 'fileuploadcontroller@check');
+
+
 Route::get('/auth/nextstep', 'usernextstepimagecontroller@index');
 Route::post('/sendcontact','emailController@send');
 // Route::get('/home', 'HomeController@index')->name('home');

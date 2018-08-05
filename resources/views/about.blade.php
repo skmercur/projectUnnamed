@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Custom fonts for this template -->
 
@@ -111,13 +111,10 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
                         <a href="#">
                             <img src="{{asset('assets/img/Sofiane.jpg')}}" alt="" class="img-fluid">
                             <div class="social-media">
-                                <a href="#" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.facebook.com/theghost34" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
                                 <br>
-                                <a href="#" class="social-icon-box"><i class="fab fa-twitter"></i></a>
-                                <br>
-                                <a href="#" class="social-icon-box"><i class="fab fa-google-plus-g"></i></a>
-                                <br>
-                                <a href="#" class="social-icon-box"><i class="fab fa-pinterest-p"></i></a>
+                                <a href="https://twitter.com/SKhoudour" class="social-icon-box"><i class="fab fa-twitter"></i></a>
+
                             </div>
                         </a>
                     </div>
@@ -134,13 +131,10 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
                         <a href="#">
                             <img src="{{asset('assets/img/Hichem.jpg')}}" alt="" class="img-fluid">
                             <div class="social-media">
-                                <a href="#" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.facebook.com/hichem.merniz" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
                                 <br>
-                                <a href="#" class="social-icon-box"><i class="fab fa-twitter"></i></a>
-                                <br>
-                                <a href="#" class="social-icon-box"><i class="fab fa-google-plus-g"></i></a>
-                                <br>
-                                <a href="#" class="social-icon-box"><i class="fab fa-pinterest-p"></i></a>
+                                <a href="https://twitter.com/hichemobey" class="social-icon-box"><i class="fab fa-twitter"></i></a>
+
                             </div>
                         </a>
                     </div>
@@ -157,13 +151,8 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
                         <a href="#">
                             <img src="{{asset('assets/img/Walid.jpg')}}" alt="" class="img-fluid">
                             <div class="social-media">
-                                <a href="#" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
-                                <br>
-                                <a href="#" class="social-icon-box"><i class="fab fa-twitter"></i></a>
-                                <br>
-                                <a href="#" class="social-icon-box"><i class="fab fa-google-plus-g"></i></a>
-                                <br>
-                                <a href="#" class="social-icon-box"><i class="fab fa-pinterest-p"></i></a>
+                                <a href="https://www.facebook.com/Mr.VirWus" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
+
                             </div>
                         </a>
                     </div>
@@ -176,7 +165,7 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
 
         </div><div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mt-4">
-            
+
               </div></div>
     </div>
 
@@ -245,12 +234,12 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
                 <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.facebook.com/thefreeedu">
-                  <i class="fa fa-fw fa-facebook"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
               <li class="list-inline-item">
                 <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://twitter.com/TheFreeEducati1">
-                  <i class="fa fa-fw fa-twitter"></i>
+                  <i class="fab fa-twitter"></i>
                 </a>
               </li>
             </ul>

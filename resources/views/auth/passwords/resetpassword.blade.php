@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+@if($status !== 1)
+<script type="text/javascript">
+    window.location.href = "/";
+</script>
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -8,11 +13,11 @@
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('password.request') }}" aria-label="{{ __('Reset Password') }}">
-                        @csrf
+                    <form method="POST" action="frpc" aria-label="{{ __('Reset Password') }}">
 
-                        <input type="hidden" name="token" value="{{ $token }}">
 
+                          <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                          <input type="hidden" name="code" value="{{$code}}" />
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -31,7 +36,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="pass" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
@@ -45,7 +50,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="passc" required>
                             </div>
                         </div>
 

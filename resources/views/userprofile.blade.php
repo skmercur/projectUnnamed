@@ -8,7 +8,9 @@
      });
 </script>
 @guest
-<h3>error , it seeams that you are not connected  </h3>
+<script type="text/javascript">
+    window.location.href = "/login";
+</script>
 @else
 @if($user->username != Auth::user()->username)
 
