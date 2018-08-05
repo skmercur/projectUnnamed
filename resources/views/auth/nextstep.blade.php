@@ -34,7 +34,7 @@ window.location = "/login";
                     <div class="input-group">
   <div class="custom-file">
   <input type="file" class="custom-file-input" name="image"  accept="image/jpeg,image/x-png,image/gif">
-    <label class="custom-file-label" value="{{csrf_token()}}" for="image">Choose file</label>
+    <label class="custom-file-label" value="{{csrf_token()}}" for="image">Choose an image for your profile</label>
   </div>
   <div class="input-group-append">
     <button class="btn btn-outline-primary" type="submit" name="submit" value="upload">Upload</button>
