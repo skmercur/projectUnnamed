@@ -63,7 +63,7 @@ return redirect($data);
    if(!empty($title) || !empty($description) || !empty($file)){
     $fileArray = array('file' => $file);
    $rules = array(
-     'file' => 'mimes:pdf,docx|required|max:5000' // max 10000kb
+     'file' => 'mimes:pdf,docx|required|max:25000' // max 10000kb
    );
 $validator = Validator::make($fileArray, $rules);
 

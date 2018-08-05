@@ -16,6 +16,39 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/usersdata',function(){
+  return view('errors/404');
+});
+Route::get('/app',function(){
+  return view('errors/404');
+});
+Route::get('/config',function(){
+  return view('errors/404');
+});
+Route::get('/database',function(){
+  return view('errors/404');
+});
+Route::get('/public',function(){
+  return view('errors/404');
+});
+Route::get('/resource',function(){
+  return view('errors/404');
+});
+Route::get('/routes',function(){
+  return view('errors/404');
+});
+Route::get('/storage',function(){
+  return view('errors/404');
+});
+Route::get('/uploads',function(){
+  return view('errors/404');
+});
+Route::get('/vendor',function(){
+  return view('errors/404');
+});
+
+
+
 Route::post('/resetpassword', 'emailController@resetpass');
 Route::get('/reset', function (){
   return view('auth/reset');

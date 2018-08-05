@@ -35,7 +35,7 @@ if(!empty($user->username)){
   return view('userprofile')->with(['user'=>$user,'files'=>$files,'downloads'=>$downloads,'uploads'=>$uploads]);
 }else {
 
-  return back();
+  return view('errors/404');
 }
 }
 

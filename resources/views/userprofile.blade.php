@@ -86,10 +86,10 @@
         echo $file->description;
       } ?></td>
       <td>
-
+<div class="btn-group">
 <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
-       <a href=""data-toggle="modal" data-target="#Modal"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
-
+       <a href=""data-toggle="modal" data-target="#Modal"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 2%;"></button></a>
+</div>
 
       </td>
     </tr>

@@ -1,3 +1,4 @@
+@extends('layouts.layout')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,7 @@
     }
     .error .clip:nth-of-type(2) .shadow
     {
-        width: 130px;   /*Contrall play with javascript*/ 
+        width: 130px;   /*Contrall play with javascript*/
     }
     .error .clip:nth-of-type(1) .shadow, .error .clip:nth-of-type(3) .shadow
     {
@@ -69,7 +70,7 @@
     }
     .error .clip .shadow
     {
-        
+
         overflow: hidden;
     }
     .error .clip:nth-of-type(2) .shadow
@@ -78,7 +79,7 @@
         position: relative;
         box-shadow: inset 20px 0px 20px -15px rgba(150, 150, 150,0.8), 20px 0px 20px -15px rgba(150, 150, 150,0.8);
     }
-    
+
     .error .clip:nth-of-type(3) .shadow:after, .error .clip:nth-of-type(1) .shadow:after
     {
         content: "";
@@ -115,7 +116,7 @@
     }.error .clip:nth-of-type(3) .digit
     {
         left: -20%;
-    }    
+    }
     .error h2
     {
         color: #A2A2A2;
@@ -138,8 +139,8 @@
         z-index: 999;
         transform: rotate(45deg);
         content: "";
-        width: 0; 
-        height: 0; 
+        width: 0;
+        height: 0;
     }
 
 /* Error Page */
@@ -152,7 +153,7 @@
             }
             .error .clip:nth-of-type(2) .shadow
             {
-                width: 80px;   /*Contrall play with javascript*/ 
+                width: 80px;   /*Contrall play with javascript*/
             }
             .error .clip:nth-of-type(1) .shadow, .error .clip:nth-of-type(3) .shadow
             {
@@ -198,7 +199,7 @@
 .overlay { position: relative; z-index: 20; } /*done*/
     .ground-color { background: white; }  /*done*/
     .item-bg-color { background: #EAEAEA } /*done*/
-    
+
     /* Padding Section*/
         .padding-top { padding-top: 10px; } /*done*/
         .padding-bottom { padding-bottom: 10px; }   /*done*/
@@ -226,7 +227,7 @@
         .no-vertical-margin { margin-top: 0px; margin-bottom: 0px; }
         .no-horizontal-margin { margin-left: 0px; margin-right: 0px; }
 
-        .inside-col-shrink { margin: 0px 20px; }    /*done - For the inside sections that has also Title section*/ 
+        .inside-col-shrink { margin: 0px 20px; }    /*done - For the inside sections that has also Title section*/
     /* Margin section */
 
     hr
@@ -246,7 +247,7 @@
                             <div class="clip"><div class="shadow"><span class="digit firstDigit"></span></div></div>
                             <div class="msg">OH!<span class="triangle"></span></div>
                         </div>
-                        <h2 class="h1">Sorry! Page not found</h2>
+                        <h2 class="h1">Sorry! Page or user were not found</h2>
                     </div>
                 </div>
             </div>

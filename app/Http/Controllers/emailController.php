@@ -118,9 +118,10 @@ $headers = 'From: <support@thefreeedu.com>'.
   public function resetpass(Request $request){
     $email = $request->input('email');
     if(!empty($email)){
-      $val = DB::table('users')->where('email',$email)->first();
+
       $code = mt_rand(1000,9999);
        DB::table('users')->where('email',$email)->update(['code'=>$code]);
+         $val = DB::table('users')->where('email',$email)->first();
        $code = $val->code;
        $email = $val->email;
        $firstname = $val->firstname;
@@ -195,7 +196,7 @@ return view('auth/passwords/resetpassword')->with(['status'=>1,'code'=>$code]);
       if($pass === $passc){
         $pass = Hash::make($pass);
    DB::table('users')->where('email',$email)->where('code',$code)->update(['password'=>$pass]);
-     return redirect('/login');
+     return view('login');
 
 }else{
   return back();
