@@ -190,9 +190,7 @@
 												<p style="color:gray; font-size:12pt;">ads</p>
 
 												<div class="card-body" >
-												<!-- Begin BidVertiser code -->
-												<SCRIPT data-cfasync="false" SRC="//bdv.bidvertiser.com/BidVertiser.dbm?pid=816706&bid=1954775" TYPE="text/javascript"> </SCRIPT>
-												<!-- End BidVertiser code -->
+												<script data-cfasync="false" type="text/javascript" src="https://www.predictivdisplay.com/a/display.php?r=2100271"></script>
 
 
 												</div>
