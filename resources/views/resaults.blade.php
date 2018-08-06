@@ -62,12 +62,10 @@
 											</div>
 											</td>
 											<td>
-<form method="get" action="check" >
-	<input type="hidden" value="{{$resault->location}}" name="f">
+
 	<div class="btn-group">
-											<button type="submit" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button>
-												      </form>
-															<a href=""data-toggle="modal" data-target="#Modal{{$resault->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button></a>
+	<a href=""data-toggle="modal" data-target="#ModalDownload{{$resault->id}}"> <button type="button" class="btn btn-outline-success " style="margin-left: auto;" >Download <i class="fa fa-cloud-download-alt"></i></button></a>
+															<a href=""data-toggle="modal" data-target="#Modal{{$resault->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 2%; margin-right:2%;">View </button></a>
 														<a href=""data-toggle="modal" data-target="#ModalReport{{$resault->id}}"><button type="button" class="btn btn-outline-danger" style="margin-left:2%">Report</button></a>
 </div>
 												      </td>
@@ -91,6 +89,35 @@
 														</div>
 													</div>
 												</div>
+
+<!-- download modal -->
+
+												<div class="modal fade" id="ModalDownload{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">Download {{$resault->title}}</h5>
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+													<script data-cfasync="false" type="text/javascript" src="http://www.predictivdisplay.com/a/display.php?r=2100275"></script>
+													</div>
+													<div class="modal-footer">
+
+														<form method="get" action="check" >
+															<input type="hidden" value="{{$resault->location}}" name="f">
+															<a href="{{$resault->location}}"><button type="submit" class="btn btn-success" style="margin-left: -8%;" >Download</button><a>
+																      </form>
+														<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- /download modal -->
 												<div class="modal fade" id="ModalReport{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" style="height:auto;width:auto;">
 												<div class="modal-dialog" role="document">
 												<div class="modal-content">
