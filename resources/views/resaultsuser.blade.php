@@ -15,9 +15,7 @@
 			<div class="card-header">
 		<h2> Users : </h2>
 	</div>
-	<!-- Begin BidVertiser code -->
-<SCRIPT data-cfasync="false" SRC="//bdv.bidvertiser.com/BidVertiser.dbm?pid=816706&bid=1954775" TYPE="text/javascript"></SCRIPT>
-<!-- End BidVertiser code --> 
+
 	<div class="card-body">
         <section class="search-result-item">
 					<div class="row">
@@ -52,7 +50,9 @@
         <section class="search-result-item">
 					<div class="container">
 						<div class="row">
+							<?php $i=0; ?>
 				@foreach($resaults as $resault)
+				<?php $i++; ?>
 							<section class="content">
 								<h3>{{$resault->title}}</h3>
 								<div class="col-md-8 col-md-offset-2">
@@ -184,6 +184,21 @@
 
 													</tbody>
 												</table>
+												@if($i == 2)
+												<div class="card" style="width:800px;">
+
+												<p style="color:gray; font-size:12pt;">ads</p>
+
+												<div class="card-body" >
+												<!-- Begin BidVertiser code -->
+												<SCRIPT data-cfasync="false" SRC="//bdv.bidvertiser.com/BidVertiser.dbm?pid=816706&bid=1954775" TYPE="text/javascript"> </SCRIPT>
+												<!-- End BidVertiser code -->
+
+
+												</div>
+												</div>
+												<?php $i=0; ?>
+												@endif
 											</div>
 										</div>
 									</div>

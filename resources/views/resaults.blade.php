@@ -22,8 +22,9 @@
 	<div class="container">
 			<div class="table-responsive">
 		<div class="row">
+			<?php $i=0; ?>
 @foreach($resaults as $resault)
-
+<?php $i++; ?>
 			<section class="content">
 				<div class="card-header">
 				<h3>{{$resault->title}}</h3>
@@ -146,11 +147,12 @@
 									</tbody>
 								</table>
 <br>
-<div class="card">
+@if($i == 2)
+<div class="card" style="width:800px;">
 
 <p style="color:gray; font-size:12pt;">ads</p>
 
-<div class="card-body">
+<div class="card-body" >
 <!-- Begin BidVertiser code -->
 <SCRIPT data-cfasync="false" SRC="//bdv.bidvertiser.com/BidVertiser.dbm?pid=816706&bid=1954775" TYPE="text/javascript"> </SCRIPT>
 <!-- End BidVertiser code -->
@@ -158,6 +160,8 @@
 
 </div>
 </div>
+<?php $i = 0; ?>
+@endif
 							</div>
 						</div>
 					</div>
