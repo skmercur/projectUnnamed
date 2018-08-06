@@ -1,11 +1,5 @@
 @extends('layouts.layout')
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-		 (adsbygoogle = window.adsbygoogle || []).push({
-					google_ad_client: "ca-pub-1253446609392565",
-					enable_page_level_ads: true
-		 });
-</script>
+
 
 <br>
 <div class="container" style="margin-top:3%">
@@ -21,6 +15,9 @@
 			<div class="card-header">
 		<h2> Users : </h2>
 	</div>
+	<!-- Begin BidVertiser code -->
+<SCRIPT data-cfasync="false" SRC="//bdv.bidvertiser.com/BidVertiser.dbm?pid=816706&bid=1954775" TYPE="text/javascript"></SCRIPT>
+<!-- End BidVertiser code --> 
 	<div class="card-body">
         <section class="search-result-item">
 					<div class="row">
