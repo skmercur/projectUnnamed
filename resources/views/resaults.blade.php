@@ -25,8 +25,9 @@
 
 
 
-<div class="card">
+<div class="card"  style="margin-top: 12%";>
 	<div class="container">
+			<div class="table-responsive">
 		<div class="row">
 @foreach($resaults as $resault)
 
@@ -41,8 +42,8 @@
 							<div class="pull-right">
 
 							</div>
-							<div class="table-container">
-								<table class="table table-filter">
+
+								<table class="table">
 									<tbody>
 										<tr data-status="pagado">
 											<td>
@@ -159,7 +160,7 @@
 	</section>
 
 		  @endforeach
-		</div>
+</div>
 		<br>
 
 
@@ -171,3 +172,6 @@
 
 
     </div>
+		  </div>
+			  </div>
+				  </div>
