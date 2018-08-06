@@ -19,11 +19,30 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+body{ margin:0px; padding:0px; font-family:helvetica; background:url(image.png); }
+
+#wrapper{ text-align:center; margin:70px auto; }
+
+#output_image{ width:200px; height:200px; border:4px solid #000; }
+</style>
+<script type='text/javascript'>
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+</script>
 </head>
 <!-- <body style="background-image:url({{asset('assets/img/connectwork.png')}})"> -->
 <body style="background-image:url({{asset('assets/img/doodles.png')}})">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     The Free Education

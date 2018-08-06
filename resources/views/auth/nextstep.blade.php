@@ -29,17 +29,26 @@ window.location = "/login";
 
                     <br>
 
-
-
-                    <div class="input-group">
+<div class="card" style="width: 44rem;">
+  <img class="card-img-top" src="{{asset('assets/img/profil.png')}}" id="output_image" alt="Card image cap" style="margin-top:  1%;margin-left: 25px;">
+  <h3 style="margin-top:  -20%;width: 65%;margin-left: 35%;"><strong>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</strong></h3>
+  <h3 style="width: 65%;margin-left: 35%;margin-top: 5%;-webkit-margin-after:  13%;"><strong>{{Auth::user()->email}}</strong></h3>
+  <div class="card-body">
+  <div class="input-group">
   <div class="custom-file">
-  <input type="file" class="custom-file-input" name="image"  accept="image/jpeg,image/x-png,image/gif">
-    <label class="custom-file-label" value="{{csrf_token()}}" for="image">Choose an image for your profile</label>
+  <input type="file" class="custom-file-input" name="image"  accept="image/jpeg,image/x-png,image/gif" onchange="preview_image(event)">
+  <label class="custom-file-label" value="{{csrf_token()}}" for="image">Choose an image for your profile</label>
   </div>
   <div class="input-group-append">
     <button class="btn btn-outline-primary" type="submit" name="submit" value="upload">Upload</button>
   </div>
 </div>
+  </div>
+
+</div>
+
+
+                    
                       <input type="hidden" name="_token" value="{{csrf_token()}}" />
 
                       <input type="hidden" name="user" value="{{ Auth::user()->username }}" />
