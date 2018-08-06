@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" >
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Image and Speciality selection</div>
 
                 <div class="card-body">
 
@@ -15,43 +15,65 @@ window.location = "/login";
 </script>
 @else
 
+
                     @if(Auth::user()->username !== '')
 
-                    <form method="post" action="nextstep" enctype="multipart/form-data">
+                    <form method="post" action="nextstep"  enctype="multipart/form-data">
+                      @csrf
 
-                    <select class="form-control" data-live-search="true" name="namesp">
-                    <option>choose your speciality</option>
+                    <select class="form-control" data-live-search="true" id="namesp"name="namesp" onchange="run()">
+                    <option value="other">other</option>
                     @foreach($spec as $spi)
 
                        <option value="{{$spi->namespi}}">{{$spi->namespi}}</option>
                        @endforeach
                     </select>
+                    <script type="text/javascript" >
+                    function run() {
+                      var s = document.getElementById("spec");
+                           s.innerHTML = document.getElementById("namesp").value;
+                           alert(k);
+                       }
 
+
+                    </script>
                     <br>
 
-<div class="card" style="width: 44rem;">
-  <img class="card-img-top" src="{{asset('assets/img/profil.png')}}" id="output_image" alt="Card image cap" style="margin-top:  1%;margin-left: 25px;">
-  <h3 style="margin-top:  -20%;width: 65%;margin-left: 35%;"><strong>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</strong></h3>
-  <h3 style="width: 65%;margin-left: 35%;margin-top: 5%;-webkit-margin-after:  13%;"><strong>{{Auth::user()->email}}</strong></h3>
+
+<div class="card"  style="width: auto;">
+  <div class="container-fluid">
+  <div class="row">
+        <div class="col-xs-6">
+  <img class="img-fluid img-thumbnail" src="{{asset('assets/img/profil.png')}}" id="output_image" style="margin-top:  1%;margin-left: 25px;max-height:160px; max-width:160px;">
+</div>
+    <div class="col-xs-6" style="margin-left:2%">
+  <h4 ><strong>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</strong></h4>
+  <h5 ><strong>{{Auth::user()->email}}</strong></h5>
+  <h6 ><p id="spec"></p></h6>
+</div>
+
+</div>
+</div>
   <div class="card-body">
   <div class="input-group">
-  <div class="custom-file">
-  <input type="file" class="custom-file-input" name="image"  accept="image/jpeg,image/x-png,image/gif" onchange="preview_image(event)">
-  <label class="custom-file-label" value="{{csrf_token()}}" for="image">Choose an image for your profile</label>
-  </div>
-  <div class="input-group-append">
-    <button class="btn btn-outline-primary" type="submit" name="submit" value="upload">Upload</button>
+  <label class="btn btn-outline-primary" style="height:auto; min-width:150px" for="image">
+  <input type="file" style="display:none" name="image" id="image"  accept="image/jpeg,image/x-png,image/gif" onchange="preview_image(event)">
+  Change image</label>
+  <input type="hidden" name="_token" value="{{csrf_token()}}" />
+
+  <input type="hidden" name="user" value="{{ Auth::user()->username }}" />
+    <button class="btn btn-outline-success" type="submit" name="submit" value="upload" style="margin-Left:50%;">Upload</button>
   </div>
 </div>
   </div>
+</td>
+
 
 </div>
 
 
-                    
-                      <input type="hidden" name="_token" value="{{csrf_token()}}" />
 
-                      <input type="hidden" name="user" value="{{ Auth::user()->username }}" />
+
 
 
 

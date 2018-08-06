@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -27,7 +27,7 @@ body{ margin:0px; padding:0px; font-family:helvetica; background:url(image.png);
 #output_image{ width:200px; height:200px; border:4px solid #000; }
 </style>
 <script type='text/javascript'>
-function preview_image(event) 
+function preview_image(event)
 {
  var reader = new FileReader();
  reader.onload = function()
@@ -38,13 +38,14 @@ function preview_image(event)
  reader.readAsDataURL(event.target.files[0]);
 }
 </script>
+
 </head>
 <!-- <body style="background-image:url({{asset('assets/img/connectwork.png')}})"> -->
-<body style="background-image:url({{asset('assets/img/doodles.png')}})">
+<body style="background-image:url({{asset('assets/img/doodles.png')}})" >
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" style="color:black;">
                     The Free Education
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -62,21 +63,21 @@ function preview_image(event)
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}" style="color:black;">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}" style="color:black;">{{ __('Register') }}</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:black;">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();" style="color:black;">
                                         {{ __('Logout') }}
                                     </a>
 

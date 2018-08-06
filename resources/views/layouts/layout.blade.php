@@ -39,7 +39,7 @@
 
 </head>
 
-<body style="background-image:url({{asset('assets/img/doodles.png')}})">
+<body style="background-image:url({{asset('assets/img/doodles.png')}})" >
 <div id="app">
 
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
