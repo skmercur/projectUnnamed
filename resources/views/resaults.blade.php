@@ -105,7 +105,7 @@
 														<form action="reportguest" method="post">
 														  <input type="hidden" name="_token" value="{{csrf_token()}}" />
 															<input type="hidden" name="user" value="{{$resault->author}}" />
-														<ul class="list-group">
+														<ul class="list-group" style="padding-left: 12px;">
 							  <li class="list-group-item">
 									<label for="reportcause">The reason for the Report : </label>
 <select name="reportcause" id="reportcause" style="font-size:10pt">
