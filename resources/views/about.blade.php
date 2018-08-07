@@ -152,7 +152,8 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
                             <img src="{{asset('assets/img/Walid.jpg')}}" alt="" class="img-fluid">
                             <div class="social-media">
                                 <a href="https://www.facebook.com/Mr.VirWus" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
-
+                                <br>
+                                <a href="https://twitter.com/Mr_VirWus" class="social-icon-box"><i class="fab fa-twitter"></i></a>
                             </div>
                         </a>
                     </div>
