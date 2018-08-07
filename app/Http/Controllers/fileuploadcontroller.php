@@ -80,7 +80,7 @@ $validator = Validator::make($fileArray, $rules);
  }else {
 $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
    $destinationPath = "usersdata/".md5('uploads'.$username)."/";
-
+$file->move($destinationPath,$hash);
    $file_name_with_full_path = realpath($destinationPath.$hash);
    $api_key = getenv('VT_API_KEY') ? getenv('VT_API_KEY') :'7e7da6eb91e8899775e5fbe0d664639943001997d061536489882b2142f36023';
    $cfile = curl_file_create($file_name_with_full_path);
@@ -123,6 +123,7 @@ sleep(2);
    if ($status_code == 200) { // OK
      $js = json_decode($result, true);
     if($js['positives'] > 0){
+      unlink($destinationPath.$hash);
 return back();
 }else{
   $file->move($destinationPath,$hash);
