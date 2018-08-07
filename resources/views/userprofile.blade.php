@@ -262,7 +262,7 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
         <hr>
         <br>
 
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="" method="POST" enctype="multipart/form-data" id="form_file">
           <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">Title</span>
@@ -278,7 +278,7 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
 <br>
 <div class="input-group">
   <div class="custom-file">
-    <input type="file" class="custom-file-input input-group-prepend" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="file" accept="application/pdf,.docx">
+    <input type="file" class="custom-file-input input-group-prepend" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="file" accept="application/pdf,.docx,.ppt,.zip,.rar">
     <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
   </div>
 <input type="hidden" name="username" value="{{Auth::user()->username}}" />
@@ -303,7 +303,7 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">What can i upload ?</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal"   aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -320,7 +320,29 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Upload</button>
+               <button type="button" id="submit_btn"  class="btn btn-primary"  >Upload</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="CheckingforViruses" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Checking ?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>We are Checking for Viruses on the file you upload</p>
+              <p>please wait it will take a moment</p>
+
+            </div>
+            <div class="modal-footer">
+
               </form>
             </div>
           </div>
@@ -404,7 +426,15 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
 </div>
 
 </div>
+<script type="text/javascript">
+$('#submit_btn').on('click',function(){
+  $('#CheckingforViruses').modal('show');
+  $('#modalwhatIcanUploadModal').modal('dismiss');
+     $('#form_file').submit();
+return false;
+ });
 
+</script>
 
 
 @endif

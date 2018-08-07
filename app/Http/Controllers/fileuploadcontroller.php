@@ -63,7 +63,7 @@ return redirect($data);
    if(!empty($title) || !empty($description) || !empty($file)){
     $fileArray = array('file' => $file);
    $rules = array(
-     'file' => 'mimes:pdf,docx|required|max:25000' // max 10000kb
+     'file' => 'mimes:pdf,docx,ppt,zip,rar|required|max:25000' // max 10000kb
    );
 $validator = Validator::make($fileArray, $rules);
 
@@ -80,34 +80,87 @@ $validator = Validator::make($fileArray, $rules);
  }else {
 $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
    $destinationPath = "usersdata/".md5('uploads'.$username)."/";
-   $file->move($destinationPath,$hash);
 
-   fileupload::create([
-       'filename' => $file->getClientOriginalName(),
-       'author' => $username,
-       'title' => $title,
-       'description' =>$description,
-       'location'=>$destinationPath.$hash,
-       'downloads'=>0,
-       'size'=>$size,
+   $file_name_with_full_path = realpath($destinationPath.$hash);
+   $api_key = getenv('VT_API_KEY') ? getenv('VT_API_KEY') :'7e7da6eb91e8899775e5fbe0d664639943001997d061536489882b2142f36023';
+   $cfile = curl_file_create($file_name_with_full_path);
+
+   $post = array('apikey' => $api_key,'file'=> $cfile);
+   $ch = curl_init();
+   curl_setopt($ch, CURLOPT_URL, 'https://www.virustotal.com/vtapi/v2/file/scan');
+   curl_setopt($ch, CURLOPT_POST, True);
+   curl_setopt($ch, CURLOPT_VERBOSE, 1); // remove this if your not debugging
+   curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate'); // please compress data
+   curl_setopt($ch, CURLOPT_USERAGENT, "gzip, The Free Education client");
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER ,True);
+   curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+
+   $result=curl_exec ($ch);
+   $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+   if ($status_code == 200) { // OK
+     $js = json_decode($result, true);
+
+   } else {  // Error occured
+     return back();
+   }
+   curl_close ($ch);
+sleep(2);
+
+   $post = array('apikey' => '7e7da6eb91e8899775e5fbe0d664639943001997d061536489882b2142f36023','resource'=>$js['resource']);
+   $ch = curl_init();
+   curl_setopt($ch, CURLOPT_URL, 'https://www.virustotal.com/vtapi/v2/file/report');
+   curl_setopt($ch, CURLOPT_POST,1);
+   curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate'); // please compress data
+   curl_setopt($ch, CURLOPT_USERAGENT, "gzip, The Free Education client");
+   curl_setopt($ch, CURLOPT_VERBOSE, 1); // remove this if your not debugging
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER ,true);
+   curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+
+   $result = curl_exec ($ch);
+   $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+   print("status = $status_code\n");
+   if ($status_code == 200) { // OK
+     $js = json_decode($result, true);
+    if($js['positives'] > 0){
+return back();
+}else{
+  $file->move($destinationPath,$hash);
 
 
-   ]);
-   $val = DB::table('users')->where('username',$username)->first();
-$newsize = $val->tsize - $size;
-$newnumber = $val->nfiles - 1;
-DB::table('users')->where('username',$username)->update(['tsize'=>$newsize,'nfiles'=>$newnumber]);
+     fileupload::create([
+         'filename' => $file->getClientOriginalName(),
+         'author' => $username,
+         'title' => $title,
+         'description' =>$description,
+         'location'=>$destinationPath.$hash,
+         'downloads'=>0,
+         'size'=>$size,
 
 
-   return back();
+     ]);
+     $val = DB::table('users')->where('username',$username)->first();
+  $newsize = $val->tsize - $size;
+  $newnumber = $val->nfiles - 1;
+  DB::table('users')->where('username',$username)->update(['tsize'=>$newsize,'nfiles'=>$newnumber]);
+}
+   } else {  // Error occured
+    return "error";
+   }
+   curl_close ($ch);
+
+
+
+
+   // return back();
    // DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
    //  DB::table('users')->where('username',$user)->update(['namesp' =>$namespi]);
 }
 return back();
 }else{
-  return back();
+   return back();
 }
-return back();
+ return back();
  }
 
     /**

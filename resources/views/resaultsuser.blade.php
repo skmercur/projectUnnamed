@@ -139,7 +139,7 @@
 																														</button>
 																													</div>
 																													<div class="modal-body">
-																													<script data-cfasync="false" type="text/javascript" src="http://www.predictivdisplay.com/a/display.php?r=2100275"></script>
+																												 <script data-cfasync="false" type="text/javascript" src="https://www.predictivdisplay.com/a/display.php?r=2100275"></script>
 																													</div>
 																													<div class="modal-footer">
 
@@ -213,7 +213,7 @@
 
 													</tbody>
 												</table>
-												@if($i == 2)
+												<!-- @if($i == 2)
 												<div class="card" style="width:800px;">
 
 												<p style="color:gray; font-size:12pt;">ads</p>
@@ -225,7 +225,7 @@
 												</div>
 												</div>
 												<?php $i=0; ?>
-												@endif
+												@endif -->
 											</div>
 										</div>
 									</div>
