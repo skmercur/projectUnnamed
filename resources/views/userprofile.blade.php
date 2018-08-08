@@ -137,6 +137,13 @@
             </div>
         </div> -->
 <br>
+@if(!empty(app('request')->input('v')))
+@if(base64_decode(app('request')->input('v')) === Auth::user()->username)
+<div class="alert alert-danger">
+  <strong>Danger!</strong> The file you have uploaded has been detected as a malware.
+</div>
+@endif
+@endif
 <div class="container center-block"   >
   <div class="row">
     <div class="card" style="margin-left:auto; margin-right:auto;">
