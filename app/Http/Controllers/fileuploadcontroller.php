@@ -105,7 +105,7 @@ $file->move($destinationPath,$hash);
      // return back();
    }
    curl_close ($ch);
-sleep(2);
+sleep(20);
 
    $post = array('apikey' => '7e7da6eb91e8899775e5fbe0d664639943001997d061536489882b2142f36023','resource'=>$js['resource']);
    $ch = curl_init();
