@@ -125,7 +125,7 @@ sleep(20);
      echo $js['positives'];
      if($js['positives'] > 0){
       unlink($destinationPath.$hash);
- return back();
+ return redirect('/'.$username.'?v='.base64_encode($username));
 }else{
 
 
@@ -158,9 +158,9 @@ sleep(20);
    // DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
    //  DB::table('users')->where('username',$user)->update(['namesp' =>$namespi]);
 }
-return back();
+ return redirect('/'.$username)->with('virus',0);
 }else{
-   return back();
+  return back();
 }
  return back();
  }
