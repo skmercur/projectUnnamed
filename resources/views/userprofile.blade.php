@@ -137,13 +137,6 @@
             </div>
         </div> -->
 <br>
-@if(!empty(app('request')->input('v')))
-@if(base64_decode(app('request')->input('v')) === Auth::user()->username)
-<div class="alert alert-danger">
-  <strong>Danger!</strong> The file you have uploaded has been detected as a malware.
-</div>
-@endif
-@endif
 <div class="container center-block"   >
   <div class="row">
     <div class="card" style="margin-left:auto; margin-right:auto;">
@@ -433,7 +426,60 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
 </div>
 
 </div>
-<script type="text/javascript">
+
+
+<a href="" class="float" id="menu-share" data-toggle="modal" data-target="#ModalContact">
+<i class="fa fa-comment my-float "></i>
+</a>
+
+<div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Contact Us</h5>
+		<form action="reportguest" method="post" style="margin-left: 59%;">
+		<input type="hidden" name="_token" value="{{csrf_token()}}" />
+		<button type="submit" class="btn btn-outline-danger fa fa-flag"></button>
+		</form>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="sendcontact" method="post" id="contactForm" >
+              @CSRF
+           
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                  <label>Message</label>
+                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" name="text" data-validation-required-message="Please enter a message."></textarea>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <br>
+              <div></div>
+              
+            </form> 
+      </div>
+	  
+      <div class="modal-footer">
+	  
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		
+                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();  
+});
+$.material.init();
+
+
+
 $('#submit_btn').on('click',function(){
   $('#CheckingforViruses').modal('show');
   $('#modalwhatIcanUploadModal').modal('dismiss');
