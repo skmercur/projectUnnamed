@@ -102,7 +102,7 @@ $file->move($destinationPath,$hash);
      $js = json_decode($result, true);
 
    } else {  // Error occured
-     return back();
+     // return back();
    }
    curl_close ($ch);
 sleep(2);
@@ -122,11 +122,12 @@ sleep(2);
    print("status = $status_code\n");
    if ($status_code == 200) { // OK
      $js = json_decode($result, true);
-    if($js['positives'] > 0){
+     echo $js['positives'];
+     if($js['positives'] > 0){
       unlink($destinationPath.$hash);
-return back();
+ return back();
 }else{
-  $file->move($destinationPath,$hash);
+
 
 
      fileupload::create([
@@ -146,7 +147,7 @@ return back();
   DB::table('users')->where('username',$username)->update(['tsize'=>$newsize,'nfiles'=>$newnumber]);
 }
    } else {  // Error occured
-    return "error";
+    echo "error";
    }
    curl_close ($ch);
 
