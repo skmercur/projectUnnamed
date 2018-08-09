@@ -120,3 +120,81 @@ body {
     margin-right: 0;
   }
 }
+
+
+.card-profile .card-profile-image img
+{
+    box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07) !important;
+}
+
+
+.card-profile
+{
+    margin-top: -150px;
+}
+ .card-profile .card-profile-image
+{
+    position: relative;
+}
+ .card-profile .card-profile-image img
+{
+    position: absolute;
+    left: 50%;
+
+    max-width: 180px;
+
+    transition: all .15s ease; 
+    transform: translate(-50%, -30%);
+
+    border-radius: .25rem;
+}
+ .card-profile .card-profile-image img:hover
+{
+    transform: translate(-50%, -33%);
+}
+.card-profile .card-profile-stats
+{
+    padding: 1rem 0;
+}
+ .card-profile .card-profile-stats > div
+{
+    margin-right: 1rem;
+    padding: .875rem; 
+
+    text-align: center;
+}
+.card-profile .card-profile-stats > div:last-child
+{
+    margin-right: 0;
+}
+ .card-profile .card-profile-stats > div .heading
+{
+    font-size: 1.1rem;
+    font-weight: bold;
+
+    display: block;
+}
+.card-profile .card-profile-stats > div .description
+{
+    font-size: .875rem;
+
+    color: #adb5bd;
+}
+ .card-profile .card-profile-actions
+{
+    padding: .875rem;
+}
+@media (max-width: 575.98px)
+{
+    .card-profile .card-profile-actions
+    {
+        margin-top: 110px;
+    }
+}
+@media (min-width: 576px) and (max-width: 991.98px)
+{
+    .card-profile .card-profile-stats
+    {
+        margin-top: 30px;
+    }
+}

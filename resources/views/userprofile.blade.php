@@ -1,12 +1,7 @@
 @extends('layouts.layout')
+
 @section('content')
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-1253446609392565",
-          enable_page_level_ads: true
-     });
-</script>
+
 @guest
 <script type="text/javascript">
     window.location.href = "/login";
@@ -68,7 +63,11 @@
     </div>
   </div>
 </div>
+
+
 <br>
+
+
 <div class="container center-block"style="margin-top: 10%;" >
   <div class="row">
 <div class="card" style="margin-left:auto; margin-right:auto;">
@@ -130,86 +129,164 @@
     window.location.href = "/confirm";
 </script>
 @endif
-<br>
+
+
+
+
 <!-- <div id="page-content-wrapper">
             <div class="container-fluid">
                 <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">Toggle Menu</a>
             </div>
         </div> -->
-<br>
-@if(!empty(app('request')->input('v')))
-@if(base64_decode(app('request')->input('v')) === Auth::user()->username)
-<div class="alert alert-danger">
-  <strong>Danger!</strong> The file you have uploaded has been detected as a malware.
-</div>
-@endif
-@endif
-<div class="container center-block"   >
-  <div class="row">
-    <div class="card" style="margin-left:auto; margin-right:auto;">
-
-  <div class="card-body">
-    <div class="col-md-35">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-         <div class="col-md-12 lead"><h3>User Profile</h3><hr></div>
 
 
-          </div>
-          <div class="row">
-			<div class="col-md-4 text-center">
-
-              <img class="img-circle avatar avatar-original" style="-webkit-user-select:none;
-              display:block; height: 140px; margin:auto;" src="{{ Auth::user()->imgpath}}" style="">
-            </div>
-            <div class="col-md-8">
-              <div class="row">
-                <div class="col-md-32">
-                  <h1 class="only-bottom-margin" >{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h1>
+  <section class="section section-skew" style="padding-top: 30rem;">
+      <div class="container">
+        <div class="card card-profile shadow mt--300">
+          <div class="px-4">
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                  <a href="#">
+                    <img src="{{ Auth::user()->imgpath}}" class="rounded-circle">
+                  </a>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-25">
-                <span class="text-muted fa fa-envelope"> </span> {{Auth::user()->email}}<br>
-                <span class="text-muted fa fa-male"> </span> {{Auth::user()->gender}}<br><br>
-                <span class="text-muted fa fa-university"></span>{{$user->namespi}}<br><br>
-                  <small class="text-muted">Created: {{Auth::user()->created_at}}</small>
-                  <div class="progress">
-   <div class="progress-bar" role="progressbar" aria-valuenow="{{ceil(($user->tsize * 100)/100) }}"
-   aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->tsize * 100)/100) }}%">
-     <span class="sr-only"></span>
-   </div>
+              <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+                <div class="card-profile-actions py-4 mt-lg-0">
+                  <a href="#" class="btn btn-sm btn-info mr-4" data-toggle="modal" data-target="#exampleModal">Edit</a>
+                  <a href="#" class="btn btn-sm btn-default float-right">Contact</a>
+                </div>
+              </div>
+              <div class="col-lg-4 order-lg-1">
+                <div class="card-profile-stats d-flex justify-content-center">
+                  <div>
+                    <span class="heading">0</span>
+                    <span class="description">Friends</span>
+                  </div>
+                  <div>
+                    <span class="heading">{{$downloads}}</span>
+                    <span class="description">Downloads</span>
+                  </div>
+                  <div>
+                    <span class="heading">{{100 - $user->nfiles}}</span>
+                    <span class="description">files</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-5">
+              <h3>{{Auth::user()->firstname}}  {{Auth::user()->lastname}}
+                <span class="font-weight-light">, {{Auth::user()->gender}}</span>
+              </h3>
+              <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{Auth::user()->email}}</div>
+              <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>{{$user->namespi}}</div>
+              <div><i class="glyphicon glyphicon-asterisk"></i>{{Auth::user()->created_at}}</div>
+
+
+
+              <div class="col-md-12">
+            <button style="margin-top: 30px; margin-left: auto;
+    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form"><i class="fas fa-cloud-upload-alt fa-3x"></i></button>
+
+      <button style="margin-top: 30px; margin-left: auto;
+    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form2"><i class="fas fa-file fa-3x"></i></button>
+           <div class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabs_2_2" role="tab" aria-controls="profile" aria-selected="false">
+                    <span class="nav-link-icon d-block"><i class="ni ni-chat-round"></i></span>
+                  </a>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="mt-5 py-5 border-top text-center">
+              <div class="row justify-content-center">
+                <div class="col-lg-9">
+                  <p>An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
+                  <a href="#">Show more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        </section>
+
+
+
+ <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" style="display: none;" aria-hidden="true">
+              <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-body p-0">
+                    <div class="card bg-secondary shadow border-0">
+
+                      <div class="card-body px-lg-5 py-lg-5">
+                        <div class="text-center text-muted mb-4">
+                          <small>What can i upload ?</small>
+                        </div>
+
+                        <p style="font-size:12pt">You can only upload files that are yours and files you have the rights to share</p>
+                                     <p style="font-size:12pt">Here are an exemple of files you can upload : </p>
+                                     <ul class="list-group">
+                         <li class="list-group-item">Courses that are free and free to share</li>
+                         <li class="list-group-item">Codes that you have wrote and saved either in pdf or docx</li>
+                         <li class="list-group-item">Books that are free to share</li>
+
+                       </ul>
+
+                       <br>
+
+        <form action="" method="post" enctype="multipart/form-data">
+
+                          <div class="form-group mb-3">
+                            <div class="input-group input-group-alternative">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                              </div>
+                              <input class="form-control" placeholder="Title" name="title" type="text" maxlength="60">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="input-group input-group-alternative">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                              </div>
+                              <input class="form-control" placeholder="Description" name="description" type="text">
+                              <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                              <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+                            </div>
+                          </div>
+
+
+   <div class="input-group mb-3">
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile01" name="file" accept="application/pdf,.docx,.zip,.rar,.m">
+    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
   </div>
-  <br>
-  <div class="progress">
-<div class="progress-bar" role="progressbar" aria-valuenow="{{ceil(($user->nfiles * 100)/100) }}"
-aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/100) }}%">
-<span class="sr-only"></span>
 </div>
-</div>
-                </div>
 
-                <div class="col-md-6">
-                  <div class="activity-mini">
-                    <i class="glyphicon glyphicon-comment text-muted"></i> You have uploaded {{100 - $user->nfiles}} files
-                  </div>
-                  <div class="activity-mini">
-                    <?php $i=0; ?>
+                         <div class="text-center">
+                            <button type="submit" class="btn btn-primary my-4">Add File</button>
+                          </div>
 
-                    <i class="glyphicon glyphicon-thumbs-up text-muted"></i> You have {{$downloads}} downloads
+
+                        </form>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-            <br>
-              <hr>
-              <br>
-              <button class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
 
+
+
+
+<!-- modal editing -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -253,110 +330,13 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
   </div>
 </div>
 
-  <script type="text/javascript">
-  function form_submit() {
-    document.getElementById("search_form").submit();
-   }
-  </script>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-        <br>
-        <hr>
-        <br>
-
-        <form action="" method="POST" enctype="multipart/form-data" id="form_file">
-          <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1">Title</span>
-  </div>
-  <input type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1" name="title">
-</div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Description</span>
-  </div>
-  <textarea class="form-control" aria-label="Description" name="description"></textarea>
-</div>
-<br>
-<div class="input-group">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input input-group-prepend" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="file" accept="application/pdf,.docx,.ppt,.zip,.rar">
-    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-  </div>
-<input type="hidden" name="username" value="{{Auth::user()->username}}" />
-    <input type="hidden" name="_token" value="{{csrf_token()}}" />
-  <div class="input-group-append">
-    @if(($user->tsize  <= 0) || ($user->nfiles <= 0))
-    <button class="btn btn-outline-primary" type="submit" id="inputGroupFileAddon04" disabled="true" >Upload</button>
-    @else
-      <button class="btn btn-outline-primary" type="button"  id="inputGroupFileAddon04"  data-target="#whatIcanUploadModal" data-toggle="modal"  >Upload</button>
-      @endif
-  </div>
-</div>
-</div>
+<!-- end modal editing -->
 
 
 
-      </div>
 
-      <hr>
-      <div class="modal fade" id="whatIcanUploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">What can i upload ?</h5>
-              <button type="button" class="close" data-dismiss="modal"   aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>You can only upload files that are yours and files you have the rights to share</p>
-              <p>Here are an exemple of files you can upload : </p>
-              <ul class="list-group">
-  <li class="list-group-item">Courses that are free and free to share</li>
-  <li class="list-group-item">Codes that you have wrote and saved either in pdf or docx</li>
-  <li class="list-group-item">Books that are free to share</li>
-
-</ul>
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <button type="button" id="submit_btn"  class="btn btn-primary"  >Upload</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal fade" id="CheckingforViruses" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Checking ?</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>We are Checking for Viruses on the file you upload</p>
-              <p>please wait it will take a moment</p>
-
-            </div>
-            <div class="modal-footer">
-
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container center-block" style="margin-top: 10%;" >
+<div class="modal fade" id="modal-form2" tabindex="-1" role="dialog" aria-labelledby="modal-form2" style="display: none;" aria-hidden="true">
+     <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
         <div class="row">
           <div class="card " style="margin-left:auto; margin-right:auto;">
 
@@ -429,74 +409,22 @@ aria-valuemin="0" aria-valuemax="100" style="width:{{ceil(($user->nfiles * 100)/
 
 </div>
 </div>
-
 </div>
 
 </div>
 
-
-<a href="" class="float" id="menu-share" data-toggle="modal" data-target="#ModalContact">
-<i class="fa fa-comment my-float "></i>
-</a>
-
-<div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Contact Us</h5>
-		<form action="reportguest" method="post" style="margin-left: 59%;">
-		<input type="hidden" name="_token" value="{{csrf_token()}}" />
-		<button type="submit" class="btn btn-outline-danger fa fa-flag"></button>
-		</form>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form action="sendcontact" method="post" id="contactForm" >
-              @CSRF
-           
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Message</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" name="text" data-validation-required-message="Please enter a message."></textarea>
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <br>
-              <div></div>
-              
-            </form> 
-      </div>
-	  
-      <div class="modal-footer">
-	  
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		
-                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
-      </div>
-    </div>
-  </div>
 </div>
 
-<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();  
-});
-$.material.init();
-
-
-
-$('#submit_btn').on('click',function(){
-  $('#CheckingforViruses').modal('show');
-  $('#modalwhatIcanUploadModal').modal('dismiss');
-     $('#form_file').submit();
-return false;
- });
-
-</script>
 
 
 @endif
 @endguest
 @endsection
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1253446609392565",
+          enable_page_level_ads: true
+     });
+</script>
