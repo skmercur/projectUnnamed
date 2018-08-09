@@ -93,12 +93,12 @@
     <form action="search"style="margin-top: 15px;" method="get">
       <div class="container">
 <div class="row">
-    <img src="{{asset('assets/img/logo.png')}}" class="center-block" alt="" align="middle" style="margin-left:auto; margin-right: auto;max-width: 400px;max-height: 400px;">
+    <img src="{{asset('assets/img/logo1.png')}}" class="center-block" alt="" align="middle" style="margin-top: 1%;margin-left:auto; margin-right: auto;max-width: 300px;max-height: 300px;">
   </div>
 </div>
     <div class="input-group mb-12 center">
 
-  <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-top: -10%; margin-bottom: 1%;margin-right: 15%;height:2%;" placeholder="type here to search for documents" name="q">
+  <input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-top: 1%; margin-bottom: 1%;margin-right: 15%;height:2%;" placeholder="type here to search for documents" name="q">
 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}" /> -->
 
 
@@ -107,7 +107,7 @@
 <br>
   <br>
 <div class="input-group" >
-    <button class="form-control btn btn-success" style="margin-top:  -9%; margin-bottom: 10%;margin-left: 30%;margin-right: 30%;height:;height: 1%;" type="submit" id="button-addon2">Search</button>
+    <button class="form-control btn btn-success" style="margin-top:  3px; margin-bottom: 10%;margin-left: 30%;margin-right: 30%;" type="submit" id="button-addon2">Search</button>
   </div>
 
 
@@ -118,11 +118,11 @@
 <form action="usearch"style="margin-top: 15px;" method="get">
   <div class="container">
 <div class="row">
-<img src="{{asset('assets/img/logo.png')}}" class="center-block" alt="" align="middle" style="margin-left:auto; margin-right: auto;max-width: 400px;max-height: 400px;">
+<img src="{{asset('assets/img/logo1.png')}}" class="center-block" alt="" align="middle" style="margin-top: 1%;margin-left:auto; margin-right: auto;max-width: 300px;max-height: 300px;">
 </div>
 </div>
 <div class="input-group mb-12 center">
-<input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-top: -10%;margin-right: 15%;height:2%;" placeholder="Type here to search for documents and users" name="q">
+<input type="text" class="form-control form-control-lg" style="margin-left: 15%;margin-top: 1%;margin-right: 15%;height:2%;" placeholder="Type here to search for documents and users" name="q">
 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}" /> -->
 
 
@@ -131,7 +131,7 @@
 <br>
 <br>
 <div class="input-group" >
-<button class="form-control btn btn-success" style="margin-top:  -9%;margin-left: 30%;margin-right: 30%;height:;height: 1%;" type="submit" id="button-addon2">Search</button>
+<button class="form-control btn btn-success" style="margin-top:  3px;margin-left: 30%;margin-right: 30%;height:;height: 1%;" type="submit" id="button-addon2">Search</button>
 </div>
 
 

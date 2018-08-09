@@ -160,10 +160,7 @@
               </div>
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">
-                  <div>
-                    <span class="heading">0</span>
-                    <span class="description">Friends</span>
-                  </div>
+
                   <div>
                     <span class="heading">{{$downloads}}</span>
                     <span class="description">Downloads</span>
@@ -247,7 +244,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                               </div>
-                              <input class="form-control" placeholder="Title" name="title" type="text" maxlength="60">
+                              <input class="form-control" placeholder="Title" name="title" type="text" maxlength="60" required>
                             </div>
                           </div>
                           <div class="form-group">
@@ -255,7 +252,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                               </div>
-                              <input class="form-control" placeholder="Description" name="description" type="text">
+                              <input class="form-control" placeholder="Description" name="description" type="text" maxlength="250" required>
                               <input type="hidden" name="_token" value="{{csrf_token()}}" />
                               <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
                             </div>
@@ -264,13 +261,13 @@
 
    <div class="input-group mb-3">
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01" name="file" accept="application/pdf,.docx,.zip,.rar,.m">
+    <input type="file" class="custom-file-input" id="inputGroupFile01" name="file" accept="application/pdf,.docx,.zip,.rar,.m" required>
     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
   </div>
 </div>
 
                          <div class="text-center">
-                            <button type="submit" class="btn btn-primary my-4">Add File</button>
+                            <button type="button" data-toggle="modal" data-target="#virusModal" data-dismiss="modal" class="btn btn-primary my-4">Add File</button>
                           </div>
 
 
@@ -289,35 +286,40 @@
 <!-- modal editing -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+      <div class="modal-body p-0">
+        <div class="card bg-secondary shadow border-0">
+
+
       <div class="modal-body">
         <form action="edit" method="post" enctype="multipart/form-data" id="useredit">
 
           <div class="form-group">
-            <label for="email" class="col-form-label">Email:</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <div class="input-group input-group-alternative">
+            <input type="email" class="form-control" id="email" placeholder="email" name="email">
           </div>
-          <div class="form-group">
-            <label for="image" class="col-form-label">Profile picture :</label>
+          </div>
+          <div class="input-group mb-3">
+         <div class="custom-file">
             <input type="file" class="file-input" id="image" name="image" accept="image/jpeg,image/x-png,image/gif">
-            <label for="image" class="col-form-label" style="font-size:7pt;">Recomended picture size 160px x 160px</label>
+<br>
+            <p class="col-form-label" style="font-size:7pt;">Recomended picture size 160px x 160px</p>
+          </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+
+            <input type="password" class="form-control" placeholder="new password" id="pass" name="npass">
+          </div>
           </div>
           <div class="form-group">
-            <label for="pass" class="col-form-label">new password:</label>
-            <input type="password" class="form-control" id="pass" name="npass">
-          </div>
-          <div class="form-group">
-            <label for="confirme-pass" class="col-form-label">Confirme Password:</label>
-            <input type="password" class="form-control" id="confirm-pass" name="cnpass">
+            <div class="input-group input-group-alternative">
+
+            <input type="password" class="form-control" id="confirm-pass" placeholder="confirm your password" name="cnpass">
             <input type="hidden" value="{{Auth::user()->username}}" name="username" />
             <input type="hidden" name="_token" value="{{csrf_token()}}" />
+          </div>
           </div>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button class="btn btn-primary" onclick="form_submit()" type="submit">Edit</button>
@@ -329,10 +331,34 @@
     </div>
   </div>
 </div>
-
+</div>
+</div>
 <!-- end modal editing -->
 
+<!-- modal checking  for virus -->
 
+<div class="modal fade" id="virusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="card bg-secondary shadow border-0">
+
+
+      <div class="modal-body">
+        <div class="well">
+        <p> We are checking for virus please wait, it might take a while</p>
+
+      </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- end modal checking for virus -->
 
 
 <div class="modal fade" id="modal-form2" tabindex="-1" role="dialog" aria-labelledby="modal-form2" style="display: none;" aria-hidden="true">
