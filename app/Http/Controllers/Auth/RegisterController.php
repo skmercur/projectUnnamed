@@ -81,6 +81,7 @@ class RegisterController extends Controller
               'nfiles'=>'100',
               'tsize'=>'100',
               'gender'=>$data['gender'],
+              'bio'=>'',
 
         ]);
     }

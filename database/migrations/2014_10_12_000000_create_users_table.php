@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
               $table->integer('nfiles');
               $table->integer('tsize');
               $table->string('gender',7);
+              $table->longText('bio');
             $table->rememberToken();
             $table->timestamps();
         });
