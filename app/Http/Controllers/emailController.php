@@ -202,7 +202,7 @@ return view('auth/passwords/resetpassword')->with(['status'=>1,'code'=>$code]);
   return back();
 }
     } else{
-      return redirect('/');
+      return view('welcome');
     }
   }
   public function sendemail(){

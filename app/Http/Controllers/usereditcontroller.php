@@ -46,14 +46,16 @@ class usereditcontroller extends Controller
       $npass = $request->input('npass');
       $cnpass = $request->input('cnpass');
       $email = $request->input('email');
+      $bio = $request->input('bio');
       $file = $request->file('image');
       $vuser = DB::table('users')->where('username',$user)->first();
 
       if($vuser->username !== ''){
 
-          echo "ok";
+
           if($cnpass === $npass){
             if(!empty($npass) && !empty($cnpass)){
+
             $npass = Hash::make($npass);
         $fileArray = array('image' => $file);
        $rules = array(
@@ -62,10 +64,17 @@ class usereditcontroller extends Controller
     $validator = Validator::make($fileArray, $rules);
 
      if($validator->fails()){
-       echo "sorry your file is not supported";
+       if(empty($bio)){
+
         DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass]);
 return back();
+}else{
+
+          DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass,'bio'=>$bio]);
+  return back();
+}
      }else {
+       if(empty($bio)){
        $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
           $destinationPath = "usersdata/".md5('uploads'.$user)."/";
           $file->move($destinationPath,$hash);
@@ -74,8 +83,18 @@ return back();
        DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
         DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass]);
 return back();
+}else{
+  $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
+     $destinationPath = "usersdata/".md5('uploads'.$user)."/";
+     $file->move($destinationPath,$hash);
+     $db =  DB::table('users')->where('username',$user)->first();
+     unlink($db->imgpath);
+  DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
+   DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass,'bio'=>$bio]);
+}
       }
 }else{
+  if(empty($bio)){
   $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
      $destinationPath = "usersdata/".md5('uploads'.$user)."/";
      $file->move($destinationPath,$hash);
@@ -83,6 +102,15 @@ return back();
      unlink($db->imgpath);
         DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
         return back();
+      }else{
+        $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
+           $destinationPath = "usersdata/".md5('uploads'.$user)."/";
+           $file->move($destinationPath,$hash);
+           $db =  DB::table('users')->where('username',$user)->first();
+           unlink($db->imgpath);
+              DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash,'bio'=>$bio]);
+              return back();
+      }
 }
     }else{
 return back();
