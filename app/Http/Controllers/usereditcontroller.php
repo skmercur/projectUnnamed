@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -39,7 +39,69 @@ class usereditcontroller extends Controller
     {
         //
     }
+    public function resend(Request $request){
+      $user = $request->input('username');
+      if(!empty($user)){
+      $val = DB::table('users')->where('username',$user)->first();
+      $code = $val->code;
+      $email = $val->email;
+      $firstname = $val->firstname;
+      $lastname = $val->lastname;
+      $data = array(
+         'code'=>$code,
+         'email'=>$email,
+         'firstname'=>$firstname,
+         'lastname'=>$lastname
+      );
 
+
+      // Additional headers
+      $headers = '';
+      $headers.= 'To: '.$firstname.','.$lastname.' <'.$email.'>';
+      $headers.= 'From: The support team <support@thefreeedu.com>';
+      $headers .= "MIME-Version: 1.0\r\n";
+      $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+      $headers .= 'From: support@thefreeedu.com' . "\r\n" .
+         'Reply-To: support@thefreeedu.com' . "\r\n" .
+         'X-Mailer: PHP/' . phpversion();
+         // Mail::send('mail',$data,function($message) use ($email){
+         //   $message->to($email)->subject('Your activation code');
+         //   $message->from('support@thefreeedu.com','support');
+         // });
+         $message = '
+         <html>
+         <head>
+           <title>Email changed</title>
+           <meta charset="utf-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         </head>
+         <body>
+
+           <div class="container">
+           <h4>Dear '.$firstname.','.$lastname.'</h4>
+           <h5>Good day to you </h5>
+           <div class="well">Your Email has been changed to '.$email.'</div>
+             <div class="well">this is your activation code <b>'.$code.'</b></div>
+           </div>
+           <footer>
+           <p>From The Free Education team</p>
+           <p>if there is any problem contact us at : support@thefreeedu.com </p>
+           </footer>
+         </body>
+         </html>
+         ';
+         mail($email, "Your activation code for The Free Education", $message, $headers);
+    return redirect($user);
+
+    }else {
+    return back();
+    }
+
+    return redirect($user);
+    }
     public function userEdit(Request $request){
       $user = $request->input('username');
       $cpass = $request->input('cpass');
@@ -66,49 +128,90 @@ class usereditcontroller extends Controller
      if($validator->fails()){
        if(empty($bio)){
 
-        DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass]);
+        DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass,'status'=>0]);
+
+
+$this->resend($request);
+
+
+
+
+
+
+
 return back();
 }else{
 
-          DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass,'bio'=>$bio]);
+          DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass,'bio'=>$bio,'status'=>0]);
+
+$this->resend($request);
+
+
+
+
+
   return back();
 }
      }else {
        if(empty($bio)){
        $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
           $destinationPath = "usersdata/".md5('uploads'.$user)."/";
-          $file->move($destinationPath,$hash);
+
           $db =  DB::table('users')->where('username',$user)->first();
-          unlink($db->imgpath);
-       DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
-        DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass]);
+
+          if($destinationPath.$hash !==  $db->imgpath){
+
+            $file->move($destinationPath,$hash);
+            DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
+            if($db->imgpath !== "uploads/default.png"){
+            unlink($db->imgpath);
+          }
+          }
+       DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass,'status'=>0]);
+$this->resend($request);
 return back();
 }else{
   $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
      $destinationPath = "usersdata/".md5('uploads'.$user)."/";
-     $file->move($destinationPath,$hash);
+
      $db =  DB::table('users')->where('username',$user)->first();
-     unlink($db->imgpath);
+if($destinationPath.$hash !==  $db->imgpath){
+  $file->move($destinationPath,$hash);
   DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
-   DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass,'bio'=>$bio]);
+  if($db->imgpath !== "uploads/default.png"){
+  unlink($db->imgpath);
+}
+}
+   DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass,'bio'=>$bio,'status'=>0]);
+$this->resend($request);
 }
       }
 }else{
   if(empty($bio)){
   $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
      $destinationPath = "usersdata/".md5('uploads'.$user)."/";
-     $file->move($destinationPath,$hash);
      $db =  DB::table('users')->where('username',$user)->first();
-     unlink($db->imgpath);
-        DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
+     if($destinationPath.$hash !==  $db->imgpath){
+       $file->move($destinationPath,$hash);
+       DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
+       if($db->imgpath !== "uploads/default.png"){
+       unlink($db->imgpath);
+     }
+     }
         return back();
       }else{
         $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
            $destinationPath = "usersdata/".md5('uploads'.$user)."/";
-           $file->move($destinationPath,$hash);
+
            $db =  DB::table('users')->where('username',$user)->first();
-           unlink($db->imgpath);
-              DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash,'bio'=>$bio]);
+
+           if($destinationPath.$hash !==  $db->imgpath){
+             $file->move($destinationPath,$hash);
+             DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash,'bio'=>$bio]);
+             if($db->imgpath !== "uploads/default.png"){
+             unlink($db->imgpath);
+           }
+           }
               return back();
       }
 }

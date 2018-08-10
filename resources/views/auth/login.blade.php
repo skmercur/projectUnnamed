@@ -72,28 +72,10 @@
         <div class="row justify-content-center">
           <div class="col-lg-5">
             <div class="card bg-secondary shadow border-0">
-              <div class="card-header bg-white pb-5">
-                <div class="text-muted text-center mb-3">
-                  <small>Sign in with</small>
-                </div>
-                <div class="btn-wrapper text-center">
-                  <a href="#" class="btn btn-neutral btn-icon">
-                    <span class="btn-inner--icon">
-                      <img src="{{asset('assets/img/icons/github.svg')}}">
-                    </span>
-                    <span class="btn-inner--text">Github</span>
-                  </a>
-                  <a href="#" class="btn btn-neutral btn-icon">
-                    <span class="btn-inner--icon">
-                      <img src="{{asset('assets/img/icons/google.svg')}}">
-                    </span>
-                    <span class="btn-inner--text">Google</span>
-                  </a>
-                </div>
-              </div>
+
               <div class="card-body px-lg-5 py-lg-5">
                 <div class="text-center text-muted mb-4">
-                  <small>Or sign in with credentials</small>
+                  <h4>Login</h4>
                 </div>
                 <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                         @csrf
@@ -102,7 +84,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                       </div>
-                      
+
                       <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
@@ -136,19 +118,20 @@
                   </div>
                 </form>
               </div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-6">
-                <a href="/reset" class="text-light">
-                  <small>Forgot password?</small>
-                </a>
+              <div class="row mt-3">
+                <div class="col-6">
+                  <a href="/reset" class="text-light">
+                    <small>Forgot password?</small>
+                  </a>
+                </div>
+                <div class="col-6 text-right">
+                  <a href="/register" class="text-light">
+                    <small>Create new account</small>
+                  </a>
+                </div>
               </div>
-              <div class="col-6 text-right">
-                <a href="/register" class="text-light">
-                  <small>Create new account</small>
-                </a>
-              </div>
             </div>
+
           </div>
         </div>
       </div>
