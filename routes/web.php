@@ -46,7 +46,9 @@ Route::get('/uploads',function(){
 Route::get('/vendor',function(){
   return view('errors/404');
 });
-
+Route::get('/tuto',function(){
+  return view('index');
+});
 
 
 Route::post('/resetpassword', 'emailController@resetpass');
