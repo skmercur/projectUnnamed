@@ -12,6 +12,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{asset('assets/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/js/headroom.min.js')}}"></script>
+    <script src="{{asset('assets/js/argon.js')}}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -19,6 +22,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/argon.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/nucleo.css')}}">
     <style>
 body{ margin:0px; padding:0px; font-family:helvetica; background:url(image.png); }
 
