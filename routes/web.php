@@ -50,7 +50,8 @@ Route::get('/tuto',function(){
   return view('index');
 });
 
-
+Route::post('/newf', 'PageController@newFollower');
+Route::post('/rmf', 'PageController@unfollow');
 Route::post('/resetpassword', 'emailController@resetpass');
 Route::get('/reset', function (){
   return view('auth/reset');

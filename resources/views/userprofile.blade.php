@@ -33,12 +33,30 @@
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                 <div class="card-profile-actions py-4 mt-lg-0">
 
-                  <a href="#" class="btn btn-sm btn-default float-right">Contact</a>
+
+  @if(in_array(Auth::user()->username,$followers))
+  <form method="post" action="rmf" >
+                  <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
+                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                  <input type="hidden" name="useru" value="{{$user->username}}" />
+                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+                </form>
+                  @else
+                  <form action="newf" method="post">
+<button type="submit" class="btn btn-sm btn-default float-right">Follow</button>
+                  @endif
+                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                  <input type="hidden" name="useru" value="{{$user->username}}" />
+                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+                </form>
                 </div>
               </div>
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">
-
+                      <div>
+                        <span class="heading">30</span>
+                        <span class="description">Followers</span>
+                      </div>
                   <div>
                     <span class="heading">{{$downloads}}</span>
                     <span class="description">Downloads</span>
@@ -64,7 +82,7 @@
               <div class="col-md-12">
 
       <button style="margin-top: 30px; margin-left: auto;
-    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form2"><i class="fas fa-file fa-3x"></i></button>
+    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form3"><i class="fas fa-file fa-3x"></i></button>
            <div class="nav-item">
                   <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabs_2_2" role="tab" aria-controls="profile" aria-selected="false">
                     <span class="nav-link-icon d-block"><i class="ni ni-chat-round"></i></span>
@@ -219,12 +237,15 @@
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                 <div class="card-profile-actions py-4 mt-lg-0">
                   <a href="#" class="btn btn-sm btn-info mr-4" data-toggle="modal" data-target="#exampleModal">Edit</a>
-                  <a href="#" class="btn btn-sm btn-default float-right">Contact</a>
+                  <a href="#" class="btn btn-sm btn-default float-right" style="visibility:hidden;">Contact</a>
                 </div>
               </div>
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">
-
+                  <div>
+                    <span class="heading">30</span>
+                    <span class="description">Followers</span>
+                  </div>
                   <div>
                     <span class="heading">{{$downloads}}</span>
                     <span class="description">Downloads</span>
@@ -248,10 +269,10 @@
 
               <div class="col-md-12">
             <button style="margin-top: 30px; margin-left: auto;
-    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form"><i class="fas fa-cloud-upload-alt fa-3x"></i></button>
+    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form2"><i class="fas fa-cloud-upload-alt fa-3x"></i></button>
 
       <button style="margin-top: 30px; margin-left: auto;
-    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form2"><i class="fas fa-file fa-3x"></i></button>
+    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form3"><i class="fas fa-file fa-3x"></i></button>
            <div class="nav-item">
                   <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabs_2_2" role="tab" aria-controls="profile" aria-selected="false">
                     <span class="nav-link-icon d-block"><i class="ni ni-chat-round"></i></span>
@@ -278,70 +299,80 @@
 
 
 
- <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" style="display: none;" aria-hidden="true">
-              <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
-                <div class="modal-content">
-                  <div class="modal-body p-0">
-                    <div class="card bg-secondary shadow border-0">
 
-                      <div class="card-body px-lg-5 py-lg-5">
-                        <div class="text-center text-muted mb-4">
-                          <small>What can i upload ?</small>
+
+         <div class="modal fade" id="modal-form2" tabindex="-1" role="dialog" aria-labelledby="modal-form" style="display: none;" aria-hidden="true">
+                      <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                          <div class="modal-body p-0">
+                            <div class="card bg-secondary shadow border-0">
+
+                              <div class="card-body px-lg-5 py-lg-5">
+
+                                <div class="text-center text-muted mb-4">
+
+                    <p>              <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        What Can I Upload ?
+          </a>
+          <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+          <p>You can only upload files that are yours and files you have the rights to share</p>
+                      <p>Here are an exemple of files you can upload : </p>
+                      <ul class="list-group">
+          <li class="list-group-item">Courses that are free and free to share</li>
+          <li class="list-group-item">Codes that you have wrote and saved either in pdf or docx</li>
+          <li class="list-group-item">Books that are free to share</li>
+
+        </ul>
+
+          </div>
+        </div>
+        </p>
+                               </div>
+
+                <form action="" method="post" enctype="multipart/form-data" id="file_form">
+
+                                  <div class="form-group mb-3">
+                                    <div class="input-group input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                      </div>
+                                      <input class="form-control" placeholder="Title" name="title" type="text" maxlength="60" required>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="input-group input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                      </div>
+                                      <input class="form-control" placeholder="Description" name="description" type="text" maxlength="250" required>
+                                    </div>
+                                  </div>
+
+
+           <div class="input-group mb-3">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile01" name="file" accept="application/pdf,.docx,.zip,.rar,.m" required>
+            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+          </div>
+          <input type="hidden" name="_token" value="{{csrf_token()}}" />
+          <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+        </div>
+
+                                 <div class="text-center">
+                                    <button type="button"  id="button_submit" data-toggle="modal" data-target="#virusModal" data-dismiss="modal" class="btn btn-primary my-4">Add File</button>
+                                  </div>
+
+
+                                </form>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-
-                        <p style="font-size:12pt">You can only upload files that are yours and files you have the rights to share</p>
-                                     <p style="font-size:12pt">Here are an exemple of files you can upload : </p>
-                                     <ul class="list-group">
-                         <li class="list-group-item">Courses that are free and free to share</li>
-                         <li class="list-group-item">Codes that you have wrote and saved either in pdf or docx</li>
-                         <li class="list-group-item">Books that are free to share</li>
-
-                       </ul>
-
-                       <br>
-
-        <form action="" method="post" enctype="multipart/form-data" id="file_form">
-
-                          <div class="form-group mb-3">
-                            <div class="input-group input-group-alternative">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                              </div>
-                              <input class="form-control" placeholder="Title" name="title" type="text" maxlength="60" required>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="input-group input-group-alternative">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                              </div>
-                              <input class="form-control" placeholder="Description" name="description" type="text" maxlength="250" required>
-                              <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                              <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
-                            </div>
-                          </div>
-
-
-   <div class="input-group mb-3">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01" name="file" accept="application/pdf,.docx,.zip,.rar,.m" required>
-    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-  </div>
-</div>
-
-                         <div class="text-center">
-                            <button type="button"  id="button_submit" data-toggle="modal" data-target="#virusModal" data-dismiss="modal" class="btn btn-primary my-4">Add File</button>
-                          </div>
-
-
-                        </form>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
+
 
           <script type="text/javascript" >
 
@@ -423,7 +454,7 @@
 
       <div class="modal-body">
         <div class="well">
-        <p> We are checking for virus please wait, it might take a while</p>
+        <p> We are checking for Malwares please wait, it might take a while</p>
 
       </div>
       </div>
@@ -438,7 +469,7 @@
 <!-- end modal checking for virus -->
 
 
-<div class="modal fade" id="modal-form2" tabindex="-1" role="dialog" aria-labelledby="modal-form2" style="display: none;" aria-hidden="true">
+<div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
      <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
         <div class="row">
           <div class="card " style="margin-left:auto; margin-right:auto;">
@@ -541,7 +572,7 @@
       <div class="modal-body">
       <form action="sendcontact" method="post" id="contactForm" >
               @CSRF
-           
+
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Message</label>
@@ -551,14 +582,14 @@
               </div>
               <br>
               <div></div>
-              
-            </form> 
+
+            </form>
       </div>
-	  
+
       <div class="modal-footer">
-	  
+
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		
+
                 <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
       </div>
     </div>

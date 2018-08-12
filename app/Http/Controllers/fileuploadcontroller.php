@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\fileupload;
-
+use App\notifications;
 class fileuploadcontroller extends Controller
 {
     /**
@@ -27,6 +27,29 @@ class fileuploadcontroller extends Controller
     public function create()
     {
         //
+    }
+
+
+    public function notify(Request $request){
+      $creator = $request->input('username');
+      $message = '<a href="/'.$creator.'">'.$creator.'</a> has added a new file';
+      $val =   DB::table('users')->where('username',$creator)->first();
+      $followers = $val->followers;
+      $improfile = $val->imgpath;
+      $pices = explode(',',$followers);
+      foreach ($pices as $target) {
+        // code...
+
+    notifications::create([
+    'creator'=>$creator,
+    'message'=>$message,
+    'target'=>$target,
+    'seen'=>0,
+    'improfile'=>$improfile,
+
+    ]);
+  }
+
     }
     public function check(Request $request)
     {
@@ -141,10 +164,13 @@ sleep(20);
 
 
      ]);
+
+
      $val = DB::table('users')->where('username',$username)->first();
   $newsize = $val->tsize - $size;
   $newnumber = $val->nfiles - 1;
   DB::table('users')->where('username',$username)->update(['tsize'=>$newsize,'nfiles'=>$newnumber]);
+  $this->notify($request);
 }
    } else {  // Error occured
     echo "error";

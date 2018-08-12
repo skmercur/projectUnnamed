@@ -82,6 +82,7 @@ class RegisterController extends Controller
               'tsize'=>'100',
               'gender'=>$data['gender'],
               'bio'=>'',
+              'followers'=>'',
 
         ]);
     }
