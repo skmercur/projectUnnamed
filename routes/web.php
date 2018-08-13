@@ -49,7 +49,7 @@ Route::get('/vendor',function(){
 Route::get('/tuto',function(){
   return view('index');
 });
-
+Route::post('/getnoti', 'PageController@getNotification');
 Route::post('/newf', 'PageController@newFollower');
 Route::post('/rmf', 'PageController@unfollow');
 Route::post('/resetpassword', 'emailController@resetpass');

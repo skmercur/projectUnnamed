@@ -19,6 +19,30 @@ class PageController extends Controller
     {
         //
     }
+
+
+public function getNotification(Request $request)
+{
+  $user = $request->username;
+  $code = $request->code;
+
+
+$resaults = DB::table('notifications')->where('target',$user)->where('seen',0)->orderBy('created_at', 'desc')->get();
+$resaultss = $resaults;
+foreach ($resaultss as $resault) {
+DB::table('notifications')->where('target',$user)->where('seen',0)->delete();
+}
+return response()->json(array('resaults'=>$resaults),200);
+
+
+
+
+
+
+
+}
+
+
     public function getPage(Request $request)
    {
      $value = $request['slug'];

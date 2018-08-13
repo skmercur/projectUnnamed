@@ -221,9 +221,49 @@
             </div>
         </div> -->
 
+        <script type="text/javascript">
+
+        setInterval(function getMessage(){
+          $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var form = $("#theForm");
+                   $.ajax({
+
+                      type:'POST',
+                      url:'/getnoti',
+                      data:form.serialize(),
+                      success:function(data){
+                        for (var k in data.resaults) {
+                          iziToast.show({
+    title: data.resaults[k].creator,
+    message: data.resaults[k].message,
+    iconUrl:data.resaults[k].improfile,
+    timeout: 7000
+});
+                     }
+                      }
+                   });
+                },8000);
+
+
+
+        </script>
+
+
+
+<form method="post" id="theForm">
+  <input type="hidden" name="_token" value="{{csrf_token()}}" />
+  <input type="hidden" name="code" value="$user->code" />
+  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+</form>
 
   <section class="section section-skew" style="padding-top: 30rem;">
+
       <div class="container">
+
         <div class="card card-profile shadow mt--300">
           <div class="px-4">
             <div class="row justify-content-center">
@@ -232,6 +272,7 @@
                   <a href="#">
                     <img src="{{ Auth::user()->imgpath}}" class="rounded-circle">
                   </a>
+
                 </div>
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
@@ -600,10 +641,10 @@
 
 
 
+
 @endif
 @endguest
 @endsection
-
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
