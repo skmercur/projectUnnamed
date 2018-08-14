@@ -15,7 +15,7 @@
 			<div class="card-header">
 				<h2> Users : </h2>
 			</div>
-<div class="container">	
+<div class="container">
 <div class="row">
 
    @foreach($users as $user)
@@ -23,39 +23,58 @@
     @if($user->username != '')
 
 	<div class="col-sm-6" style="padding-top: 12rem;">
-   
+
         <div class="card card-profile shadow">
           <div class="px-4">
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
+                  <a href="/{{$user->username}}">
                     <img style="width: 60px;" src="{{$user->imgpath}}" class="rounded-circle">
                   </a>
                 </div>
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+								@if($user->username !== Auth::user()->username)
                 <div class="card-profile-actions py-4 mt-lg-0">
-                  
-                  <a href="#" class="btn btn-sm btn-default float-right">Follow</a>
+									<?php
+$followers = explode(',',$user->followers);
+									 ?>
+								@if(in_array(Auth::user()->username,$followers))
+								  <form method="post" action="rmf" >
+								                  <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
+								                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
+								                  <input type="hidden" name="useru" value="{{$user->username}}" />
+								                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+								                </form>
+								                  @else
+								                  <form action="newf" method="post">
+								<button type="submit" class="btn btn-sm btn-default float-right">Follow</button>
+
+								                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
+								                  <input type="hidden" name="useru" value="{{$user->username}}" />
+								                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+								                </form>
+																 @endif
                 </div>
+								@endif
               </div>
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">
-            
+
                 </div>
               </div>
             </div>
             <div class="text-center mt-5">
-              <h3>{{$user->firstname}}  {{$user->lastname}}
+              <a href="/{{$user->username}}"><h3>{{$user->firstname}}  {{$user->lastname}}
                 <span class="font-weight-light">, {{$user->gender}}</span>
-              </h3>
-            
+              </h3></a>
+
 
           </div>
         </div>
         </div>
-    
+
     </div>
 
     @else
@@ -82,8 +101,8 @@
 <div class="container">
 		<div class="row">
 <section class="search-result-item">
-					
-	
+
+
 
 				@foreach($resaults as $resault)
 
@@ -143,7 +162,7 @@
 
 																		<p class="summary">
 									<?php if(strlen($resault->description)>200){
-													echo substr($resault->description,0,200)."..."; 
+													echo substr($resault->description,0,200)."...";
 										}
 										  else{
 															        echo $resault->description;
@@ -153,29 +172,29 @@
 																	</div>
 																</div>
 															</td>
-												
-															
+
+
 															<td>
 				<form method="get" action="check" >
 					<input type="hidden" value="{{$resault->location}}" name="f">
 															<div class="btn-group">
-									<a href="">				
+									<a href="">
 									<button type="submit" class="btn btn-outline-success" style="margin-left: -8%;" >
 									<i class="fa fa-cloud-download-alt"></i></button>
 									</a>
 				</form>
 
-												<a href="" data-toggle="modal" data-target="#Modal{{$resault->id}}"> 
+												<a href="" data-toggle="modal" data-target="#Modal{{$resault->id}}">
 												   <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button>
 												</a>
 												<a href="" data-toggle="modal" data-target="#ModalReport{{$resault->id}}">
 												<button type="button" class="btn btn-outline-danger" style="margin-left:2%">Report</button>
 												</a>
-															
-										
-								
-																			
-																	
+
+
+
+
+
 
 <div class="modal fade" id="Modal{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
 																	<div class="modal-dialog" role="document">
@@ -215,7 +234,7 @@
 									<input type="hidden" name="_token" value="{{csrf_token()}}" />
 									<input type="hidden" name="user" value="{{$resault->author}}" />
 						<ul class="list-group">
-						    
+
 					<li class="list-group-item">
 							<label for="reportcause">The reason for the Report : </label>
 						<select name="reportcause" id="reportcause" style="font-size:10pt">
@@ -225,11 +244,11 @@
 					<option value="2">User has an inappropriate username </option>
 					<option value="3">User has an inappropriate profile picture </option>
 					<option value="2">User has used an inappropriate title or a description </option>
-							
+
 						</select>
 					</li>
-						
-			
+
+
 
 											 <div class="col-md-6 mb-3">
 													<label for="reportcause">
@@ -240,7 +259,7 @@
 
 						</ul>
 
-			  
+
 																	<div class="modal-footer">
 																		<button type="submit" class="btn btn-primary">Report</button>
 																		<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

@@ -57,9 +57,13 @@ foreach ($files as $file) {
 }
 $fol = $user->followers;
 $followers = explode(',',$fol);
+$nbrfollowers = 0;
+foreach ($followers as $follow) {
+  $nbrfollowers++;
+}
 
 if(!empty($user->username)){
-  return view('userprofile')->with(['user'=>$user,'files'=>$files,'downloads'=>$downloads,'uploads'=>$uploads,'followers'=>$followers]);
+  return view('userprofile')->with(['user'=>$user,'files'=>$files,'downloads'=>$downloads,'uploads'=>$uploads,'followers'=>$followers,'nbrfollowers'=>$nbrfollowers]);
 }else {
 
   return view('errors/404');
