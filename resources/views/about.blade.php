@@ -57,13 +57,12 @@
 
 
     <!-- Header -->
-    <header class="masthead bg-secondary text-white text-center">
+    <header class="bg-secondary text-white text-center">
       <div class="container">
         <img class="img-fluid mb-5 d-block mx-auto" src="{{asset('assets/img/logo1.png')}}" alt="">
-        <hr class="star-light">
-        <h2 class="font-weight-light mb-0">Education web site</h2>
       </div>
     </header>
+
 <style>
 body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: 'Noto Serif', serif; letter-spacing: 0px; font-size: 16px; color: #55595d; font-weight: 400; line-height: 32px; }
 

@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 
-
+@section('content')
 <div class="container">
 	<div class="card-body">
 	<div class="col-md-9 col-md-pull-3">
@@ -255,4 +255,4 @@
     </div>
   </div>
 </div>
-
+@endsection
