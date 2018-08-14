@@ -129,7 +129,7 @@
 
 
 <div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
-     <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+     <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
         <div class="row">
           <div class="card " style="margin-left:auto; margin-right:auto;">
   <div class="modal-content">
@@ -426,7 +426,7 @@
 <!-- modal editing -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+  <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-body p-0">
         <div class="card bg-secondary shadow border-0">
@@ -487,7 +487,7 @@
 <!-- modal checking  for virus -->
 
 <div class="modal fade" id="virusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+  <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-body p-0">
         <div class="card bg-secondary shadow border-0">
@@ -511,7 +511,7 @@
 
 
 <div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
-     <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+     <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
         <div class="row">
           <div class="card " style="margin-left:auto; margin-right:auto;">
   <div class="modal-content">
