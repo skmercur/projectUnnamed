@@ -260,11 +260,11 @@
   <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
 </form>
 
-  <section class="section section-skew" style="padding-top: 30rem;">
+  <section class="section section-skew" style="padding-top: 20rem;">
 
       <div class="container">
 
-        <div class="card card-profile shadow mt--300">
+        <div class="card card-profile shadow">
           <div class="px-4">
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
@@ -511,9 +511,8 @@
 
 
 <div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
-     <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
-        <div class="row">
-          <div class="card " style="margin-left:auto; margin-right:auto;">
+     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    
   <div class="modal-content">
     <div class="modal-body p-0">
       <div class="card bg-secondary shadow border-0">
@@ -572,8 +571,7 @@
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
       </div>
-    </div>
-  </div>
+   
 </div>
 
 @endforeach

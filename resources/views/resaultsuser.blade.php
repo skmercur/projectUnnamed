@@ -22,15 +22,15 @@
 
     @if($user->username != '')
 
-	<div class="col-sm-4" style="padding-top: 20rem;">
+	<div class="col-sm-6" style="padding-top: 12rem;">
    
-        <div class="card card-profile shadow mt--300">
+        <div class="card card-profile shadow">
           <div class="px-4">
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img style="width: 60px;" src="{{ Auth::user()->imgpath}}" class="rounded-circle">
+                    <img style="width: 60px;" src="{{$user->imgpath}}" class="rounded-circle">
                   </a>
                 </div>
               </div>
@@ -47,123 +47,11 @@
               </div>
             </div>
             <div class="text-center mt-5">
-              <h3>{{Auth::user()->firstname}}  {{Auth::user()->lastname}}
-                <span class="font-weight-light">, {{Auth::user()->gender}}</span>
+              <h3>{{$user->firstname}}  {{$user->lastname}}
+                <span class="font-weight-light">, {{$user->gender}}</span>
               </h3>
             
 
-          </div>
-        </div>
-        </div>
-    
-    </div>
-
-	<div class="col-sm-4" style="padding-top: 20rem;">
-   
-        <div class="card card-profile shadow mt--300">
-          <div class="px-4">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
-                  <a href="#">
-                    <img style="width: 60px;" src="{{ Auth::user()->imgpath}}" class="rounded-circle">
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                <div class="card-profile-actions py-4 mt-lg-0">
-                  
-                  <a href="#" class="btn btn-sm btn-default float-right">Follow</a>
-                </div>
-              </div>
-              <div class="col-lg-4 order-lg-1">
-                <div class="card-profile-stats d-flex justify-content-center">
-            
-                </div>
-              </div>
-            </div>
-            <div class="text-center mt-5">
-              <h3>{{Auth::user()->firstname}}  {{Auth::user()->lastname}}
-                <span class="font-weight-light">, {{Auth::user()->gender}}</span>
-              </h3>
-            
-
-         
-          </div>
-        </div>
-        </div>
-    
-    </div>
-
-
-	  <div class="col-sm-4" style="padding-top: 20rem;">
-  
-        <div class="card card-profile shadow mt--300">
-          <div class="px-4">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
-                  <a href="#">
-                    <img style="width: 60px;"  src="{{ Auth::user()->imgpath}}" class="rounded-circle">
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                <div class="card-profile-actions py-4 mt-lg-0">
-               
-                  <a href="#" class="btn btn-sm btn-default float-right">Follow</a>
-                </div>
-              </div>
-              <div class="col-lg-4 order-lg-1">
-                <div class="card-profile-stats d-flex justify-content-center">
-            
-                </div>
-              </div>
-            </div>
-            <div class="text-center mt-5">
-              <h3>{{Auth::user()->firstname}}  {{Auth::user()->lastname}}
-                <span class="font-weight-light">, {{Auth::user()->gender}}</span>
-              </h3>
-            
-
-        
-          </div>
-        </div>
-        </div>
-
-        </div>
-
-	<div class="col-sm-4" style="padding-top: 20rem;">
-   
-        <div class="card card-profile shadow mt--300">
-          <div class="px-4">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
-                  <a href="#">
-                    <img style="width: 60px;" src="{{ Auth::user()->imgpath}}" class="rounded-circle">
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                <div class="card-profile-actions py-4 mt-lg-0">
-                  
-                  <a href="#" class="btn btn-sm btn-default float-right">Follow</a>
-                </div>
-              </div>
-              <div class="col-lg-4 order-lg-1">
-                <div class="card-profile-stats d-flex justify-content-center">
-            
-                </div>
-              </div>
-            </div>
-            <div class="text-center mt-5">
-              <h3>{{Auth::user()->firstname}}  {{Auth::user()->lastname}}
-                <span class="font-weight-light">, {{Auth::user()->gender}}</span>
-              </h3>
-            
-
-          
           </div>
         </div>
         </div>
