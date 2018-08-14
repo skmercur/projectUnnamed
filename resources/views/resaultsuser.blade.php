@@ -5,7 +5,7 @@
 	<div class="card">
 		<div class="card-header">
 			<div class="col-md-9 col-md-pull-3">
-       		 	<h3 class="search-results-count" style="margin-top: 7%;margin-left: 50%;">Search Results for : {{$value}}</h3>
+       		 	<h3 class="search-results-count text-center" style="">Search Results for : {{$value}}</h3>
 			</div>
 		</div>
 	</div>
@@ -72,7 +72,7 @@
 </div>
 </div>
 
-<div class="card">
+<div class="card" style="margin-top: 12%;margin-bottom: 12%">
 						<div class="card-header">
         					<h2> Files : </h2>
 						</div>
@@ -91,7 +91,7 @@
 
 								<h3>{{$resault->title}}</h3>
 
-								<div class="col-md-8 col-md-offset-2">
+								<div class="col-md-12 col-md-offset-2">
 
 									<div class="panel panel-default">
 
