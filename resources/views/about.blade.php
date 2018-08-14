@@ -50,19 +50,6 @@
 
     <link rel="stylesheet" href="{{asset('assets/css/freelancer.min.css')}}">
 
-  </head>
-
-  <body id="page-top">
-
-
-
-    <!-- Header -->
-    <header class="bg-secondary text-white text-center">
-      <div class="container">
-        <img class="img-fluid mb-5 d-block mx-auto" src="{{asset('assets/img/logo1.png')}}" alt="">
-      </div>
-    </header>
-
 <style>
 body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: 'Noto Serif', serif; letter-spacing: 0px; font-size: 16px; color: #55595d; font-weight: 400; line-height: 32px; }
 
@@ -83,187 +70,223 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
 .team-img:hover .social-media { opacity: 1; transition: 2s ease; }
 .team-block.active .social-media { opacity: 1; transition: 2s ease; }
 </style>
-    <!-- About Section -->
-    <section class="bg-primary text-white mb-0" id="about">
-      <div class="container">
-        <h2 class="text-center text-uppercase text-white">About</h2>
-        <hr class="star-light mb-5">
-        <div class="row">
-          <div class="col-lg-4 ml-auto">
-            <p class="lead">The Free Education is a free website where every body can share their knowledge with other people from the globe.</p>
-          </div>
-          <div class="col-lg-4 mr-auto">
-            <p class="lead">Whether you're a student or a teacher,doctor whatever your profession is you can share your knowledge with other people get in contact with people and you can learn too from what other people shared</p>
-          </div>
-        </div>
-        <div class="text-center mt-4">
-          <a class="btn btn-xl btn-outline-light" href="/register">
+  </head>
 
-            Create an Account
-          </a>
+  <body id="page-top">
+
+
+
+    <!-- Header -->
+    <header class="text-white text-center" style="background: #1b1b1b;">
+      <div class="container">
+        <img class="img-fluid " style="padding-top: 80px;" src="{{asset('assets/img/logoanim.gif')}}" alt="">
+      </div>
+    </header>
+
+
+ <section class="section section-lg">
+      <div class="container">
+        <div class="row row-grid justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="display-3">Do you Know this WebSite
+              <span class="text-success">The Free Education</span>
+            </h2>
+            <p class="lead">The Free Education is a free website where every body can share their knowledge with other people from the globe.</p>
+       
+           <p class="lead">Whether you're a student or a teacher,doctor whatever your profession is you can share your knowledge with other people get in contact with people and you can learn too from what other people shared</p>
+            <div class="btn-wrapper">
+              <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-primary mb-3 mb-sm-0">Create an Account</a>
+            </div>
+           
+          </div>
         </div>
       </div>
     </section>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-<div class="content" >
-    <div class="container" style="margin-left:25%;">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb40 text-center">
-                <h1 class="page-title" style="margin-right:26%;">DEVELOPER TEAM</h1>
-                <!-- /.section-title -->
-            </div>
+
+
+
+<section class="section section-lg footer has-cards">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-lg">
+          <div class="col-lg-8">
+            <h2 class="display-3">The Amazing Team</h2>
+            <p class="lead text-muted"></p>
+          </div>
         </div>
         <div class="row">
-
-            <!-- team-block -->
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb30">
-                <div data-aos="fade-up" class="team-block">
-                    <div class="team-img">
-                        <a href="#">
-                            <img src="{{asset('assets/img/Sofiane.jpg')}}" alt="" class="img-fluid">
-                            <div class="social-media">
-                                <a href="https://www.facebook.com/theghost34" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
-                                <br>
-                                <a href="https://twitter.com/SKhoudour" class="social-icon-box"><i class="fab fa-twitter"></i></a>
-
-                            </div>
-                        </a>
-                    </div>
-                    <div class="team-content">
-                        <h4>Sofiane Khoudour </h4>
-                    </div>
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+            <div class="px-4">
+              <img src="{{asset('assets/img/Sofiane.jpg')}}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+              <div class="pt-4 text-center">
+                <h5 class="title">
+                  <span class="d-block mb-1">Sofiane Khoudour</span>
+                  <small class="h6 text-muted">Marketing Strategist</small>
+                </h5>
+                <div class="mt-3">
+                  <a href="https://twitter.com/SKhoudour" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="https://www.facebook.com/theghost34" class="btn btn-warning btn-icon-only rounded-circle">
+                    <i class="fa fa-facebook"></i>
+                  </a>
                 </div>
+              </div>
             </div>
-            <!-- /.team-block -->
-            <!-- team-block -->
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb30">
-                <div data-aos="fade-up" class="team-block">
-                    <div class="team-img">
-                        <a href="#">
-                            <img src="{{asset('assets/img/Hichem.jpg')}}" alt="" class="img-fluid">
-                            <div class="social-media">
-                                <a href="https://www.facebook.com/hichem.merniz" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
-                                <br>
-                                <a href="https://twitter.com/hichemobey" class="social-icon-box"><i class="fab fa-twitter"></i></a>
-
-                            </div>
-                        </a>
-                    </div>
-                    <div class="team-content">
-                        <h4>Hichem Merniz</h4>
-                    </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+            <div class="px-4">
+              <img src="{{asset('assets/img/Walid.jpg')}}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+              <div class="pt-4 text-center">
+                <h5 class="title">
+                  <span class="d-block mb-1">Oualid Mecili</span>
+                  <small class="h6 text-muted">Web Developer</small>
+                </h5>
+                <div class="mt-3">
+                  <a href="https://twitter.com/Mr_VirWus" class="btn btn-primary btn-icon-only rounded-circle">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="https://www.facebook.com/Mr.VirWus" class="btn btn-primary btn-icon-only rounded-circle">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                
                 </div>
+              </div>
             </div>
-            <!-- /.team-block -->
-            <!-- team-block -->
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb30">
-                <div data-aos="fade-up" class="team-block">
-                    <div class="team-img">
-                        <a href="#">
-                            <img src="{{asset('assets/img/Walid.jpg')}}" alt="" class="img-fluid">
-                            <div class="social-media">
-                                <a href="https://www.facebook.com/Mr.VirWus" class="social-icon-box"><i class="fab fa-facebook-f"></i></a>
-                                <br>
-                                <a href="https://twitter.com/Mr_VirWus" class="social-icon-box"><i class="fab fa-twitter"></i></a>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="team-content">
-                        <h4>Walid Msili</h4>
-                    </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+            <div class="px-4">
+              <img src="{{asset('assets/img/Hichem.jpg')}}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+              <div class="pt-4 text-center">
+                <h5 class="title">
+                  <span class="d-block mb-1">Hichem Merniz</span>
+                  <small class="h6 text-muted">UI/UX Designer</small>
+                </h5>
+                <div class="mt-3">
+                  <a href="https://twitter.com/hichemobey" class="btn btn-info btn-icon-only rounded-circle">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="https://www.facebook.com/hichem.merniz" class="btn btn-info btn-icon-only rounded-circle">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+               
                 </div>
-               <!-- /.team-block -->
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        </div><div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mt-4">
 
-              </div></div>
-    </div>
+
+
 
     <!-- Contact Section -->
     <section id="contact">
       <div class="container">
         <h2 class="text-center text-uppercase text-secondary mb-0">Contact US</h2>
-        <hr class="star-dark mb-5">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-            <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-            <form action="sendcontact" method="post" id="contactForm" >
+    <br>
+
+   <section class="section section-lg pt-lg-0 section-contact-us">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="card bg-gradient-secondary shadow">
+              <div class="card-body p-lg-5">
+                <h4 class="mb-1">Want to work with us?</h4>
+                <p class="mt-0">Your project is very important to us.</p>
+                <form action="sendcontact" method="post" id="contactForm" >
               @CSRF
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Name</label>
-                  <input class="form-control" id="name" type="text" placeholder="Name" name="name" required="required" data-validation-required-message="Please enter your name.">
-                  <p class="help-block text-danger"></p>
+                <div class="form-group mt-5">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-user-run"></i></span>
+                    </div>
+                   <input class="form-control" id="name" type="text" placeholder="Name" name="name" required="required" data-validation-required-message="Please enter your name.">
+                  </div>
                 </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Email Address</label>
-                  <input class="form-control" id="email" type="email" placeholder="Email Address" name="email" required="required" data-validation-required-message="Please enter your email address.">
-                  <p class="help-block text-danger"></p>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" id="email" type="email" placeholder="Email Address" name="email" required="required" data-validation-required-message="Please enter your email address.">
+                  </div>
                 </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Phone Number</label>
-                  <input class="form-control" id="phone" type="tel" placeholder="Phone Number please add the country code" required="required" name="phonenumber" data-validation-required-message="Please enter your phone number.">
-                  <p class="help-block text-danger"></p>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                   <input class="form-control" id="phone" type="tel" placeholder="Phone Number please add the country code" required="required" name="phonenumber" data-validation-required-message="Please enter your phone number.">
+                  </div>
                 </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Message</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" name="text" data-validation-required-message="Please enter a message."></textarea>
-                  <p class="help-block text-danger"></p>
+
+                <div class="form-group mb-4">
+                     <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" name="text" data-validation-required-message="Please enter a message."></textarea>
                 </div>
+                <div>
+                  <button type="button" class="btn btn-default btn-round btn-block btn-lg">Send Message</button>
+                </div>
+          </form>
+
+
               </div>
-              <br>
-              <div id="success"></div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
+      
       </div>
     </section>
 
 
 
 
-
-
-    <!-- Footer -->
-    <footer class="footer text-center">
+<section class="section section-lg pt-0">
       <div class="container">
-        <div class="row">
-
-          <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Around the Web</h4>
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.facebook.com/thefreeedu">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://twitter.com/TheFreeEducati1">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h4 class="text-uppercase mb-4">About The free Education</h4>
-            <p class="lead mb-0">The free Education is a web site for sharing knowledge and learning new things
-              <a href="https://thefreeedu.com">Start using The free Education</a>.</p>
+        <div class="card bg-gradient-info shadow-lg border-0">
+          <div class="p-5">
+            <div class="row align-items-center">
+              <div class="col-lg-12">
+                <h3 class="text-white text-center">The Free Education</h3>
+                <p class="lead text-white mt-3 text-center">The free Education is a web site for sharing knowledge and learning new things</p>
+                   <a href="/" class="btn btn-lg btn-block btn-white">Start</a>
+              </div>
+             
+            </div>
           </div>
         </div>
       </div>
-    </footer>
+    </section>
+
+<footer class="footer has-cards">
+
+ <div class="container">
+ <div class="row row-grid align-items-center my-md">
+        <div class="col-lg-6">
+          <h3 class="text-primary font-weight-light mb-2">Thank you for supporting us!</h3>
+          <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
+        </div>
+        <div class="col-lg-6 text-lg-center btn-wrapper">
+          <a target="_blank" href="https://twitter.com/creativetim" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://www.facebook.com/creativetim" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us">
+            <i class="fa fa-facebook-square"></i>
+          </a>
+          <a target="_blank" href="https://dribbble.com/creativetim" class="btn btn-neutral btn-icon-only btn-dribbble btn-lg btn-round" data-toggle="tooltip" data-original-title="Follow us">
+            <i class="fa fa-dribbble"></i>
+          </a>
+          <a target="_blank" href="https://github.com/creativetimofficial" class="btn btn-neutral btn-icon-only btn-github btn-round btn-lg" data-toggle="tooltip" data-original-title="Star on Github">
+            <i class="fa fa-github"></i>
+          </a>
+        </div>
+      </div>
+</div>
+</footer>
+
 
     <div class="copyright py-4 text-center text-white">
       <div class="container">
