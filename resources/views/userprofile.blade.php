@@ -54,7 +54,7 @@
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">
                       <div>
-                        <span class="heading">30</span>
+                        <span class="heading">{{$nbrfollowers}}</span>
                         <span class="description">Followers</span>
                       </div>
                   <div>
@@ -246,7 +246,7 @@
                      }
                       }
                    });
-                },8000);
+                },500);
 
 
 
@@ -284,7 +284,7 @@
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">
                   <div>
-                    <span class="heading">30</span>
+                    <span class="heading">{{$nbrfollowers}}</span>
                     <span class="description">Followers</span>
                   </div>
                   <div>
@@ -309,9 +309,40 @@
 
 
               <div class="col-md-12">
+                @if((Auth::user()->nfiles > 0) && (Auth::user()->tsize > 0) )
             <button style="margin-top: 30px; margin-left: auto;
     margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form2"><i class="fas fa-cloud-upload-alt fa-3x"></i></button>
+    @else
 
+    <button style="margin-top: 30px; margin-left: auto;
+margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#RunOutSpaceModal"><i class="fas fa-cloud-upload-alt fa-3x"></i></button>
+
+
+<div class="modal fade" id="RunOutSpaceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="card bg-secondary shadow border-0">
+
+
+      <div class="modal-body">
+        <div class="well">
+        <p> You have exceeded your account limits </p>
+        <p> You have <b>{{100 - Auth::user()->nfiles}}</b> files and <b>{{100 - Auth::user()->tsize}} mb</b>  of files  </p>
+        <p> please contact us at support@thefreeedu.com </p>
+
+
+      </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+@endif
       <button style="margin-top: 30px; margin-left: auto;
     margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form3"><i class="fas fa-file fa-3x"></i></button>
            <div class="nav-item">
@@ -512,7 +543,7 @@
 
 <div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    
+
   <div class="modal-content">
     <div class="modal-body p-0">
       <div class="card bg-secondary shadow border-0">
@@ -571,7 +602,7 @@
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
       </div>
-   
+
 </div>
 
 @endforeach

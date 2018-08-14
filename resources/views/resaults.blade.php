@@ -2,12 +2,14 @@
 
 
 @section('content')
-<div class="container">
-	<div class="card-body">
-	<div class="col-md-9 col-md-pull-3">
-        <h3 class="search-results-count" style="margin-top: 7%;margin-left: 50%;">Search Results for {{$value}}</h3>
+<div class="container" style="margin-top:3%">
+	<div class="card">
+		<div class="card-header">
+			<div class="col-md-9 col-md-pull-3">
+       		 	<h3 class="search-results-count text-center" style="">Search Results for : {{$value}}</h3>
 			</div>
 		</div>
+	</div>
 
 
 
@@ -232,7 +234,7 @@
       <div class="modal-body">
       <form action="sendcontact" method="post" id="contactForm" >
               @CSRF
-           
+
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Message</label>
@@ -242,14 +244,14 @@
               </div>
               <br>
               <div></div>
-              
-            </form> 
+
+            </form>
       </div>
-	  
+
       <div class="modal-footer">
-	  
+
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		
+
                 <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
       </div>
     </div>
