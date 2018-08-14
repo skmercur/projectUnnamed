@@ -79,11 +79,11 @@
 
 <div class="card-body">
 
+<div class="container">
+		<div class="row">
 <section class="search-result-item">
 					
-	<div class="container">
-		
-		<div class="row">
+	
 
 				@foreach($resaults as $resault)
 
@@ -270,9 +270,10 @@
 
 		</section>
 @endforeach
-</div>
-</div>
+
 </section>
+</div>
+</div>
 </div>
 </div>
 @endsection

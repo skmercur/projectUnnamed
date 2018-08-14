@@ -11,27 +11,41 @@
     <title>The Free Education - About</title>
 
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" type="text/javascript"> </script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" type="text/javascript"></script>
 
-    <!-- Custom fonts for this template -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" type="text/javascript"></script>
 
+<script src="{{ asset('assets/js/jquery.js') }}" type="text/javascript"></script>
 
+<script src="{{ asset('assets/js/iziToast.min.js') }}" type="text/javascript"></script>
 
-    <link rel="stylesheet" href="{{asset('assets/vendor/magnific-popup/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/font-awesome/css/font-awesome.min.css')}}">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <script src="{{asset('assets/js/headroom.min.js')}}"></script>
 
-    <!-- Plugin CSS -->
+ <script src="{{asset('assets/js/argon.js')}}"></script>
 
-    <link rel="stylesheet" href="{{asset('assets/vendor/magnific-popup/magnific-popup.css')}}">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
+    <!-- icons -->
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   
+    <!-- Styles -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" >
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="{{ asset('assets/css/simple-sidebar.css') }}" rel="stylesheet">
+    
+    <link href="{{ asset('assets/css/argon.css') }}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}" >
+      
     <!-- Custom styles for this template -->
 
     <link rel="stylesheet" href="{{asset('assets/css/freelancer.min.css')}}">
@@ -40,14 +54,12 @@
 
   <body id="page-top">
 
-    <!-- Navigation -->
 
 
     <!-- Header -->
-    <header class="masthead bg-primary text-white text-center">
+    <header class="masthead bg-secondary text-white text-center">
       <div class="container">
-        <img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png" alt="">
-        <h1 class="text-uppercase mb-0">The Free Education</h1>
+        <img class="img-fluid mb-5 d-block mx-auto" src="{{asset('assets/img/logo1.png')}}" alt="">
         <hr class="star-light">
         <h2 class="font-weight-light mb-0">Education web site</h2>
       </div>
