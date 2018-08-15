@@ -97,7 +97,7 @@ $validator = Validator::make($fileArray, $rules);
 
 
  if($validator->fails()){
-   echo "sorry your file is not supported";
+   return redirect('/'.$username.'?v='.base64_encode('555'));
    //Move Uploaded File
 
  }else {
@@ -125,10 +125,10 @@ $file->move($destinationPath,$hash);
      $js = json_decode($result, true);
 
    } else {  // Error occured
-     // return back();
+      return redirect('/'.$username.'?v='.base64_encode('100'));
    }
    curl_close ($ch);
-sleep(20);
+sleep(5);
 
    $post = array('apikey' => '7e7da6eb91e8899775e5fbe0d664639943001997d061536489882b2142f36023','resource'=>$js['resource']);
    $ch = curl_init();
@@ -142,13 +142,13 @@ sleep(20);
 
    $result = curl_exec ($ch);
    $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-   print("status = $status_code\n");
+
    if ($status_code == 200) { // OK
      $js = json_decode($result, true);
-     echo $js['positives'];
+if (array_key_exists('positives',$js)){
      if($js['positives'] > 0){
       unlink($destinationPath.$hash);
- return redirect('/'.$username.'?v='.base64_encode($username));
+ return redirect('/'.$username.'?v='.base64_encode('444'));
 }else{
 
 
@@ -172,9 +172,14 @@ sleep(20);
   DB::table('users')->where('username',$username)->update(['tsize'=>$newsize,'nfiles'=>$newnumber]);
   $this->notify($request);
 }
+
    } else {  // Error occured
-    echo "error";
+      unlink($destinationPath.$hash);
+  return redirect('/'.$username.'?v='.base64_encode('100'));
    }
+ }else{
+   return redirect('/'.$username.'?v='.base64_encode('100'));
+ }
    curl_close ($ch);
 
 
@@ -184,7 +189,7 @@ sleep(20);
    // DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.'/'.$file->getClientOriginalName()]);
    //  DB::table('users')->where('username',$user)->update(['namesp' =>$namespi]);
 }
- return redirect('/'.$username)->with('virus',0);
+ return redirect('/'.$username.'?v='.base64_encode('10'));
 }else{
   return back();
 }

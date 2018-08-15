@@ -259,7 +259,72 @@
   <input type="hidden" name="code" value="$user->code" />
   <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
 </form>
+@if(!empty(Request::query('v')))
+<?php
+$va = base64_decode(Request::query('v'));
+switch($va){
 
+case 555:{
+
+?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Sorry!</strong> The file you are trying to upload is not currently supported.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<?php
+break;
+}
+
+case 100:{
+
+?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Sorry!</strong> There is a connection error please try again.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<?php
+break;
+}
+case 444:{
+
+?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Warning!</strong> We have detected a Malware in the files you are trying to upload
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<?php
+break;
+}
+
+case 10:{
+
+?>
+<div class="alert  alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> your file has been successfully uploaded
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<?php
+break;
+}
+
+
+}
+
+ ?>
+
+@endif
   <section class="section section-skew" style="padding-top: 20rem;">
 
       <div class="container">

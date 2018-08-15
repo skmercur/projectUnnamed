@@ -28,13 +28,13 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- icons -->
-    
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   
+
     <!-- Styles -->
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" >
@@ -42,11 +42,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="{{ asset('assets/css/simple-sidebar.css') }}" rel="stylesheet">
-    
+
     <link href="{{ asset('assets/css/argon.css') }}" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}" >
-      
+
 
 
 
@@ -78,11 +78,11 @@
                     <img class="rounded-circle" src="{{ Auth::user()->imgpath}}" alt="" style="background-color: white;  height: 40px;">
                   </a>
                 </div>
-                        
+
                         </li>
 
                            <li class="nav-item dropdown">
- 
+
                                <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->lastname }} <span class="caret"></span>
                                  </a>
 
@@ -100,11 +100,14 @@
                             </li>
                         @endguest
     </ul>
+    @guest
+
+    @else
     <form class="form-inline my-2 my-lg-0 justify-content-center" method="get" action="usearch">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" name="q">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-       
+       @endguest
   </div>
 </nav>
 
@@ -128,7 +131,7 @@
   TeamDZ
 </nav>
 
-   
+
 
 
 

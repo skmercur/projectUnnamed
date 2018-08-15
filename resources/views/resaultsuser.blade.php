@@ -67,7 +67,7 @@ $followers = explode(',',$user->followers);
             </div>
             <div class="text-center mt-5">
               <a href="/{{$user->username}}"><h3>{{$user->firstname}}  {{$user->lastname}}
-                <span class="font-weight-light">, {{$user->gender}}</span>
+                <span class="font-weight-light">, {{$user->namespi}}</span>
               </h3></a>
 
 
