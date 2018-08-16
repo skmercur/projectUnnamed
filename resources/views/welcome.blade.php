@@ -4,13 +4,13 @@
 <style type="text/css">
   input[type="text"] {
   height: 60px;
-  font-size: 55px;
+  font-size: 30px;
   display: inline-block;
   font-family: "Lato";
   font-weight: 100;
   border: none;
   outline: none;
-  color: #555;
+  color: black;
   padding: 3px;
   padding-right: 60px;
   width: 0px;
@@ -47,7 +47,7 @@ input[type="submit"] {
   right: 20%;
   z-index: 2;
   cursor: pointer;
-  opacity: 0.4;
+  opacity: 1;
   cursor: pointer;
   transition: opacity .4s ease;
 }
@@ -66,7 +66,7 @@ input[type="submit"]:hover {
         <div class="col-sm-12">
                 <img src="{{asset('assets/img/logo1.png')}}" class="img-fluid" style="margin-left: auto;
   margin-right: auto;
-  display: block;max-height: 360px;">
+  display: block;max-height: 260px;">
         </div>
        <div class="input-group mb-12 center">
 
@@ -87,7 +87,7 @@ input[type="submit"]:hover {
         <div class="col-sm-12">
                 <img src="{{asset('assets/img/logo1.png')}}" class="img-fluid" style="margin-left: auto;
   margin-right: auto;
-  display: block;max-height: 360px;">
+  display: block;max-height: 260px;">
         </div>
        <div class="input-group mb-12 center">
 
