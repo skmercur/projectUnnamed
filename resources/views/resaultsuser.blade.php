@@ -248,7 +248,7 @@ $followers = explode(',',$user->followers);
 						</select>
 					</li>
 
-
+</ul>
 
 											 <div class="col-md-6 mb-3">
 													<label for="reportcause">
@@ -257,7 +257,7 @@ $followers = explode(',',$user->followers);
 														</textarea>
 											</div>
 
-						</ul>
+						
 
 
 																	<div class="modal-footer">
