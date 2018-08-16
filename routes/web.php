@@ -50,6 +50,8 @@ Route::get('/tuto',function(){
   return view('index');
 });
 Route::post('/getnoti', 'PageController@getNotification');
+Route::post('/getnotiNum', 'PageController@getNotificationNumber');
+Route::post('/removenoti', 'PageController@removenoti');
 Route::post('/newf', 'PageController@newFollower');
 Route::post('/rmf', 'PageController@unfollow');
 Route::post('/resetpassword', 'emailController@resetpass');

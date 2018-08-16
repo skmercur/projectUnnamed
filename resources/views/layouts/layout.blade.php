@@ -107,7 +107,7 @@
   transition: all 100ms ease-in-out;
   transition-delay: 300ms;
       left: 18px;
-    
+
 }
 .page-container.sidebar-collapsed-back .logo {
   width: 100%;
@@ -133,7 +133,7 @@
 .page-container.sidebar-collapsed #menu span {
   opacity: 0;
   transition: all 50ms linear;
-  
+
 }
 
 .page-container.sidebar-collapsed-back #menu span {
@@ -287,7 +287,7 @@
 .logo-name h1 {
     font-size: 15pt;
     color: white;
-    
+
     font-weight: 700;
     text-decoration: none;
 }
@@ -316,7 +316,7 @@ span.logo-clr{
 .meter > span {
     display: block;
     height: 100%;
-       
+
     position: relative;
     overflow: hidden;
 }
@@ -324,7 +324,7 @@ span.logo-clr{
     content: "";
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
-    
+
     overflow: hidden;
 }
 
@@ -372,7 +372,7 @@ span.logo-clr{
 }
 li.dropdown.head-dpdn {
     display: inline-block;
-    padding: 1em 0;    
+    padding: 1em 0;
     float: left;
 }
 li.dropdown.head-dpdn a.dropdown-toggle {
@@ -403,7 +403,7 @@ ul.dropdown-menu li {
     border-radius:2em;
     -webkit-border-radius:2em;
     -moz-border-radius:2em;
-    -o-border-radius:2em;   
+    -o-border-radius:2em;
     text-align:center;
     display: inline-block;
     position: absolute;
@@ -470,7 +470,7 @@ i.fa.fa-tasks{
     border-bottom:1px solid rgba(0, 0, 0, 0.05);
     margin-bottom: 8px;
 }
-.notification_header h3{    
+.notification_header h3{
     color:#6A6A6A;
     font-size:12px;
     font-weight:600;
@@ -489,7 +489,7 @@ i.fa.fa-tasks{
 .notification_bottom a:hover {
     color:#6164C1;
 }
-.notification_bottom h3 a{  
+.notification_bottom h3 a{
     color: #717171;
     font-size:12px;
     border-radius:0;
@@ -497,7 +497,7 @@ i.fa.fa-tasks{
     padding:0;
     text-align:center;
 }
-.notification_bottom h3 a:hover{    
+.notification_bottom h3 a:hover{
     color:#4A4A4A;
     text-decoration:underline;
     background:none;
@@ -628,7 +628,7 @@ i.icon_6{
 }
 .progress .bar {
         z-index: 2;
-        height:15px; 
+        height:15px;
         font-size: 12px;
         color: white;
         text-align: center;
@@ -644,19 +644,19 @@ i.icon_6{
     }
 .progress-striped .yellow{
     background:#f0ad4e;
-} 
+}
 .progress-striped .green{
     background:#5cb85c;
-} 
+}
 .progress-striped .light-blue{
     background:#4F52BA;
-} 
+}
 .progress-striped .red{
     background:#d9534f;
-} 
+}
 .progress-striped .blue{
     background:#428bca;
-} 
+}
 .progress-striped .orange {
     background:#e94e02;
 }
@@ -811,16 +811,17 @@ ul.dropdown-menu.drp-mnu li {
 
 <script>
         $(document).ready(function() {
+
              var navoffeset=$(".header-main").offset().top;
              $(window).scroll(function(){
-                var scrollpos=$(window).scrollTop(); 
+                var scrollpos=$(window).scrollTop();
                 if(scrollpos >=navoffeset){
                     $(".header-main").addClass("fixed");
                 }else{
                     $(".header-main").removeClass("fixed");
                 }
              });
-             
+
         });
         </script>
 
@@ -841,12 +842,12 @@ ul.dropdown-menu.drp-mnu li {
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="header-left">
                             <div class="logo-name text-white">
-                                    <a href="/"> <h1>The Free Education</h1> 
+                                    <a href="/"> <h1>The Free Education</h1>
                                     <!--<img  class="rounded-circle" id="logo" height="120" src="{{asset('assets/img/logo1.png')}}" alt="Logo"/>-->
-                                  </a>                             
+                                  </a>
                             </div>
                             <!--search-box-->
-                       
+
                          </div>
 
   <!--<a class="navbar-brand mb-0 h1" href="/">The Free Education</a>-->
@@ -867,7 +868,7 @@ ul.dropdown-menu.drp-mnu li {
                             </li>
                         @else
 
-<!-- 
+<!--
       <li class="header-right profile_details_left dropdown head-dpdn">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
                                         <ul class="dropdown-menu">
@@ -882,43 +883,129 @@ ul.dropdown-menu.drp-mnu li {
                                                 <p>Lorem ipsum dolor</p>
                                                 <p><span>1 hour ago</span></p>
                                                 </div>
-                                               <div class="clearfix"></div> 
+                                               <div class="clearfix"></div>
                                             </a></li>
-                                      
-                                       
+
+
                                             <li>
                                                 <div class="notification_bottom">
                                                     <a href="#">See all messages</a>
-                                                </div> 
+                                                </div>
                                             </li>
                                         </ul>
                                     </li>
                             -->
+                            <script type="text/javascript">
+var x = null;
+var j =0;
 
+                            setInterval(function getNotifiNumber(){
+                              $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                            });
+                            var form = $("#theFormNoti");
+                                       $.ajax({
+
+                                          type:'POST',
+                                          url:'/getnotiNum',
+                                          data:form.serialize(),
+                                          success:function(data){
+
+                                           $('#numberNoti').text(data.numberNoti);
+
+                                        }
+                                       });
+                                    },500);
+function removenoti(id){
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+var form = $("#theFormNoti");
+
+
+           $.ajax({
+
+              type:'POST',
+              url:'/removenoti',
+              data:form.serialize()+'&id='+id,
+              success:function(data){
+getNotifi();
+}
+
+});
+}
+
+                            function getNotifi(){
+                              if(j == 0){
+                              $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                            });
+                            var form = $("#theFormNoti");
+                                       $.ajax({
+
+                                          type:'POST',
+                                          url:'/getnotiNum',
+                                          data:form.serialize(),
+                                          success:function(data){
+
+                                            for (var k in data.resaults) {
+if(x !== data.resaults[k].message){
+
+                                           $("#notifications").append('<li class="notificationAdded"><a href="#">'+
+                                              ' <div class="user_img"><img src="'+data.resaults[k].improfile+'" alt=""></div>'+
+                                            '  <div class="notification_desc">'+
+                                               data.resaults[k].message+
+                                               '<p><span>'+data.resaults[k].created_at+'</span></p>'+
+                                               '</div>'+
+                                             '<div class="clearfix"></div>'+
+                                            '</a>'+
+          '<a href="#" onclick="removenoti('+data.resaults[k].id+')"> <i class="material-icons">remove_circle_outline</i></a>'+
+        ' </li>');
+x =data.resaults[k].message;
+
+}else{
+k++;
+
+}
+                                          }
+                                        }
+                                       });
+                                       j++;
+                                     }else{
+                                       j = 0;
+                                       $(".dropdown-menu .notificationAdded").remove();
+                                     }
+                                    };
+
+
+
+
+
+
+                            </script>
+
+                            <form method="post" id="theFormNoti">
+                              <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                              <input type="hidden" name="code" value="$user->code" />
+                              <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+                            </form>
          <li class="header-right profile_details_left dropdown head-dpdn">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">3</span></a>
-                                        <ul class="dropdown-menu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="getNotifi()"><i class="fa fa-bell"></i><span id="numberNoti" class="badge blue">0</span></a>
+                                        <ul class="dropdown-menu" id="notifications">
                                             <li>
                                                 <div class="notification_header">
-                                                    <h3>You have 3 new notification</h3>
+                                                    <h3>Your notification</h3>
                                                 </div>
                                             </li>
-                                            <li><a href="#">
-                                                <div class="user_img"><img src="images/p5.png" alt=""></div>
-                                               <div class="notification_desc">
-                                                <p>Lorem ipsum dolor</p>
-                                                <p><span>1 hour ago</span></p>
-                                                </div>
-                                              <div class="clearfix"></div>  
-                                             </a></li>
-                                   
-                                             <li>
-                                                <div class="notification_bottom">
-                                                    <a href="#">See all notifications</a>
-                                                </div> 
-                                            </li>
+
                                         </ul>
-                                    </li>   
+                                    </li>
 
            <!--  <li class="header-right profile_details_left dropdown head-dpdn">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">9</span></a>
@@ -931,21 +1018,21 @@ ul.dropdown-menu.drp-mnu li {
                                             <li><a href="#">
                                                 <div class="task-info">
                                                     <span class="task-desc">Database update</span><span class="percentage">40%</span>
-                                                    <div class="clearfix"></div>    
+                                                    <div class="clearfix"></div>
                                                 </div>
                                                 <div class="progress progress-striped active">
                                                     <div class="bar yellow" style="width:40%;"></div>
                                                 </div>
                                             </a></li>
-                                      
-                                
+
+
                                             <li>
                                                 <div class="notification_bottom">
                                                     <a href="#">See all pending tasks</a>
-                                                </div> 
+                                                </div>
                                             </li>
                                         </ul>
-                                    </li> 
+                                    </li>
  -->
 
 
@@ -966,7 +1053,7 @@ ul.dropdown-menu.drp-mnu li {
                 </div>
 
                         </li>
-                        
+
 
                            <li class="nav-item dropdown">
 

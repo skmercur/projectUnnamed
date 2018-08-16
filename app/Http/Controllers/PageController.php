@@ -30,21 +30,46 @@ public function getNotification(Request $request)
 $resaults = DB::table('notifications')->where('target',$user)->where('seen',0)->orderBy('created_at', 'desc')->get();
 $resaultss = $resaults;
 foreach ($resaultss as $resault) {
-DB::table('notifications')->where('target',$user)->where('seen',0)->delete();
+DB::table('notifications')->where('target',$user)->where('seen',0)->update(['seen'=>1]);
 }
 return response()->json(array('resaults'=>$resaults),200);
+}
 
 
+public function getNotificationNumber(Request $request)
+{
+  $user = $request->username;
+  $code = $request->code;
 
 
+$resaults = DB::table('notifications')->where('target',$user)->orderBy('created_at', 'desc')->get();
+$numberNoti = $resaults->count();
+$resaultss = $resaults;
+// foreach ($resaultss as $resault) {
+// DB::table('notifications')->where('target',$user)->where('seen',0)->update(['seen'=>1]);
+// }
+return response()->json(array('resaults'=>$resaults,'numberNoti'=>$numberNoti),200);
 
+}
+public function removenoti(Request $request)
+{
+  $user = $request->username;
+  $code = $request->code;
+$id = $request->id;
 
+ DB::table('notifications')->where('target',$user)->where('id',$id)->delete();
+
+// foreach ($resaultss as $resault) {
+// DB::table('notifications')->where('target',$user)->where('seen',0)->update(['seen'=>1]);
+// }
+return response()->json(array('status'=>'removed'),200);
 
 }
 
 
     public function getPage(Request $request)
    {
+
      $value = $request['slug'];
 
 $user =   DB::table('users')->where('username',$value)->first();
