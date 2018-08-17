@@ -233,7 +233,7 @@
                   <div class="row my-4">
                     <div class="col-12">
                       <div class="custom-control custom-control-alternative custom-checkbox">
-                        <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                        <input class="custom-control-input" id="customCheckRegister" type="checkbox" required>
                         <label class="custom-control-label" for="customCheckRegister">
                           <span>I agree with the
                             <a href="#">Privacy Policy</a>

@@ -27,7 +27,7 @@ public function getNotification(Request $request)
   $code = $request->code;
 
 
-$resaults = DB::table('notifications')->where('target',$user)->where('seen',0)->orderBy('created_at', 'desc')->get();
+$resaults = DB::table('notifications')->where('target',$user)->where('seen',0)->orderBy('created_at', 'desc')->limit(5)->get();
 $resaultss = $resaults;
 foreach ($resaultss as $resault) {
 DB::table('notifications')->where('target',$user)->where('seen',0)->update(['seen'=>1]);
@@ -42,12 +42,10 @@ public function getNotificationNumber(Request $request)
   $code = $request->code;
 
 
-$resaults = DB::table('notifications')->where('target',$user)->orderBy('created_at', 'desc')->get();
+$resaults = DB::table('notifications')->where('target',$user)->where('seen',0)->orderBy('created_at', 'desc')->limit(5)->get();
 $numberNoti = $resaults->count();
 $resaultss = $resaults;
-// foreach ($resaultss as $resault) {
-// DB::table('notifications')->where('target',$user)->where('seen',0)->update(['seen'=>1]);
-// }
+
 return response()->json(array('resaults'=>$resaults,'numberNoti'=>$numberNoti),200);
 
 }
