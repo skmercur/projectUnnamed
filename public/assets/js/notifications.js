@@ -61,16 +61,16 @@ if(z === 0){
 
 if(x !== data.resaults[k].message){
 
-                                           $("#notifications").append('<li class="notificationAdded"> <div class="row">'+
-                                              ' <div class="user_img"><div class="col-xs-6 col-md-4"><img src="'+data.resaults[k].improfile+'" alt=""></div></div>'+
-                                            '  <div class="notification_desc">'+
+                                           $("#notifications").append('<li class="notificationAdded"><div class="row">'+
+                                              '<div class="col" style="margin-left:5px"><div class="user_img"><img src="'+data.resaults[k].improfile+'" alt="" style= "max-height:50px; max-width:50px"></div>'+
+                                            '</div> <div class="col-5"> <p style="font-size:8pt">  '+
                                                data.resaults[k].message+
-                                               '<a href="#" onclick="removenoti('+data.resaults[k].id+')"> <i class="material-icons">remove_circle_outline</i></a>  <p><span>'+data.resaults[k].created_at+'</span></p>  '+
-                                               '</div>'+
+                                               '</p> </div><div class="col"><a href="#" onclick="removenoti('+data.resaults[k].id+')"> <i class="material-icons">remove_circle_outline</i></a> </div> </div> <div class="row"><div class="col"> <div class="notification_bottom"> <small>'+data.resaults[k].created_at+'</small></div> </div> </div>  '+
+                                               ''+
                                              ''+
                                             ''+
           ''+
-        ' </div></div></li>');
+        ' </li>');
 x =data.resaults[k].message;
 
 }else{
