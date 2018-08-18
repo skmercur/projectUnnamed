@@ -61,16 +61,16 @@ if(z === 0){
 
 if(x !== data.resaults[k].message){
 
-                                           $("#notifications").append('<li class="notificationAdded"><a href="#">'+
-                                              ' <div class="user_img"><img src="'+data.resaults[k].improfile+'" alt=""></div>'+
+                                           $("#notifications").append('<li class="notificationAdded"> <div class="row">'+
+                                              ' <div class="user_img"><div class="col-xs-6 col-md-4"><img src="'+data.resaults[k].improfile+'" alt=""></div></div>'+
                                             '  <div class="notification_desc">'+
                                                data.resaults[k].message+
-                                               '<p><span>'+data.resaults[k].created_at+'</span></p>'+
+                                               '<a href="#" onclick="removenoti('+data.resaults[k].id+')"> <i class="material-icons">remove_circle_outline</i></a>  <p><span>'+data.resaults[k].created_at+'</span></p>  '+
                                                '</div>'+
-                                             '<div class="clearfix"></div>'+
-                                            '</a>'+
-          '<a href="#" onclick="removenoti('+data.resaults[k].id+')"> <i class="material-icons">remove_circle_outline</i></a>'+
-        ' </li>');
+                                             ''+
+                                            ''+
+          ''+
+        ' </div></div></li>');
 x =data.resaults[k].message;
 
 }else{

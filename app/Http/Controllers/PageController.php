@@ -72,20 +72,21 @@ return response()->json(array('status'=>'removed'),200);
 
 $user =   DB::table('users')->where('username',$value)->first();
 $files = DB::table('files')->where('author',$value)->get();
-$downloads=0;
-$uploads =0;
-foreach ($files as $file) {
-  $uploads++;
-  $downloads = $downloads + $file->downloads;
-}
-$fol = $user->followers;
-$followers = explode(',',$fol);
-$nbrfollowers = 0;
-foreach ($followers as $follow) {
-  $nbrfollowers++;
-}
+
 
 if(!empty($user->username)){
+  $downloads=0;
+  $uploads =0;
+  foreach ($files as $file) {
+    $uploads++;
+    $downloads = $downloads + $file->downloads;
+  }
+  $fol = $user->followers;
+  $followers = explode(',',$fol);
+  $nbrfollowers = 0;
+  foreach ($followers as $follow) {
+    $nbrfollowers++;
+  }
   return view('userprofile')->with(['user'=>$user,'files'=>$files,'downloads'=>$downloads,'uploads'=>$uploads,'followers'=>$followers,'nbrfollowers'=>$nbrfollowers]);
 }else {
 

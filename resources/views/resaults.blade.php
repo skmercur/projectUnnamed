@@ -104,7 +104,7 @@
 														</button>
 													</div>
 													<div class="modal-body">
-												 <script data-cfasync="false" type="text/javascript" src="https://www.predictivdisplay.com/a/display.php?r=2100275"></script>
+												<iframe data-aa='977909' src='//acceptable.a-ads.com/977909?size=Adaptive&background_color=7f7f7f&title_color=d6d6d6' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
 													</div>
 													<div class="modal-footer">
 
@@ -176,19 +176,18 @@
 									</tbody>
 								</table>
 <br>
-<!-- @if($i == 2)
-<div class="card" style="width:800px;">
+ @if($i == 2)
+<div class="card" style="width:800px;padding:10px;">
 
 <p style="color:gray; font-size:12pt;">ads</p>
 
 <div class="card-body" >
-<script data-cfasync="false" type="text/javascript" src="https://www.predictivdisplay.com/a/display.php?r=2100271"></script>
-
+<iframe data-aa='977909' src='//acceptable.a-ads.com/977909?size=Adaptive&background_color=7f7f7f&title_color=d6d6d6' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
 
 </div>
 </div>
 <?php $i = 0; ?>
-@endif -->
+@endif
 							</div>
 						</div>
 					</div>
