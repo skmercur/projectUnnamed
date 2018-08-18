@@ -61,7 +61,7 @@ $("#main").click(function() {
 });
 
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();  
+    $('[data-toggle="tooltip"]').tooltip();
 });
 $.material.init();
 </script>
@@ -104,7 +104,7 @@ $.material.init();
 
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-top: -0.5%;">
     <div class="header-left">
                             <div class="logo-name text-white">
                                     <a href="/"> <h1>The Free Education</h1>

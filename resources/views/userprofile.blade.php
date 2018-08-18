@@ -751,21 +751,12 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 @endif
 @endguest
 @endsection
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-1253446609392565",
-          enable_page_level_ads: true
-     });
-</script>
 <script>
 $("#main").click(function() {
   $("#mini-fab").toggleClass('hidden');
 });
-
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();  
+    $('[data-toggle="tooltip"]').tooltip();
 });
 $.material.init();
 </script>
