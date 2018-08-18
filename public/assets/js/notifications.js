@@ -53,7 +53,7 @@ if(z === 0){
                                        $.ajax({
 
                                           type:'POST',
-                                          url:'/getnoti',
+                                          url:'/getnotilayout',
                                           data:form.serialize(),
                                           success:function(data){
 

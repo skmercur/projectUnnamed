@@ -51,6 +51,7 @@ Route::get('/tuto',function(){
 });
 Route::post('/getnoti', 'PageController@getNotification');
 Route::post('/getnotiNum', 'PageController@getNotificationNumber');
+Route::post('/getnotilayout', 'PageController@getNotificationLayout');
 Route::post('/removenoti', 'PageController@removenoti');
 Route::post('/newf', 'PageController@newFollower');
 Route::post('/rmf', 'PageController@unfollow');
