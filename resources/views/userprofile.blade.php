@@ -690,7 +690,18 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 
 <!--/////////////////////////-->
 
-
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-group">
+        <a href="javascript:void(0)" class="btn btn-info btn-fab" id="main" data-toggle="modal" data-target="#ModalContact">
+          <i class="fa fa-comment">
+          </i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -758,15 +769,4 @@ $(document).ready(function(){
 });
 $.material.init();
 </script>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="btn-group">
-        <a href="javascript:void(0)" class="btn btn-info btn-fab" id="main" data-toggle="modal" data-target="#ModalContact">
-          <i class="fa fa-comment">
-          </i>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+
