@@ -744,7 +744,6 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 $("#main").click(function() {
   $("#mini-fab").toggleClass('hidden');
 });
-
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
