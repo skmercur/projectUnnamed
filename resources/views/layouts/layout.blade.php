@@ -44,6 +44,7 @@
     <link href="{{ asset('assets/css/simple-sidebar.css') }}" rel="stylesheet">
 
     <link href="{{ asset('assets/css/argon.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/floating_button.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}" >
     <link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
@@ -54,6 +55,16 @@
 
 
 </head>
+<script>
+$("#main").click(function() {
+  $("#mini-fab").toggleClass('hidden');
+});
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();  
+});
+$.material.init();
+</script>
 
 <body style="background-image:url({{asset('assets/img/doodles.png')}})">
 

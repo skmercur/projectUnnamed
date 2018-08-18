@@ -687,9 +687,10 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
           </div>
 
 </div>
-<a href="" class="float" id="menu-share" data-toggle="modal" data-target="#ModalContact">
-<i class="fa fa-comment my-float "></i>
-</a>
+
+<!--/////////////////////////-->
+
+
 
 <div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -747,3 +748,25 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
           enable_page_level_ads: true
      });
 </script>
+<script>
+$("#main").click(function() {
+  $("#mini-fab").toggleClass('hidden');
+});
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();  
+});
+$.material.init();
+</script>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-group">
+        <a href="javascript:void(0)" class="btn btn-info btn-fab" id="main" data-toggle="modal" data-target="#ModalContact">
+          <i class="fa fa-comment">
+          </i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
