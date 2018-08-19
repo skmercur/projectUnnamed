@@ -41,17 +41,17 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="{{ asset('assets/css/simple-sidebar.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('assets/css/simple-sidebar.css') }}" rel="stylesheet">
 
     <link href="{{ asset('assets/css/argon.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/floating_button.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}" > -->
     <link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ asset('assets/css/error.css') }}" >
-<link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" >
-
-<script type="text/javascript" src="{{mix('js/notifications.js')}}"></script>
+<!-- <link rel="stylesheet" href="{{ asset('assets/css/error.css') }}" >
+<link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" > -->
+  <link href="{{ asset('css/all.css') }}" rel="stylesheet">
+<script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
 
 
 </head>
