@@ -21,12 +21,22 @@ var z = 0;
                                         }
                                        });
                                     },500);
-function removenoti(id){
+
+
+
+
+
+
+window.removenoti =  function(id){
   $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+
+
+
 var form = $("#theFormNoti");
 
 
@@ -40,9 +50,13 @@ getNotifi();
 }
 
 });
-}
+};
 
-                            function getNotifi(){
+
+
+
+
+                              window.getNotifi = function(){
 if(z === 0){
                               $.ajaxSetup({
                                 headers: {

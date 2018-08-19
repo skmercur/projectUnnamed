@@ -51,7 +51,7 @@
 <link rel="stylesheet" href="{{ asset('assets/css/error.css') }}" >
 <link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" >
 
-<script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
+<script type="text/javascript" src="{{mix('js/notifications.js')}}"></script>
 
 
 </head>
