@@ -196,7 +196,7 @@ return view('auth/passwords/resetpassword')->with(['status'=>1,'code'=>$code]);
       if($pass === $passc){
         $pass = Hash::make($pass);
    DB::table('users')->where('email',$email)->where('code',$code)->update(['password'=>$pass]);
-     return view('login');
+     return redirect('/login');
 
 }else{
   return back();
@@ -255,6 +255,28 @@ return view('auth/passwords/resetpassword')->with(['status'=>1,'code'=>$code]);
          sleep(3);
     }
   }
+
+  public function sendemailRequestSpeciality(Request $request){
+    $user=  $request->input('user');
+    $text = $request->input('text');
+  $val = DB::table('users')->where('username',$user)->where('status',0)->first();
+if($val->count()>0){
+    $to      = 'support@thefreeedu.com';
+    $subject = 'Request a new speciality';
+    $message = $text.' ## email = '.$email;
+    $headers = 'From: '.$email.'' . "\r\n" .
+        'Reply-To: '.$email.'' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+    mail($to, $subject, $message, $headers);
+
+
+
+    return redirect('/'.$user);
+  }else{
+    return back();
+  }
+}
 
 
   }

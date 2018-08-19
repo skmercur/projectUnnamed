@@ -64,7 +64,7 @@ Route::get('/recover', function (){
 });
 Route::get('/rpcc', 'emailController@resetpasscheck');
 Route::post('/frpc', 'emailController@finalpass');
-
+Route::post('/requestSpeciality','emailController@sendemailRequestSpeciality');
 Route::get('/about', function(){
   return view('about');
 });

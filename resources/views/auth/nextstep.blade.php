@@ -16,7 +16,7 @@ window.location = "/login";
 @else
 
 
-                    @if(Auth::user()->username !== '')
+                    @if((Auth::user()->username !== '') && (Auth::user()->status === 0))
 
                     <form method="post" action="nextstep"  enctype="multipart/form-data">
                       @csrf
@@ -28,6 +28,7 @@ window.location = "/login";
                        <option value="{{$spi->namespi}}">{{$spi->namespi}}</option>
                        @endforeach
                     </select>
+                    <small><a href="#" style="float:right;"  data-toggle="modal" data-target="#ModalRequestSpeciality"> i didn't find what i was looking for</a></small>
                     <script type="text/javascript" >
                     function run() {
                       var s = document.getElementById("spec");
@@ -81,6 +82,54 @@ window.location = "/login";
 
 
                     </form>
+                    <div class="modal fade" id="ModalRequestSpeciality" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Request a Speciality</h5>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <h5>Please write down the Speciality you would like to add on the list</h5>
+                          <form action="requestSpeciality" method="post" id="requestSpecialityForm" >
+                                  @CSRF
+<input type="hidden" name="user" value="{{ Auth::user()->username }}" />
+                                  <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                      <label>Message</label>
+                                      <textarea class="form-control" id="message" rows="5" placeholder="Type your message here" required="required" name="text" data-validation-required-message="Please enter a message."></textarea>
+                                      <p class="help-block text-danger"></p>
+                                    </div>
+                                  </div>
+                                  <br>
+                                  <div></div>
+
+
+                          </div>
+
+                          <div class="modal-footer">
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                    <button type="button" onclick="form_submit()" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
+                                    </form>
+
+                                    <script type="text/javascript" >
+
+                                    function form_submit() {
+
+                                      document.getElementById("requestSpecialityForm").submit();
+                                    }
+                                    </script>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
                     @else
                     <script type="text/javascript">
                     window.location = "/";
