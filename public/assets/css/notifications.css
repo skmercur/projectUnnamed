@@ -673,7 +673,7 @@ ul.dropdown-menu.drp-mnu i.fa {
 }
 ul.dropdown-menu {
     padding: 0;
-    min-width: 330px;
+    min-width: 230px;
     top:101%;
 }
 .dropdown-menu > li > a {
