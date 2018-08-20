@@ -169,7 +169,7 @@ $.material.init();
                             </form>
                             <div class="btn-group">
          <li class="header-right profile_details_left dropdown head-dpdn">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="getNotifi()"><i class="fa fa-bell"></i><span id="numberNoti" class="badge blue" style="position:fixed;left:auto;top:auto">0</span></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="getNotifi()"><i class="fa fa-bell"></i><span id="numberNoti" class="badge blue" style="position:absolute;left:auto;top:auto">0</span></a>
                                         <ul class="dropdown-menu" id="notifications">
                                             <li>
                                                 <div class="notification_header">

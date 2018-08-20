@@ -60,19 +60,29 @@ return redirect('/');
        $message = '
        <html>
        <head>
-         <title>Activation Code</title>
+         <title>Your activation code</title>
          <meta charset="utf-8">
          <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
        </head>
        <body>
 
          <div class="container">
-         <h5>Dear '.$firstname.','.$lastname.'</h5>
-         <h6>Good day to you </h6>
-           <div class="well">this is your activation code <b>'.$code.'</b></div>
+         <h3>Dear '.$firstname.','.$lastname.'</h3>
+         <br>
+         <h4>Good day to you </h4>
+           <br>
+        <div class="container">
+
+<div class="card">
+<div class="card-body">
+<div class="row">
+<div class="col">
+ <p> This is your activation code  <b>'.$code.'</b> click on this <a href="https://thefreeed.com/confirm">link </a> to type your activation code</p>
+</div>
+</div>
+</div>
+</div>
          </div>
          <footer>
          <p>From The Free Education team</p>
@@ -140,23 +150,36 @@ $headers = 'From: <support@thefreeedu.com>'.
           //   $message->to($email)->subject('Your activation code');
           //   $message->from('support@thefreeedu.com','support');
           // });
+
+
+
+
           $message = '
           <html>
-          <head>
-            <title>Password reset</title>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-          </head>
-          <body>
+          <title>Rest password</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        </head>
+        <body>
 
-            <div class="container">
-            <h5>Dear '.$firstname.','.$lastname.'</h5>
-            <h6>Good day to you </h6>
-              <div class="well">this is your code to reset your password <b>'.$code.'</b> please click on <a href="https://www.thefreeedu.com/rpcc?codeu='.$code.'"><button class="btn btn-primary">Verify</button></a> to continue</div>
+          <div class="container">
+          <h3>Dear '.$firstname.','.$lastname.'</h3>
+          <br>
+          <h4>Good day to you </h4>
+            <br>
+         <div class="container">
+
+        <div class="card">
+        <div class="card-body">
+        <div class="row">
+        <div class="col">
+            this is your code to reset your password <b>'.$code.'</b> please click on <a href="https://www.thefreeedu.com/rpcc?codeu='.$code.'"><button class="btn btn-primary">Verify</button></a> to continue
             </div>
+            </div>
+            </div>
+            </div>
+              </div>
             <footer>
             <p>From The Free Education team</p>
             <p>if there is any problem contact us at : support@thefreeedu.com </p>

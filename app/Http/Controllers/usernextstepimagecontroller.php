@@ -43,7 +43,7 @@ class usernextstepimagecontroller extends Controller
     $code = $val->code;
    if($val->code == $codeu){
      DB::table('users')->where('username',$user)->update(['status' => 1]);
-     return redirect('/'.$user);
+     return view('index');
    }else {
      return back();
    }

@@ -27,13 +27,13 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- icons -->
-    
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   
+
     <!-- Styles -->
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" >
@@ -41,11 +41,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="{{ asset('assets/css/simple-sidebar.css') }}" rel="stylesheet">
-    
+
     <link href="{{ asset('assets/css/argon.css') }}" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}" >
-      
+
     <!-- Custom styles for this template -->
 
 
@@ -95,16 +95,16 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
       <div class="container">
         <div class="row row-grid justify-content-center">
           <div class="col-lg-8 text-center text-white">
-            <h2 class="display-3">Do you Know this WebSite
+            <h2 class="display-3">What is The Free Education ?
               <span class="text-success">The Free Education</span>
             </h2>
-            <p class="lead">The Free Education is a free website where every body can share their knowledge with other people from the globe.</p>
-       
-           <p class="lead">Whether you're a student or a teacher,doctor whatever your profession is you can share your knowledge with other people get in contact with people and you can learn too from what other people shared</p>
+            <p class="lead">The Free Education is a free website where every body can share their knowledge with other peoples from the globe.</p>
+
+           <p class="lead">Whether you're a student,a teacher ,a doctor or whatever your profession is you can share your knowledge with other people get in contact with people and you can learn too from what other people shared</p>
             <div class="btn-wrapper">
               <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-primary mb-3 mb-sm-0">Create an Account</a>
             </div>
-           
+
           </div>
         </div>
       </div>
@@ -127,7 +127,7 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
               <div class="pt-4 text-center">
                 <h5 class="title">
                   <span class="d-block mb-1">Sofiane Khoudour</span>
-                  <small class="h6 text-muted">Marketing Strategist</small>
+                  <small class="h6 text-muted">Web Developer</small>
                 </h5>
                 <div class="mt-3">
                   <a href="https://twitter.com/SKhoudour" class="btn btn-warning btn-icon-only rounded-circle">
@@ -155,7 +155,7 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
                   <a href="https://www.facebook.com/Mr.VirWus" class="btn btn-primary btn-icon-only rounded-circle">
                     <i class="fab fa-facebook"></i>
                   </a>
-                
+
                 </div>
               </div>
             </div>
@@ -175,7 +175,7 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
                   <a href="https://www.facebook.com/hichem.merniz" class="btn btn-info btn-icon-only rounded-circle">
                     <i class="fab fa-facebook"></i>
                   </a>
-               
+
                 </div>
               </div>
             </div>
@@ -198,15 +198,15 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
               <div class="col-lg-12">
                 <h3 class="text-white text-center">The Free Education</h3>
                 <p class="lead text-white mt-3 text-center">The free Education is a web site for sharing knowledge and learning new things</p>
-                   <a href="/" class="btn btn-lg btn-block btn-white">Start</a>
+                   <a href="/register" class="btn btn-lg btn-block btn-white">Sign-up</a>
               </div>
-             
+
             </div>
           </div>
         </div>
       </div>
     </section>
-   
+
 
    <section class="section section-lg pt-lg-0 section-contact-us">
       <div class="container">
@@ -221,8 +221,8 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
           <div class="col-lg-12">
             <div class="card bg-gradient-secondary shadow">
               <div class="card-body p-lg-5">
-                <h4 class="mb-1">Want to Contact us?</h4>
-                <p class="mt-0">Your Ideas is very important to us.</p>
+                <h4 class="mb-1">Would you like to get in touch with us ?</h4>
+                <p class="mt-0">Your Ideas are very important to us.</p>
                 <form action="sendcontact" method="post" id="contactForm" >
               @CSRF
                 <div class="form-group mt-5">
@@ -265,8 +265,8 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
         </div>
       </div>
     </section>
-      
-    
+
+
 
 
 
@@ -277,22 +277,25 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
  <div class="container">
  <div class="row row-grid align-items-center my-md">
         <div class="col-lg-6">
-          <h3 class="text-primary font-weight-light mb-2">Thank you for supporting us!</h3>
-          <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
+          <h3 class="text-primary font-weight-light mb-2">Support this project</h3>
+           <h5 class="mb-0 font-weight-light">We accept bitcoins</h5>
+          <img src="{{asset('assets/img/qr.png')}}" class=" img-center img-fluid shadow shadow-lg--hover" style="width: 200px;">
+
+
         </div>
         <div class="col-lg-6 text-lg-center btn-wrapper">
-          <a target="_blank" href="https://twitter.com/creativetim" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us">
+          <a target="_blank" href="https://twitter.com/TheFreeEducati1" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us">
             <i class="fab fa-twitter"></i>
           </a>
-          <a target="_blank" href="https://www.facebook.com/creativetim" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us">
+          <a target="_blank" href="https://www.facebook.com/thefreeedu/" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us">
             <i class="fab fa-facebook-square"></i>
           </a>
-          <a target="_blank" href="https://dribbble.com/creativetim" class="btn btn-neutral btn-icon-only btn-dribbble btn-lg btn-round" data-toggle="tooltip" data-original-title="Follow us">
+          <!-- <a target="_blank" href="https://dribbble.com/creativetim" class="btn btn-neutral btn-icon-only btn-dribbble btn-lg btn-round" data-toggle="tooltip" data-original-title="Follow us">
             <i class="fab fa-dribbble"></i>
           </a>
           <a target="_blank" href="https://github.com/creativetimofficial" class="btn btn-neutral btn-icon-only btn-github btn-round btn-lg" data-toggle="tooltip" data-original-title="Star on Github">
             <i class="fab fa-github"></i>
-          </a>
+          </a> -->
         </div>
       </div>
 </div>
