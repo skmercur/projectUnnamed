@@ -122,14 +122,14 @@ $.material.init();
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
- <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+ <ul class="navbar-nav ml-auto mt-2 mt-lg-0" >
        <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" style="color:white;" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" style="color:white;" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
 
@@ -167,8 +167,9 @@ $.material.init();
                               <input type="hidden" name="code" value="$user->code" />
                               <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
                             </form>
+                            <div class="btn-group">
          <li class="header-right profile_details_left dropdown head-dpdn">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="getNotifi()"><i class="fa fa-bell"></i><span id="numberNoti" class="badge blue">0</span></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="getNotifi()"><i class="fa fa-bell"></i><span id="numberNoti" class="badge blue" style="position:fixed;left:auto;top:auto">0</span></a>
                                         <ul class="dropdown-menu" id="notifications">
                                             <li>
                                                 <div class="notification_header">
@@ -224,8 +225,9 @@ $.material.init();
                   </a>
                 </div>
 
-                        </li>
 
+                        </li>
+</div>
 
                            <li class="nav-item dropdown">
 
@@ -246,6 +248,7 @@ $.material.init();
                             </li>
                         @endguest
     </ul>
+
     @guest
 
     @else
