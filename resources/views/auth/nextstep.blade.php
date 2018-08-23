@@ -47,6 +47,9 @@ window.location = "/login";
         <div class="col-xs-6">
   <img class="img-fluid img-thumbnail" src="{{asset('assets/img/profil.png')}}" id="output_image" style="margin-top:  1%;margin-left: 25px;max-height:160px; max-width:160px;">
 </div>
+<script>
+$('#output_image').croppie();
+</script>
     <div class="col-xs-6" style="margin-left:2%">
   <h4 ><strong>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</strong></h4>
   <h5 ><strong>{{Auth::user()->email}}</strong></h5>

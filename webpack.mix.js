@@ -15,4 +15,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
 .js('resources/assets/js/notifications.js','public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
    .styles([
-    'public/assets/css/error.css','public/assets/css/notifications.css','public/assets/css/simple-sidebar.css','public/assets/css/argon.css','public/assets/css/floating_button.css','public/assets/css/iziToast.min.css'],'public/css/all.css');
+    'public/assets/css/error.css','public/assets/css/notifications.css','public/assets/css/simple-sidebar.css','public/assets/css/argon.css','public/assets/css/floating_button.css','public/assets/css/iziToast.min.css','public/assets/css/croppie.css'],'public/css/all.css');

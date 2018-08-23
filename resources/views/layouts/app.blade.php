@@ -15,7 +15,7 @@
     <script src="{{asset('assets/js/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/headroom.min.js')}}"></script>
     <script src="{{asset('assets/js/argon.js')}}"></script>
-
+<script type="text/javascript" src="{{asset('js/croppie.js')}}"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
