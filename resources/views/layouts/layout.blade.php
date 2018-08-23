@@ -54,8 +54,6 @@
 <script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
 
 
-
-
 </head>
 <script>
 $("#main").click(function() {

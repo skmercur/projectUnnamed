@@ -117,6 +117,10 @@ return view('auth/nextstep')->with('spec',$spec);
     public function saveUploadFile(Request $request){
       $user = $request->input('user');
       $namespi = $request->input('namesp');
+      $x = $request->input('x');
+      $y = $request->input('y');
+      $w = $request->input('w');
+      $h = $request->input('h');
    $file = $request->file('image');
     $fileArray = array('image' => $file);
    $rules = array(
@@ -140,7 +144,7 @@ $validator = Validator::make($fileArray, $rules);
       $destinationPath = "usersdata/".md5('uploads'.$user)."/";
       $file->move($destinationPath,$hash);
       if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
-        shell_exec('python '.$_SERVER['DOCUMENT_ROOT'].'\py\resize.py '.$destinationPath.$hash);
+        shell_exec('python '.$_SERVER['DOCUMENT_ROOT'].'\py\resize.py '.$destinationPath.$hash.' '.$x.' '.$y.' '.$h.' '.$w);
       }
    DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
     DB::table('users')->where('username',$user)->update(['namespi' =>$namespi]);

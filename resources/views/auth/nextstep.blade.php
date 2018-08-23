@@ -45,11 +45,16 @@ window.location = "/login";
   <div class="container-fluid">
   <div class="row">
         <div class="col-xs-6">
-  <img class="img-fluid img-thumbnail" src="{{asset('assets/img/profil.png')}}" id="output_image" style="margin-top:  1%;margin-left: 25px;max-height:160px; max-width:160px;">
+          <div class="container1">
+         <img id="output_image" src="{{asset('assets/img/Sofiane.jpg')}}" style="width:220px;height:220px;max-width:100%">
 </div>
-<script>
-$('#output_image').croppie();
-</script>
+
+</div>
+<input type="hidden" id="x" name="x" value="0" />
+<input type="hidden" id="y" name="y" value="0" />
+<input type="hidden" id="h" name="h" value="0" />
+<input type="hidden" id="w" name="w" value="0" />
+
     <div class="col-xs-6" style="margin-left:2%">
   <h4 ><strong>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</strong></h4>
   <h5 ><strong>{{Auth::user()->email}}</strong></h5>
@@ -61,7 +66,14 @@ $('#output_image').croppie();
   <div class="card-body">
   <div class="input-group">
   <label class="btn btn-outline-primary" style="height:auto; min-width:150px" for="image">
-  <input type="file" style="display:none" name="image" id="image"  accept="image/jpeg,image/x-png,image/gif" onchange="preview_image(event)">
+  <input type="file" style="display:none" name="image" id="image" onchange="loadFile(event)"  accept="image/jpeg,image/x-png,image/gif">
+  <script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output_image');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    LaunchCropper();
+  };
+</script>
   Change image</label>
   <input type="hidden" name="_token" value="{{csrf_token()}}" />
 
@@ -149,4 +161,5 @@ $('#output_image').croppie();
         </div>
     </div>
 </div>
+
 @endsection

@@ -11,37 +11,51 @@
     <title>The Free Education</title>
 
     <!-- Scripts -->
+  <script src="{{asset('assets/js/jquery.js')}}"></script>
+
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{asset('assets/js/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/headroom.min.js')}}"></script>
     <script src="{{asset('assets/js/argon.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/croppie.js')}}"></script>
-    <!-- Fonts -->
+  <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
     <link rel="stylesheet" href="{{asset('assets/css/argon.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/nucleo.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
+
+
     <style>
 body{ margin:0px; padding:0px; font-family:helvetica; background:url(image.png); }
 
 #wrapper{ text-align:center; margin:70px auto; }
 
 #output_image{ width:200px; height:200px; border:4px solid #000; }
+.container1 {
+      max-width: 640px;
+      margin: 20px auto;
+    }
 </style>
+
+
+
 <script type='text/javascript'>
-function preview_image(event)
-{
- var reader = new FileReader();
- reader.onload = function()
- {
-  var output = document.getElementById('output_image');
-  output.src = reader.result;
- }
- reader.readAsDataURL(event.target.files[0]);
-}
+
+// function preview_image(event)
+// {
+//  var reader = new FileReader();
+//  reader.onload = function()
+//  {
+//   var output = document.getElementById('output_image');
+//   output.src = reader.result;
+//  }
+//  reader.readAsDataURL(event.target.files[0]);
+
 </script>
 
 </head>
@@ -101,5 +115,31 @@ function preview_image(event)
             @yield('content')
         </main>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
+      <script type="text/javascript">
+
+    function LaunchCropper() {
+      var image = document.getElementById('output_image');
+      var cropper = new Cropper(image, {
+        dragMode: 'crop',
+        aspectRatio: 1 / 1,
+        autoCropArea: 0.65,
+        restore: false,
+        guides: false,
+        center: true,
+        highlight: false,
+        cropBoxMovable: true,
+        cropBoxResizable: true,
+        toggleDragModeOnDblclick: false,
+        crop(event) {
+          document.getElementById("x").value = event.detail.x;
+          document.getElementById("y").value = event.detail.y;
+          document.getElementById("w").value = event.detail.width;
+          document.getElementById("h").value = event.detail.height;
+
+  },
+      });
+    }
+     </script>
 </body>
 </html>
