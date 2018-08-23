@@ -46,7 +46,7 @@ window.location = "/login";
   <div class="row">
         <div class="col-xs-6">
           <div class="container1">
-         <img id="output_image" src="{{asset('assets/img/Sofiane.jpg')}}" style="width:220px;height:220px;max-width:100%">
+         <img id="output_image" src="{{asset('assets/img/profil.png')}}" style="width:220px;height:220px;max-width:100%">
 </div>
 
 </div>
