@@ -52,6 +52,8 @@
 <link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" > -->
   <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 <script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/croppie.js')}}"></script>
+
 
 
 </head>

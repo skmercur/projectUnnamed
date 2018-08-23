@@ -120,7 +120,7 @@ return view('auth/nextstep')->with('spec',$spec);
    $file = $request->file('image');
     $fileArray = array('image' => $file);
    $rules = array(
-     'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000' // max 10000kb
+     'image' => 'mimes:jpeg,jpg,png,gif|required|max:5000' // max 10000kb
    );
 $validator = Validator::make($fileArray, $rules);
 
@@ -139,6 +139,9 @@ $validator = Validator::make($fileArray, $rules);
        if($val->status == 0){
       $destinationPath = "usersdata/".md5('uploads'.$user)."/";
       $file->move($destinationPath,$hash);
+      if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
+        shell_exec('python '.$_SERVER['DOCUMENT_ROOT'].'\py\resize.py '.$destinationPath.$hash);
+      }
    DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
     DB::table('users')->where('username',$user)->update(['namespi' =>$namespi]);
 
