@@ -132,10 +132,10 @@ body{ margin:0px; padding:0px; font-family:helvetica; background:url(image.png);
         cropBoxResizable: true,
         toggleDragModeOnDblclick: false,
         crop(event) {
-          document.getElementById("x").value = event.detail.x;
-          document.getElementById("y").value = event.detail.y;
-          document.getElementById("w").value = event.detail.width;
-          document.getElementById("h").value = event.detail.height;
+          document.getElementById("x").value = Math.ceil(event.detail.x);
+          document.getElementById("y").value = Math.ceil(event.detail.y);
+          document.getElementById("w").value = Math.ceil(event.detail.width);
+          document.getElementById("h").value = Math.ceil(event.detail.height);
 
   },
       });
