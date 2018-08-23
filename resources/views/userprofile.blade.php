@@ -689,8 +689,28 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 </div>
 
 <!--/////////////////////////-->
+<div id="container-floating">
 
-<div class="container-fluid">
+  
+  <div class="nd3 nds" data-toggle="tooltip" data-placement="left" ><img class="reminder">
+  <form action="reportguest" method="post">
+		<input type="hidden" name="_token" value="{{csrf_token()}}" />
+	  <button type="submit" class="btn btn-link"><p class="letter"><i class="fas fa-flag"style="margin-top:7px;"></i></p></button>
+		</form>
+  <!-- <p class="letter"><i class="fas fa-flag"style="margin-top:7px;"></i></p>  -->
+  </div>
+  <div class="nd1 nds" data-toggle="tooltip" data-placement="left"><img class="reminder">
+    <p class="letter"><i class="fas fa-comment" data-toggle="modal" data-target="#ModalContact" style="margin-top:7px;"></i></p>
+  </div>
+
+  <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="newmail()">
+    <p class="plus"><i class="fas fa-ellipsis-v"></i></p>
+    <img class="edit fas fa-ellipsis-v" >
+    
+  </div>
+
+</div>
+<!-- <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
       <div class="btn-group">
@@ -701,7 +721,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -751,12 +771,13 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 @endif
 @endguest
 @endsection
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
-$("#main").click(function() {
-  $("#mini-fab").toggleClass('hidden');
-});
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-$.material.init();
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1253446609392565",
+          enable_page_level_ads: true
+     });
 </script>
+
+
