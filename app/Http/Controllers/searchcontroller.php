@@ -38,14 +38,24 @@ class searchcontroller extends Controller
     }
 public function search(Request $request){
 $value = $request->q;
+if(!empty($value)){
+
+
   $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->limit(7)->get();
   return view('resaults')->with(['resaults'=>$resaults,'value'=>$value]);
+}else{
+  return back();
+}
 }
 public function usearch(Request $request){
+  if(!empty($value)){
 $value = $request->q;
   $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->limit(7)->get();
     $users=   DB::table('users')->where('firstname','LIKE','%'.$value.'%')->orWhere('lastname','LIKE','%'.$value.'%')->limit(5)->get();
   return view('resaultsuser')->with(['resaults'=>$resaults,'users'=>$users,'value'=>$value]);
+}else{
+    return back();
+}
 }
 
 
