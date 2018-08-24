@@ -67,7 +67,7 @@ $followers = explode(',',$user->followers);
             </div>
             <div class="text-center mt-5">
               <a href="/{{$user->username}}"><h3>{{$user->firstname}}  {{$user->lastname}}
-                <span class="font-weight-light">, {{$user->namespi}}</span>
+                <span class="font-weight-light"><small>, {{$user->namespi}}</small></span>
               </h3></a>
 
 
@@ -103,8 +103,9 @@ $followers = explode(',',$user->followers);
 <section class="search-result-item">
 
 
-
-				@foreach($resaults as $resault)
+	<?php $i=0; ?>
+	@foreach($resaults as $resault)
+	<?php $i++; ?>
 
 							<section class="content">
 
@@ -257,7 +258,7 @@ $followers = explode(',',$user->followers);
 														</textarea>
 											</div>
 
-						
+
 
 
 																	<div class="modal-footer">
@@ -280,6 +281,19 @@ $followers = explode(',',$user->followers);
 
 													</tbody>
 												</table>
+
+												<br>
+												 @if($i == 2)
+												<div class="card" style="width:800px;padding:10px;" >
+
+												<p style="color:gray; font-size:12pt;">ads</p>
+
+												<div class="card-body" >
+											<iframe data-aa='984814' src='//acceptable.a-ads.com/984814' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
+												</div>
+												</div>
+												<?php $i = 0; ?>
+												@endif
 											</div>
 										</div>
 									</div>
