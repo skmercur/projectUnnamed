@@ -52,7 +52,7 @@
 <link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" > -->
   <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 <script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
 
 </head>
 <script>
@@ -281,7 +281,32 @@ $.material.init();
 </nav>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
+  <script type="text/javascript">
 
+function LaunchCropper() {
+  var image = document.getElementById('output_image');
+  var cropper = new Cropper(image, {
+    dragMode: 'crop',
+    aspectRatio: 1 / 1,
+    autoCropArea: 0.65,
+    restore: false,
+    guides: false,
+    center: true,
+    highlight: false,
+    cropBoxMovable: true,
+    cropBoxResizable: true,
+    toggleDragModeOnDblclick: false,
+    crop(event) {
+      document.getElementById("x").value = Math.ceil(event.detail.x);
+      document.getElementById("y").value = Math.ceil(event.detail.y);
+      document.getElementById("w").value = Math.ceil(event.detail.width);
+      document.getElementById("h").value = Math.ceil(event.detail.height);
+
+},
+  });
+}
+ </script>
 
 
 </html>

@@ -146,7 +146,6 @@ $validator = Validator::make($fileArray, $rules);
       if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
 $loc = $_SERVER['DOCUMENT_ROOT'].'\py\resize.py';
 $filenameUp = $destinationPath.$hash;
-echo "python $loc $filenameUp $x $y $w $h";
 
     shell_exec("python $loc $filenameUp $x $y $w $h");
 

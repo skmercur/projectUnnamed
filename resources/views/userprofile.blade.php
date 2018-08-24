@@ -536,12 +536,27 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
             <input type="email" class="form-control" id="email" placeholder="email" name="email">
           </div>
           </div>
+<div class="form-group">
+          <div class="container1">
+         <img id="output_image" src="{{Auth::user()->imgpath}}" style="width:220px;height:220px;max-width:100%">
+         <input type="hidden" id="x" name="x" value="0" />
+         <input type="hidden" id="y" name="y" value="0" />
+         <input type="hidden" id="h" name="h" value="0" />
+         <input type="hidden" id="w" name="w" value="0" />
+</div>
+</div>
           <div class="input-group mb-3">
          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="image" name="image" accept="image/jpeg,image/x-png,image/gif">
+            <input type="file" class="custom-file-input" id="image" name="image" onchange="loadFile(event)" accept="image/jpeg,image/x-png,image/gif">
               <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
 
-
+              <script>
+              var loadFile = function(event) {
+                var output = document.getElementById('output_image');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                LaunchCropper();
+              };
+              </script>
           </div>
             </div>
                 <p class="col-form-label" style="font-size:7pt;">Recomended picture size 160px x 160px</p>
@@ -691,7 +706,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 <!--/////////////////////////-->
 <div id="container-floating">
 
-  
+
   <div class="nd3 nds" data-toggle="tooltip" data-placement="left" ><img class="reminder">
   <form action="reportguest" method="post">
 		<input type="hidden" name="_token" value="{{csrf_token()}}" />
@@ -706,7 +721,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
   <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="newmail()">
     <p class="plus"><i class="fas fa-ellipsis-v"></i></p>
     <img class="edit fas fa-ellipsis-v" >
-    
+
   </div>
 
 </div>
@@ -779,5 +794,3 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
           enable_page_level_ads: true
      });
 </script>
-
-

@@ -71,20 +71,29 @@ class usereditcontroller extends Controller
          $message = '
          <html>
          <head>
-           <title>Email changed</title>
+           <title>Your activation code</title>
            <meta charset="utf-8">
            <meta name="viewport" content="width=device-width, initial-scale=1">
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
          </head>
          <body>
 
            <div class="container">
-           <h4>Dear '.$firstname.','.$lastname.'</h4>
-           <h5>Good day to you </h5>
-           <div class="well">Your Email has been changed to '.$email.'</div>
-             <div class="well">this is your activation code <b>'.$code.'</b></div>
+           <h3>Dear '.$firstname.','.$lastname.'</h3>
+           <br>
+           <h4>Good day to you </h4>
+             <br>
+          <div class="container">
+
+  <div class="card">
+  <div class="card-body">
+  <div class="row">
+  <div class="col">
+   <p> This is your activation code  <b>'.$code.'</b> click on this <a href="https://thefreeed.com/confirm">link </a> to type your activation code</p>
+  </div>
+  </div>
+  </div>
+  </div>
            </div>
            <footer>
            <p>From The Free Education team</p>
@@ -121,7 +130,7 @@ class usereditcontroller extends Controller
             $npass = Hash::make($npass);
         $fileArray = array('image' => $file);
        $rules = array(
-         'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000' // max 10000kb
+         'image' => 'mimes:jpeg,jpg,png,gif|required|max:5000' // max 10000kb
        );
     $validator = Validator::make($fileArray, $rules);
 
@@ -154,6 +163,10 @@ $this->resend($request);
 }
      }else {
        if(empty($bio)){
+         $x = $request->input('x');
+         $y = $request->input('y');
+         $w = $request->input('w');
+         $h = $request->input('h');
        $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
           $destinationPath = "usersdata/".md5('uploads'.$user)."/";
 
@@ -162,6 +175,13 @@ $this->resend($request);
           if($destinationPath.$hash !==  $db->imgpath){
 
             $file->move($destinationPath,$hash);
+            if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
+      $loc = $_SERVER['DOCUMENT_ROOT'].'/py/resize.py';
+      $filenameUp = $destinationPath.$hash;
+
+          shell_exec("python $loc $filenameUp $x $y $w $h");
+
+            }
             DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
             if($db->imgpath !== "uploads/default.png"){
             unlink($db->imgpath);
@@ -171,12 +191,23 @@ $this->resend($request);
 $this->resend($request);
 return back();
 }else{
+  $x = $request->input('x');
+  $y = $request->input('y');
+  $w = $request->input('w');
+  $h = $request->input('h');
   $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
      $destinationPath = "usersdata/".md5('uploads'.$user)."/";
 
      $db =  DB::table('users')->where('username',$user)->first();
 if($destinationPath.$hash !==  $db->imgpath){
   $file->move($destinationPath,$hash);
+  if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
+$loc = $_SERVER['DOCUMENT_ROOT'].'/py/resize.py';
+$filenameUp = $destinationPath.$hash;
+
+shell_exec("python $loc $filenameUp $x $y $w $h");
+
+  }
   DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
   if($db->imgpath !== "uploads/default.png"){
   unlink($db->imgpath);
@@ -188,11 +219,22 @@ $this->resend($request);
       }
 }else{
   if(empty($bio)){
+    $x = $request->input('x');
+    $y = $request->input('y');
+    $w = $request->input('w');
+    $h = $request->input('h');
   $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
      $destinationPath = "usersdata/".md5('uploads'.$user)."/";
      $db =  DB::table('users')->where('username',$user)->first();
      if($destinationPath.$hash !==  $db->imgpath){
        $file->move($destinationPath,$hash);
+       if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
+     $loc = $_SERVER['DOCUMENT_ROOT'].'/py/resize.py';
+     $filenameUp = $destinationPath.$hash;
+
+     shell_exec("python $loc $filenameUp $x $y $w $h");
+
+       }
        DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
        if($db->imgpath !== "uploads/default.png"){
        unlink($db->imgpath);
@@ -200,6 +242,10 @@ $this->resend($request);
      }
         return back();
       }else{
+        $x = $request->input('x');
+        $y = $request->input('y');
+        $w = $request->input('w');
+        $h = $request->input('h');
         $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
            $destinationPath = "usersdata/".md5('uploads'.$user)."/";
 
@@ -207,6 +253,13 @@ $this->resend($request);
 
            if($destinationPath.$hash !==  $db->imgpath){
              $file->move($destinationPath,$hash);
+             if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
+           $loc = $_SERVER['DOCUMENT_ROOT'].'/py/resize.py';
+           $filenameUp = $destinationPath.$hash;
+
+           shell_exec("python $loc $filenameUp $x $y $w $h");
+
+             }
              DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash,'bio'=>$bio]);
              if($db->imgpath !== "uploads/default.png"){
              unlink($db->imgpath);

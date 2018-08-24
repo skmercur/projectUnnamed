@@ -42,12 +42,6 @@ class fileuploadcontroller extends Controller
       $lastname = $val->lastname;
       $firstname1 = $val2->firstname;
       $lastname1 = $val2->lastname;
-      $data = array(
-         'code'=>$code,
-         'email'=>$email,
-         'firstname'=>$firstname,
-         'lastname'=>$lastname
-      );
 
 
       // Additional headers
@@ -97,9 +91,13 @@ class fileuploadcontroller extends Controller
          </body>
          </html>
          ';
-         mail($email, "A new file has been uploaded", $message, $headers);
+//run in seperate process
 
-  }
+     mail($email, "A new file has been uploaded", $message, $headers);
+
+
+
+  
 }
 
     public function notify(Request $request){
@@ -110,7 +108,8 @@ class fileuploadcontroller extends Controller
       $improfile = $val->imgpath;
       $pices = explode(',',$followers);
       foreach ($pices as $target) {
-        // code...
+
+
 $this->sendEm($request,$target);
     notifications::create([
     'creator'=>$creator,
