@@ -183,8 +183,7 @@ $file->move($destinationPath,$hash);
    $post = array('apikey' => $api_key,'file'=> $cfile);
    $ch = curl_init();
    curl_setopt($ch, CURLOPT_URL, 'https://www.virustotal.com/vtapi/v2/file/scan');
-   curl_setopt($ch, CURLOPT_POST, True);
-   curl_setopt($ch, CURLOPT_VERBOSE, 1); // remove this if your not debugging
+   curl_setopt($ch, CURLOPT_POST, True); // remove this if your not debugging
    curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate'); // please compress data
    curl_setopt($ch, CURLOPT_USERAGENT, "gzip, The Free Education client");
    curl_setopt($ch, CURLOPT_RETURNTRANSFER ,True);
