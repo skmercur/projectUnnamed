@@ -49,6 +49,7 @@ Route::get('/vendor',function(){
 Route::get('/tuto',function(){
   return view('index');
 });
+Route::post('/sendcontacthelp', 'emailController@sch');
 Route::post('/getnoti', 'PageController@getNotification');
 Route::post('/getnotiNum', 'PageController@getNotificationNumber');
 Route::post('/getnotilayout', 'PageController@getNotificationLayout');
@@ -79,6 +80,7 @@ Route::get('/auth/nextstep','usernextstepimagecontroller@getSpeciality');
 Route::get('/send','emailController@send');
 Route::post('/resend','emailController@resend');
 Route::post('/reportcause','emailController@report');
+Route::post('/reportguest','emailController@report');
 Route::get('/confirm',function(){
   return view('auth/confirm');
 });

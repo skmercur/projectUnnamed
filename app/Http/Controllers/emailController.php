@@ -101,6 +101,95 @@ return redirect('/');
 return redirect($user);
   }
 
+
+
+
+
+
+
+public function sch(Request $request){
+  $user = $request->input('username');
+  if(!empty($user)){
+    $prob = $request->input('text');
+  $val = DB::table('users')->where('username',$user)->first();
+  if($val->count() > 0){
+  $email = $val->email;
+  $firstname = $val->firstname;
+  $lastname = $val->lastname;
+
+
+
+  $headers = '';
+  $headers.= 'To: Support <support@thefreeedu.com>';
+  $headers.= 'From: The support team <support@thefreeedu.com>';
+  $headers .= "MIME-Version: 1.0\r\n";
+  $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+  $headers .= 'From: support@thefreeedu.com' . "\r\n" .
+     'Reply-To: support@thefreeedu.com' . "\r\n" .
+     'X-Mailer: PHP/' . phpversion();
+     // Mail::send('mail',$data,function($message) use ($email){
+     //   $message->to($email)->subject('Your activation code');
+     //   $message->from('support@thefreeedu.com','support');
+     // });
+     $message = '
+     <html>
+     <head>
+       <title>User Requesting help</title>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     </head>
+     <body>
+
+       <div class="container">
+       <h3>Dear Team </h3>
+       <br>
+       <h4>Good day to you  </h4>
+         <br>
+      <div class="container">
+
+<div class="card">
+<div class="card-body">
+<div class="row">
+<div class="col">
+<p> User <b>'.$user.'</b> is requesting help </p>
+<p> Message from user </p>
+<p>'.$text.'</p>
+</div>
+</div>
+</div>
+</div>
+       </div>
+       <footer>
+       <p>From The Free Education team</p>
+       <p>if there is any problem contact us at : support@thefreeedu.com </p>
+       </footer>
+     </body>
+     </html>
+     ';
+     mail("support@thefreeedu.com", "$user has a problem", $message, $headers);
+     return back();
+}
+
+}
+return back();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public function report(Request $request){
     $user = $request->input('user');
     $cause = $request->input('reportcause');
@@ -111,7 +200,7 @@ return redirect($user);
 
 
 
-    $to      = 'report@thefreeedu.com';
+    $to      = 'support@thefreeedu.com';
     $subject = 'report user :'.$user;
     $message = $user.' ##cause = '.$cause.' ## detail = '.$detail;
 $headers = 'From: <support@thefreeedu.com>'.
