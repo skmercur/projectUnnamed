@@ -28,7 +28,8 @@ input[type="text"]:focus:hover {
 }
 
 input[type="text"]:focus {
-  width: 700px;
+  width: 70%;
+  margin-left: auto;
   z-index: 1;
   border-bottom: 1px solid #BBB;
   cursor: text;
@@ -70,7 +71,7 @@ input[type="submit"]:hover {
         </div>
        <div class="input-group mb-12 center">
 
-          <div class="col-sm-12">
+          <div class="col-sm-12 col-xs-6">
                     <input id="search" name="q" type="text" placeholder="Search for documents">
                     <input id="search_submit" value="Rechercher" type="submit">
          </div>
@@ -104,7 +105,3 @@ input[type="submit"]:hover {
 
 @endguest
 @endsection
-
-
-
-
