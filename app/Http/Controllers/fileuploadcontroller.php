@@ -97,7 +97,8 @@ class fileuploadcontroller extends Controller
 
 
 
-  
+
+}
 }
 
     public function notify(Request $request){
