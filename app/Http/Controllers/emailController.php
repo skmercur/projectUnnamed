@@ -112,7 +112,7 @@ public function sch(Request $request){
   if(!empty($user)){
     $prob = $request->input('text');
   $val = DB::table('users')->where('username',$user)->first();
-  if($val->count() > 0){
+  if($!empty($val->username)){
   $email = $val->email;
   $firstname = $val->firstname;
   $lastname = $val->lastname;
