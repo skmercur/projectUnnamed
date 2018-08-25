@@ -32,7 +32,7 @@ class fileuploadcontroller extends Controller
 
     public function sendEm(Request $request,$target){
       $user = $request->input('username');
-      if(!empty($user)){
+      if(!empty($user) && !empty($target)){
       $val = DB::table('users')->where('username',$user)->first();
       $val2 = DB::table('users')->where('username',$target)->first();
 
