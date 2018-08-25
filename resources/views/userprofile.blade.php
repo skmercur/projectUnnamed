@@ -145,12 +145,14 @@
     </tr>
   </thead>
   <tbody>
+    <?php $id = 1; ?>
     @foreach($files as $file)
     <tr>
-      <th scope="row">{{$file->id}}</th>
+      <th scope="row">{{$id}}</th>
       <td>{{$file->title}}</td>
       <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
         echo $file->description;
+        $id++;
       } ?></td>
       <td>
 
@@ -265,63 +267,76 @@
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="ModalReport" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" style="height:auto;width:auto;">
-												<div class="modal-dialog" role="document">
 
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title" id="exampleModalLabel">Report : {{$user->firstname}}</h5>
-																		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																			<span aria-hidden="true">&times;</span>
-																		</button>
-																	</div>
+                          <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
 
-												<div class="modal-body" style="height:60%;width:70%">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Report : {{$user->firstname}}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
 
-				<div class="form-group row">
-					<form action="reportguest" method="post">
-									<input type="hidden" name="_token" value="{{csrf_token()}}" />
-									<input type="hidden" name="user" value="{{$user->username}}" />
-						<ul class="list-group">
+                        <div class="modal-body p-0">
+                          <div class="card bg-secondary shadow border-0">
 
-					<li class="list-group-item">
-							<label for="reportcause">The reason for the Report : </label>
-						<select name="reportcause" id="reportcause" style="font-size:10pt">
-
-					<option value="0">User published something is mine or someone else i know</option>
-					<option value="1" style="font-size:12pt">User published something that should not be on The Free Education</option>
-					<option value="2">User has an inappropriate username </option>
-					<option value="3">User has an inappropriate profile picture </option>
-					<option value="2">User has used an inappropriate title or a description </option>
-
-						</select>
-					</li>
-
-</ul>
-
-											 <div class="col-md-6 mb-3">
-													<label for="reportcause">
-														Explain more : </label>
-														<textarea name="details" placeholder="please write detailes to help us deal with the problem">
-														</textarea>
-											</div>
+                            <div class="card-body px-lg-5 py-lg-5">
 
 
 
+          <form action="reportguest" method="post">
+                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                  <input type="hidden" name="user" value="{{$user->username}}" />
 
-																	<div class="modal-footer">
-																		<button type="submit" class="btn btn-primary">Report</button>
-																		<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  <div class="form-group">
+                    <p>The reason for the Report : </p>
 
-																	</div>
+                    <div class="input-group input-group-alternative">
 
-					</form>
-				</div>
 
-												</div>
-																</div>
-												</div>
+
+                <select class="form-control" name="reportcause" id="reportcause" >
+
+          <option value="0">User published something is mine or someone else i know</option>
+          <option value="1" style="font-size:12pt">User published something that should not be on The Free Education</option>
+          <option value="2">User has an inappropriate username </option>
+          <option value="3">User has an inappropriate profile picture </option>
+          <option value="2">User has used an inappropriate title or a description </option>
+
+            </select>
+
+</div>
+</div>
+
+<div class="form-group">
+  <div class="input-group input-group-alternative">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+    </div>
+    <textarea class="form-control" placeholder="Description" name="details" type="text" maxlength="250" required ></textarea>
+  </div>
+</div>
+
+
+
+
+                                  <div class="modal-footer">
+                                    <div class="btn-group">
+                                    <button type="submit" class="btn btn-primary" style="margin-left:2%; margin-right:2%">Report</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-left:2%; margin-right:2%">Close</button>
+</div>
+                                  </div>
+
+          </form>
+        </div>
+      </div>
+        </div>
+
+
+                                </div>
+                        </div>
 </div>
 
 
@@ -368,7 +383,7 @@
                      }
                       }
                    });
-                },500);
+                },2500);
 
 
 
@@ -759,12 +774,14 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
     </tr>
   </thead>
   <tbody>
+    <?php $id = 1; ?>
     @foreach($files as $file)
     <tr>
-      <th scope="row">{{$file->id}}</th>
+      <th scope="row">{{$id}}</th>
       <td>{{$file->title}}</td>
       <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
         echo $file->description;
+        $id++;
       } ?></td>
       <td>
 

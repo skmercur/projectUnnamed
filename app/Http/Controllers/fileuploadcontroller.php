@@ -36,14 +36,14 @@ class fileuploadcontroller extends Controller
       $val = DB::table('users')->where('username',$user)->first();
       $val2 = DB::table('users')->where('username',$target)->first();
 
-      $im = $val->imgpath;
-      $email = $val2->email;
-      $firstname = $val->firstname;
-      $lastname = $val->lastname;
-      $firstname1 = $val2->firstname;
-      $lastname1 = $val2->lastname;
 
-
+  if((!empty($user)) && (!empty($target)) && (!empty($val2->email)) && (!empty($val2->firstname)) &&(!empty($val->firstname))){
+    $im = $val->imgpath;
+    $email = $val2->email;
+    $firstname = $val->firstname;
+    $lastname = $val->lastname;
+    $firstname1 = $val2->firstname;
+    $lastname1 = $val2->lastname;
       // Additional headers
       $headers = '';
       $headers.= 'To: '.$firstname1.','.$lastname1.' <'.$email.'>';
@@ -95,9 +95,13 @@ class fileuploadcontroller extends Controller
 
      mail($email, "A new file has been uploaded", $message, $headers);
 
+sleep(2);
 
 
-
+}else{
+  echo "error ";
+  echo "<p>please contact support@thefreeedu.com for more informations</p>";
+}
 }
 }
 
@@ -154,6 +158,8 @@ return redirect($data);
       $username = $request->input('username');
       $title= $request->input('title');
       $description = $request->input('description');
+      $description = preg_replace("/&#?[a-z0-9]+;/i","",$description);
+      $title = preg_replace("/&#?[a-z0-9]+;/i","",$title);
    $file = $request->file('file');
    if(!empty($title) || !empty($description) || !empty($file)){
     $fileArray = array('file' => $file);

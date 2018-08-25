@@ -116,7 +116,7 @@ public function sch(Request $request){
   $email = $val->email;
   $firstname = $val->firstname;
   $lastname = $val->lastname;
-
+if((!empty($email)) && (!empty($firstname)) && (!empty($lastname))){
 
 
   $headers = '';
@@ -169,6 +169,9 @@ public function sch(Request $request){
      ';
      mail("support@thefreeedu.com", "$user has a problem", $message, $headers);
      return back();
+   }else{
+     return back();
+   }
 }
 
 }
