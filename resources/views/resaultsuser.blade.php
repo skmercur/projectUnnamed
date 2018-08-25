@@ -10,19 +10,21 @@
 		</div>
 	</div>
 
-	<div class="card"  style="margin-top: 12%";>
+	<div class="card"  style="margin-top: 12%">
 
 			<div class="card-header">
 				<h2> Users : </h2>
 			</div>
 <div class="container">
 <div class="row">
-
+	@if( $countu == 0)
+<h4>No user was found </h4>
+	@endif
    @foreach($users as $user)
 
     @if($user->username != '')
 
-	<div class="col-sm-6" style="padding-top: 12rem;">
+	<div class="col-sm-6" style="padding-top: 12rem; margin-bottom:2%;">
 
         <div class="card card-profile shadow">
           <div class="px-4">
@@ -100,6 +102,9 @@ $followers = explode(',',$user->followers);
 
 <div class="container">
 		<div class="row">
+			@if( $count == 0)
+		<h4>No file was found </h4>
+			@endif
 <section class="search-result-item">
 
 
@@ -218,9 +223,10 @@ $followers = explode(',',$user->followers);
 </div>
 
 <div class="modal fade" id="ModalReport{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" style="height:auto;width:auto;">
-												<div class="modal-dialog" role="document">
 
-																<div class="modal-content">
+													<div class="modal-dialog modal-lg" role="document">
+														<div class="modal-content">
+
 																	<div class="modal-header">
 																		<h5 class="modal-title" id="exampleModalLabel">Report : {{$resault->title}}</h5>
 																		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -228,17 +234,25 @@ $followers = explode(',',$user->followers);
 																		</button>
 																	</div>
 
-												<div class="modal-body" style="height:60%;width:70%">
+												<div class="modal-body p-0">
+													<div class="card bg-secondary shadow border-0">
 
-				<div class="form-group row">
+														<div class="card-body px-lg-5 py-lg-5">
+
+
+
 					<form action="reportguest" method="post">
 									<input type="hidden" name="_token" value="{{csrf_token()}}" />
 									<input type="hidden" name="user" value="{{$resault->author}}" />
-						<ul class="list-group">
 
-					<li class="list-group-item">
-							<label for="reportcause">The reason for the Report : </label>
-						<select name="reportcause" id="reportcause" style="font-size:10pt">
+									<div class="form-group">
+										<p>The reason for the Report : </p>
+
+										<div class="input-group input-group-alternative">
+
+
+
+							  <select class="form-control" name="reportcause" id="reportcause" >
 
 					<option value="0">User published something is mine or someone else i know</option>
 					<option value="1" style="font-size:12pt">User published something that should not be on The Free Education</option>
@@ -247,30 +261,35 @@ $followers = explode(',',$user->followers);
 					<option value="2">User has used an inappropriate title or a description </option>
 
 						</select>
-					</li>
 
-</ul>
+</div>
+</div>
 
-											 <div class="col-md-6 mb-3">
-													<label for="reportcause">
-														Explain more : </label>
-														<textarea name="details" placeholder="please write detailes to help us deal with the problem">
-														</textarea>
-											</div>
+<div class="form-group">
+	<div class="input-group input-group-alternative">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+		</div>
+		<textarea class="form-control" placeholder="Description" name="description" type="text" maxlength="250" required ></textarea>
+	</div>
+</div>
 
 
 
 
 																	<div class="modal-footer">
-																		<button type="submit" class="btn btn-primary">Report</button>
-																		<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
+																		<div class="btn-group">
+																		<button type="submit" class="btn btn-primary" style="margin-left:2%; margin-right:2%">Report</button>
+																		<button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-left:2%; margin-right:2%">Close</button>
+</div>
 																	</div>
 
 					</form>
 				</div>
+			</div>
+				</div>
 
-												</div>
+
 																</div>
 												</div>
 </div>

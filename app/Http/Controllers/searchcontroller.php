@@ -42,7 +42,8 @@ if(!empty($value)){
 
 
   $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->limit(7)->get();
-  return view('resaults')->with(['resaults'=>$resaults,'value'=>$value]);
+$count = $resaults->count();
+  return view('resaults')->with(['resaults'=>$resaults,'value'=>$value,'count'=>$count]);
 }else{
   return back();
 }
@@ -53,7 +54,9 @@ $value = $request->q;
   if(!empty($value)){
   $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->limit(7)->get();
     $users=   DB::table('users')->where('firstname','LIKE','%'.$value.'%')->orWhere('lastname','LIKE','%'.$value.'%')->limit(5)->get();
-  return view('resaultsuser')->with(['resaults'=>$resaults,'users'=>$users,'value'=>$value]);
+$count = $resaults->count();
+$countu = $users->count();
+  return view('resaultsuser')->with(['resaults'=>$resaults,'users'=>$users,'value'=>$value,'count'=>$count,'countu'=>$countu]);
 }else{
     return back();
 }

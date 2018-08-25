@@ -6,12 +6,11 @@ x = int(sys.argv[2])
 y = int(sys.argv[3])
 h = int(sys.argv[4])
 w = int(sys.argv[5])
-
-
-
-
-img = img.crop((x,y, w+x, h+y))
-wpercent = (basewidth/float(img.size[0]))
-hsize = int((float(img.size[1])*float(wpercent)))
-img = img.resize((basewidth,hsize), Image.ANTIALIAS)
-img.save(sys.argv[1])
+if x < 0 or y < 0 or h <= 0 or w <= 0:
+    exit()
+else:
+    img = img.crop((x,y, w+x, h+y))
+    wpercent = (basewidth/float(img.size[0]))
+    hsize = int((float(img.size[1])*float(wpercent)))
+    img = img.resize((basewidth,hsize), Image.ANTIALIAS)
+    img.save(sys.argv[1])
