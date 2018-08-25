@@ -270,7 +270,7 @@ $followers = explode(',',$user->followers);
 		<div class="input-group-prepend">
 			<span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
 		</div>
-		<textarea class="form-control" placeholder="Description" name="description" type="text" maxlength="250" required ></textarea>
+		<textarea class="form-control" placeholder="Description" name="details" type="text" maxlength="250" required ></textarea>
 	</div>
 </div>
 

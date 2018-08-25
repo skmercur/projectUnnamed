@@ -112,7 +112,7 @@ public function sch(Request $request){
   if(!empty($user)){
     $prob = $request->input('text');
   $val = DB::table('users')->where('username',$user)->first();
-  if($!empty($val->username)){
+  if(!empty($val->username)){
   $email = $val->email;
   $firstname = $val->firstname;
   $lastname = $val->lastname;
@@ -154,7 +154,7 @@ public function sch(Request $request){
 <div class="col">
 <p> User <b>'.$user.'</b> is requesting help </p>
 <p> Message from user </p>
-<p>'.$text.'</p>
+<p>'.$prob.'</p>
 </div>
 </div>
 </div>
