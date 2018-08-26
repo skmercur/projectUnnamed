@@ -18,7 +18,7 @@
 
 <br>
 
-  <section class="section section-skew" style="padding-top: 5%;">
+  <section class="section section-skew" style="padding-top: 20rem;">
       <div class="container">
         <div class="card card-profile shadow mt--300">
           <div class="px-4">
