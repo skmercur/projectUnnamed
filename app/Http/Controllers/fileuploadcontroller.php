@@ -78,7 +78,7 @@ class fileuploadcontroller extends Controller
 <div class="card-body">
 <div class="row">
 <div class="col">
-   <p> <a href="https://thefreeedu.com/'.$user.'"> <img src="'.$im.'" style="max-height:20px;max-width:20px"> '.$firstname.','.$lastname.' </a> has added a new file that might interest you </p>
+   <p> <a href="https://thefreeedu.com/'.$user.'"> <img src="https://www.thefreeedu.com/'.$im.'" style="max-height:60px;max-width:60px"> '.$firstname.','.$lastname.' </a> has added a new file that might interest you </p>
 </div>
 </div>
 </div>
