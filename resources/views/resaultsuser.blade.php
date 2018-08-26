@@ -183,12 +183,35 @@ $followers = explode(',',$user->followers);
 					<form method="get" action="check" >
 						<input type="hidden" value="{{$resault->location}}" name="f">
 																<div class="btn-group">
-										<a href="">
-										<button type="submit" class="btn btn-outline-success" style="margin-left: -8%;" >
-										<i class="fa fa-cloud-download-alt"></i></button>
-										</a>
-					</form>
+																	<a href="" data-toggle="modal" data-target="#ModalDownloads{{$resault->id}}">
+																	<button type="button" class="btn btn-outline-success" style="margin-left: -8%;" >
+																	<i class="fa fa-cloud-download-alt"></i></button>
+																	</a>
 
+										                    <!-- Modal Downloads-->
+										                    <div class="modal fade" id="ModalDownloads{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+										                                                      <div class="modal-dialog" role="document">
+										                                                        <div class="modal-content">
+										                                                          <div class="modal-header">
+										                                                            <h5 class="modal-title" id="exampleModalLabel">Download {{$resault->title}}</h5>
+										                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										                                                              <span aria-hidden="true">&times;</span>
+										                                                            </button>
+										                                                          </div>
+										                                                          <div class="modal-body">
+																																								<iframe data-aa='986625' src='//acceptable.a-ads.com/986625' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
+										                                                           </div>
+										                                                          <div class="modal-footer">
+										                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+										                                                            <button type="submit" class="btn btn-success" style="margin-left:5px;" >Download</button>
+										                                                            </a>
+										                                                          </div>
+										                                                        </div>
+										                                                      </div>
+										                    </div>
+
+										                    <!-- end Modal Downloads -->
+															</form>
 													<a href="" data-toggle="modal" data-target="#Modal{{$resault->id}}">
 													   <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button>
 													</a>
