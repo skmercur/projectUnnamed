@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container" style="margin-top:3%">
+<div class="container" style="margin-top:3%;">
 	<div class="card">
 		<div class="card-header">
 			<div class="col-md-9 col-md-pull-3">
@@ -32,61 +32,60 @@
 
 		<?php $i++; ?>
 
-								<section class="content">
+								<div class="col-lg-12 col-xs-12" style="margin-bottom:2%" >
 
-									<h3>{{$resault->title}}</h3>
 
-									<div class="col-md-12 col-md-offset-2">
 
-										<div class="panel panel-default">
 
-											<div class="panel-body">
 
-												<div class="pull-right">
 
-												</div>
 
-												<div class="table-container">
-													<table class="table table-filter">
-														<tbody>
+                          <div class="row" style="margin-bottom:2%">
+                            <div class="col" style="text-align:left" >
+                              <h3 style="font-size: 5.0vh">
+{{$resault->title}}</h3>
+</div>
+</div>
+<div class="container" style="text-align:left">
 
-															<tr data-status="pagado">
+                              <div class="row">
 
-																<td>
 
-																	<div class="ckbox">
-																		<label for="checkbox1"></label>
-																	</div>
 
-																</td>
+<div class="col-sm-3 col-xs-3">
 
-																<td>
-
-																</td>
-
-																<td>
-
-													<div class="media">
-
+<div class="row">
+  <div class="col">
 																	<a href="/{{$resault->author}}" class="pull-left">
 																		<img src="{{$resault->imgpath}}" class="media-photo" height="60" width="60">
 																	</a>
-													</div>
-																</td>
+</div>
 
-																<td style="width:700px">
+                                </div>
+                                <br>
+                                <div class="row">
+  <div class="col-xs-1">
+        <small >    published by : <a href="/{{$resault->author}}">{{$resault->author}}</a></small>
+        </div>
 
-																	<div class="col-md-12 col-md-offset-10">
-																		<div class="media-body">
+        <div class="col-xs-3">
+          <br>
 
-																			<span class="media-meta pull-right" style="font-size:12">{{$resault->created_at}}</span>
+                                    <small style="font-size:1.8vh">{{$resault->created_at}}</small>
+                                  </div>
+</div>
 
-																			<h6 class="title">
-																				published by : <a href="/{{$resault->author}}">{{$resault->author}}</a>
 
-																			</h6>
 
-																			<p class="summary">
+
+
+
+
+
+</div>
+<div class="col-sm-6 col-xs-5">
+  <p>Descrption : </p>
+																		<p>
 										<?php if(strlen($resault->description)>200){
 														echo substr($resault->description,0,200)."...";
 											}
@@ -95,12 +94,12 @@
 																      } ?></p>
 
 
-																		</div>
-																	</div>
-																</td>
 
 
-																<td>
+															</div>
+
+
+															<div  class="col-sm-3 col-xs-3">
 					<form method="get" action="check" >
 						<input type="hidden" value="{{$resault->location}}" name="f">
 																<div class="btn-group">
@@ -215,15 +214,12 @@
 	</div>
 
 
-											</td>
-															</tr>
-
-														</tbody>
-													</table>
+</div>
+</div>
 
 													<br>
 													 @if($i == 2)
-													<div class="card" style="width:800px;padding:10px;" >
+													<div class="card" style="width:auto;padding:10px;" >
 
 													<p style="color:gray; font-size:12pt;">ads</p>
 
@@ -234,12 +230,9 @@
 													@endif
 												</div>
 											</div>
-										</div>
 
-
-	</div>
-
-			</section>
+                    <br>
+			</div>
 
 	@endforeach
 
@@ -247,8 +240,8 @@
 	</div>
 	</div>
 	</div>
-	</div>
 </div>
 </div>
+
 
 	@endsection

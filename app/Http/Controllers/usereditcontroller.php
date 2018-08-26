@@ -215,6 +215,7 @@ shell_exec("python $loc $filenameUp $x $y $w $h");
 }
    DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass,'bio'=>$bio,'status'=>0]);
 $this->resend($request);
+return back();
 }
       }
 }else{
