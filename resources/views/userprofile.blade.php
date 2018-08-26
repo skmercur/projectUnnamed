@@ -18,7 +18,7 @@
 
 <br>
 
-  <section class="section section-skew" style="padding-top: 30rem;">
+  <section class="section section-skew" style="padding-top: 5%;">
       <div class="container">
         <div class="card card-profile shadow mt--300">
           <div class="px-4">
@@ -152,7 +152,7 @@
       <td>{{$file->title}}</td>
       <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
         echo $file->description;
-        $id++;
+        $id+=1;
       } ?></td>
       <td>
 
@@ -781,7 +781,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
       <td>{{$file->title}}</td>
       <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
         echo $file->description;
-        $id++;
+        $id +=1;
       } ?></td>
       <td>
 
