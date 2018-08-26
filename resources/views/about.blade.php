@@ -76,7 +76,7 @@ a:focus, a:hover { text-decoration: none; color: #c38d3f; }
 
 
     <!-- Header -->
-    <header class="text-white text-center" style="background: #FFF;">
+    <header class="text-white text-center" style="background: #1b1b1b;">
       <div class="container">
         <img class="img-fluid " style="padding-top: 80px;" src="{{asset('assets/img/logoanim.gif')}}" alt="">
       </div>
