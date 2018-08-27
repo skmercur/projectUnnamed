@@ -42,13 +42,20 @@ public function getNotification(Request $request)
   $user = $request->username;
   $code = $request->code;
 
-
+$if(!empty($user) || !empty($code)){
+  $db = DB::table('users')->where('username',$user)->where('code',$code)->first();
+  if(!empty($db->username))
+  {
+  if($code == $db->code){
 $resaults = DB::table('notifications')->where('target',$user)->where('seen',0)->orderBy('created_at', 'desc')->limit(5)->get();
 $resaultss = $resaults;
 foreach ($resaultss as $resault) {
 DB::table('notifications')->where('target',$user)->where('seen',0)->update(['seen'=>1]);
 }
 return response()->json(array('resaults'=>$resaults),200);
+}
+}
+}
 }
 
 
@@ -57,13 +64,19 @@ public function getNotificationNumber(Request $request)
   $user = $request->username;
   $code = $request->code;
 
-
+$if(!empty($user) || !empty($code)){
+  $db = DB::table('users')->where('username',$user)->where('code',$code)->first();
+  if(!empty($db->username))
+  {
+  if($code == $db->code){
 $resaults = DB::table('notifications')->where('target',$user)->where('seen',0)->orderBy('created_at', 'desc')->limit(5)->get();
 $numberNoti = $resaults->count();
 $resaultss = $resaults;
 
 return response()->json(array('resaults'=>$resaults,'numberNoti'=>$numberNoti),200);
-
+}
+}
+}
 }
 public function removenoti(Request $request)
 {
@@ -71,13 +84,21 @@ public function removenoti(Request $request)
   $code = $request->code;
 $id = $request->id;
 
+$if(!empty($user) || !empty($code)){
+  $db = DB::table('users')->where('username',$user)->where('code',$code)->first();
+  if(!empty($db->username))
+  {
+  if($code == $db->code){
+
  DB::table('notifications')->where('target',$user)->where('id',$id)->delete();
 
 // foreach ($resaultss as $resault) {
 // DB::table('notifications')->where('target',$user)->where('seen',0)->update(['seen'=>1]);
 // }
 return response()->json(array('status'=>'removed'),200);
-
+}
+}
+}
 }
 
 
@@ -85,7 +106,7 @@ return response()->json(array('status'=>'removed'),200);
    {
 
      $value = $request['slug'];
-if(!empty($value)){
+
 $user =   DB::table('users')->where('username',$value)->first();
 $files = DB::table('files')->where('author',$value)->get();
 
@@ -107,8 +128,6 @@ if(!empty($user->username)){
 }else {
 
   return view('errors/404');
-}
-return back();
 }
 }
 
