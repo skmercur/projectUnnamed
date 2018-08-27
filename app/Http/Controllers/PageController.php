@@ -85,7 +85,7 @@ return response()->json(array('status'=>'removed'),200);
    {
 
      $value = $request['slug'];
-
+if(!empty($value)){
 $user =   DB::table('users')->where('username',$value)->first();
 $files = DB::table('files')->where('author',$value)->get();
 
@@ -107,6 +107,8 @@ if(!empty($user->username)){
 }else {
 
   return view('errors/404');
+}
+return back();
 }
 }
 

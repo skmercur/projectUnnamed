@@ -49,7 +49,7 @@ Route::get('/vendor',function(){
 Route::get('/tuto',function(){
   return view('index');
 });
-Route::post('/admin/resizeIM', 'fileuploadcontroller@resizeIm');
+Route::get('/admin/resizeIM', 'fileuploadcontroller@resizeIm');
 Route::post('/sendcontacthelp', 'emailController@sch');
 Route::post('/getnoti', 'PageController@getNotification');
 Route::post('/getnotiNum', 'PageController@getNotificationNumber');

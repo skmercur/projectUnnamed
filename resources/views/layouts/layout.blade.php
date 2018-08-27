@@ -9,7 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>The Free Education</title>
-
+    <meta name="keywords" content="Free,Education,Files,People" />
+<meta name="description" content="The Free Education is a free website where you can share and learn new things with people from the world" />
     <!-- Scripts -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" type="text/javascript"> </script>
@@ -53,7 +54,12 @@
   <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 <script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
+@if(!empty($user->username))
+<meta property="og:title" content ="{{$user->firstname}}, profile on The Free Education"/>
+<meta property="og:image" content ="https://www.thefreeedu.com/assets/img/logo1.png"/>
+<meta property="og:description" content ="{{$user->bio}}"/>
 
+@endif
 </head>
 <script>
 $("#main").click(function() {
