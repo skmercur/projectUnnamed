@@ -26,9 +26,22 @@ class fileuploadcontroller extends Controller
      */
     public function create()
     {
-        //
-    }
 
+    }
+    public function resizeIm()
+    {
+            $val = DB::table('users')->get();
+            foreach ($val as $user) {
+              if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
+        $loc = $_SERVER['DOCUMENT_ROOT'].'/py/rescale.py';
+        $filenameUp = $user->imgpath;
+
+            shell_exec("python $loc $filenameUp");
+
+              }
+              sleep(1)
+            }
+    }
 
     public function sendEm(Request $request,$target){
       $user = $request->input('username');
