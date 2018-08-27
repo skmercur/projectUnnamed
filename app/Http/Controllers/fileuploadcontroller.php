@@ -32,14 +32,14 @@ class fileuploadcontroller extends Controller
     {
             $val = DB::table('users')->get();
             foreach ($val as $user) {
-              if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
+              if($user->username){
         $loc = $_SERVER['DOCUMENT_ROOT'].'/py/rescale.py';
         $filenameUp = $user->imgpath;
 
             shell_exec("python $loc $filenameUp");
 
               }
-              sleep(1)
+              sleep(1);
             }
     }
 

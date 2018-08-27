@@ -143,6 +143,9 @@ $validator = Validator::make($fileArray, $rules);
        if($val->status == 0){
       $destinationPath = "usersdata/".md5('uploads'.$user)."/";
       $file->move($destinationPath,$hash);
+      if(($x < 0) || ($y <0  ) ||($w != $h) || ($w <= 0)){
+        return back();
+      }
       if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
 $loc = $_SERVER['DOCUMENT_ROOT'].'/py/resize.py';
 $filenameUp = $destinationPath.$hash;
