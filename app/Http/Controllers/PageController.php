@@ -88,8 +88,6 @@ return response()->json(array('status'=>'removed'),200);
 if(!empty($value)){
 $user =   DB::table('users')->where('username',$value)->first();
 $files = DB::table('files')->where('author',$value)->get();
-
-
 if(!empty($user->username)){
   $downloads=0;
   $uploads =0;
