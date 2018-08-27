@@ -40,12 +40,12 @@ class Kernel extends ConsoleKernel
 
           $db2 = DB::table('users')->get();
           foreach ($db2 as $user) {
-            $loc = $_SERVER['DOCUMENT_ROOT'].'/py/rescale.py';
+            $loc = 'py/rescale.py';
             $filenameUp = $user->imgpath;
 
                 shell_exec("python $loc $filenameUp");
           }
-      })->hourly();
+      })->everyMinute();
     }
 
     /**
