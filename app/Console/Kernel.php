@@ -26,8 +26,8 @@ class Kernel extends ConsoleKernel
     {
       $schedule->call(function () {
         $db = DB::table('notifications')->get();
-        foreach ($db as $user)
-        $noti =  DB::table('notifications')-where('target',$user->username)->orderBy('created_at','desc')->get();
+        foreach ($db as $user){
+        $noti =  DB::table('notifications')->where('target',$user->target)->orderBy('created_at','desc')->get();
         if($noti->count() > 5){
           foreach ($noti as $uu ) {
             if((time()-strtotime($uu->created_at))>593056){
@@ -36,6 +36,7 @@ class Kernel extends ConsoleKernel
           }
 
         }
+      }
 
           $db2 = DB::table('users')->get();
           foreach ($db2 as $user) {
