@@ -164,7 +164,7 @@ $.material.init();
 
                             <form method="post" id="theFormNoti">
                               <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                              <input type="hidden" name="code" value="$user->code" />
+                              <input type="hidden" name="code" value="{{$user->code}}" />
                               <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
                             </form>
                             <div class="btn-group">
