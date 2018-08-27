@@ -32,13 +32,9 @@ if(!empty($db->username)){
   $user = $db->username;
 $resaults = DB::table('notifications')->where('target',$user)->orderBy('created_at', 'desc')->limit(5)->get();
 $resaultss = $resaults;
-if($resaultss->count() > 5){
-$last = DB::table('notifications')->where('target',$user)->where('seen',1)->orderBy('created_at', 'asc')->get();
-foreach ($last as $day ) {
-  DB::table('notifications')->where('target',$user)->where('created_at','<',$day->created_at)->delete();
-}
 
-}
+
+
 foreach ($resaultss as $resault) {
 DB::table('notifications')->where('target',$user)->where('seen',0)->update(['seen'=>1]);
 }
@@ -46,6 +42,7 @@ return response()->json(array('resaults'=>$resaults),200);
 }
 }
 }
+
 
 
 public function getNotification(Request $request)
@@ -58,12 +55,6 @@ public function getNotification(Request $request)
   $user = $db->username;
   $resaults = DB::table('notifications')->where('target',$user)->where('seen',0)->orderBy('created_at', 'desc')->limit(5)->get();
   $resaultss = $resaults;
-  if($resaultss->count() > 5){
-  $last = DB::table('notifications')->where('target',$user)->where('seen',1)->orderBy('created_at', 'asc')->get();
-  foreach ($last as $day ) {
-    DB::table('notifications')->where('target',$user)->where('created_at','<',$day->created_at)->delete();
-  }
-  }
   foreach ($resaultss as $resault) {
   DB::table('notifications')->where('target',$user)->where('seen',0)->update(['seen'=>1]);
   }
