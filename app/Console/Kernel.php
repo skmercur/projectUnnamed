@@ -26,11 +26,17 @@ class Kernel extends ConsoleKernel
     {
       $schedule->call(function () {
         $db = DB::table('notifications')->get();
-        foreach ($db as $user) {
-        if((time()-strtotime($user->created_at))>593056){
-          DB::table('notifications')->where('id',$user->id)->delete();
+        foreach ($db as $user)
+        $noti =  DB::table('notifications')-where('target',$user->username)->orderBy('created_at','desc')->get();
+        if($noti->count() > 5){
+          foreach ($noti as $uu ) {
+            if((time()-strtotime($uu->created_at))>593056){
+              DB::table('notifications')->where('id',$uu->id)->delete();
+            }
+          }
+
         }
-        }
+
           $db2 = DB::table('users')->get();
           foreach ($db2 as $user) {
             $loc = $_SERVER['DOCUMENT_ROOT'].'/py/rescale.py';
