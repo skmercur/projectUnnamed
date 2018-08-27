@@ -32,7 +32,7 @@ if(!empty($db->username)){
   $user = $db->username;
 $resaults = DB::table('notifications')->where('target',$user)->orderBy('created_at', 'desc')->limit(5)->get();
 $resaultss = $resaults;
-if($resaultss->count() > 4){
+if($resaultss->count() > 5){
 $last = DB::table('notifications')->where('target',$user)->where('seen',1)->orderBy('created_at', 'asc')->first();
   DB::table('notifications')->where('target',$user)->where('created_at','<',$last->created_at)->delete();
 }
@@ -55,7 +55,7 @@ public function getNotification(Request $request)
   $user = $db->username;
   $resaults = DB::table('notifications')->where('target',$user)->where('seen',0)->orderBy('created_at', 'desc')->limit(5)->get();
   $resaultss = $resaults;
-  if($resaultss->count() > 4){
+  if($resaultss->count() > 5){
   $last = DB::table('notifications')->where('target',$user)->where('seen',1)->orderBy('created_at', 'asc')->first();
   DB::table('notifications')->where('target',$user)->where('created_at','<',$last->created_at)->delete();
   }
