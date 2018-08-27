@@ -88,6 +88,10 @@ public function removenoti(Request $request)
 {
   $user = $request->username;
   $code = $request->code;
+  if(!empty($user) && !empty($code)){
+  $db =   DB::table('users')->where('username',$user)->where('code',$code)->first();
+  if(!empty($db->username)){
+  $user = $db->username;
 $id = $request->id;
 
  DB::table('notifications')->where('target',$user)->where('id',$id)->delete();
@@ -96,7 +100,8 @@ $id = $request->id;
 // DB::table('notifications')->where('target',$user)->where('seen',0)->update(['seen'=>1]);
 // }
 return response()->json(array('status'=>'removed'),200);
-
+}
+}
 }
 
 
