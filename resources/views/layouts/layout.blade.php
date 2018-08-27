@@ -53,7 +53,12 @@
   <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 <script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
+@if(!empty($user->username))
+<meta property="og:title" content ="{{$user->firstname}}, profile on The Free Education"/>
+<meta property="og:image" content ="https://www.thefreeedu.com/logo1.png"/>
+<meta property="og:description" content ="{{$user->bio}}"/>
 
+@endif
 </head>
 <script>
 $("#main").click(function() {
