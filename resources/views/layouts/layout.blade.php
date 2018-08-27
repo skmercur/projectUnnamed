@@ -55,7 +55,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
 @if(!empty($user->username))
 <meta property="og:title" content ="{{$user->firstname}}, profile on The Free Education"/>
-<meta property="og:image" content ="https://www.thefreeedu.com/logo1.png"/>
+<meta property="og:image" content ="https://www.thefreeedu.com/assets/img/logo1.png"/>
 <meta property="og:description" content ="{{$user->bio}}"/>
 
 @endif

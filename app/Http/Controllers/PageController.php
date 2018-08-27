@@ -110,6 +110,7 @@ if(!empty($user->username)){
 }
 return back();
 }
+}
 
 
     /**
