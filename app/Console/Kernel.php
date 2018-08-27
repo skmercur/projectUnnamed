@@ -31,7 +31,14 @@ class Kernel extends ConsoleKernel
           DB::table('notifications')->where('id',$user->id)->delete();
         }
         }
-      })->daily();
+          $db2 = DB::table('users')->get();
+          foreach ($db2 as $user) {
+            $loc = $_SERVER['DOCUMENT_ROOT'].'/py/rescale.py';
+            $filenameUp = $user->imgpath;
+
+                shell_exec("python $loc $filenameUp");
+          }
+      })->hourly();
     }
 
     /**
