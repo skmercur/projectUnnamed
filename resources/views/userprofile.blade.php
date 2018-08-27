@@ -26,7 +26,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="{{ $user->imgpath}}" class="rounded-circle">
+                    <img src="{{ $user->imgpath}}" class="rounded-circle" style="max-height:180px">
                   </a>
                 </div>
               </div>
@@ -472,7 +472,7 @@ break;
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="{{ Auth::user()->imgpath}}" class="rounded-circle">
+                    <img src="{{ Auth::user()->imgpath}}" class="rounded-circle"  style="max-height:180px">
                   </a>
 
                 </div>
