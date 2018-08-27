@@ -375,21 +375,21 @@ return view('auth/passwords/resetpassword')->with(['status'=>1,'code'=>$code]);
     $user=  $request->input('user');
     $text = $request->input('text');
   $val = DB::table('users')->where('username',$user)->where('status',0)->first();
-if($val->count()>0){
+if(!empty($val->username)){
     $to      = 'support@thefreeedu.com';
     $subject = 'Request a new speciality';
-    $message = $text.' ## email = '.$email;
-    $headers = 'From: '.$email.'' . "\r\n" .
-        'Reply-To: '.$email.'' . "\r\n" .
+    $message = $text.' ## email = '.$val->email.' speciality'.$text;
+    $headers = 'From: '.$val->email.'' . "\r\n" .
+        'Reply-To: '.$val->email.'' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
     mail($to, $subject, $message, $headers);
 
 
-
+echo "Email Was sent we will contact you";
     return redirect('/'.$user);
   }else{
-    return back();
+    return redirect('/auth/nextstep?v=1');
   }
 }
 
