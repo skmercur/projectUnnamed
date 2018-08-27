@@ -9,7 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>The Free Education</title>
-
+    <meta name="keywords" content="Free,Education,Files,People" />
+<meta name="description" content="The Free Education is a free website where you can share and learn new things with people from the world" />
     <!-- Scripts -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" type="text/javascript"> </script>
