@@ -45,7 +45,18 @@ if(!empty($value)){
 $count = $resaults->count();
   return view('resaults')->with(['resaults'=>$resaults,'value'=>$value,'count'=>$count]);
 }else{
-  return back();
+$value2 = $request->a;
+if(!empty($value2)){
+
+
+
+
+    $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->orderBy('files.created_at','desc')->get();
+  $count = $resaults->count();
+    return view('resaults')->with(['resaults'=>$resaults,'value'=>$value,'count'=>$count]);
+  }else{
+    return back();
+  }
 }
 }
 public function usearch(Request $request){
