@@ -60,6 +60,13 @@
 <meta property="og:description" content ="{{$user->bio}}"/>
 
 @endif
+@if(!empty(Request::query('share')))
+@if(!empty($resault->title))
+<meta property="og:title" content ="{{$resault->title}}"/>
+<meta property="og:image" content ="https://www.thefreeedu.com/assets/img/logo1.png"/>
+<meta property="og:description" content ="{{$resault->description}}"/>
+@endif
+@endif
 </head>
 <script>
 $("#main").click(function() {
