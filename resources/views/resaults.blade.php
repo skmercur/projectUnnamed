@@ -226,7 +226,7 @@
 					<p style="color:gray; font-size:12pt;">ads</p>
 
 					<div class="card-body" >
-            <iframe data-aa='986619' src='//acceptable.a-ads.com/986619' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
+          <iframe data-aa='977909' src='//acceptable.a-ads.com/977909' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
 					</div>
 			</div>
 	<?php $i = 0; ?>

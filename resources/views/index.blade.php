@@ -47,6 +47,109 @@
     </div>
 </div>
 </div>
+
+
+
+
+	<div class="card"  style="margin-top: 12%";>
+
+			<div class="card-header">
+				<h2> Users : </h2>
+			</div>
+
+<div class="container">
+<div class="row">
+
+   @foreach($users as $user)
+
+    @if($user->username != '')
+
+	<div class="col-sm-6" style="padding-top: 12rem;">
+
+        <div class="card card-profile shadow">
+          <div class="px-4">
+
+            <div class="row justify-content-center">
+
+
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                  <a href="/{{$user->username}}">
+                    <img style="width: 60px;" src="{{$user->imgpath}}" class="rounded-circle">
+                  </a>
+                </div>
+              </div>
+
+
+              <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+								@if($user->username !== Auth::user()->username)
+                <div class="card-profile-actions py-4 mt-lg-0">
+									<?php
+											$followers = explode(',',$user->followers);
+									 ?>
+								@if(in_array(Auth::user()->username,$followers))
+								 <form method="post" action="rmf" >
+
+								                  <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
+
+								                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
+								                  <input type="hidden" name="useru" value="{{$user->username}}" />
+								                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+								 </form>
+								                  @else
+								  <form action="newf" method="post">
+
+												  <button type="submit" class="btn btn-sm btn-default float-right">Follow</button>
+
+								                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
+								                  <input type="hidden" name="useru" value="{{$user->username}}" />
+								                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+								 </form>
+												  @endif
+                </div>
+								@endif
+              </div>
+
+
+              <div class="col-lg-4 order-lg-1">
+                <div class="card-profile-stats d-flex justify-content-center">
+
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="text-center mt-5">
+
+              <a href="/{{$user->username}}"><h3>{{$user->firstname}}  {{$user->lastname}}
+                <span class="font-weight-light"><small>, {{$user->namespi}}</small></span>
+              </h3></a>
+
+            </div>
+
+        </div>
+
+        </div>
+
+    </div>
+
+    @else
+            <div class="search-result-item-body">
+                <div class="row">
+                    <div class="col-sm-9">
+                    <h4>no user was found</h4>
+                    </div>
+                </div>
+            </div>
+    @endif
+@endforeach
+
+</div>
+</div>
+</div>
+
+
 <script>
 $('.carousel').carousel({
 

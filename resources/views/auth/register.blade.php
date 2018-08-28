@@ -28,7 +28,7 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group input-group-alternative mb-3">
-                      <input id="lastname" type="text" placeholder="Lastname" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required="">
+                      <input id="lastname" type="text" placeholder="Lastname" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required>
                                 @if ($errors->has('lastname'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('lastname') }}</strong>

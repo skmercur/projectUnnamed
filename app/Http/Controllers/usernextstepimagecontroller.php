@@ -43,7 +43,9 @@ class usernextstepimagecontroller extends Controller
     $code = $val->code;
    if($val->code == $codeu){
      DB::table('users')->where('username',$user)->update(['status' => 1]);
-     return view('index');
+     $users=   DB::table('users')->where('namespi',$user->namespi)->orderBy('nfiles', 'desc')->limit(5)->get();
+
+     return view('index')->with(['users'=>$users]);
    }else {
      return back();
    }
@@ -169,15 +171,9 @@ $filenameUp = $destinationPath.$hash;
 
 
 // Additional headers
-$headers = '';
-$headers.= 'To: '.$firstname.','.$lastname.' <'.$email.'>';
-$headers.= 'From: The support team <support@thefreeedu.com>';
+$headers = 'From: support@thefreeedu.com'."\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-$headers .= 'From: support@thefreeedu.com' . "\r\n" .
-    'Reply-To: support@thefreeedu.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-
+$headers.= "Content-type: text/html; charset=UTF8". PHP_EOL ;
        $message = '
        <html>
        <head>
