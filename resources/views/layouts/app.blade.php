@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/nucleo.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
 
+    <meta property="og:title" content ="Register on The Free Education"/>
+    <meta property="og:image" content ="https://www.thefreeedu.com/assets/img/logo1.png"/>
 
     <style>
 body{ margin:0px; padding:0px; font-family:helvetica; background:url(image.png); }
