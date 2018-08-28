@@ -45,14 +45,18 @@ return redirect('/');
 
 
     // Additional headers
-    $headers = '';
-    $headers.= 'To: '.$firstname.','.$lastname.' <'.$email.'>';
-    $headers.= 'From: The support team <support@thefreeedu.com>';
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-    $headers .= 'From: support@thefreeedu.com' . "\r\n" .
-       'Reply-To: support@thefreeedu.com' . "\r\n" .
-       'X-Mailer: PHP/' . phpversion();
+    // $headers = '';
+    // $headers.= 'To: '.$firstname.','.$lastname.' <'.$email.'>';
+    // $headers.= 'From: The support team <support@thefreeedu.com>';
+    // $headers .= "MIME-Version: 1.0\r\n";
+    // $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    // $headers .= 'From: support@thefreeedu.com' . "\r\n" .
+    //    'Reply-To: support@thefreeedu.com' . "\r\n" .
+    //    'X-Mailer: PHP/' . phpversion();
+
+$headers = 'From: support@thefreeedu.com'."\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers.= "Content-type: text/html; charset=UTF8". PHP_EOL ;
        // Mail::send('mail',$data,function($message) use ($email){
        //   $message->to($email)->subject('Your activation code');
        //   $message->from('support@thefreeedu.com','support');
@@ -119,14 +123,9 @@ public function sch(Request $request){
 if((!empty($email)) && (!empty($firstname)) && (!empty($lastname))){
 
 
-  $headers = '';
-  $headers.= 'To: Support <support@thefreeedu.com>';
-  $headers.= 'From: The support team <support@thefreeedu.com>';
+  $headers = 'From: support@thefreeedu.com'."\r\n";
   $headers .= "MIME-Version: 1.0\r\n";
-  $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-  $headers .= 'From: support@thefreeedu.com' . "\r\n" .
-     'Reply-To: support@thefreeedu.com' . "\r\n" .
-     'X-Mailer: PHP/' . phpversion();
+  $headers.= "Content-type: text/html; charset=UTF8". PHP_EOL ;
      // Mail::send('mail',$data,function($message) use ($email){
      //   $message->to($email)->subject('Your activation code');
      //   $message->from('support@thefreeedu.com','support');
@@ -230,14 +229,9 @@ $headers = 'From: <support@thefreeedu.com>'.
        $lastname = $val->lastname;
 
        // Additional headers
-       $headers = '';
-       $headers.= 'To: '.$firstname.','.$lastname.' <'.$email.'>';
-       $headers.= 'From: The support team <support@thefreeedu.com>';
+       $headers = 'From: support@thefreeedu.com'."\r\n";
        $headers .= "MIME-Version: 1.0\r\n";
-       $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-       $headers .= 'From: support@thefreeedu.com' . "\r\n" .
-          'Reply-To: support@thefreeedu.com' . "\r\n" .
-          'X-Mailer: PHP/' . phpversion();
+       $headers.= "Content-type: text/html; charset=UTF8". PHP_EOL ;
           // Mail::send('mail',$data,function($message) use ($email){
           //   $message->to($email)->subject('Your activation code');
           //   $message->from('support@thefreeedu.com','support');
