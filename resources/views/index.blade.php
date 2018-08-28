@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="card" style="margin:5px;background-color:#d3d3d3;">
+<div class="card" style="margin:3%;background-color:#d3d3d3;">
 <div class="container" >
     <div id="carouselContent" class="carousel slide" data-ride="carousel" data-pause="hover">
         <div class="carousel-inner" role="listbox">
@@ -46,15 +46,15 @@
         </a>
     </div>
 </div>
-</div>
 
 
 
 
-	<div class="card"  style="margin-top: 12%";>
+
+	<div class="card"  style="margin-top: 5%">
 
 			<div class="card-header">
-				<h2> Users : </h2>
+				<h2>People that might intrest you : </h2>
 			</div>
 
 <div class="container">
@@ -64,7 +64,7 @@
 
     @if($user->username != '')
 
-	<div class="col-sm-6" style="padding-top: 12rem;">
+	<div class="col-sm-6" style="padding-top: 12rem;margin-bottom:5%">
 
         <div class="card card-profile shadow">
           <div class="px-4">
@@ -148,7 +148,7 @@
 </div>
 </div>
 </div>
-
+</div>
 
 <script>
 $('.carousel').carousel({
