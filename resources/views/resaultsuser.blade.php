@@ -216,7 +216,7 @@ $followers = explode(',',$user->followers);
 													   <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button>
 													</a>
 													<a href="" data-toggle="modal" data-target="#ModalReport{{$resault->id}}">
-													<button type="button" class="btn btn-outline-danger" style="margin-left:2%">Report</button>
+													<button type="button" class="btn btn-outline-danger fa fa-user-times" style="margin-left:2%"></button>
 													</a>
 
 

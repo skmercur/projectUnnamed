@@ -29,7 +29,7 @@
   <h4 class="alert-heading">Well done!</h4>
   <p>You are successfully registered on The Free Education, now you need to check you inbox for the activation code.</p>
   <hr>
-  <p class="mb-0">Hint if you don't find the activation code in the inbox it might be in the spam folder.</p>
+  <p class="mb-0">Hint if you don't find the activation code in the inbox it might be in the <b style="color:red">spam</b> folder.</p>
 </div>
 </div>
 </div>

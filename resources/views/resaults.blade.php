@@ -100,6 +100,7 @@
 
 
 															<div  class="col-sm-3 col-xs-3">
+                                <div class="row-fluid">
 					<form method="get" action="check" >
 						<input type="hidden" value="{{$resault->location}}" name="f">
 																<div class="btn-group">
@@ -133,12 +134,26 @@
                     <!-- end Modal Downloads -->
 					</form>
 
+
+
 													<a href="" data-toggle="modal" data-target="#Modal{{$resault->id}}">
 													   <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button>
 													</a>
+
+                          </div>
+                          <div class="row-fluid" style="margin-top:2%">
+
+
 													<a href="" data-toggle="modal" data-target="#ModalReport{{$resault->id}}">
-													<button type="button" class="btn btn-outline-danger" style="margin-left:2%">Report</button>
+													<button type="button" class="btn btn-outline-danger fa fa-user-times" style="margin-left:-2%"></button>
 													</a>
+                          <div class="dropdown">
+  <button class="btn btn-outline-secondary fa fa-share-alt dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:1%" >
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <input type="url" class="form-control" style="font-size:8pt" value="https://www.thefreeedu.com/search?share=<?php $resault->id?>" onClick="this.select();"  >
+  </div>
+</div>
 
 
 
@@ -238,6 +253,7 @@
 	</div>
 
 
+</div>
 </div>
 </div>
 
