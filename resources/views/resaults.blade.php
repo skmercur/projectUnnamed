@@ -151,7 +151,7 @@
   <button class="btn btn-outline-secondary fa fa-share-alt dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:1%" >
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-  <input type="url" class="form-control" style="font-size:8pt" value="https://www.thefreeedu.com/search?share=<?php $resault->id?>" onClick="this.select();"  >
+  <input type="url" class="form-control" style="font-size:8pt" value="https://www.thefreeedu.com/search?share=<?php echo $resault->id;?>" onClick="this.select();"  >
   </div>
 </div>
 
