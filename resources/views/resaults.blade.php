@@ -67,8 +67,8 @@
 
 	<div class="btn-group">
 	<a href=""data-toggle="modal" data-target="#ModalDownload{{$resault->id}}"> <button type="button" class="btn btn-outline-success " style="margin-left: auto;" >Download <i class="fa fa-cloud-download-alt"></i></button></a>
-															<a href=""data-toggle="modal" data-target="#Modal{{$resault->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 2%; margin-right:2%;">View </button></a>
-														<a href=""data-toggle="modal" data-target="#ModalReport{{$resault->id}}"><button type="button" class="btn btn-outline-danger" style="margin-left:2%">Report</button></a>
+															<a href="" data-toggle="modal" data-target="#Modal{{$resault->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 2%; margin-right:2%;">View </button></a>
+														<a href="" data-toggle="modal" data-target="#ModalReport{{$resault->id}}"><button type="button" class="btn btn-outline-danger" style="margin-left:2%">Report</button></a>
 </div>
 												      </td>
 												    </tr>
@@ -213,8 +213,9 @@
 				  </div>
 						</section>
 </div>
+
 <a href="" class="float" id="menu-share" data-toggle="modal" data-target="#ModalContact">
-<i class="fa fa-comment my-float "></i>
+	<i class="fa fa-comment my-float "></i>
 </a>
 
 <div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -256,4 +257,5 @@
     </div>
   </div>
 </div>
+
 @endsection

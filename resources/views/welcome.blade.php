@@ -55,6 +55,51 @@ input[type="submit"] {
 input[type="submit"]:hover {
   opacity: 0.8;
 }
+/**
+*Box-style
+**/
+
+.box {
+    padding: 50px 30px;
+    text-align: center;
+    -webkit-box-shadow: 0 0 0 0 #ffffff;
+    box-shadow: 0 0 0 0 #ffffff;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    border-radius: 5px;
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+}
+
+.box:hover {
+    -webkit-box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px)
+}
+
+.box h4 {
+    text-transform: uppercase;
+}
+
+.box .box-icon {
+    height: 160px;
+    margin-bottom: 20px;
+}
+
+.box .box-icon img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.box:hover .box-icon img {
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0)
+}
+
 </style>
 
 @section('content')
@@ -68,17 +113,80 @@ input[type="submit"]:hover {
   margin-right: auto;
   display: block;max-height: 260px;">
         </div>
-       <div class="input-group mb-12 center">
+      <div class="input-group mb-12 center">
 
           <div class="col-sm-12">
                     <input id="search" name="q" type="text" placeholder="Search for documents">
                     <input id="search_submit" value="Rechercher" type="submit">
          </div>
 
-        </div>
+      </div>
        </div>
   </div>
   </form>
+
+  <section class="gray-bg section-padding" id="feature-page">
+        <div class="container">
+        
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="box">
+                          <div class="box-icon">
+                              <img src="{{asset('assets/img/portfolio-icon-1.png')}}" alt="">
+                          </div>
+                        <h3>Specialite 1 </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="box">
+                        <div class="box-icon">
+                            <img src="{{asset('assets/img/portfolio-icon-2.png')}}" alt="">
+                        </div>
+                        <h3>Specialite 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="box">
+                        <div class="box-icon">
+                            <img src="{{asset('assets/img/portfolio-icon-3.png')}}" alt="">
+                        </div>
+                        <h3>Specialite 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="box">
+                        <div class="box-icon">
+                            <img src="{{asset('assets/img/portfolio-icon-4.png')}}" alt="">
+                        </div>
+                        <h3>Specialite 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="box">
+                        <div class="box-icon">
+                            <img src="{{asset('assets/img/portfolio-icon-5.png')}}" alt="">
+                        </div>
+                        <h3>Specialite 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="box">
+                        <div class="box-icon">
+                            <img src="{{asset('assets/img/portfolio-icon-6.png')}}" alt="">
+                        </div>
+                        <h3>Specialite 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 @else
 
     <form action="usearch" style="margin-top: 15px;" method="get">

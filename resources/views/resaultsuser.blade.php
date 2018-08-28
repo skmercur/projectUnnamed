@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container" style="margin-top:3%">
+
 	<div class="card">
 		<div class="card-header">
 			<div class="col-md-9 col-md-pull-3">
@@ -15,6 +16,7 @@
 			<div class="card-header">
 				<h2> Users : </h2>
 			</div>
+
 <div class="container">
 <div class="row">
 
@@ -26,7 +28,10 @@
 
         <div class="card card-profile shadow">
           <div class="px-4">
+
             <div class="row justify-content-center">
+
+
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="/{{$user->username}}">
@@ -34,45 +39,57 @@
                   </a>
                 </div>
               </div>
+
+
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
 								@if($user->username !== Auth::user()->username)
                 <div class="card-profile-actions py-4 mt-lg-0">
 									<?php
-$followers = explode(',',$user->followers);
+											$followers = explode(',',$user->followers);
 									 ?>
 								@if(in_array(Auth::user()->username,$followers))
-								  <form method="post" action="rmf" >
+								 <form method="post" action="rmf" >
+								                  
 								                  <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
+								                 
 								                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
 								                  <input type="hidden" name="useru" value="{{$user->username}}" />
 								                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
-								                </form>
+								 </form>
 								                  @else
-								                  <form action="newf" method="post">
-								<button type="submit" class="btn btn-sm btn-default float-right">Follow</button>
-
+								  <form action="newf" method="post">
+												
+												  <button type="submit" class="btn btn-sm btn-default float-right">Follow</button>
+								                  
 								                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
 								                  <input type="hidden" name="useru" value="{{$user->username}}" />
 								                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
-								                </form>
-																 @endif
+								 </form>
+												  @endif
                 </div>
 								@endif
               </div>
+
+
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">
 
                 </div>
               </div>
+
             </div>
+
+
             <div class="text-center mt-5">
+             
               <a href="/{{$user->username}}"><h3>{{$user->firstname}}  {{$user->lastname}}
                 <span class="font-weight-light"><small>, {{$user->namespi}}</small></span>
               </h3></a>
 
+            </div>
 
-          </div>
         </div>
+
         </div>
 
     </div>
@@ -87,226 +104,205 @@ $followers = explode(',',$user->followers);
             </div>
     @endif
 @endforeach
+
 </div>
 </div>
 </div>
 
 <div class="card" style="margin-top: 12%;margin-bottom: 12%">
+
 						<div class="card-header">
         					<h2> Files : </h2>
 						</div>
 
-<div class="card-body">
-
 <div class="container">
-		<div class="row">
-<section class="search-result-item">
+	
+	<div class="row">
 
+		<?php $i=0; ?>
+		   @foreach($resaults as $resault)
+			  <?php $i++; ?>
 
-	<?php $i=0; ?>
-	@foreach($resaults as $resault)
-	<?php $i++; ?>
+						
+<div class="col-sm-12">
 
-							<section class="content">
+				<h3>{{$resault->title}}</h3>
+											
+						<div class="col-sm-12">
+													
+										<a href="/{{$resault->author}}" class="pull-left">
+											<img src="{{$resault->imgpath}}" class="media-photo" height="60" width="60">
+										</a>
+						</div>
 
-								<h3>{{$resault->title}}</h3>
+						<div class="col-sm-12">
+								
+								<span class="media-meta pull-right" style="font-size:12">{{$resault->created_at}}</span>
 
-								<div class="col-md-12 col-md-offset-2">
+									<h6 class="title">
+										published by : <a href="/{{$resault->author}}">{{$resault->author}}</a>
 
-									<div class="panel panel-default">
+									</h6>
 
-										<div class="panel-body">
+				      					 <p class="summary">
+													<?php if(strlen($resault->description)>200){
+															echo substr($resault->description,0,200)."...";
+															}
+	 													 else{
+						        echo $resault->description;
+						   							   } ?>
+						   							 
+						   				  </p>
 
-											<div class="pull-right">
+						</div>
+					
 
-											</div>
+						<div class="col-sm-12">
+																					
+						<form method="get" action="check" >
 
-											<div class="table-container">
-												<table class="table table-filter">
-													<tbody>
+											<input type="hidden" value="{{$resault->location}}" name="f">
 
-														<tr data-status="pagado">
+												<div class="btn-group">
 
-															<td>
+															<a href="">
+																<button type="submit" class="btn btn-outline-success" style="margin-left: -8%;" >
+															<i class="fa fa-cloud-download-alt"></i></button>
+															</a>
+									
+															<a href="" data-toggle="modal" data-target="#Modal{{$resault->id}}">
+															 	<button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button>
+															</a>
 
-																<div class="ckbox">
-																	<label for="checkbox1"></label>
-																</div>
-
-															</td>
-
-															<td>
-
-															</td>
-
-															<td>
-
-												<div class="media">
-
-																<a href="/{{$resault->author}}" class="pull-left">
-																	<img src="{{$resault->imgpath}}" class="media-photo" height="60" width="60">
-																</a>
+															<a href="" data-toggle="modal" data-target="#ModalReport{{$resault->id}}">
+																<button type="button" class="btn btn-outline-danger" style="margin-left:2%">Report</button>
+															</a>
 												</div>
-															</td>
+						</form>
 
-															<td style="width:700px">
+						</div>
 
-																<div class="col-md-12 col-md-offset-10">
-																	<div class="media-body">
+<!--Modal: Login with Avatar Form-->
+<div class="modal fade" id="Modal{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal modal-avatar modal-lg" role="document">
+        <!--Content-->
+        <div class="modal-content">
 
-																		<span class="media-meta pull-right" style="font-size:12">{{$resault->created_at}}</span>
+            <!--Header-->
+            <div class="modal-header">
+             	<h5 class="modal-title" id="exampleModalLabel">Descrption for {{$resault->title}}</h5>
+            </div>
+            <!--Body-->
+            <div class="modal-body text-center mb-1">
 
-																		<h6 class="title">
-																			published by : <a href="/{{$resault->author}}">{{$resault->author}}</a>
+              
 
-																		</h6>
+                <div class="md-form ml-0 mr-0">
+               		 <p class="description">{{$resault->description}}</p>
+                  
+                </div>
 
-																		<p class="summary">
-									<?php if(strlen($resault->description)>200){
-													echo substr($resault->description,0,200)."...";
-										}
-										  else{
-															        echo $resault->description;
-															      } ?></p>
+                <div class="text-center mt-4">
+                    
+                </div>
+            </div>
 
-
-																	</div>
-																</div>
-															</td>
-
-
-															<td>
-				<form method="get" action="check" >
-					<input type="hidden" value="{{$resault->location}}" name="f">
-															<div class="btn-group">
-									<a href="">
-									<button type="submit" class="btn btn-outline-success" style="margin-left: -8%;" >
-									<i class="fa fa-cloud-download-alt"></i></button>
-									</a>
-				</form>
-
-												<a href="" data-toggle="modal" data-target="#Modal{{$resault->id}}">
-												   <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button>
-												</a>
-												<a href="" data-toggle="modal" data-target="#ModalReport{{$resault->id}}">
-												<button type="button" class="btn btn-outline-danger" style="margin-left:2%">Report</button>
-												</a>
-
-
-
-
-
-
-<div class="modal fade" id="Modal{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-																	<div class="modal-dialog" role="document">
-																		<div class="modal-content">
-																			<div class="modal-header">
-																				<h5 class="modal-title" id="exampleModalLabel">Descrption for {{$resault->title}}</h5>
-																				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																					<span aria-hidden="true">&times;</span>
-																				</button>
-																			</div>
-																			<div class="modal-body">
-																			<p class="description">{{$resault->description}}</p>
-																			</div>
-																			<div class="modal-footer">
-																				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
-																			</div>
-																		</div>
-																	</div>
+        </div>
+        <!--/.Content-->
+    </div>
 </div>
+<!--Modal: Login with Avatar Form-->
 
-<div class="modal fade" id="ModalReport{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" style="height:auto;width:auto;">
-												<div class="modal-dialog" role="document">
 
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title" id="exampleModalLabel">Report : {{$resault->title}}</h5>
-																		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																			<span aria-hidden="true">&times;</span>
-																		</button>
-																	</div>
+<!--Modal: modal with report Form-->
+<div class="modal fade" id="ModalReport{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Report : {{$resault->title}}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+             <form action="reportguest" method="post">
+            <div class="modal-body mx-3">
 
-												<div class="modal-body" style="height:60%;width:70%">
-
-				<div class="form-group row">
-					<form action="reportguest" method="post">
+              
+               
+									
 									<input type="hidden" name="_token" value="{{csrf_token()}}" />
 									<input type="hidden" name="user" value="{{$resault->author}}" />
+
 						<ul class="list-group">
 
-					<li class="list-group-item">
-							<label for="reportcause">The reason for the Report : </label>
-						<select name="reportcause" id="reportcause" style="font-size:10pt">
+								<li class="list-group-item">
+										
+										<label for="reportcause">The reason for the Report : </label>
+										
+										<div class="form-group">
 
-					<option value="0">User published something is mine or someone else i know</option>
-					<option value="1" style="font-size:12pt">User published something that should not be on The Free Education</option>
-					<option value="2">User has an inappropriate username </option>
-					<option value="3">User has an inappropriate profile picture </option>
-					<option value="2">User has used an inappropriate title or a description </option>
+    											<select class="form-control" id="reportcause">
+      													<option value="0">User published something is mine or someone else i know</option>
+													<option value="1" style="font-size:12pt">User published something that should not be on The Free Education</option>
+													<option value="2">User has an inappropriate username </option>
+													<option value="3">User has an inappropriate profile picture </option>
+													<option value="2">User has used an inappropriate title or a description </option>
+   												</select>
+ 										</div>	
+								</li>
 
-						</select>
-					</li>
+						</ul>
+				
 
-</ul>
+                    
+             
 
-											 <div class="col-md-6 mb-3">
-													<label for="reportcause">
-														Explain more : </label>
-														<textarea name="details" placeholder="please write detailes to help us deal with the problem">
-														</textarea>
-											</div>
+                <div class="md-form mb-5">
+                  <div class="form-group">
+    					<label for="exampleFormControlTextarea1">Explain more : </label>
+    					<textarea placeholder="please write detailes to help us deal with the problem" class="form-control" id="exampleFormControlTextarea1" rows="3" name="details"></textarea>
+  				  </div>
+                </div>
 
+               
 
+            </div>
 
+            <div class="modal-footer d-flex justify-content-center">
+                 <button type="submit" class="btn btn-primary">Report</button>
+				 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
 
-																	<div class="modal-footer">
-																		<button type="submit" class="btn btn-primary">Report</button>
-																		<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
-																	</div>
-
-					</form>
-				</div>
-
-												</div>
-																</div>
-												</div>
+            </form>
+        </div>
+    </div>
 </div>
+<!--Modal: modal with report Form-->										
+											
+	<br>
+	 @if($i == 2)
+			<div class="card" style="width:800px;padding:10px;" >
 
+					<p style="color:gray; font-size:12pt;">ads</p>
 
-										</td>
-														</tr>
+					<div class="card-body" >
+						<iframe data-aa='984814' src='//acceptable.a-ads.com/984814' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
+					</div>
+			</div>
+	<?php $i = 0; ?>
 
-													</tbody>
-												</table>
-
-												<br>
-												 @if($i == 2)
-												<div class="card" style="width:800px;padding:10px;" >
-
-												<p style="color:gray; font-size:12pt;">ads</p>
-
-												<div class="card-body" >
-											<iframe data-aa='984814' src='//acceptable.a-ads.com/984814' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
-												</div>
-												</div>
-												<?php $i = 0; ?>
-												@endif
-											</div>
-										</div>
-									</div>
-
+	@endif
 
 </div>
 
-		</section>
 @endforeach
 
-</section>
 </div>
+
 </div>
+
 </div>
-</div>
+
+
+
 @endsection
