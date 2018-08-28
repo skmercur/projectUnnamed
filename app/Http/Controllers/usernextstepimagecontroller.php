@@ -43,7 +43,7 @@ class usernextstepimagecontroller extends Controller
     $code = $val->code;
    if($val->code == $codeu){
      DB::table('users')->where('username',$user)->update(['status' => 1]);
-     $users=   DB::table('users')->where('namespi',$val->namespi)->where('username','!=',$user)->orderBy('nfiles', 'desc')->limit(6)->get();
+     $users=   DB::table('users')->where('namespi',$val->namespi)->where('username','!=',$user)->orderBy('nfiles', 'asc')->limit(6)->get();
 
      return view('index')->with(['users'=>$users]);
    }else {
