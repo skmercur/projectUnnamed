@@ -48,14 +48,18 @@ $count = $resaults->count();
 $value2 = $request->a;
 if(!empty($value2)){
 
-
-
-
     $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->orderBy('files.created_at','desc')->get();
   $count = $resaults->count();
     return view('resaults')->with(['resaults'=>$resaults,'value'=>$value,'count'=>$count]);
   }else{
+    $value3 = $request->share;
+    if(!empty($value3)){
+    $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.id','=',$value3)->orderBy('files.created_at','desc')->get();
+  $count = $resaults->count();
+  return view('resaults')->with(['resaults'=>$resaults,'value'=>$value,'count'=>$count]);
+}else{
     return back();
+  }
   }
 }
 }
