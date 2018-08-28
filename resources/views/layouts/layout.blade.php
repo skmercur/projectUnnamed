@@ -9,7 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>The Free Education</title>
-
+    <meta name="keywords" content="Free,Education,Files,People" />
+<meta name="description" content="The Free Education is a free website where you can share and learn new things with people from the world" />
     <!-- Scripts -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" type="text/javascript"> </script>
@@ -52,8 +53,21 @@
 <link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" > -->
   <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 <script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
+@if(!empty($user->username))
+<meta property="og:title" content ="{{$user->firstname}}, profile on The Free Education"/>
+<meta property="og:image" content ="https://www.thefreeedu.com/assets/img/logo1.png"/>
+<meta property="og:description" content ="{{$user->bio}}"/>
 
+@endif
+@if(!empty(Request::query('share')))
+@if(!empty($resault->title))
+<meta property="og:title" content ="{{$resault->title}}"/>
+<meta property="og:image" content ="https://www.thefreeedu.com/assets/img/logo1.png"/>
+<meta property="og:description" content ="{{$resault->description}}"/>
+@endif
+@endif
 </head>
 <script>
 $("#main").click(function() {
@@ -164,7 +178,7 @@ $.material.init();
 
                             <form method="post" id="theFormNoti">
                               <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                              <input type="hidden" name="code" value="$user->code" />
+                              <input type="hidden" name="code" value="{{ Auth::user()->code}}" />
                               <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
                             </form>
                             <div class="btn-group">

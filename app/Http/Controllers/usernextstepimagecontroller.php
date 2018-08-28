@@ -143,8 +143,11 @@ $validator = Validator::make($fileArray, $rules);
        if($val->status == 0){
       $destinationPath = "usersdata/".md5('uploads'.$user)."/";
       $file->move($destinationPath,$hash);
+      if(($x < 0) || ($y <0  ) ||($w != $h) || ($w <= 0)){
+        return back();
+      }
       if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
-$loc = $_SERVER['DOCUMENT_ROOT'].'\py\resize.py';
+$loc = $_SERVER['DOCUMENT_ROOT'].'/py/resize.py';
 $filenameUp = $destinationPath.$hash;
 
     shell_exec("python $loc $filenameUp $x $y $w $h");
@@ -152,59 +155,66 @@ $filenameUp = $destinationPath.$hash;
       }
    DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
     DB::table('users')->where('username',$user)->update(['namespi' =>$namespi]);
-//
-//  $code = $val->code;
-//  $email = $val->email;
-//  $firstname = $val->firstname;
-//  $lastname = $val->lastname;
-//  $data = array(
-//     'code'=>$code,
-//     'email'=>$email,
-//     'firstname'=>$firstname,
-//     'lastname'=>$lastname
-// );
-//
-//
-// // Additional headers
-// $headers = '';
-// $headers.= 'To: '.$firstname.','.$lastname.' <'.$email.'>';
-// $headers.= 'From: The support team <support@thefreeedu.com>';
-// $headers .= "MIME-Version: 1.0\r\n";
-// $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-// $headers .= 'From: support@thefreeedu.com' . "\r\n" .
-//     'Reply-To: support@thefreeedu.com' . "\r\n" .
-//     'X-Mailer: PHP/' . phpversion();
-//     // Mail::send('mail',$data,function($message) use ($email){
-//     //   $message->to($email)->subject('Your activation code');
-//     //   $message->from('support@thefreeedu.com','support');
-//     // });
-//     $message = '
-//     <html>
-//     <head>
-//       <title>Activation Code</title>
-//       <meta charset="utf-8">
-//       <meta name="viewport" content="width=device-width, initial-scale=1">
-//   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-//   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-//   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-//     </head>
-//     <body>
-//
-//       <div class="container">
-//       <h5>Dear '.$firstname.','.$lastname.'</h5>
-//       <h6>Good day to you </h6>
-//         <div class="well">this is your activation code <b>'.$code.'</b></div>
-//       </div>
-//       <footer>
-//       <p>From The Free Education team</p>
-//       <p>if there is any problem contact us at : support@thefreeedu.com </p>
-//       </footer>
-//     </body>
-//     </html>
-//     ';
-//     mail($email, "Your activation code for The Free Education", $message, $headers);
 
-// return redirect($user);
+ $code = $val->code;
+ $email = $val->email;
+ $firstname = $val->firstname;
+ $lastname = $val->lastname;
+ $data = array(
+    'code'=>$code,
+    'email'=>$email,
+    'firstname'=>$firstname,
+    'lastname'=>$lastname
+);
+
+
+// Additional headers
+$headers = '';
+$headers.= 'To: '.$firstname.','.$lastname.' <'.$email.'>';
+$headers.= 'From: The support team <support@thefreeedu.com>';
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+$headers .= 'From: support@thefreeedu.com' . "\r\n" .
+    'Reply-To: support@thefreeedu.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+       $message = '
+       <html>
+       <head>
+         <title>Your activation code</title>
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+       </head>
+       <body>
+
+         <div class="container">
+         <h3>Dear '.$firstname.','.$lastname.'</h3>
+         <br>
+         <h4>Good day to you </h4>
+           <br>
+        <div class="container">
+
+  <div class="card">
+  <div class="card-body">
+  <div class="row">
+  <div class="col">
+  <p> This is your activation code  <b>'.$code.'</b> click on this <a href="https://thefreeed.com/confirm">link </a> to type your activation code</p>
+  </div>
+  </div>
+  </div>
+  </div>
+         </div>
+         <footer>
+         <p>From The Free Education team</p>
+         <p>if there is any problem contact us at : support@thefreeedu.com </p>
+         </footer>
+       </body>
+       </html>
+       ';
+       mail($email, "Your activation code for The Free Education", $message, $headers);
+  return redirect($user);
+
 }else{
   return redirect($user);
 }

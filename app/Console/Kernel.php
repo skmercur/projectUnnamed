@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Console;
-
+use DB;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,8 +24,28 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+      $schedule->call(function () {
+        $db = DB::table('notifications')->get();
+        foreach ($db as $user){
+        $noti =  DB::table('notifications')->where('target',$user->target)->orderBy('created_at','desc')->get();
+        if($noti->count() > 5){
+          foreach ($noti as $uu ) {
+            if((time()-strtotime($uu->created_at))>593056){
+              DB::table('notifications')->where('id',$uu->id)->delete();
+            }
+          }
+
+        }
+      }
+
+          $db2 = DB::table('users')->get();
+          foreach ($db2 as $user) {
+            $loc = 'py/rescale.py';
+            $filenameUp = $user->imgpath;
+
+                shell_exec("python $loc $filenameUp");
+          }
+      })->everyMinute();
     }
 
     /**

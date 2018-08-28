@@ -1,6 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if(!empty(Request::query('v')))
+<?php
+$va = Request::query('v');
+switch($va){
+
+case 1:{
+
+?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Oups!</strong>there was an error please retry
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<?php
+break;
+}
+} ?>
+@endif
+
 <div class="container" >
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -33,7 +54,7 @@ window.location = "/login";
                     function run() {
                       var s = document.getElementById("spec");
                            s.innerHTML = document.getElementById("namesp").value;
-                           alert(k);
+
                        }
 
 
@@ -136,7 +157,23 @@ window.location = "/login";
 
                                     function form_submit() {
 
-                                      document.getElementById("requestSpecialityForm").submit();
+                                      $.ajaxSetup({
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        }
+                                    });
+                                    var form = $("#requestSpecialityForm");
+                                               $.ajax({
+
+                                                  type:'POST',
+                                                  url:'/requestSpeciality',
+                                                  data:form.serialize(),
+                                                  success:function(data){
+
+                                                  $('#ModalRequestSpeciality').modal('hide');
+
+                                                }
+                                               });
                                     }
                                     </script>
                           </div>

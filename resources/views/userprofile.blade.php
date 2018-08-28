@@ -18,7 +18,7 @@
 
 <br>
 
-  <section class="section section-skew" style="padding-top: 30rem;">
+  <section class="section section-skew" style="padding-top: 20rem;">
       <div class="container">
         <div class="card card-profile shadow mt--300">
           <div class="px-4">
@@ -26,7 +26,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="{{ $user->imgpath}}" class="rounded-circle">
+                    <img src="{{ $user->imgpath}}" class="rounded-circle" style="max-height:180px">
                   </a>
                 </div>
               </div>
@@ -63,7 +63,7 @@
                   </div>
                   <div>
                     <span class="heading">{{100 - $user->nfiles}}</span>
-                    <span class="description">files</span>
+                    <span class="description">Files</span>
                   </div>
                 </div>
               </div>
@@ -145,12 +145,14 @@
     </tr>
   </thead>
   <tbody>
+    <?php $id = 1; ?>
     @foreach($files as $file)
     <tr>
-      <th scope="row">{{$file->id}}</th>
+      <th scope="row">{{$id}}</th>
       <td>{{$file->title}}</td>
       <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
         echo $file->description;
+        $id+=1;
       } ?></td>
       <td>
 
@@ -205,6 +207,141 @@
 </div>
 
 
+
+
+<div id="container-floating">
+
+
+  <div class="nd3 nds" data-toggle="tooltip" data-placement="left" ><img class="reminder">
+
+	 <p class="letter"><i class="fas fa-flag" data-toggle="modal" data-target="#ModalReport" style="margin-top:7px;"></i></p>
+
+    <form action="reportguest" method="post">
+  		<input type="hidden" name="_token" value="{{csrf_token()}}" />
+		</form>
+  <!-- <p class="letter"><i class="fas fa-flag"style="margin-top:7px;"></i></p>  -->
+  </div>
+  <div class="nd1 nds" data-toggle="tooltip" data-placement="left"><img class="reminder">
+    <p class="letter"><i class="fas fa-comment" data-toggle="modal" data-target="#ModalContact" style="margin-top:7px;"></i></p>
+  </div>
+
+  <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="newmail()">
+    <p class="plus"><i class="fas fa-ellipsis-v"></i></p>
+    <img class="edit fas fa-ellipsis-v" >
+
+  </div>
+
+</div>
+<div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Contact Us</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="sendcontacthelp" method="post" id="contactForm" >
+              @CSRF
+<input type="hidden" name="username" value="{{Auth::user()->username}}" />
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                  <label>Message</label>
+                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" name="text" data-validation-required-message="Please enter a message."></textarea>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <br>
+              <div></div>
+
+            </form>
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="ModalReport" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" style="height:auto;width:auto;">
+
+                          <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Report : {{$user->firstname}}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+
+                        <div class="modal-body p-0">
+                          <div class="card bg-secondary shadow border-0">
+
+                            <div class="card-body px-lg-5 py-lg-5">
+
+
+
+          <form action="reportguest" method="post">
+                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                  <input type="hidden" name="user" value="{{$user->username}}" />
+
+                  <div class="form-group">
+                    <p>The reason for the Report : </p>
+
+                    <div class="input-group input-group-alternative">
+
+
+
+                <select class="form-control" name="reportcause" id="reportcause" >
+
+          <option value="0">User published something is mine or someone else i know</option>
+          <option value="1" style="font-size:12pt">User published something that should not be on The Free Education</option>
+          <option value="2">User has an inappropriate username </option>
+          <option value="3">User has an inappropriate profile picture </option>
+          <option value="2">User has used an inappropriate title or a description </option>
+
+            </select>
+
+</div>
+</div>
+
+<div class="form-group">
+  <div class="input-group input-group-alternative">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+    </div>
+    <textarea class="form-control" placeholder="Description" name="details" type="text" maxlength="250" required ></textarea>
+  </div>
+</div>
+
+
+
+
+                                  <div class="modal-footer">
+                                    <div class="btn-group">
+                                    <button type="submit" class="btn btn-primary" style="margin-left:2%; margin-right:2%">Report</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-left:2%; margin-right:2%">Close</button>
+</div>
+                                  </div>
+
+          </form>
+        </div>
+      </div>
+        </div>
+
+
+                                </div>
+                        </div>
+</div>
+
+
+
+
 @else
 @if($user->status == 0)
 <script type="text/javascript">
@@ -246,7 +383,7 @@
                      }
                       }
                    });
-                },500);
+                },2500);
 
 
 
@@ -335,7 +472,7 @@ break;
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="{{ Auth::user()->imgpath}}" class="rounded-circle">
+                    <img src="{{ Auth::user()->imgpath}}" class="rounded-circle"  style="max-height:180px">
                   </a>
 
                 </div>
@@ -358,7 +495,7 @@ break;
                   </div>
                   <div>
                     <span class="heading">{{100 - $user->nfiles}}</span>
-                    <span class="description">files</span>
+                    <span class="description">Files</span>
                   </div>
                 </div>
               </div>
@@ -637,12 +774,14 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
     </tr>
   </thead>
   <tbody>
+    <?php $id = 1; ?>
     @foreach($files as $file)
     <tr>
-      <th scope="row">{{$file->id}}</th>
+      <th scope="row">{{$id}}</th>
       <td>{{$file->title}}</td>
       <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
         echo $file->description;
+        $id +=1;
       } ?></td>
       <td>
 
@@ -707,54 +846,30 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 <div id="container-floating">
 
 
-  <div class="nd3 nds" data-toggle="tooltip" data-placement="left" ><img class="reminder">
-  <form action="reportguest" method="post">
-		<input type="hidden" name="_token" value="{{csrf_token()}}" />
-	  <button type="submit" class="btn btn-link"><p class="letter"><i class="fas fa-flag"style="margin-top:7px;"></i></p></button>
-		</form>
-  <!-- <p class="letter"><i class="fas fa-flag"style="margin-top:7px;"></i></p>  -->
-  </div>
   <div class="nd1 nds" data-toggle="tooltip" data-placement="left"><img class="reminder">
     <p class="letter"><i class="fas fa-comment" data-toggle="modal" data-target="#ModalContact" style="margin-top:7px;"></i></p>
   </div>
 
-  <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="newmail()">
+  <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" >
     <p class="plus"><i class="fas fa-ellipsis-v"></i></p>
     <img class="edit fas fa-ellipsis-v" >
 
   </div>
 
 </div>
-<!-- <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="btn-group">
-        <a href="javascript:void(0)" class="btn btn-info btn-fab" id="main" data-toggle="modal" data-target="#ModalContact">
-          <i class="fa fa-comment">
-          </i>
-        </a>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Contact Us</h5>
-		<form action="reportguest" method="post" style="margin-left: 59%;">
-		<input type="hidden" name="_token" value="{{csrf_token()}}" />
-		<button type="submit" class="btn btn-outline-danger fa fa-flag"></button>
-		</form>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form action="sendcontact" method="post" id="contactForm" >
+      <form action="sendcontacthelp" method="post" id="contactForm" >
               @CSRF
-
+<input type="hidden" name="username" value="{{Auth::user()->username}}" />
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Message</label>
@@ -765,7 +880,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
               <br>
               <div></div>
 
-            </form>
+
       </div>
 
       <div class="modal-footer">
@@ -773,6 +888,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                 <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
+                </form>
       </div>
     </div>
   </div>
@@ -781,16 +897,6 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 
 
 
-
-
 @endif
 @endguest
 @endsection
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-1253446609392565",
-          enable_page_level_ads: true
-     });
-</script>

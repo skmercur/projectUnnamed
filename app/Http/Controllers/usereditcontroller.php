@@ -173,7 +173,9 @@ $this->resend($request);
           $db =  DB::table('users')->where('username',$user)->first();
 
           if($destinationPath.$hash !==  $db->imgpath){
-
+            if(($x < 0) || ($y <0  ) ||($w != $h) || ($w <= 0)){
+              return back();
+            }
             $file->move($destinationPath,$hash);
             if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
       $loc = $_SERVER['DOCUMENT_ROOT'].'/py/resize.py';
@@ -200,6 +202,9 @@ return back();
 
      $db =  DB::table('users')->where('username',$user)->first();
 if($destinationPath.$hash !==  $db->imgpath){
+  if(($x < 0) || ($y <0  ) ||($w != $h) || ($w <= 0)){
+    return back();
+  }
   $file->move($destinationPath,$hash);
   if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
 $loc = $_SERVER['DOCUMENT_ROOT'].'/py/resize.py';
@@ -215,6 +220,7 @@ shell_exec("python $loc $filenameUp $x $y $w $h");
 }
    DB::table('users')->where('username',$user)->update(['email' =>$email,'password'=>$npass,'bio'=>$bio,'status'=>0]);
 $this->resend($request);
+return back();
 }
       }
 }else{
@@ -227,6 +233,9 @@ $this->resend($request);
      $destinationPath = "usersdata/".md5('uploads'.$user)."/";
      $db =  DB::table('users')->where('username',$user)->first();
      if($destinationPath.$hash !==  $db->imgpath){
+       if(($x < 0) || ($y <0  ) ||($w != $h) || ($w <= 0)){
+         return back();
+       }
        $file->move($destinationPath,$hash);
        if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
      $loc = $_SERVER['DOCUMENT_ROOT'].'/py/resize.py';
@@ -252,6 +261,9 @@ $this->resend($request);
            $db =  DB::table('users')->where('username',$user)->first();
 
            if($destinationPath.$hash !==  $db->imgpath){
+             if(($x < 0) || ($y <0  ) ||($w != $h) || ($w <= 0)){
+               return back();
+             }
              $file->move($destinationPath,$hash);
              if(($file->getClientOriginalExtension() === 'jpg') || ($file->getClientOriginalExtension() === 'png') ){
            $loc = $_SERVER['DOCUMENT_ROOT'].'/py/resize.py';

@@ -26,33 +26,41 @@ class fileuploadcontroller extends Controller
      */
     public function create()
     {
-        //
-    }
 
+    }
+    public function resizeIm()
+    {
+            $val = DB::table('users')->get();
+            foreach ($val as $user) {
+              if($user->username){
+        $loc = $_SERVER['DOCUMENT_ROOT'].'/py/rescale.py';
+        $filenameUp = $user->imgpath;
+
+            shell_exec("python $loc $filenameUp");
+
+              }
+              sleep(1);
+            }
+    }
 
     public function sendEm(Request $request,$target){
       $user = $request->input('username');
-      if(!empty($user)){
+      if(!empty($user) && !empty($target)){
       $val = DB::table('users')->where('username',$user)->first();
       $val2 = DB::table('users')->where('username',$target)->first();
 
-      $im = $val->imgpath;
-      $email = $val2->email;
-      $firstname = $val->firstname;
-      $lastname = $val->lastname;
-      $firstname1 = $val2->firstname;
-      $lastname1 = $val2->lastname;
 
-
+  if((!empty($user)) && (!empty($target)) && (!empty($val2->email)) && (!empty($val2->firstname)) &&(!empty($val->firstname))){
+    $im = $val->imgpath;
+    $email = $val2->email;
+    $firstname = $val->firstname;
+    $lastname = $val->lastname;
+    $firstname1 = $val2->firstname;
+    $lastname1 = $val2->lastname;
       // Additional headers
-      $headers = '';
-      $headers.= 'To: '.$firstname1.','.$lastname1.' <'.$email.'>';
-      $headers.= 'From: The support team <support@thefreeedu.com>';
+      $headers = 'From: support@thefreeedu.com'."\r\n";
       $headers .= "MIME-Version: 1.0\r\n";
-      $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-      $headers .= 'From: support@thefreeedu.com' . "\r\n" .
-         'Reply-To: support@thefreeedu.com' . "\r\n" .
-         'X-Mailer: PHP/' . phpversion();
+      $headers.= "Content-type: text/html; charset=UTF8". PHP_EOL ;
          // Mail::send('mail',$data,function($message) use ($email){
          //   $message->to($email)->subject('Your activation code');
          //   $message->from('support@thefreeedu.com','support');
@@ -78,7 +86,7 @@ class fileuploadcontroller extends Controller
 <div class="card-body">
 <div class="row">
 <div class="col">
-   <p> <a href="https://thefreeedu.com/'.$user.'"> <img src="'.$im.'" style="max-height:20px;max-width:20px"> '.$firstname.','.$lastname.' </a> has added a new file that might interest you </p>
+   <p> <a href="https://thefreeedu.com/'.$user.'"> <img src="https://www.thefreeedu.com/'.$im.'" style="max-height:60px;max-width:60px"> '.$firstname.','.$lastname.' </a> has added a new file that might interest you </p>
 </div>
 </div>
 </div>
@@ -95,9 +103,14 @@ class fileuploadcontroller extends Controller
 
      mail($email, "A new file has been uploaded", $message, $headers);
 
+sleep(2);
 
 
-  
+}else{
+  echo "error ";
+  echo "<p>please contact support@thefreeedu.com for more informations</p>";
+}
+}
 }
 
     public function notify(Request $request){
@@ -153,6 +166,8 @@ return redirect($data);
       $username = $request->input('username');
       $title= $request->input('title');
       $description = $request->input('description');
+      $description = preg_replace("/&#?[a-z0-9]+;/i","",$description);
+      $title = preg_replace("/&#?[a-z0-9]+;/i","",$title);
    $file = $request->file('file');
    if(!empty($title) || !empty($description) || !empty($file)){
     $fileArray = array('file' => $file);
@@ -182,8 +197,7 @@ $file->move($destinationPath,$hash);
    $post = array('apikey' => $api_key,'file'=> $cfile);
    $ch = curl_init();
    curl_setopt($ch, CURLOPT_URL, 'https://www.virustotal.com/vtapi/v2/file/scan');
-   curl_setopt($ch, CURLOPT_POST, True);
-   curl_setopt($ch, CURLOPT_VERBOSE, 1); // remove this if your not debugging
+   curl_setopt($ch, CURLOPT_POST, True); // remove this if your not debugging
    curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate'); // please compress data
    curl_setopt($ch, CURLOPT_USERAGENT, "gzip, The Free Education client");
    curl_setopt($ch, CURLOPT_RETURNTRANSFER ,True);
