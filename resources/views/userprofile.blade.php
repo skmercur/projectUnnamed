@@ -719,7 +719,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
           </div>
           </div>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button class="btn btn-primary"  type="submit">Edit</button>
+          <button class="btn btn-primary" id="edit_btn" onclick="check()" type="button">Edit</button>
         </form>
       </div>
       <div class="modal-footer">

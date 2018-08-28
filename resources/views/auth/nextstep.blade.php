@@ -39,7 +39,7 @@ window.location = "/login";
 
                     @if((Auth::user()->username !== '') && (Auth::user()->status === 0))
 
-                    <form method="post" action="nextstep"  enctype="multipart/form-data">
+                    <form method="post" action="nextstep" id="useredit"  enctype="multipart/form-data">
                       @csrf
 
                     <select class="form-control" data-live-search="true" id="namesp"name="namesp" onchange="run()">
@@ -99,7 +99,7 @@ window.location = "/login";
   <input type="hidden" name="_token" value="{{csrf_token()}}" />
 
   <input type="hidden" name="user" value="{{ Auth::user()->username }}" />
-    <button class="btn btn-outline-success" type="submit" name="submit" value="upload" style="margin-Left:50%;">Upload</button>
+    <button class="btn btn-outline-success" type="button" onclick="check()"  style="margin-Left:50%;">Upload</button>
   </div>
 </div>
   </div>

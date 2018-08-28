@@ -297,9 +297,16 @@ $.material.init();
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
   <script type="text/javascript">
-
+  function check(){
+  if((document.getElementById("x").value >= 0) && (document.getElementById("y").value >= 0) && (  document.getElementById("w").value == document.getElementById("h").value) && (document.getElementById("h").value >0)){
+document.getElementById("useredit").submit();
+  }else{
+    alert('Error while cropping please try again');
+  }
+}
 function LaunchCropper() {
   var image = document.getElementById('output_image');
+  var button =  document.getElementById('edit_btn');
   var cropper = new Cropper(image, {
     dragMode: 'crop',
     aspectRatio: 1 / 1,
@@ -316,6 +323,7 @@ function LaunchCropper() {
       document.getElementById("y").value = Math.ceil(event.detail.y);
       document.getElementById("w").value = Math.ceil(event.detail.width);
       document.getElementById("h").value = Math.ceil(event.detail.height);
+
 
 },
   });
