@@ -187,6 +187,9 @@ $validator = Validator::make($fileArray, $rules);
    //Move Uploaded File
 
  }else {
+
+
+
 $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
    $destinationPath = "usersdata/".md5('uploads'.$username)."/";
 $file->move($destinationPath,$hash);
@@ -235,8 +238,10 @@ if (array_key_exists('positives',$js)){
       unlink($destinationPath.$hash);
  return redirect('/'.$username.'?v='.base64_encode('444'));
 }else{
-
-
+$val2 = DB::table('files')->where('author',$username)->get();
+if($val2->count() == 0){
+   DB::table('users')->where('username',$username)->update(['status'=>0]);
+}
 
      fileupload::create([
          'filename' => $file->getClientOriginalName(),
