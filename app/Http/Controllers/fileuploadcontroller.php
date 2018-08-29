@@ -67,7 +67,7 @@ class fileuploadcontroller extends Controller
       $message = "This is a MIME encoded message.";
       $message .= "\r\n\r\n--" . $boundary . "\r\n";
       $message .= "Content-type: text/plain;charset=utf-8\r\n\r\n";
-      $message .="This is your activation code $code";
+      $message .="$firstname , $lastname has uploaded a new file ";
       $message .= "\r\n\r\n--" . $boundary . "\r\n";
       $message .= "Content-type: text/html;charset=utf-8\r\n\r\n";
              $message .= '
