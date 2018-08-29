@@ -200,7 +200,7 @@ $validator = Validator::make($fileArray, $rules);
 
 $isthere = DB::table('files')->where('filename',$file->getClientOriginalName())->get();
 if($isthere->count() > 0){
-  return back();
+  return redirect('/'.$username.'?v='.base64_encode('555'));
 }
 
 $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
