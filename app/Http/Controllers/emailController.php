@@ -53,53 +53,56 @@ return redirect('/');
     // $headers .= 'From: support@thefreeedu.com' . "\r\n" .
     //    'Reply-To: support@thefreeedu.com' . "\r\n" .
     //    'X-Mailer: PHP/' . phpversion();
+    $boundary = uniqid('np');
+    $headers = "MIME-Version: 1.0\r\n";
+    $headers .= "From: Support Team  \r\n";
+    $headers .= "To: ".$email."\r\n";
+    $headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
+    $message = "This is a MIME encoded message.";
+    $message .= "\r\n\r\n--" . $boundary . "\r\n";
+    $message .= "Content-type: text/plain;charset=utf-8\r\n\r\n";
+    $message .="This is your activation code $code";
+    $message .= "\r\n\r\n--" . $boundary . "\r\n";
+    $message .= "Content-type: text/html;charset=utf-8\r\n\r\n";
+           $message .= '
+           <html>
+           <head>
+             <title>Your activation code</title>
+             <meta charset="utf-8">
+             <meta name="viewport" content="width=device-width, initial-scale=1">
+           </head>
+           <body>
+           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-$headers = 'From: support@thefreeedu.com'."\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers.= "Content-type: text/html; charset=UTF8". PHP_EOL ;
-       // Mail::send('mail',$data,function($message) use ($email){
-       //   $message->to($email)->subject('Your activation code');
-       //   $message->from('support@thefreeedu.com','support');
-       // });
-       $message = '
-       <html>
-       <head>
-         <title>Your activation code</title>
-         <meta charset="utf-8">
-         <meta name="viewport" content="width=device-width, initial-scale=1">
-       </head>
-       <body>
-       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+             <div class="container">
+             <h3>Dear '.$firstname.','.$lastname.'</h3>
+             <br>
+             <h4>Good day to you </h4>
+               <br>
+            <div class="container">
 
-         <div class="container">
-         <h3>Dear '.$firstname.','.$lastname.'</h3>
-         <br>
-         <h4>Good day to you </h4>
-           <br>
-        <div class="container">
+      <div class="card">
+      <div class="card-body">
+      <div class="row">
+      <div class="col">
+      <p> This is your activation code  <b>'.$code.'</b> click on this <a href="https://thefreeed.com/confirm">link </a> to type your activation code</p>
+      </div>
+      </div>
+      </div>
+      </div>
+             </div>
+             <footer>
+            <p>From The Free Education team</p>
+            <p>if there is any problem contact us at : support@thefreeedu.com </p>
+            <div class="container h-100 d-flex justify-content-center">
 
-<div class="card">
-<div class="card-body">
-<div class="row">
-<div class="col">
- <p> This is your activation code  <b>'.$code.'</b> click on this <a href="https://thefreeed.com/confirm">link </a> to type your activation code</p>
-</div>
-</div>
-</div>
-</div>
-         </div>
-         <footer>
-        <p>From The Free Education team</p>
-        <p>if there is any problem contact us at : support@thefreeedu.com </p>
-        <div class="container h-100 d-flex justify-content-center">
+       <a href="https://www.thefreeedu.com/" ><img src="https://www.thefreeedu.com/assets/img/logo1.png" style="max-height:20%;max-width:20%;" class="img-thumbnail"/> </a>
 
-   <a href="https://www.thefreeedu.com/" ><img src="https://www.thefreeedu.com/assets/img/logo1.png" style="max-height:20%;max-width:20%;" class="img-thumbnail"/> </a>
-
-</div>
-</footer>
-       </body>
-       </html>
-       ';
+    </div>
+    </footer>
+           </body>
+           </html>
+           ';
        mail($email, "Your activation code for The Free Education", $message, $headers);
   return redirect($user);
 
@@ -128,14 +131,18 @@ public function sch(Request $request){
 if((!empty($email)) && (!empty($firstname)) && (!empty($lastname))){
 
 
-  $headers = 'From: support@thefreeedu.com'."\r\n";
-  $headers .= "MIME-Version: 1.0\r\n";
-  $headers.= "Content-type: text/html; charset=UTF8". PHP_EOL ;
-     // Mail::send('mail',$data,function($message) use ($email){
-     //   $message->to($email)->subject('Your activation code');
-     //   $message->from('support@thefreeedu.com','support');
-     // });
-     $message = '
+  $boundary = uniqid('np');
+  $headers = "MIME-Version: 1.0\r\n";
+  $headers .= "From: Support Team  \r\n";
+  $headers .= "To: ".$email."\r\n";
+  $headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
+  $message = "This is a MIME encoded message.";
+  $message .= "\r\n\r\n--" . $boundary . "\r\n";
+  $message .= "Content-type: text/plain;charset=utf-8\r\n\r\n";
+  $message .="This is your activation code $code";
+  $message .= "\r\n\r\n--" . $boundary . "\r\n";
+  $message .= "Content-type: text/html;charset=utf-8\r\n\r\n";
+         $message .= '
      <html>
      <head>
        <title>User Requesting help</title>
