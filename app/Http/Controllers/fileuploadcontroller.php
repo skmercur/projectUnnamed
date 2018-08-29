@@ -198,7 +198,10 @@ $validator = Validator::make($fileArray, $rules);
 
  }else {
 
-
+$isthere = DB::table('files')->where('filename',$file->getClientOriginalName())->get();
+if($isthere->count() > 0){
+  return back();
+}
 
 $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
    $destinationPath = "usersdata/".md5('uploads'.$username)."/";
