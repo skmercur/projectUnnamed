@@ -62,6 +62,7 @@ class fileuploadcontroller extends Controller
       $headers = "MIME-Version: 1.0\r\n";
       $headers .= "From: Support Team  \r\n";
       $headers .= "To: ".$email."\r\n";
+      $headers .="Reply-To: support@thefreeedu.com \r\n";
       $headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
       $message = "This is a MIME encoded message.";
       $message .= "\r\n\r\n--" . $boundary . "\r\n";

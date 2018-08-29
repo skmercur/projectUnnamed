@@ -57,6 +57,7 @@ return redirect('/');
     $headers = "MIME-Version: 1.0\r\n";
     $headers .= "From: Support Team  \r\n";
     $headers .= "To: ".$email."\r\n";
+    $headers .="Reply-To: support@thefreeedu.com \r\n";
     $headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
     $message = "This is a MIME encoded message.";
     $message .= "\r\n\r\n--" . $boundary . "\r\n";
@@ -404,7 +405,7 @@ if(!empty($val->username)){
         'Reply-To: '.$val->email.'' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
-    mail($to, $subject, $message, $headers);
+    mail($to, $subject, $message, $headers,"-f support@thefreeedu.com");
 
 
 echo "Email Was sent we will contact you";
