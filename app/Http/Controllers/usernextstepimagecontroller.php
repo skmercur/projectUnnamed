@@ -211,6 +211,7 @@ $headers.= "Content-type: text/html; charset=UTF8". PHP_EOL ;
        </body>
        </html>
        ';
+       
        mail($email, "Your activation code for The Free Education", $message, $headers);
   return view('index')->with(['users'=>$users]);
 
