@@ -240,7 +240,7 @@ $.material.init();
                         <li class="nav-item dropdown">
                 <div class="card-profile-image">
                   <a href="/{{ Auth::user()->username}}">
-                    <img class="rounded-circle" src="{{ Auth::user()->imgpath}}" alt="" style="background-color: white;  height: 40px;">
+                    <img class="rounded-circle" src="{{ URL::to(Auth::user()->imgpath)}}" alt="" style="background-color: white;  height: 40px;">
                   </a>
                 </div>
 

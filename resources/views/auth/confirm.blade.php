@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@if(!empty($user->username))
-@if($user->status == 0)
+
 <div class="row">
   <div class="container text-center">
 
@@ -34,6 +33,4 @@
 </div>
 </div>
 </div>
-@endif
-@endif
 @endsection
