@@ -18,6 +18,8 @@
 
 <br>
 
+
+
   <section class="section section-skew" style="padding-top: 20rem;">
       <div class="container">
         <div class="card card-profile shadow mt--300">
@@ -31,12 +33,16 @@
                 </div>
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+              
                 <div class="card-profile-actions py-4 mt-lg-0">
 
 
+
   @if(in_array(Auth::user()->username,$followers))
+  
   <form method="post" action="rmf" >
                   <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
+                  <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter">Contact</button>
                   <input type="hidden" name="_token" value="{{csrf_token()}}" />
                   <input type="hidden" name="useru" value="{{$user->username}}" />
                   <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
@@ -80,6 +86,8 @@
 
 
               <div class="col-md-12">
+
+                
 
       <button style="margin-top: 30px; margin-left: auto;
     margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form3"><i class="fas fa-file fa-3x"></i></button>
@@ -126,7 +134,32 @@
 
 
 <!-- end modal checking for virus -->
-
+ 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Contact</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+        <div class="form-group">
+    <label for="exampleFormControlTextarea1">Message : </label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Envoyer</button>
+      </div>
+    </div>
+  </div>
+</div> 
 
 <div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
      <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
