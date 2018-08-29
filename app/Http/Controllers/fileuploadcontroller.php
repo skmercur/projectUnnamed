@@ -71,9 +71,9 @@ class fileuploadcontroller extends Controller
            <title></title>
            <meta charset="utf-8">
            <meta name="viewport" content="width=device-width, initial-scale=1">
-       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
          </head>
          <body>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
            <div class="container">
            <h3>Dear '.$firstname1.','.$lastname1.'</h3>
@@ -93,9 +93,14 @@ class fileuploadcontroller extends Controller
 </div>
            </div>
            <footer>
-           <p>From The Free Education team</p>
-           <p>if there is any problem contact us at : support@thefreeedu.com </p>
-           </footer>
+          <p>From The Free Education team</p>
+          <p>if there is any problem contact us at : support@thefreeedu.com </p>
+          <div class="container h-100 d-flex justify-content-center">
+
+     <a href="https://www.thefreeedu.com/" ><img src="https://www.thefreeedu.com/assets/img/logo1.png" style="max-height:20%;max-width:20%;" class="img-thumbnail"/> </a>
+
+</div>
+</footer>
          </body>
          </html>
          ';
