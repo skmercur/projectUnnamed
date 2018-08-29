@@ -247,18 +247,18 @@ $headers = 'From: <support@thefreeedu.com>'.
        $lastname = $val->lastname;
 
        // Additional headers
-       $headers = 'From: support@thefreeedu.com'."\r\n";
-       $headers .= "MIME-Version: 1.0\r\n";
-       $headers.= "Content-type: text/html; charset=UTF8". PHP_EOL ;
-          // Mail::send('mail',$data,function($message) use ($email){
-          //   $message->to($email)->subject('Your activation code');
-          //   $message->from('support@thefreeedu.com','support');
-          // });
-
-
-
-
-          $message = '
+       $boundary = uniqid('np');
+       $headers = "MIME-Version: 1.0\r\n";
+       $headers .= "From: Support Team  \r\n";
+       $headers .= "To: ".$email."\r\n";
+       $headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
+       $message = "This is a MIME encoded message.";
+       $message .= "\r\n\r\n--" . $boundary . "\r\n";
+       $message .= "Content-type: text/plain;charset=utf-8\r\n\r\n";
+       $message .="This is your activation code $code";
+       $message .= "\r\n\r\n--" . $boundary . "\r\n";
+       $message .= "Content-type: text/html;charset=utf-8\r\n\r\n";
+              $message .= '
           <html>
           <title>Rest password</title>
           <meta charset="utf-8">
