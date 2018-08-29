@@ -75,7 +75,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="/{{$user->username}}">
-                    <img style="width: 60px;" src="{{$user->imgpath}}" class="rounded-circle">
+                    <img style="width: 60px;" src="https://www.thefreeedu.com/{{$user->imgpath}}" class="rounded-circle">
                   </a>
                 </div>
               </div>

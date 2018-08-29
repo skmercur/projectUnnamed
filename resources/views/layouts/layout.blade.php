@@ -54,8 +54,13 @@
   <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
-@if(!empty($user->username))
+
+
 <script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
+
+
+@if(!empty($user->username))
+
 <meta property="og:title" content ="{{$user->firstname}}, profile on The Free Education"/>
 <meta property="og:image" content ="https://www.thefreeedu.com/assets/img/logo1.png"/>
 <meta property="og:description" content ="{{$user->bio}}"/>
@@ -182,7 +187,7 @@ $.material.init();
                               <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
                             </form>
                             <div class="btn-group">
-         <li class="header-right profile_details_left dropdown head-dpdn">
+         <li class="header-right profile_details_left dropdown head-dpdn" style="margin-right:5px;">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="getNotifi()"><i class="fa fa-bell"></i><span id="numberNoti" class="badge blue" style="position:absolute;left:auto;top:auto">0</span></a>
                                         <ul class="dropdown-menu" id="notifications">
                                             <li>
