@@ -142,7 +142,7 @@ $validator = Validator::make($fileArray, $rules);
 
    $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
        $val = DB::table('users')->where('username',$user)->first();
-       if($val->status == 0){
+       if(!empty($val->username)){
       $destinationPath = "usersdata/".md5('uploads'.$user)."/";
       $file->move($destinationPath,$hash);
       if(($x < 0) || ($y <0  ) ||($w != $h) || ($w <= 0)){
@@ -157,6 +157,9 @@ $filenameUp = $destinationPath.$hash;
       }
    DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
     DB::table('users')->where('username',$user)->update(['namespi' =>$namespi]);
+    $users=   DB::table('users')->where('namespi',$val->namespi)->where('username','!=',$user)->orderBy('nfiles', 'asc')->limit(6)->get();
+
+
 
  $code = $val->code;
  $email = $val->email;
@@ -209,10 +212,10 @@ $headers.= "Content-type: text/html; charset=UTF8". PHP_EOL ;
        </html>
        ';
        mail($email, "Your activation code for The Free Education", $message, $headers);
-  return redirect($user);
+  return view('index')->with(['users'=>$users]);
 
 }else{
-  return redirect($user);
+    return back();
 }
 
  }

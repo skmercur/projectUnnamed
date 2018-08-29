@@ -37,7 +37,7 @@ window.location = "/login";
 @else
 
 
-                    @if((Auth::user()->username !== '') && (Auth::user()->status === 0))
+
 
                     <form method="post" action="nextstep" id="useredit"  enctype="multipart/form-data">
                       @csrf
@@ -182,11 +182,6 @@ window.location = "/login";
                     </div>
 
 
-                    @else
-                    <script type="text/javascript">
-                    window.location = "/";
-                    </script>
-                    @endif
 
 @endif
 
