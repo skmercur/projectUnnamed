@@ -102,64 +102,84 @@ z = 1;                                       // $(".dropdown-menu .notificationA
 }
                                     };
 
-                                    var timer;
-                                    var ss = document.getElementById('navbarsearchDataList');
-                                    window.keyChecking = function(event) {
-                                      document.getElementById('searchV').value = document.getElementById('navbarsearch').value;
-                                      clearTimeout(timer);
-                                     timer = setTimeout(function () {
-                                         getMessage();
-                                     }, 500);
 
-                                      }
-
-
-                                        window.getMessage =   function() {
-                                    var x = [];
-                                            $.ajaxSetup({
-                                              headers: {
-                                                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                              }
-                                          });
-                                          var form = $("#theFormNoti");
-                                                     $.ajax({
-
-                                                        type:'POST',
-                                                        url:'/getsugg',
-                                                        data:form.serialize(),
-                                                        success:function(data){
-                                                          for (var k in data.resaults) {
-
-                                    if(ss.options.length >0){
-                                    for(var i = 0; i<ss.options.lenght; i++){
-                                    ss.children[i].remove();
-                                    }
-                                    }
-
-                                                            if(x.indexOf(data.resaults[k].title) == -1 ){
-                                                              x.push(data.resaults[k].title);
-
-                                    }
-                                    }
-                                    for (var k in data.users) {
-                                     if(x.indexOf(data.users[k].firstname+' '+data.users[k].lastname) == -1 ){
-                                       x.push(data.users[k].firstname+' '+data.users[k].lastname);
-                                     }
-                                    }
-
-                                    for (var k in x) {
-                                      $("#navbarsearchDataList").append('<option id=" '+k+'" value="'+
-                                                    x[k] + '"></option>');
-
-                                    }
-
-                                    for(var i =0; i < ss.options.length; i++){
-                                      for(var j =0; j< ss.options.length; j++){
-                                        if(  ss.children[j+1].value ===  ss.children[i].value ){
-                                    ss.children[j].remove();
-                                    }
-                                    }
-                                    }
-                                                       }
-                                                    });
+                                    $(document).ready(function(){
+                                    	$("#navbarsearch").keyup(function(){
+                                        document.getElementById('searchV').value = document.getElementById('navbarsearch').value;
+                                        $.ajaxSetup({
+                                                 headers: {
+                                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                                  }
+                                             });
+                                              var form = $("#theFormNoti");
+                                    		$.ajax({
+                                    		type: "POST",
+                                    		url: "/getsugg",
+                                    		data: form.serialize(),
+                                    		beforeSend: function(){
+                                    			$("#search-box").css("background","#FFF url(LoaderIcon.gif) no-repeat 165px");
+                                    		},
+                                    		success: function(data){
+                                    			$("#suggesstion-box").show();
+                                    			$("#suggesstion-box").html(data);
+                                    			$("#navbarsearch").css("background","#FFF");
+                                    		}
+                                    		});
+                                    	});
+                                    });
+                                    //To select country name
+                                    function selectCountry(val) {
+                                    $("#navbarsearch").val(val);
+                                    $("#suggesstion-box").hide();
+                                    }
+
+
+
+                                    // $(document).ready(function(){
+                                    //
+                                    //         getMessage();
+                                    //
+                                    // });
+                                    // var timer;
+                                    // var tmpVal;
+                                    // var res;
+                                    // var users;
+                                    //
+                                    // window.keyChecking = function(event) {
+                                    //   document.getElementById('searchV').value = document.getElementById('navbarsearch').value;
+                                    //   clearTimeout(timer);
+                                    //  timer = setTimeout(function () {
+                                    //
+                                    //
+                                    //  }, 500);
+                                    //
+                                    //   }
+                                    //
+                                    //
+                                    //     window.getMessage =   function() {
+                                    // var x = [];
+                                    //         $.ajaxSetup({
+                                    //           headers: {
+                                    //               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    //           }
+                                    //       });
+                                    //       var form = $("#theFormNoti");
+                                    //                  $.ajax({
+                                    //
+                                    //                     type:'POST',
+                                    //                     url:'/getsugg',
+                                    //                     data:form.serialize(),
+                                    //                     success:function(data){
+                                    //                       res = data.resaults;
+                                    //                        users =  data.users;
+                                    //
+                                    //
+                                    //
+                                    //
+                                    //
+                                    //
+                                    //                    }
+                                    //                 });
+                                    //
+                                    //
+                                    //              }

@@ -201,8 +201,8 @@ input[type="submit"]:hover {
        <div class="input-group mb-12 center">
 
           <div class="col-sm-12">
-                    <input id="search" name="q" type="text" placeholder="Search for people and documents">
-                    
+                    <input  name="q" type="text" placeholder="Search for people and documents" autocomplete="off" list="navbarsearchDataList" id="navbarsearch" >
+
                     <input id="search_submit" value="Rechercher" type="submit">
 
 

@@ -14,6 +14,7 @@
     <!-- Scripts -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" type="text/javascript"> </script>
+<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" type="text/javascript"></script>
 
@@ -273,10 +274,11 @@ $.material.init();
 
     @else
     <script type="text/javascript">
-  
+
       </script>
     <form class="form-inline my-2 my-lg-0 justify-content-center" method="get" action="usearch">
-      <input class="form-control mr-sm-2"  id="navbarsearch" onkeyup="keyChecking(event)" list="navbarsearchDataList" autocomplete="off"  placeholder="Search" name="q">
+      <input class="form-control mr-sm-2"  id="navbarsearch"    placeholder="Search" name="q">
+      <div id="suggesstion-box"></div>
       <datalist id="navbarsearchDataList" class="navbarsearchDataList">
         <option value="test"  ></option>
       </datalist>

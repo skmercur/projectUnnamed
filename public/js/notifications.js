@@ -1,1 +1,239 @@
-!function(e){var t={};function a(n){if(t[n])return t[n].exports;var i=t[n]={i:n,l:!1,exports:{}};return e[n].call(i.exports,i,i.exports,a),i.l=!0,i.exports}a.m=e,a.c=t,a.d=function(e,t,n){a.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:n})},a.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(t,"a",t),t},a.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},a.p="/",a(a.s=44)}({44:function(e,t,a){e.exports=a(45)},45:function(e,t){var a,n=null,i=0;setInterval(function(){$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}});var e=$("#theFormNoti");$.ajax({type:"POST",url:"/getnotiNum",data:e.serialize(),success:function(e){$("#numberNoti").text(e.numberNoti)}})},2500),window.removenoti=function(e){$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}});var t=$("#theFormNoti");$.ajax({type:"POST",url:"/removenoti",data:t.serialize()+"&id="+e,success:function(e){getNotifi()}})},window.getNotifi=function(){if(0===i){$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}});var e=$("#theFormNoti");$.ajax({type:"POST",url:"/getnotilayout",data:e.serialize(),success:function(e){for(var t in e.resaults)n!==e.resaults[t].message?($("#notifications").append('<li class="notificationAdded"><div class="row"><div class="col-lg-2 col-xs-1" style="margin-left:2%"><div class="user_img"><img src="'+e.resaults[t].improfile+'" alt="" style= "max-height:40px; max-width:40px;"></div></div> <div class="col-lg-7 col-xs-4 "> <p style="font-size:8pt;margin-left:5px;">  '+e.resaults[t].message+'</p> </div><div class="col-lg-1 col-xs-1"><a href="#" onclick="removenoti('+e.resaults[t].id+')"> <i class="material-icons" style="max-width:20px;max-height:20px;">remove_circle_outline</i></a> </div> </div> <div class="row"><div class="col"> <div class="notification_bottom"> <small>'+e.resaults[t].created_at+"</small></div> </div> </div>   </li>"),n=e.resaults[t].message):t++}}),i=1}else $(".dropdown-menu .notificationAdded").remove(),i=0};var s=document.getElementById("navbarsearchDataList");window.keyChecking=function(e){document.getElementById("searchV").value=document.getElementById("navbarsearch").value,clearTimeout(a),a=setTimeout(function(){getMessage()},500)},window.getMessage=function(){var e=[];$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}});var t=$("#theFormNoti");$.ajax({type:"POST",url:"/getsugg",data:t.serialize(),success:function(t){for(var a in t.resaults){if(s.options.length>0)for(var n=0;n<s.options.lenght;n++)s.children[n].remove();-1==e.indexOf(t.resaults[a].title)&&e.push(t.resaults[a].title)}for(var a in t.users)-1==e.indexOf(t.users[a].firstname+" "+t.users[a].lastname)&&e.push(t.users[a].firstname+" "+t.users[a].lastname);for(var a in e)$("#navbarsearchDataList").append('<option id=" '+a+'" value="'+e[a]+'"></option>');for(n=0;n<s.options.length;n++)for(var i=0;i<s.options.length;i++)s.children[i+1].value===s.children[n].value&&s.children[i].remove()}})}}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 44:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(45);
+
+
+/***/ }),
+
+/***/ 45:
+/***/ (function(module, exports) {
+
+var x = null;
+var j = 0;
+var z = 0;
+
+setInterval(function getNotifiNumber() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    var form = $("#theFormNoti");
+    $.ajax({
+
+        type: 'POST',
+        url: '/getnotiNum',
+        data: form.serialize(),
+        success: function success(data) {
+
+            $('#numberNoti').text(data.numberNoti);
+        }
+    });
+}, 2500);
+
+window.removenoti = function (id) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var form = $("#theFormNoti");
+
+    $.ajax({
+
+        type: 'POST',
+        url: '/removenoti',
+        data: form.serialize() + '&id=' + id,
+        success: function success(data) {
+            getNotifi();
+        }
+
+    });
+};
+
+window.getNotifi = function () {
+    if (z === 0) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var form = $("#theFormNoti");
+        $.ajax({
+
+            type: 'POST',
+            url: '/getnotilayout',
+            data: form.serialize(),
+            success: function success(data) {
+
+                for (var k in data.resaults) {
+
+                    if (x !== data.resaults[k].message) {
+
+                        $("#notifications").append('<li class="notificationAdded"><div class="row">' + '<div class="col-lg-2 col-xs-1" style="margin-left:2%"><div class="user_img"><img src="' + data.resaults[k].improfile + '" alt="" style= "max-height:40px; max-width:40px;"></div>' + '</div> <div class="col-lg-7 col-xs-4 "> <p style="font-size:8pt;margin-left:5px;">  ' + data.resaults[k].message + '</p> </div><div class="col-lg-1 col-xs-1"><a href="#" onclick="removenoti(' + data.resaults[k].id + ')"> <i class="material-icons" style="max-width:20px;max-height:20px;">remove_circle_outline</i></a> </div> </div> <div class="row"><div class="col"> <div class="notification_bottom"> <small>' + data.resaults[k].created_at + '</small></div> </div> </div>  ' + '' + '' + '' + '' + ' </li>');
+                        x = data.resaults[k].message;
+                    } else {
+                        k++;
+                    }
+                }
+            }
+        });
+
+        z = 1; // $(".dropdown-menu .notificationAdded").remove();
+    } else {
+        $(".dropdown-menu .notificationAdded").remove();
+        z = 0;
+    }
+};
+
+$(document).ready(function () {
+    $("#navbarsearch").keyup(function () {
+        document.getElementById('searchV').value = document.getElementById('navbarsearch').value;
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var form = $("#theFormNoti");
+        $.ajax({
+            type: "POST",
+            url: "/getsugg",
+            data: form.serialize(),
+            beforeSend: function beforeSend() {
+                $("#search-box").css("background", "#FFF url(LoaderIcon.gif) no-repeat 165px");
+            },
+            success: function success(data) {
+                $("#suggesstion-box").show();
+                $("#suggesstion-box").html(data);
+                $("#navbarsearch").css("background", "#FFF");
+            }
+        });
+    });
+});
+//To select country name
+function selectCountry(val) {
+    $("#navbarsearch").val(val);
+    $("#suggesstion-box").hide();
+}
+
+// $(document).ready(function(){
+//
+//         getMessage();
+//
+// });
+// var timer;
+// var tmpVal;
+// var res;
+// var users;
+//
+// window.keyChecking = function(event) {
+//   document.getElementById('searchV').value = document.getElementById('navbarsearch').value;
+//   clearTimeout(timer);
+//  timer = setTimeout(function () {
+//
+//
+//  }, 500);
+//
+//   }
+//
+//
+//     window.getMessage =   function() {
+// var x = [];
+//         $.ajaxSetup({
+//           headers: {
+//               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//           }
+//       });
+//       var form = $("#theFormNoti");
+//                  $.ajax({
+//
+//                     type:'POST',
+//                     url:'/getsugg',
+//                     data:form.serialize(),
+//                     success:function(data){
+//                       res = data.resaults;
+//                        users =  data.users;
+//
+//
+//
+//
+//
+//
+//                    }
+//                 });
+//
+//
+//              }
+
+/***/ })
+
+/******/ });

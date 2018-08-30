@@ -92,7 +92,7 @@ if(!empty($val->user) && !empty($val1->user) ){
          </body>
          </html>
          ';
-     mail($email, "Your activation code for The Free Education", $message, $headers);
+     mail($email, "$val->$firstname, $val->lastname sent you a message", $message, $headers);
 return redirect($user);
   return redirect('/'.$user);
 }
