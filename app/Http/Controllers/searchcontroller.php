@@ -33,10 +33,12 @@ $users=   DB::table('users')->where('firstname','LIKE','%'.$value.'%')->orWhere(
 
 $output = '<ul class="list-unstyled">';
 foreach ($resaults as $resault ) {
- $output .= '<li>'.$resault->title.'</li>';
+ $output .= '<li style="margin-bottom:10px;margin-top:5px">'.$resault->title.'</li>';
+ $output .= '<br>';
 }
 foreach ($users as $user ) {
- $output .= '<li>'.$user->firstname.' '.$user->lastname.'</li>';
+ $output .= '<li><img src="'.$user->imgpath.'" style="max-height:40px;max-width:40px;"/> '.$user->firstname.' '.$user->lastname.'</li>';
+ $output .= '<br>';
 }
 $output .= '</ul>';
 return response($output, 200)

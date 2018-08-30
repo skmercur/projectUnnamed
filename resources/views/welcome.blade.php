@@ -170,18 +170,19 @@ input[type="submit"]:hover {
 
                     <input id="search_submit" value="Rechercher" type="submit">
             </div>
-       
+
      </div>
 
   </div>
 
-   
+
 
 
         </div>
+        <br>
          <div class="col-sm-12">
-                  <div id="countryList" style="max-height: 500px;width:80%; margin-top: 6%;background-color:#FFF;"></div>
-          
+                  <div id="countryList" style="width:80%; margin-top: 6%;background-color:#FFF;"></div>
+
             </div>
 
        </div>
