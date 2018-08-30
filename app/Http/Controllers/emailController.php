@@ -43,9 +43,9 @@ if(!empty($val->username) && !empty($val1->username) ){
 
   $boundary = uniqid('np');
   $headers = "MIME-Version: 1.0\r\n";
-  $headers .= "From: $val1->firstname,$val1->lastname  \r\n";
+  $headers .= "From: Support Team  \r\n";
   $headers .= "To: ".$val->email."\r\n";
-  $headers .="Reply-To: $val->email \r\n";
+  $headers .="Reply-To: $val1->email \r\n";
   $headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
   $message = "$val1->firstname,$val1->lastname sent you a message";
   $message .= "\r\n\r\n--" . $boundary . "\r\n";
@@ -74,9 +74,9 @@ if(!empty($val->username) && !empty($val1->username) ){
     <div class="card-body">
     <div class="row">
     <div class="col">
-    <p> <a href="https://www.thefreeedu.com/'.$user.'">'.$val1->firstname.','.$val1->lastname.'</a> sent you a message on The Free Education</p>
+    <p>  <a href="https://www.thefreeedu.com/'.$user.'"> <img src="https://www.thefreeedu.com/'.$val1->imgpath.'" style="max-width:40px;max-height:40px" /> '.$val1->firstname.','.$val1->lastname.'</a> sent you a message on The Free Education</p>
     <p>message : </p>
-    <p>'.$text.'</p>
+    <p><b>'.$text.'</b></p>
     </div>
     </div>
     </div>
@@ -94,15 +94,14 @@ if(!empty($val->username) && !empty($val1->username) ){
          </body>
          </html>
          ';
-     mail($val->email, "$val->firstname, $val->lastname sent you a message", $message, $headers);
-  return redirect('/'.$user);
+     mail($val->email, "$val1->firstname, $val1->lastname sent you a message", $message, $headers);
+  return back();
 }else{
-return redirect('/'.$user);
+  return back();
 }
 }else {
 return back();
 }
-
   }
   public function resend(Request $request){
     $user = $request->input('user');

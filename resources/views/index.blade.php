@@ -74,7 +74,7 @@
 
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="/{{$user->username}}">
+                  <a href="https://www.thefreeedu.com/{{$user->username}}">
                     <img style="width: 60px;" src="https://www.thefreeedu.com/{{$user->imgpath}}" class="rounded-circle">
                   </a>
                 </div>
@@ -88,7 +88,7 @@
 											$followers = explode(',',$user->followers);
 									 ?>
 								@if(in_array(Auth::user()->username,$followers))
-								 <form method="post" action="/rmf" >
+								 <form method="post" action="rmf" >
 
 								                  <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
 
@@ -97,7 +97,7 @@
 								                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
 								 </form>
 								                  @else
-								  <form action="/newf" method="post">
+								  <form action="newf" method="post">
 
 												  <button type="submit" class="btn btn-sm btn-default float-right">Follow</button>
 

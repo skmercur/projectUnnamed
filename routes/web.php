@@ -46,7 +46,7 @@ Route::get('/uploads',function(){
 Route::get('/vendor',function(){
   return abort(404);
 });
-Route::get('/tuto',function(){
+Route::get('/index',function(){
   return view('index');
 });
 Route::get('/admin/resizeIM', 'fileuploadcontroller@resizeIm');
