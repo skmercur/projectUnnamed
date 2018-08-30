@@ -41,7 +41,7 @@ if(!empty($val->user) && !empty($val1->user) ){
 
   $boundary = uniqid('np');
   $headers = "MIME-Version: 1.0\r\n";
-  $headers .= "From: $firstname,$lastname  \r\n";
+  $headers .= "From: $val1->firstname,$val1->lastname  \r\n";
   $headers .= "To: ".$val->email."\r\n";
   $headers .="Reply-To: $val->email \r\n";
   $headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
