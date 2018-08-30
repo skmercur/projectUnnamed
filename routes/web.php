@@ -76,6 +76,7 @@ Route::get('/check', 'fileuploadcontroller@check');
 Route::get('/sendemailtoall', 'emailController@sendemail');
 Route::get('/auth/nextstep', 'usernextstepimagecontroller@index');
 Route::post('/sendcontact','emailController@send');
+Route::post('/sendsms','emailController@sendsms');
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/auth/nextstep','usernextstepimagecontroller@saveUploadFile');
 Route::get('/auth/nextstep','usernextstepimagecontroller@getSpeciality');

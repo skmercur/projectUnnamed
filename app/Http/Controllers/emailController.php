@@ -28,6 +28,24 @@ mail($to, $subject, $message, $headers);
 
 return redirect('/');
 }
+public function sendsms(Request $request){
+  $email =  $request->input('email');  
+  $text = $request->input('text');
+  
+  
+  $to      = '{{$user->email}}';
+  $subject = 'contact us';
+  $message = $text.' ## email = '.$email;
+  $headers = 'From: '.$email.'' . "\r\n" .
+      'Reply-To: '.$email.'' . "\r\n" .
+      'X-Mailer: PHP/' . phpversion();
+  
+  mail($to, $subject, $message, $headers);
+  
+  
+  
+  return redirect('/');
+  }
   public function resend(Request $request){
     $user = $request->input('user');
     if(!empty($user)){
