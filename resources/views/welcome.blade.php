@@ -157,28 +157,33 @@ input[type="submit"]:hover {
   margin-right: auto;
   display: block;max-height: 260px;">
         </div>
+
        <div class="input-group mb-12 center">
 
-          <div class="col-sm-12">
-            <div class="row">
-          <div class="col-xs-8 center-block">
-              <div class="col-xs-6">
+
+
+  <div class="row">
+      <div class="col-xs-8 center-block">
+            <div class="col-xs-6">
 
                     <input  name="q" type="text" id="navbarsearch" onkeydown="readThat()" placeholder="Search for people and documents" autocomplete="off" list="navbarsearchDataList" id="navbarsearch" >
 
                     <input id="search_submit" value="Rechercher" type="submit">
-</div>
+            </div>
+       
+     </div>
 
-<div class="col-xs-6">
-  <div id="countryList" style="max-height: 500px;width:80%;background-color:#FFF;"></div>
-</div>
-</div>
   </div>
 
+   
 
-         </div>
 
         </div>
+         <div class="col-sm-12">
+                  <div id="countryList" style="max-height: 500px;width:80%; margin-top: 6%;background-color:#FFF;"></div>
+          
+            </div>
+
        </div>
   </div>
 </form>
