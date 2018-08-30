@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  
+    $spec=   DB::table('spicialitys')->orderBy('id', 'asc')->get();
+    return view('welcome')->with('spec',$spec);
 });
 
 Auth::routes();

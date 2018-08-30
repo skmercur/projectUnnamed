@@ -126,64 +126,23 @@ input[type="submit"]:hover {
   </div>
   </form>
 
-  <section class="gray-bg section-padding" id="feature-page">
+  <section style="margin-top: 4%;margin-bottom: 10%;" class="gray-bg section-padding" id="feature-page">
         <div class="container">
         
             <div class="row">
+            <?php $o=0; ?>
+            @foreach($spec as $s)
+                <?php $o++; ?>
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="box">
                           <div class="box-icon">
-                              <img src="{{asset('assets/img/portfolio-icon-1.png')}}" alt="">
+                              <img src="assets/img/portfolio-icon-<?php echo $o ?>.png" alt="">
                           </div>
-                        <h3>Specialite 1 </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
+                        <h3>{{$s->namespi}}</h3>
+                        
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="box">
-                        <div class="box-icon">
-                            <img src="{{asset('assets/img/portfolio-icon-2.png')}}" alt="">
-                        </div>
-                        <h3>Specialite 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="box">
-                        <div class="box-icon">
-                            <img src="{{asset('assets/img/portfolio-icon-3.png')}}" alt="">
-                        </div>
-                        <h3>Specialite 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="box">
-                        <div class="box-icon">
-                            <img src="{{asset('assets/img/portfolio-icon-4.png')}}" alt="">
-                        </div>
-                        <h3>Specialite 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="box">
-                        <div class="box-icon">
-                            <img src="{{asset('assets/img/portfolio-icon-5.png')}}" alt="">
-                        </div>
-                        <h3>Specialite 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="box">
-                        <div class="box-icon">
-                            <img src="{{asset('assets/img/portfolio-icon-6.png')}}" alt="">
-                        </div>
-                        <h3>Specialite 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quas nulla est adipisci,</p>
-                    </div>
-                </div>
+            @endforeach
             </div>
         </div>
     </section>
@@ -209,7 +168,26 @@ input[type="submit"]:hover {
        </div>
   </div>
 </form>
-
+  <section style="margin-top: 4%;margin-bottom: 10%;" class="gray-bg section-padding" id="feature-page">
+        <div class="container">
+        
+            <div class="row">
+            <?php $o=0; ?>
+            @foreach($spec as $s)
+                <?php $o++; ?>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="box">
+                          <div class="box-icon">
+                              <img src="assets/img/portfolio-icon-<?php echo $o ?>.png" alt="">
+                          </div>
+                        <h3>{{$s->namespi}}</h3>
+                        
+                    </div>
+                </div>
+            @endforeach
+            </div>
+        </div>
+    </section>
 
 @endguest
 @endsection

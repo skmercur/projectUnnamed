@@ -129,7 +129,7 @@
 
 
 <div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
-     <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="row">
           <div class="card " style="margin-left:auto; margin-right:auto;">
   <div class="modal-content">
@@ -162,7 +162,7 @@
 
 <div class="btn-group">
                                                       <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
-       <a href=""data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
+       <a href="" data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
 
 </div>
 
@@ -232,6 +232,7 @@
   </div>
 
 </div>
+
 <div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -267,6 +268,7 @@
     </div>
   </div>
 </div>
+
 <div class="modal fade" id="ModalReport" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" style="height:auto;width:auto;">
 
                           <div class="modal-dialog modal-lg" role="document">
@@ -792,7 +794,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 <div class="btn-group">
                                                       <form class="form-inline" action="delete" method="post">
                                                       <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
-       <a href=""data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
+       <a href="" data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
 
 
                                                       @csrf
@@ -805,6 +807,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 
       </td>
     </tr>
+    
     <div class="modal fade" id="Modal{{$file->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -823,15 +826,15 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
       </div>
 
 </div>
+ </div>
+
+  </div>
 
 @endforeach
   </tbody>
 </table>
 
-    </div>
-
-  </div>
-
+   
     </div>
 
       </div>
@@ -855,8 +858,8 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
     <img class="edit fas fa-ellipsis-v" >
 
   </div>
-
 </div>
+
 <div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
