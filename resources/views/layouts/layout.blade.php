@@ -14,6 +14,7 @@
     <!-- Scripts -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" type="text/javascript"> </script>
+<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" type="text/javascript"></script>
 
@@ -52,10 +53,15 @@
 <!-- <link rel="stylesheet" href="{{ asset('assets/css/error.css') }}" >
 <link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" > -->
   <link href="{{ asset('css/all.css') }}" rel="stylesheet">
-<script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
+
+
+<script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
+
+
 @if(!empty($user->username))
+
 <meta property="og:title" content ="{{$user->firstname}}, profile on The Free Education"/>
 <meta property="og:image" content ="https://www.thefreeedu.com/assets/img/logo1.png"/>
 <meta property="og:description" content ="{{$user->bio}}"/>
@@ -178,11 +184,19 @@ $.material.init();
 
                             <form method="post" id="theFormNoti">
                               <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                              <input type="hidden" name="code" value="{{ Auth::user()->code}}" />
-                              <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+                              <input type="hidden" name="code" value="<?php
+
+   $code = base64_encode(encrypt(Auth::user()->code));
+echo $code;
+                                ?>" />
+                              <input type="hidden" name="username" value="<?php
+echo base64_encode(encrypt(Auth::user()->username));
+                               ?>
+                              " />
+                              <input type="hidden" name="searchV" id="searchV" value=""/>
                             </form>
                             <div class="btn-group">
-         <li class="header-right profile_details_left dropdown head-dpdn">
+         <li class="header-right profile_details_left dropdown head-dpdn" style="margin-right:5px;">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="getNotifi()"><i class="fa fa-bell"></i><span id="numberNoti" class="badge blue" style="position:absolute;left:auto;top:auto">0</span></a>
                                         <ul class="dropdown-menu" id="notifications">
                                             <li>
@@ -235,7 +249,7 @@ $.material.init();
                         <li class="nav-item dropdown">
                 <div class="card-profile-image">
                   <a href="/{{ Auth::user()->username}}">
-                    <img class="rounded-circle" src="{{ Auth::user()->imgpath}}" alt="" style="background-color: white;  height: 40px;">
+                    <img class="rounded-circle" src="{{ URL::to(Auth::user()->imgpath)}}" alt="" style="background-color: white;  height: 40px;">
                   </a>
                 </div>
 
@@ -266,10 +280,20 @@ $.material.init();
     @guest
 
     @else
+    <script type="text/javascript">
+
+      </script>
     <form class="form-inline my-2 my-lg-0 justify-content-center" method="get" action="usearch">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="q">
+      <input class="form-control mr-sm-2"  id="navbarsearch"    placeholder="Search" name="q">
+      <div id="suggesstion-box"></div>
+      <datalist id="navbarsearchDataList" class="navbarsearchDataList">
+        <option value="test"  ></option>
+      </datalist>
+</input>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+
+
        @endguest
   </div>
 </nav>
@@ -297,9 +321,16 @@ $.material.init();
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
   <script type="text/javascript">
-
+  function check(){
+  if((document.getElementById("x").value >= 0) && (document.getElementById("y").value >= 0) && (  document.getElementById("w").value == document.getElementById("h").value) && (document.getElementById("h").value >0)){
+document.getElementById("useredit").submit();
+  }else{
+    alert('Error while cropping please try again');
+  }
+}
 function LaunchCropper() {
   var image = document.getElementById('output_image');
+  var button =  document.getElementById('edit_btn');
   var cropper = new Cropper(image, {
     dragMode: 'crop',
     aspectRatio: 1 / 1,
@@ -316,6 +347,7 @@ function LaunchCropper() {
       document.getElementById("y").value = Math.ceil(event.detail.y);
       document.getElementById("w").value = Math.ceil(event.detail.width);
       document.getElementById("h").value = Math.ceil(event.detail.height);
+
 
 },
   });

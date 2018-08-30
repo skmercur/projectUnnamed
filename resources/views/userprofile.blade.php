@@ -18,6 +18,8 @@
 
 <br>
 
+
+
   <section class="section section-skew" style="padding-top: 20rem;">
       <div class="container">
         <div class="card card-profile shadow mt--300">
@@ -31,23 +33,27 @@
                 </div>
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+
                 <div class="card-profile-actions py-4 mt-lg-0">
 
 
+
   @if(in_array(Auth::user()->username,$followers))
+
   <form method="post" action="rmf" >
                   <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
+                  <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter">Contact</button>
                   <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                  <input type="hidden" name="useru" value="{{$user->username}}" />
-                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
-                </form>
+                  <input type="hidden" name="useru" value="<?php echo base64_encode(encrypt($user->username)); ?>" />
+                  <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
+                  </form>
                   @else
                   <form action="newf" method="post">
 <button type="submit" class="btn btn-sm btn-default float-right">Follow</button>
                   @endif
                   <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                  <input type="hidden" name="useru" value="{{$user->username}}" />
-                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+                  <input type="hidden" name="useru" value="<?php echo base64_encode(encrypt($user->username)); ?>" />
+                  <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
                 </form>
                 </div>
               </div>
@@ -70,7 +76,7 @@
             </div>
             <div class="text-center mt-5">
               <h3>{{$user->firstname}}  {{$user->lastname}}
-                <span class="font-weight-light">, {{Auth::user()->gender}}</span>
+                <span class="font-weight-light">, {{$user->gender}}</span>
               </h3>
               <div class="h6 font-weight-300"><i class="material-icons" style="font-size:13pt">email</i> : {{$user->email}}</div>
               <div class="h6 mt-4"><i class="material-icons" style="font-size:13pt">school</i> : {{$user->namespi}}</div>
@@ -80,6 +86,8 @@
 
 
               <div class="col-md-12">
+
+
 
       <button style="margin-top: 30px; margin-left: auto;
     margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form3"><i class="fas fa-file fa-3x"></i></button>
@@ -127,6 +135,36 @@
 
 <!-- end modal checking for virus -->
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Contact</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="sendsms" method="post">
+        @CSRF
+        <input type="hidden" name="usert" value="<?php echo base64_encode(encrypt($user->username)); ?>" />
+        <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
+
+        <div class="form-group">
+    <label for="exampleFormControlTextarea1">Message : </label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" name="text" rows="3"></textarea>
+  </div>
+  <button type="submit"  class="btn btn-success">Send</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="submit"  class="btn btn-success">Envoyer</button> -->
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -245,7 +283,7 @@
       <div class="modal-body">
       <form action="sendcontacthelp" method="post" id="contactForm" >
               @CSRF
-<input type="hidden" name="username" value="{{Auth::user()->username}}" />
+<input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Message</label>
@@ -290,7 +328,7 @@
 
           <form action="reportguest" method="post">
                   <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                  <input type="hidden" name="user" value="{{$user->username}}" />
+                <input type="hidden" name="user" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
 
                   <div class="form-group">
                     <p>The reason for the Report : </p>
@@ -395,8 +433,8 @@
 
 <form method="post" id="theForm">
   <input type="hidden" name="_token" value="{{csrf_token()}}" />
-  <input type="hidden" name="code" value="$user->code" />
-  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+  <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
+<input type="hidden" name="code" value="<?php echo base64_encode(encrypt($user->code)); ?>" />
 </form>
 @if(!empty(Request::query('v')))
 <?php
@@ -407,7 +445,7 @@ case 555:{
 
 ?>
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Sorry!</strong> The file you are trying to upload is not currently supported.
+<strong>Sorry!</strong> The file you are trying to upload is not currently supported or already exists.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -632,7 +670,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
           </div>
           <input type="hidden" name="_token" value="{{csrf_token()}}" />
-          <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+          <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
         </div>
 
                                  <div class="text-center">
@@ -716,12 +754,12 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
             <div class="input-group input-group-alternative">
 
             <input type="password" class="form-control" id="confirm-pass" placeholder="confirm your password" name="cnpass">
-            <input type="hidden" value="{{Auth::user()->username}}" name="username" />
+            <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
             <input type="hidden" name="_token" value="{{csrf_token()}}" />
           </div>
           </div>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button class="btn btn-primary"  type="submit">Edit</button>
+          <button class="btn btn-primary" id="edit_btn" onclick="check()" type="button">Edit</button>
         </form>
       </div>
       <div class="modal-footer">
@@ -799,7 +837,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 
                                                       @csrf
                                                       <input type="hidden" value="{{$file->id}}" name="fileid" />
-                                                      <input type="hidden" name="username" value="{{Auth::user()->username}}" />
+                                                      <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
                                                           <input type="hidden" name="_token" value="{{csrf_token()}}" />
                                                     <button type="submit" class="btn btn-outline-danger fa fa-trash-alt" ></button>
                                                 </form>
@@ -872,7 +910,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
       <div class="modal-body">
       <form action="sendcontacthelp" method="post" id="contactForm" >
               @CSRF
-<input type="hidden" name="username" value="{{Auth::user()->username}}" />
+<input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Message</label>

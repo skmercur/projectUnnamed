@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\fileupload;
 use App\notifications;
+use Illuminate\Support\Facades\Crypt;
 class fileuploadcontroller extends Controller
 {
     /**
@@ -58,22 +59,27 @@ class fileuploadcontroller extends Controller
     $firstname1 = $val2->firstname;
     $lastname1 = $val2->lastname;
       // Additional headers
-      $headers = 'From: support@thefreeedu.com'."\r\n";
-      $headers .= "MIME-Version: 1.0\r\n";
-      $headers.= "Content-type: text/html; charset=UTF8". PHP_EOL ;
-         // Mail::send('mail',$data,function($message) use ($email){
-         //   $message->to($email)->subject('Your activation code');
-         //   $message->from('support@thefreeedu.com','support');
-         // });
-         $message = '
+      $boundary = uniqid('np');
+      $headers = "MIME-Version: 1.0\r\n";
+      $headers .= "From: Support Team  \r\n";
+      $headers .= "To: ".$email."\r\n";
+      $headers .="Reply-To: support@thefreeedu.com \r\n";
+      $headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
+      $message = "This is a MIME encoded message.";
+      $message .= "\r\n\r\n--" . $boundary . "\r\n";
+      $message .= "Content-type: text/plain;charset=utf-8\r\n\r\n";
+      $message .="$firstname , $lastname has uploaded a new file ";
+      $message .= "\r\n\r\n--" . $boundary . "\r\n";
+      $message .= "Content-type: text/html;charset=utf-8\r\n\r\n";
+             $message .= '
          <html>
          <head>
            <title></title>
            <meta charset="utf-8">
            <meta name="viewport" content="width=device-width, initial-scale=1">
-       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
          </head>
          <body>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
            <div class="container">
            <h3>Dear '.$firstname1.','.$lastname1.'</h3>
@@ -93,9 +99,14 @@ class fileuploadcontroller extends Controller
 </div>
            </div>
            <footer>
-           <p>From The Free Education team</p>
-           <p>if there is any problem contact us at : support@thefreeedu.com </p>
-           </footer>
+          <p>From The Free Education team</p>
+          <p>if there is any problem contact us at : support@thefreeedu.com </p>
+          <div class="container h-100 d-flex justify-content-center">
+
+     <a href="https://www.thefreeedu.com/" ><img src="https://www.thefreeedu.com/assets/img/logo1.png" style="max-height:20%;max-width:20%;" class="img-thumbnail"/> </a>
+
+</div>
+</footer>
          </body>
          </html>
          ';
@@ -115,6 +126,7 @@ sleep(2);
 
     public function notify(Request $request){
       $creator = $request->input('username');
+        $creator= decrypt(base64_decode($creator));
       $message = '<a href="/'.$creator.'">'.$creator.'</a> has added a new file';
       $val =   DB::table('users')->where('username',$creator)->first();
       $followers = $val->followers;
@@ -164,6 +176,7 @@ return redirect($data);
 
     public function saveUploadFile(Request $request){
       $username = $request->input('username');
+      $username= decrypt(base64_decode($username));
       $title= $request->input('title');
       $description = $request->input('description');
       $description = preg_replace("/&#?[a-z0-9]+;/i","",$description);
@@ -187,6 +200,12 @@ $validator = Validator::make($fileArray, $rules);
    //Move Uploaded File
 
  }else {
+
+$isthere = DB::table('files')->where('filename',$file->getClientOriginalName())->get();
+if($isthere->count() > 0){
+  return redirect('/'.$username.'?v='.base64_encode('555'));
+}
+
 $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
    $destinationPath = "usersdata/".md5('uploads'.$username)."/";
 $file->move($destinationPath,$hash);
@@ -235,8 +254,10 @@ if (array_key_exists('positives',$js)){
       unlink($destinationPath.$hash);
  return redirect('/'.$username.'?v='.base64_encode('444'));
 }else{
-
-
+$val2 = DB::table('files')->where('author',$username)->get();
+if($val2->count() == 0){
+   DB::table('users')->where('username',$username)->update(['status'=>0]);
+}
 
      fileupload::create([
          'filename' => $file->getClientOriginalName(),

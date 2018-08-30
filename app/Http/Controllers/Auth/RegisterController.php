@@ -49,8 +49,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'firstname' => 'required|string|max:191',
-            'lastname' => 'required|string|max:191',
+            'firstname' => 'required|string|min:3|max:20',
+            'lastname' => 'required|string|min:3|max:20',
             'username' => 'required|string|max:30|unique:users',
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6|confirmed',
@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'imgpath'=> 'uploads/default.png',
               'namespi'=>'default',
-              'status'=>'0',
+              'status'=>'1',
               'code'=>mt_rand(1000,9999),
               'type'=>'basic',
               'nfiles'=>'100',

@@ -128,7 +128,7 @@ input[type="submit"]:hover {
 
   <section style="margin-top: 4%;margin-bottom: 10%;" class="gray-bg section-padding" id="feature-page">
         <div class="container">
-        
+
             <div class="row">
             <?php $o=0; ?>
             @foreach($spec as $s)
@@ -160,8 +160,12 @@ input[type="submit"]:hover {
        <div class="input-group mb-12 center">
 
           <div class="col-sm-12">
-                    <input id="search" name="q" type="text" placeholder="Search for people and documents">
+                    <input  name="q" type="text" placeholder="Search for people and documents" autocomplete="off" list="navbarsearchDataList" id="navbarsearch" >
+
                     <input id="search_submit" value="Rechercher" type="submit">
+
+
+
          </div>
 
         </div>

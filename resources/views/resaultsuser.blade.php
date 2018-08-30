@@ -50,22 +50,22 @@
 									 ?>
 								@if(in_array(Auth::user()->username,$followers))
 								 <form method="post" action="rmf" >
-								                  
+
 								                  <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
-								                 
+
 								                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
-								                  <input type="hidden" name="useru" value="{{$user->username}}" />
-								                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
-								 </form>
+																	<input type="hidden" name="useru" value="<?php echo base64_encode(encrypt($user->username)); ?>" />
+		                              <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
+		             </form>
 								                  @else
 								  <form action="newf" method="post">
-												
+
 												  <button type="submit" class="btn btn-sm btn-default float-right">Follow</button>
-								                  
+
 								                  <input type="hidden" name="_token" value="{{csrf_token()}}" />
-								                  <input type="hidden" name="useru" value="{{$user->username}}" />
-								                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
-								 </form>
+																	<input type="hidden" name="useru" value="<?php echo base64_encode(encrypt($user->username)); ?>" />
+ 	                               <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
+ 	              </form>
 												  @endif
 												  @endif
                 </div>
@@ -82,6 +82,7 @@
             </div>
 
 
+<<<<<<< HEAD
             <div class="text-center mt-4">
              
               <a href="/{{$user->username}}">
@@ -95,6 +96,13 @@
              
               <p>{{$user->namespi}}</p>
            
+=======
+            <div class="text-center mt-5">
+
+              <a href="/{{$user->username}}"><h3>{{$user->firstname}}  {{$user->lastname}}
+                <span class="font-weight-light"><small>, {{$user->namespi}}</small></span>
+              </h3></a>
+>>>>>>> 7060eac7ec0a6b745f49bf7c55401099e58dca06
 
             </div>
 
@@ -126,27 +134,32 @@
 						</div>
 
 <div class="container">
-	
+
 	<div class="row">
 
 		<?php $i=0; ?>
 		   @foreach($resaults as $resault)
 			  <?php $i++; ?>
 
+<<<<<<< HEAD
 						
 <div class="col-sm-6">
+=======
+
+<div class="col-sm-12">
+>>>>>>> 7060eac7ec0a6b745f49bf7c55401099e58dca06
 
 				<h3>{{$resault->title}}</h3>
-											
+
 						<div class="col-sm-12">
-													
+
 										<a href="/{{$resault->author}}" class="pull-left">
 											<img src="{{$resault->imgpath}}" class="media-photo" height="60" width="60">
 										</a>
 						</div>
 
 						<div class="col-sm-12">
-								
+
 								<span class="media-meta pull-right" style="font-size:12">{{$resault->created_at}}</span>
 
 									<h6 class="title">
@@ -161,33 +174,68 @@
 	 													 else{
 						        echo $resault->description;
 						   							   } ?>
-						   							 
+
 						   				  </p>
 
 						</div>
-					
+
 
 						<div class="col-sm-12">
-																					
+
 						<form method="get" action="check" >
 
 											<input type="hidden" value="{{$resault->location}}" name="f">
 
 												<div class="btn-group">
 
-															<a href="">
+
+															<a  href="" data-toggle="modal" data-target="#ModalDownloads{{$resault->id}}">
 																<button type="submit" class="btn btn-outline-success" style="margin-left: -8%;" >
 															<i class="fa fa-cloud-download-alt"></i></button>
 															</a>
-									
 															<a href="" data-toggle="modal" data-target="#Modal{{$resault->id}}">
 															 	<button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button>
 															</a>
 
 															<a href="" data-toggle="modal" data-target="#ModalReport{{$resault->id}}">
-																<button type="button" class="btn btn-outline-danger" style="margin-left:2%">Report</button>
+																<button type="button" class="btn btn-outline-danger fa fa-user-times" style="margin-left:2%"></button>
 															</a>
+<<<<<<< HEAD
 												</div>
+=======
+                              <div class="dropdown">
+<button class="btn btn-outline-secondary fa fa-share-alt dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:2%" >
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<input type="url" class="form-control" style="font-size:8pt" value="https://www.thefreeedu.com/search?share=<?php echo $resault->id;?>" onClick="this.select();"  >
+</div>
+</div>
+
+<!-- Modal Downloads-->
+<div class="modal fade" id="ModalDownloads{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+														<div class="modal-dialog" role="document">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h5 class="modal-title" id="exampleModalLabel">Download {{$resault->title}}</h5>
+																	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																		<span aria-hidden="true">&times;</span>
+																	</button>
+																</div>
+																<div class="modal-body">
+															<iframe data-aa='977909' src='//acceptable.a-ads.com/977909' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
+																</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+																	<button type="submit" class="btn btn-success" style="margin-left:5px;" >Download</button>
+																	</a>
+																</div>
+															</div>
+														</div>
+</div>
+
+<!-- end Modal Downloads -->
+
+>>>>>>> 7060eac7ec0a6b745f49bf7c55401099e58dca06
 						</form>
 
 						</div>
@@ -205,15 +253,18 @@
             <!--Body-->
             <div class="modal-body text-center mb-1">
 
-              
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7060eac7ec0a6b745f49bf7c55401099e58dca06
                 <div class="md-form ml-0 mr-0">
                		 <p class="description">{{$resault->description}}</p>
-                  
+
                 </div>
 
                 <div class="text-center mt-4">
-                    
+
                 </div>
             </div>
 
@@ -237,18 +288,18 @@
              <form action="reportguest" method="post">
             <div class="modal-body mx-3">
 
-              
-               
-									
-									<input type="hidden" name="_token" value="{{csrf_token()}}" />
-									<input type="hidden" name="user" value="{{$resault->author}}" />
 
+
+
+									<input type="hidden" name="_token" value="{{csrf_token()}}" />
+									<input type="hidden" name="user" value="<?php echo base64_encode(encrypt($result->author)); ?>" />
+									
 						<ul class="list-group">
 
 								<li class="list-group-item">
-										
+
 										<label for="reportcause">The reason for the Report : </label>
-										
+
 										<div class="form-group">
 
     											<select class="form-control" id="reportcause">
@@ -258,14 +309,14 @@
 													<option value="3">User has an inappropriate profile picture </option>
 													<option value="2">User has used an inappropriate title or a description </option>
    												</select>
- 										</div>	
+ 										</div>
 								</li>
 
 						</ul>
-				
 
-                    
-             
+
+
+
 
                 <div class="md-form mb-5">
                   <div class="form-group">
@@ -274,7 +325,7 @@
   				  </div>
                 </div>
 
-               
+
 
             </div>
 
@@ -287,8 +338,13 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 <!--Modal: modal with report Form-->										
 											
+=======
+<!--Modal: modal with report Form-->
+
+>>>>>>> 7060eac7ec0a6b745f49bf7c55401099e58dca06
 	<br>
 	 @if($i == 2)
 			<div class="card" style="width:800px;padding:10px;" >

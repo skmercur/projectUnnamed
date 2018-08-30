@@ -119,7 +119,13 @@ body{ margin:0px; padding:0px; font-family:helvetica; background:url(image.png);
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
       <script type="text/javascript">
-
+      function check(){
+      if((document.getElementById("x").value >= 0) && (document.getElementById("y").value >= 0) && (  document.getElementById("w").value == document.getElementById("h").value) && (document.getElementById("h").value >0)){
+      document.getElementById("useredit").submit();
+      }else{
+        alert('Error while cropping please try again');
+      }
+      }
     function LaunchCropper() {
       var image = document.getElementById('output_image');
       var cropper = new Cropper(image, {

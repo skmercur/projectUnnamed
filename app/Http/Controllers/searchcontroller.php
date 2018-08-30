@@ -25,7 +25,15 @@ class searchcontroller extends Controller
     {
         //
     }
+public function getSuggestionSearch(Request $request){
+  if(!empty($request->searchV)){
+    $value = $request->searchV;
+  $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->orderBy('files.downloads','desc')->limit(5)->get();
+  $users=   DB::table('users')->where('firstname','LIKE','%'.$value.'%')->orWhere('lastname','LIKE','%'.$value.'%')->where('status',1)->orderBy('nfiles', 'asc')->limit(5)->get();
 
+return response()->json(array('resaults'=>$resaults->title,'users'=>$users),200);
+}
+}
     /**
      * Store a newly created resource in storage.
      *
@@ -68,7 +76,7 @@ public function usearch(Request $request){
 $value = $request->q;
   if(!empty($value)){
   $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->orderBy('files.downloads','desc')->limit(7)->get();
-    $users=   DB::table('users')->where('firstname','LIKE','%'.$value.'%')->where('status',1)->orWhere('lastname','LIKE','%'.$value.'%')->orderBy('nfiles', 'asc')->limit(5)->get();
+    $users=   DB::table('users')->where('firstname','LIKE','%'.$value.'%')->orWhere('lastname','LIKE','%'.$value.'%')->where('status',1)->orderBy('nfiles', 'asc')->limit(5)->get();
 $count = $resaults->count();
 $countu = $users->count();
   return view('resaultsuser')->with(['resaults'=>$resaults,'users'=>$users,'value'=>$value,'count'=>$count,'countu'=>$countu]);

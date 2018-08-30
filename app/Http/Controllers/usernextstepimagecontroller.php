@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectRespons;
 use Mail;
-
+use Illuminate\Support\Facades\Crypt;
 class usernextstepimagecontroller extends Controller
 {
     /**
@@ -38,12 +38,15 @@ class usernextstepimagecontroller extends Controller
 
    $codeu = $request->input('codeu');
    $user = $request->input('user');
+   $user= decrypt(base64_decode($user));
    if(!empty($user)){
    $val = DB::table('users')->where('username',$user)->first();
     $code = $val->code;
    if($val->code == $codeu){
      DB::table('users')->where('username',$user)->update(['status' => 1]);
-     return view('index');
+
+
+     return redirect('/'.$user);
    }else {
      return back();
    }
@@ -116,6 +119,7 @@ return view('auth/nextstep')->with('spec',$spec);
 
     public function saveUploadFile(Request $request){
       $user = $request->input('user');
+      $user= decrypt(base64_decode($user));
       $namespi = $request->input('namesp');
       $x = $request->input('x');
       $y = $request->input('y');
@@ -140,7 +144,7 @@ $validator = Validator::make($fileArray, $rules);
 
    $hash = md5($file->getClientOriginalName()."theghost").".".$file->getClientOriginalExtension();
        $val = DB::table('users')->where('username',$user)->first();
-       if($val->status == 0){
+       if(!empty($val->username)){
       $destinationPath = "usersdata/".md5('uploads'.$user)."/";
       $file->move($destinationPath,$hash);
       if(($x < 0) || ($y <0  ) ||($w != $h) || ($w <= 0)){
@@ -155,6 +159,9 @@ $filenameUp = $destinationPath.$hash;
       }
    DB::table('users')->where('username',$user)->update(['imgpath' => $destinationPath.$hash]);
     DB::table('users')->where('username',$user)->update(['namespi' =>$namespi]);
+    $users=   DB::table('users')->where('namespi',$val->namespi)->where('username','!=',$user)->orderBy('nfiles', 'asc')->limit(6)->get();
+
+
 
  $code = $val->code;
  $email = $val->email;
@@ -169,24 +176,27 @@ $filenameUp = $destinationPath.$hash;
 
 
 // Additional headers
-$headers = '';
-$headers.= 'To: '.$firstname.','.$lastname.' <'.$email.'>';
-$headers.= 'From: The support team <support@thefreeedu.com>';
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-$headers .= 'From: support@thefreeedu.com' . "\r\n" .
-    'Reply-To: support@thefreeedu.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-
-       $message = '
+$boundary = uniqid('np');
+$headers = "MIME-Version: 1.0\r\n";
+$headers .= "From: Your Name \r\n";
+$headers .= "To: ".$email."\r\n";
+$headers .="Reply-To: support@thefreeedu.com \r\n";
+$headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
+$message = "This is a MIME encoded message.";
+$message .= "\r\n\r\n--" . $boundary . "\r\n";
+$message .= "Content-type: text/plain;charset=utf-8\r\n\r\n";
+$message .="This is your activation code $code";
+$message .= "\r\n\r\n--" . $boundary . "\r\n";
+$message .= "Content-type: text/html;charset=utf-8\r\n\r\n";
+       $message .= '
        <html>
        <head>
          <title>Your activation code</title>
          <meta charset="utf-8">
          <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
        </head>
        <body>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
          <div class="container">
          <h3>Dear '.$firstname.','.$lastname.'</h3>
@@ -206,20 +216,36 @@ $headers .= 'From: support@thefreeedu.com' . "\r\n" .
   </div>
          </div>
          <footer>
-         <p>From The Free Education team</p>
-         <p>if there is any problem contact us at : support@thefreeedu.com </p>
-         </footer>
+        <p>From The Free Education team</p>
+        <p>if there is any problem contact us at : support@thefreeedu.com </p>
+        <div class="container h-100 d-flex justify-content-center">
+
+   <a href="https://www.thefreeedu.com/" ><img src="https://www.thefreeedu.com/assets/img/logo1.png" style="max-height:20%;max-width:20%;" class="img-thumbnail"/> </a>
+
+</div>
+</footer>
        </body>
        </html>
        ';
-       mail($email, "Your activation code for The Free Education", $message, $headers);
-  return redirect($user);
+
+       // mail($email, "Your activation code for The Free Education", $message, $headers);
+       $encrypted = base64_encode(Crypt::encryptString($val->username));
+        $encrypted1 = base64_encode(Crypt::encryptString($val->namespi));
+  return redirect('/checkV?v='.$encrypted.'&q='.$encrypted1);
 
 }else{
-  return redirect($user);
+    return back();
 }
 
  }
 }
+public function checkV(Request $request){
+  if((!empty($request->v))&& (!empty($request->q))){
+$v = Crypt::decryptString(base64_decode($request->v));
+$q = Crypt::decryptString(base64_decode($request->q));
+$users= DB::table('users')->where('namespi',$q)->where('username','!=',$v)->orderBy('nfiles', 'asc')->limit(6)->get();
+return view('index')->with('users',$users);
 
+}
+}
 }

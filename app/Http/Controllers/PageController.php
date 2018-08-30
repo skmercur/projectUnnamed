@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use App\notifications;
-
+use Illuminate\Support\Facades\Crypt;
 class PageController extends Controller
 {
     /**
@@ -27,6 +27,8 @@ public function getNotificationLayout (Request $request){
   $user = $request->username;
   $code = $request->code;
 if(!empty($user) && !empty($code)){
+$code = decrypt(base64_decode($code));
+$user = decrypt(base64_decode($user));
 $db =   DB::table('users')->where('username',$user)->where('code',$code)->first();
 if(!empty($db->username)){
   $user = $db->username;
@@ -50,6 +52,8 @@ public function getNotification(Request $request)
   $user = $request->username;
   $code = $request->code;
   if(!empty($user) && !empty($code)){
+    $code = decrypt(base64_decode($code));
+    $user = decrypt(base64_decode($user));
   $db =   DB::table('users')->where('username',$user)->where('code',$code)->first();
   if(!empty($db->username)){
   $user = $db->username;
@@ -68,6 +72,8 @@ public function getNotificationNumber(Request $request)
   $user = $request->username;
   $code = $request->code;
 if(!empty($user) && !empty($code)){
+  $code = decrypt(base64_decode($code));
+  $user = decrypt(base64_decode($user));
 $db =   DB::table('users')->where('username',$user)->where('code',$code)->first();
 if(!empty($db->username)){
   $user = $db->username;
@@ -85,6 +91,8 @@ public function removenoti(Request $request)
   $user = $request->username;
   $code = $request->code;
   if(!empty($user) && !empty($code)){
+    $code = decrypt(base64_decode($code));
+    $user = decrypt(base64_decode($user));
   $db =   DB::table('users')->where('username',$user)->where('code',$code)->first();
   if(!empty($db->username)){
   $user = $db->username;
@@ -145,6 +153,8 @@ if(!empty($user->username)){
 public function notify(Request $request){
   $creator = $request->input('username');
   $useru = $request->input('useru');
+  $useru = decrypt(base64_decode($useru));
+  $creator = decrypt(base64_decode($creator));
   $message = '<a href="/'.$creator.'">'.$creator.'</a> is following you follow him back';
   $val =   DB::table('users')->where('username',$creator)->first();
   $improfile = $val->imgpath;
@@ -161,6 +171,8 @@ notifications::create([
     public function newFollower(Request $request){
       $user = $request->input('username');
       $useru = $request->input('useru');
+        $user = decrypt(base64_decode($user));
+          $useru = decrypt(base64_decode($useru));
       $val =   DB::table('users')->where('username',$useru)->first();
       $followers = $val->followers;
       if(strlen($followers) > 0){
@@ -183,6 +195,8 @@ return back();
 public function unfollow(Request $request){
   $user = $request->input('username');
   $useru = $request->input('useru');
+  $user = decrypt(base64_decode($user));
+    $useru = decrypt(base64_decode($useru));
   $val =   DB::table('users')->where('username',$useru)->first();
   $followers = $val->followers;
     $pices = explode(',',$followers);
