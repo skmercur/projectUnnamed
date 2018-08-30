@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectRespons;
 use Mail;
-
+use Illuminate\Support\Facades\Crypt;
 class usernextstepimagecontroller extends Controller
 {
     /**
@@ -226,8 +226,10 @@ $message .= "Content-type: text/html;charset=utf-8\r\n\r\n";
        </html>
        ';
 
-       mail($email, "Your activation code for The Free Education", $message, $headers);
-  return view('index')->with(['users'=>$users]);
+       // mail($email, "Your activation code for The Free Education", $message, $headers);
+       $encrypted = base64_encode(Crypt::encryptString($val->username));
+        $encrypted1 = base64_encode(Crypt::encryptString($val->namespi));
+  return redirect('/checkV?v='.$encrypted.'&q='.$encrypted1);
 
 }else{
     return back();
@@ -235,5 +237,13 @@ $message .= "Content-type: text/html;charset=utf-8\r\n\r\n";
 
  }
 }
+public function checkV(Request $request){
+  if((!empty($request->v))&& (!empty($request->q))){
+$v = Crypt::decryptString(base64_decode($request->v));
+$q = Crypt::decryptString(base64_decode($request->q));
+$users= DB::table('users')->where('namespi',$q)->where('username','!=',$v)->orderBy('nfiles', 'asc')->limit(6)->get();
+return view('index')->with('users',$users);
 
+}
+}
 }

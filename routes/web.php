@@ -65,6 +65,7 @@ Route::get('/reset', function (){
 Route::get('/recover', function (){
   return view('auth/recover');
 });
+Route::get('/checkV', 'usernextstepimagecontroller@checkV');
 Route::get('/rpcc', 'emailController@resetpasscheck');
 Route::post('/frpc', 'emailController@finalpass');
 Route::post('/requestSpeciality','emailController@sendemailRequestSpeciality');
