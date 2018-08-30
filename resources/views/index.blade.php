@@ -88,7 +88,7 @@
 											$followers = explode(',',$user->followers);
 									 ?>
 								@if(in_array(Auth::user()->username,$followers))
-								 <form method="post" action="rmf" >
+								 <form method="post" action="/rmf" >
 
 								                  <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
 
@@ -97,7 +97,7 @@
 								                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
 								 </form>
 								                  @else
-								  <form action="newf" method="post">
+								  <form action="/newf" method="post">
 
 												  <button type="submit" class="btn btn-sm btn-default float-right">Follow</button>
 
