@@ -155,7 +155,7 @@
     <label for="exampleFormControlTextarea1">Message : </label>
     <textarea class="form-control" id="exampleFormControlTextarea1" name="text" rows="3"></textarea>
   </div>
-  <button type="submit"  class="btn btn-success">Envoyer</button>
+  <button type="submit"  class="btn btn-success">Send</button>
         </form>
       </div>
       <div class="modal-footer">
