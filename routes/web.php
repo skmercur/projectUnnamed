@@ -51,6 +51,7 @@ Route::get('/tuto',function(){
 });
 Route::get('/admin/resizeIM', 'fileuploadcontroller@resizeIm');
 Route::post('/sendcontacthelp', 'emailController@sch');
+Route::post('/getsugg', 'searchcontroller@getSuggestionSearch');
 Route::post('/getnoti', 'PageController@getNotification');
 Route::post('/getnotiNum', 'PageController@getNotificationNumber');
 Route::post('/getnotilayout', 'PageController@getNotificationLayout');

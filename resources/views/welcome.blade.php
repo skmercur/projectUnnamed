@@ -128,7 +128,7 @@ input[type="submit"]:hover {
 
   <section class="gray-bg section-padding" id="feature-page">
         <div class="container">
-        
+
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="box">
@@ -202,7 +202,11 @@ input[type="submit"]:hover {
 
           <div class="col-sm-12">
                     <input id="search" name="q" type="text" placeholder="Search for people and documents">
+                    
                     <input id="search_submit" value="Rechercher" type="submit">
+
+
+
          </div>
 
         </div>

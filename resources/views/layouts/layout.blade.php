@@ -185,6 +185,7 @@ $.material.init();
                               <input type="hidden" name="_token" value="{{csrf_token()}}" />
                               <input type="hidden" name="code" value="{{ Auth::user()->code}}" />
                               <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+                              <input type="hidden" name="searchV" id="searchV" value=""/>
                             </form>
                             <div class="btn-group">
          <li class="header-right profile_details_left dropdown head-dpdn" style="margin-right:5px;">
@@ -271,10 +272,19 @@ $.material.init();
     @guest
 
     @else
+    <script type="text/javascript">
+  
+      </script>
     <form class="form-inline my-2 my-lg-0 justify-content-center" method="get" action="usearch">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="q">
+      <input class="form-control mr-sm-2"  id="navbarsearch" onkeyup="keyChecking(event)" list="navbarsearchDataList" autocomplete="off"  placeholder="Search" name="q">
+      <datalist id="navbarsearchDataList" class="navbarsearchDataList">
+        <option value="test"  ></option>
+      </datalist>
+</input>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+
+
        @endguest
   </div>
 </nav>

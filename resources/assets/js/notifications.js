@@ -101,3 +101,65 @@ z = 1;                                       // $(".dropdown-menu .notificationA
   z = 0;
 }
                                     };
+
+                                    var timer;
+                                    var ss = document.getElementById('navbarsearchDataList');
+                                    window.keyChecking = function(event) {
+                                      document.getElementById('searchV').value = document.getElementById('navbarsearch').value;
+                                      clearTimeout(timer);
+                                     timer = setTimeout(function () {
+                                         getMessage();
+                                     }, 500);
+
+                                      }
+
+
+                                        window.getMessage =   function() {
+                                    var x = [];
+                                            $.ajaxSetup({
+                                              headers: {
+                                                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                              }
+                                          });
+                                          var form = $("#theFormNoti");
+                                                     $.ajax({
+
+                                                        type:'POST',
+                                                        url:'/getsugg',
+                                                        data:form.serialize(),
+                                                        success:function(data){
+                                                          for (var k in data.resaults) {
+
+                                    if(ss.options.length >0){
+                                    for(var i = 0; i<ss.options.lenght; i++){
+                                    ss.children[i].remove();
+                                    }
+                                    }
+
+                                                            if(x.indexOf(data.resaults[k].title) == -1 ){
+                                                              x.push(data.resaults[k].title);
+
+                                    }
+                                    }
+                                    for (var k in data.users) {
+                                     if(x.indexOf(data.users[k].firstname+' '+data.users[k].lastname) == -1 ){
+                                       x.push(data.users[k].firstname+' '+data.users[k].lastname);
+                                     }
+                                    }
+
+                                    for (var k in x) {
+                                      $("#navbarsearchDataList").append('<option id=" '+k+'" value="'+
+                                                    x[k] + '"></option>');
+
+                                    }
+
+                                    for(var i =0; i < ss.options.length; i++){
+                                      for(var j =0; j< ss.options.length; j++){
+                                        if(  ss.children[j+1].value ===  ss.children[i].value ){
+                                    ss.children[j].remove();
+                                    }
+                                    }
+                                    }
+                                                       }
+                                                    });
+                                                 }

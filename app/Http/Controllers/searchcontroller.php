@@ -25,7 +25,15 @@ class searchcontroller extends Controller
     {
         //
     }
+public function getSuggestionSearch(Request $request){
+  if(!empty($request->searchV)){
+    $value = $request->searchV;
+  $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->orderBy('files.downloads','desc')->limit(5)->get();
+  $users=   DB::table('users')->where('firstname','LIKE','%'.$value.'%')->orWhere('lastname','LIKE','%'.$value.'%')->where('status',1)->orderBy('nfiles', 'asc')->limit(5)->get();
 
+return response()->json(array('resaults'=>$resaults,'users'=>$users),200);
+}
+}
     /**
      * Store a newly created resource in storage.
      *
