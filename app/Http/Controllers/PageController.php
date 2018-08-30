@@ -153,6 +153,8 @@ if(!empty($user->username)){
 public function notify(Request $request){
   $creator = $request->input('username');
   $useru = $request->input('useru');
+  $useru = decrypt(base64_decode($useru));
+  $creator = decrypt(base64_decode($creator));
   $message = '<a href="/'.$creator.'">'.$creator.'</a> is following you follow him back';
   $val =   DB::table('users')->where('username',$creator)->first();
   $improfile = $val->imgpath;
@@ -169,6 +171,8 @@ notifications::create([
     public function newFollower(Request $request){
       $user = $request->input('username');
       $useru = $request->input('useru');
+        $user = decrypt(base64_decode($user));
+          $useru = decrypt(base64_decode($useru));
       $val =   DB::table('users')->where('username',$useru)->first();
       $followers = $val->followers;
       if(strlen($followers) > 0){
@@ -191,6 +195,8 @@ return back();
 public function unfollow(Request $request){
   $user = $request->input('username');
   $useru = $request->input('useru');
+  $user = decrypt(base64_decode($user));
+    $useru = decrypt(base64_decode($useru));
   $val =   DB::table('users')->where('username',$useru)->first();
   $followers = $val->followers;
     $pices = explode(',',$followers);
