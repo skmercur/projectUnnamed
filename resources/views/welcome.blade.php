@@ -139,7 +139,7 @@ input[type="submit"]:hover {
                               <img src="assets/img/portfolio-icon-<?php echo $o ?>.png" alt="">
                           </div>
                         <h3>{{$s->namespi}}</h3>
-                        
+
                     </div>
                 </div>
             @endforeach
@@ -160,10 +160,20 @@ input[type="submit"]:hover {
        <div class="input-group mb-12 center">
 
           <div class="col-sm-12">
-                    <input  name="q" type="text" placeholder="Search for people and documents" autocomplete="off" list="navbarsearchDataList" id="navbarsearch" >
+            <div class="row">
+          <div class="col-xs-8 center-block">
+              <div class="col-xs-6">
+
+                    <input  name="q" type="text" id="navbarsearch" onkeydown="readThat()" placeholder="Search for people and documents" autocomplete="off" list="navbarsearchDataList" id="navbarsearch" >
 
                     <input id="search_submit" value="Rechercher" type="submit">
+</div>
 
+<div class="col-xs-6">
+  <div id="countryList" style="max-height: 500px;width:80%;background-color:#FFF;"></div>
+</div>
+</div>
+  </div>
 
 
          </div>
@@ -174,7 +184,7 @@ input[type="submit"]:hover {
 </form>
   <section style="margin-top: 4%;margin-bottom: 10%;" class="gray-bg section-padding" id="feature-page">
         <div class="container">
-        
+
             <div class="row">
             <?php $o=0; ?>
             @foreach($spec as $s)
@@ -185,7 +195,7 @@ input[type="submit"]:hover {
                               <img src="assets/img/portfolio-icon-<?php echo $o ?>.png" alt="">
                           </div>
                         <h3>{{$s->namespi}}</h3>
-                        
+
                     </div>
                 </div>
             @endforeach

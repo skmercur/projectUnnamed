@@ -14,7 +14,6 @@
     <!-- Scripts -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" type="text/javascript"> </script>
-<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" type="text/javascript"></script>
 
@@ -281,14 +280,42 @@ echo base64_encode(encrypt(Auth::user()->username));
 
     @else
     <script type="text/javascript">
+  function readThat(){
 
-      </script>
+               var query = document.getElementById('navbarsearch').value;
+               document.getElementById('searchV').value = document.getElementById('navbarsearch').value;
+                 var form = $("#theFormNoti");
+               if(query != '')
+               {
+                 $.ajaxSetup({
+                   headers: {
+                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                   }
+               });
+                    $.ajax({
+                         url:"/getsugg",
+                         method:"POST",
+                        data:form.serialize(),
+                         success:function(output)
+                         {
+                           
+                              $('#countryList').fadeIn();
+                              $('#countryList').html(output);
+                         }
+                    });
+               }
+
+          $(document).on('click', 'li', function(){
+               $('#navbarsearch').val($(this).text());
+               $('#countryList').fadeOut();
+          });
+        }
+
+
+     </script>
     <form class="form-inline my-2 my-lg-0 justify-content-center" method="get" action="usearch">
-      <input class="form-control mr-sm-2"  id="navbarsearch"    placeholder="Search" name="q">
-      <div id="suggesstion-box"></div>
-      <datalist id="navbarsearchDataList" class="navbarsearchDataList">
-        <option value="test"  ></option>
-      </datalist>
+      <input class="form-control mr-sm-2"    type="search"  placeholder="Search" autocomplete="off" name="q">
+
 </input>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
@@ -317,7 +344,6 @@ echo base64_encode(encrypt(Auth::user()->username));
   <a class="navbar-brand" href="/about">About The Free Education</a>
   TeamDZ
 </nav>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
   <script type="text/javascript">

@@ -42,9 +42,9 @@
 
 
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-							
+
                 <div class="card-profile-actions">
-                	@if($user->username !== Auth::user()->username)	
+                	@if($user->username !== Auth::user()->username)
 									<?php
 											$followers = explode(',',$user->followers);
 									 ?>
@@ -69,7 +69,7 @@
 												  @endif
 												  @endif
                 </div>
-						
+
               </div>
 
 
@@ -84,7 +84,7 @@
 
 <<<<<<< HEAD
             <div class="text-center mt-4">
-             
+
               <a href="/{{$user->username}}">
               <h3>{{$user->firstname}}  {{$user->lastname}}</h3>
               </a>
@@ -93,9 +93,9 @@
 
              <div class="text-center">
              <i class="fab mr--8 fa-clock-o"></i>
-             
+
               <p>{{$user->namespi}}</p>
-           
+
 =======
             <div class="text-center mt-5">
 
@@ -142,7 +142,7 @@
 			  <?php $i++; ?>
 
 <<<<<<< HEAD
-						
+
 <div class="col-sm-6">
 =======
 
@@ -292,8 +292,8 @@
 
 
 									<input type="hidden" name="_token" value="{{csrf_token()}}" />
-									<input type="hidden" name="user" value="<?php echo base64_encode(encrypt($result->author)); ?>" />
-									
+									<input type="hidden" name="user" value="<?php echo base64_encode(encrypt($resault->author)); ?>" />
+
 						<ul class="list-group">
 
 								<li class="list-group-item">
@@ -339,8 +339,8 @@
     </div>
 </div>
 <<<<<<< HEAD
-<!--Modal: modal with report Form-->										
-											
+<!--Modal: modal with report Form-->
+
 =======
 <!--Modal: modal with report Form-->
 

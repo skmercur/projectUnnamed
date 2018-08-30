@@ -29,9 +29,18 @@ public function getSuggestionSearch(Request $request){
   if(!empty($request->searchV)){
     $value = $request->searchV;
   $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->orderBy('files.downloads','desc')->limit(5)->get();
-  $users=   DB::table('users')->where('firstname','LIKE','%'.$value.'%')->orWhere('lastname','LIKE','%'.$value.'%')->where('status',1)->orderBy('nfiles', 'asc')->limit(5)->get();
+$users=   DB::table('users')->where('firstname','LIKE','%'.$value.'%')->orWhere('lastname','LIKE','%'.$value.'%')->where('status',1)->orderBy('nfiles', 'asc')->limit(5)->get();
 
-return response()->json(array('resaults'=>$resaults->title,'users'=>$users),200);
+$output = '<ul class="list-unstyled">';
+foreach ($resaults as $resault ) {
+ $output .= '<li>'.$resault->title.'</li>';
+}
+foreach ($users as $user ) {
+ $output .= '<li>'.$user->firstname.' '.$user->lastname.'</li>';
+}
+$output .= '</ul>';
+return response($output, 200)
+                 ->header('Content-Type', 'text/plain');
 }
 }
     /**
