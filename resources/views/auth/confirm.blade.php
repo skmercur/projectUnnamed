@@ -14,13 +14,13 @@
 </div>
 <input type="hidden" name="_token" value="{{csrf_token()}}" />
 
-<input type="hidden" name="user" value="{{ Auth::user()->username }}" />
+<input type="hidden" name="user" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
 <div class="btn-group">
 <button class="btn btn-outline-primary" type="submit" name="submit" style="margin-left: 2%;" value="upload">confirm</button>
 </form>
 <form method="post" action="resend" >
   <input type="hidden" name="_token" value="{{csrf_token()}}" />
-  <input type="hidden" name="user" value="{{ Auth::user()->username }}" />
+  <input type="hidden" name="user" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
 <button class="btn btn-outline-primary" type="submit" name="submit" style="margin-left: 5%;" value="upload">resend email</button>
 </form>
 </div>

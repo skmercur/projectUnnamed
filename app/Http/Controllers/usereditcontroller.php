@@ -41,6 +41,7 @@ class usereditcontroller extends Controller
     }
     public function resend(Request $request){
       $user = $request->input('username');
+      $user= decrypt(base64_decode($user));
       if(!empty($user)){
       $val = DB::table('users')->where('username',$user)->first();
       $code = $val->code;
@@ -113,6 +114,7 @@ class usereditcontroller extends Controller
     }
     public function userEdit(Request $request){
       $user = $request->input('username');
+      $user= decrypt(base64_decode($user));
       $cpass = $request->input('cpass');
       $npass = $request->input('npass');
       $cnpass = $request->input('cnpass');

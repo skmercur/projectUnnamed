@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\fileupload;
 use App\notifications;
+use Illuminate\Support\Facades\Crypt;
 class fileuploadcontroller extends Controller
 {
     /**
@@ -125,6 +126,7 @@ sleep(2);
 
     public function notify(Request $request){
       $creator = $request->input('username');
+        $creator= decrypt(base64_decode($creator));
       $message = '<a href="/'.$creator.'">'.$creator.'</a> has added a new file';
       $val =   DB::table('users')->where('username',$creator)->first();
       $followers = $val->followers;
@@ -174,6 +176,7 @@ return redirect($data);
 
     public function saveUploadFile(Request $request){
       $username = $request->input('username');
+      $username= decrypt(base64_decode($username));
       $title= $request->input('title');
       $description = $request->input('description');
       $description = preg_replace("/&#?[a-z0-9]+;/i","",$description);

@@ -44,16 +44,16 @@
                   <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
                   <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter">Contact</button>
                   <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                  <input type="hidden" name="useru" value="{{$user->username}}" />
-                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
-                </form>
+                  <input type="hidden" name="useru" value="<?php echo base64_encode(encrypt($user->username)); ?>" />
+                  <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
+                  </form>
                   @else
                   <form action="newf" method="post">
 <button type="submit" class="btn btn-sm btn-default float-right">Follow</button>
                   @endif
                   <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                  <input type="hidden" name="useru" value="{{$user->username}}" />
-                  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+                  <input type="hidden" name="useru" value="<?php echo base64_encode(encrypt($user->username)); ?>" />
+                  <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
                 </form>
                 </div>
               </div>
@@ -148,8 +148,8 @@
       <div class="modal-body">
         <form action="sendsms" method="post">
         @CSRF
-        <input type="hidden" name="username" value="{{Auth::user()->username}}" />
-          <input type="hidden" name="usert" value="{{$user->username}}" />
+        <input type="hidden" name="usert" value="<?php echo base64_encode(encrypt($user->username)); ?>" />
+        <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
 
         <div class="form-group">
     <label for="exampleFormControlTextarea1">Message : </label>
@@ -282,7 +282,7 @@
       <div class="modal-body">
       <form action="sendcontacthelp" method="post" id="contactForm" >
               @CSRF
-<input type="hidden" name="username" value="{{Auth::user()->username}}" />
+<input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Message</label>
@@ -326,7 +326,7 @@
 
           <form action="reportguest" method="post">
                   <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                  <input type="hidden" name="user" value="{{$user->username}}" />
+                <input type="hidden" name="user" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
 
                   <div class="form-group">
                     <p>The reason for the Report : </p>
@@ -431,8 +431,8 @@
 
 <form method="post" id="theForm">
   <input type="hidden" name="_token" value="{{csrf_token()}}" />
-  <input type="hidden" name="code" value="$user->code" />
-  <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+  <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
+<input type="hidden" name="code" value="<?php echo base64_encode(encrypt($user->code)); ?>" />
 </form>
 @if(!empty(Request::query('v')))
 <?php
@@ -668,7 +668,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
           </div>
           <input type="hidden" name="_token" value="{{csrf_token()}}" />
-          <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+          <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
         </div>
 
                                  <div class="text-center">
@@ -752,7 +752,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
             <div class="input-group input-group-alternative">
 
             <input type="password" class="form-control" id="confirm-pass" placeholder="confirm your password" name="cnpass">
-            <input type="hidden" value="{{Auth::user()->username}}" name="username" />
+            <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
             <input type="hidden" name="_token" value="{{csrf_token()}}" />
           </div>
           </div>
@@ -835,7 +835,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 
                                                       @csrf
                                                       <input type="hidden" value="{{$file->id}}" name="fileid" />
-                                                      <input type="hidden" name="username" value="{{Auth::user()->username}}" />
+                                                      <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
                                                           <input type="hidden" name="_token" value="{{csrf_token()}}" />
                                                     <button type="submit" class="btn btn-outline-danger fa fa-trash-alt" ></button>
                                                 </form>
@@ -907,7 +907,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
       <div class="modal-body">
       <form action="sendcontacthelp" method="post" id="contactForm" >
               @CSRF
-<input type="hidden" name="username" value="{{Auth::user()->username}}" />
+<input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Message</label>

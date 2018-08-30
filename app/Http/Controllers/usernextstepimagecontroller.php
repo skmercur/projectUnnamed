@@ -38,6 +38,7 @@ class usernextstepimagecontroller extends Controller
 
    $codeu = $request->input('codeu');
    $user = $request->input('user');
+   $user= decrypt(base64_decode($user));
    if(!empty($user)){
    $val = DB::table('users')->where('username',$user)->first();
     $code = $val->code;
@@ -118,6 +119,7 @@ return view('auth/nextstep')->with('spec',$spec);
 
     public function saveUploadFile(Request $request){
       $user = $request->input('user');
+      $user= decrypt(base64_decode($user));
       $namespi = $request->input('namesp');
       $x = $request->input('x');
       $y = $request->input('y');

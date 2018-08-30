@@ -184,8 +184,15 @@ $.material.init();
 
                             <form method="post" id="theFormNoti">
                               <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                              <input type="hidden" name="code" value="{{ Auth::user()->code}}" />
-                              <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+                              <input type="hidden" name="code" value="<?php
+
+   $code = base64_encode(encrypt(Auth::user()->code));
+echo $code;
+                                ?>" />
+                              <input type="hidden" name="username" value="<?php
+echo base64_encode(encrypt(Auth::user()->username));
+                               ?>
+                              " />
                               <input type="hidden" name="searchV" id="searchV" value=""/>
                             </form>
                             <div class="btn-group">

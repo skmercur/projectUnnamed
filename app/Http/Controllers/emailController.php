@@ -5,7 +5,7 @@ use Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Crypt;
 class emailController extends Controller
 {
   public function send(Request $request){
@@ -33,7 +33,8 @@ public function sendsms(Request $request){
 $text = $request->input('text');
 $usert = $request->input('usert');
   if((!empty($user)) && (!empty($text)) && (!empty($usert))){
-
+    $usert = decrypt(base64_decode($usert));
+    $user = decrypt(base64_decode($user));
   $text = $request->text;
   $text=  preg_replace("/&#?[a-z0-9]+;/i","",$text);
 $usert = $request->usert;
@@ -106,6 +107,8 @@ return back();
   public function resend(Request $request){
     $user = $request->input('user');
     if(!empty($user)){
+
+      $user = decrypt(base64_decode($user));
     $val = DB::table('users')->where('username',$user)->first();
     $code = $val->code;
     $email = $val->email;
@@ -198,6 +201,7 @@ return redirect($user);
 public function sch(Request $request){
   $user = $request->input('username');
   if(!empty($user)){
+    $user = decrypt(base64_decode($user));
     $prob = $request->input('text');
   $val = DB::table('users')->where('username',$user)->first();
   if(!empty($val->username)){

@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use App\notifications;
-
+use Illuminate\Support\Facades\Crypt;
 class PageController extends Controller
 {
     /**
@@ -27,6 +27,8 @@ public function getNotificationLayout (Request $request){
   $user = $request->username;
   $code = $request->code;
 if(!empty($user) && !empty($code)){
+$code = decrypt(base64_decode($code));
+$user = decrypt(base64_decode($user));
 $db =   DB::table('users')->where('username',$user)->where('code',$code)->first();
 if(!empty($db->username)){
   $user = $db->username;
@@ -50,6 +52,8 @@ public function getNotification(Request $request)
   $user = $request->username;
   $code = $request->code;
   if(!empty($user) && !empty($code)){
+    $code = decrypt(base64_decode($code));
+    $user = decrypt(base64_decode($user));
   $db =   DB::table('users')->where('username',$user)->where('code',$code)->first();
   if(!empty($db->username)){
   $user = $db->username;
@@ -68,6 +72,8 @@ public function getNotificationNumber(Request $request)
   $user = $request->username;
   $code = $request->code;
 if(!empty($user) && !empty($code)){
+  $code = decrypt(base64_decode($code));
+  $user = decrypt(base64_decode($user));
 $db =   DB::table('users')->where('username',$user)->where('code',$code)->first();
 if(!empty($db->username)){
   $user = $db->username;
@@ -85,6 +91,8 @@ public function removenoti(Request $request)
   $user = $request->username;
   $code = $request->code;
   if(!empty($user) && !empty($code)){
+    $code = decrypt(base64_decode($code));
+    $user = decrypt(base64_decode($user));
   $db =   DB::table('users')->where('username',$user)->where('code',$code)->first();
   if(!empty($db->username)){
   $user = $db->username;

@@ -102,36 +102,36 @@ z = 1;                                       // $(".dropdown-menu .notificationA
 }
                                     };
 
-
-                                    $(document).ready(function(){
-                                    	$("#navbarsearch").keyup(function(){
-                                        document.getElementById('searchV').value = document.getElementById('navbarsearch').value;
-                                        $.ajaxSetup({
-                                                 headers: {
-                                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                 }
-                                             });
-                                              var form = $("#theFormNoti");
-                                    		$.ajax({
-                                    		type: "POST",
-                                    		url: "/getsugg",
-                                    		data: form.serialize(),
-                                    		beforeSend: function(){
-                                    			$("#search-box").css("background","#FFF url(LoaderIcon.gif) no-repeat 165px");
-                                    		},
-                                    		success: function(data){
-                                    			$("#suggesstion-box").show();
-                                    			$("#suggesstion-box").html(data);
-                                    			$("#navbarsearch").css("background","#FFF");
-                                    		}
-                                    		});
-                                    	});
-                                    });
-                                    //To select country name
-                                    function selectCountry(val) {
-                                    $("#navbarsearch").val(val);
-                                    $("#suggesstion-box").hide();
-                                    }
+                                    //
+                                    // $(document).ready(function(){
+                                    // 	$("#navbarsearch").keyup(function(){
+                                    //     document.getElementById('searchV').value = document.getElementById('navbarsearch').value;
+                                    //     $.ajaxSetup({
+                                    //              headers: {
+                                    //                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    //              }
+                                    //          });
+                                    //           var form = $("#theFormNoti");
+                                    // 		$.ajax({
+                                    // 		type: "POST",
+                                    // 		url: "/getsugg",
+                                    // 		data: form.serialize(),
+                                    // 		beforeSend: function(){
+                                    // 			$("#search-box").css("background","#FFF url(LoaderIcon.gif) no-repeat 165px");
+                                    // 		},
+                                    // 		success: function(data){
+                                    // 			$("#suggesstion-box").show();
+                                    // 			$("#suggesstion-box").html(data);
+                                    // 			$("#navbarsearch").css("background","#FFF");
+                                    // 		}
+                                    // 		});
+                                    // 	});
+                                    // });
+                                    // //To select country name
+                                    // function selectCountry(val) {
+                                    // $("#navbarsearch").val(val);
+                                    // $("#suggesstion-box").hide();
+                                    // }
 
 
 

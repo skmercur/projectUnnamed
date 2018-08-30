@@ -171,7 +171,8 @@
 
 
 									<input type="hidden" name="_token" value="{{csrf_token()}}" />
-									<input type="hidden" name="user" value="{{$resault->author}}" />
+									<input type="hidden" name="user" value="<?php echo base64_encode(encrypt($result->author)); ?>" />
+									
 
 						<ul class="list-group">
 

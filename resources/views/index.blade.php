@@ -93,8 +93,8 @@
                               <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
 
                               <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                              <input type="hidden" name="useru" value="{{$user->username}}" />
-                              <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+                              <input type="hidden" name="useru" value="<?php echo base64_encode(encrypt($user->username)); ?>" />
+                              <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
              </form>
                               @else
               <form action="newf" method="post">
@@ -102,8 +102,8 @@
                       <button type="submit" class="btn btn-sm btn-default float-right">Follow</button>
 
                               <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                              <input type="hidden" name="useru" value="{{$user->username}}" />
-                              <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
+                              <input type="hidden" name="useru" value="<?php echo base64_encode(encrypt($user->username)); ?>" />
+                              <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
              </form>
                       @endif
             </div>

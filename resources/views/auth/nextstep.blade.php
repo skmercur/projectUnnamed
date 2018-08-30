@@ -98,7 +98,7 @@ window.location = "/login";
   Change image</label>
   <input type="hidden" name="_token" value="{{csrf_token()}}" />
 
-  <input type="hidden" name="user" value="{{ Auth::user()->username }}" />
+  <input type="hidden" name="user" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
     <button class="btn btn-outline-success" type="button" onclick="check()"  style="margin-Left:50%;">Upload</button>
   </div>
 </div>
@@ -132,7 +132,7 @@ window.location = "/login";
                             <h5>Please write down the Speciality you would like to add on the list</h5>
                           <form action="requestSpeciality" method="post" id="requestSpecialityForm" >
                                   @CSRF
-<input type="hidden" name="user" value="{{ Auth::user()->username }}" />
+<input type="hidden" name="user" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
                                   <div class="control-group">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                       <label>Message</label>
