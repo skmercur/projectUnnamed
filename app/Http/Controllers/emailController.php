@@ -29,22 +29,77 @@ mail($to, $subject, $message, $headers);
 return redirect('/');
 }
 public function sendsms(Request $request){
-  $email =  $request->input('email');  
-  $text = $request->input('text');
-  
-  
-  $to      = '{{$user->email}}';
-  $subject = 'contact us';
-  $message = $text.' ## email = '.$email;
-  $headers = 'From: '.$email.'' . "\r\n" .
-      'Reply-To: '.$email.'' . "\r\n" .
-      'X-Mailer: PHP/' . phpversion();
-  
-  mail($to, $subject, $message, $headers);
-  
-  
-  
-  return redirect('/');
+  $user = $request->username;
+  if((!empty($user)) && (!empty($request->text)) && (!empty($request->usert))){
+
+  $text = $request->text;
+  $text=  preg_replace("/&#?[a-z0-9]+;/i","",$text);
+$usert = $request->usert;
+$val =  DB::table('users')->where('username',$usert)->first();
+$val1 =  DB::table('users')->where('username',$user)->first();
+if(!empty($val->user) && !empty($val1->user) ){
+
+  $boundary = uniqid('np');
+  $headers = "MIME-Version: 1.0\r\n";
+  $headers .= "From: $firstname,$lastname  \r\n";
+  $headers .= "To: ".$val->email."\r\n";
+  $headers .="Reply-To: $val->email \r\n";
+  $headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
+  $message = "$val1->firstname,$val1->lastname sent you a message";
+  $message .= "\r\n\r\n--" . $boundary . "\r\n";
+  $message .= "Content-type: text/plain;charset=utf-8\r\n\r\n";
+  $message .=$text;
+  $message .= "\r\n\r\n--" . $boundary . "\r\n";
+  $message .= "Content-type: text/html;charset=utf-8\r\n\r\n";
+         $message .= '
+         <html>
+         <head>
+           <title>A new message from '.$val1->firstname.','.$val1->lastname.'</title>
+           <meta charset="utf-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1">
+         </head>
+         <body>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+           <div class="container">
+           <h3>Dear '.$val->firstname.','.$val->$lastname.'</h3>
+           <br>
+           <h4>Good day to you </h4>
+             <br>
+          <div class="container">
+
+    <div class="card">
+    <div class="card-body">
+    <div class="row">
+    <div class="col">
+    <p> <a href="https://www.thefreeedu.com/'.$user.'">'.$val1->firstname.','.$val1->lastname.'</a> sent you a message on The Free Education</p>
+    <p>message : </p>
+    <p>'.$text.'</p>
+    </div>
+    </div>
+    </div>
+    </div>
+           </div>
+           <footer>
+          <p>From The Free Education team</p>
+          <p>if there is any problem contact us at : support@thefreeedu.com </p>
+          <div class="container h-100 d-flex justify-content-center">
+
+     <a href="https://www.thefreeedu.com/" ><img src="https://www.thefreeedu.com/assets/img/logo1.png" style="max-height:20%;max-width:20%;" class="img-thumbnail"/> </a>
+
+  </div>
+  </footer>
+         </body>
+         </html>
+         ';
+     mail($email, "Your activation code for The Free Education", $message, $headers);
+return redirect($user);
+  return redirect('/'.$user);
+}
+}else {
+  return back();
+}
+
   }
   public function resend(Request $request){
     $user = $request->input('user');

@@ -33,13 +33,13 @@
                 </div>
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-              
+
                 <div class="card-profile-actions py-4 mt-lg-0">
 
 
 
   @if(in_array(Auth::user()->username,$followers))
-  
+
   <form method="post" action="rmf" >
                   <button type="submit" class="btn btn-sm btn-danger float-right">Unfollow</button>
                   <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter">Contact</button>
@@ -87,7 +87,7 @@
 
               <div class="col-md-12">
 
-                
+
 
       <button style="margin-top: 30px; margin-left: auto;
     margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form3"><i class="fas fa-file fa-3x"></i></button>
@@ -134,7 +134,7 @@
 
 
 <!-- end modal checking for virus -->
- 
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -149,11 +149,10 @@
         <form action="sendsms" method="post">
         @CSRF
         <input type="hidden" name="username" value="{{Auth::user()->username}}" />
-        <div class="form-group">
-    <label for="exampleFormControlTextarea1">Message : </label>
-    <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+          <input type="hidden" name="usert" value="{{$user->username}}" />
 
-  </div>
+
+
         <div class="form-group">
     <label for="exampleFormControlTextarea1">Message : </label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -167,7 +166,7 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
 
 <div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
      <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
