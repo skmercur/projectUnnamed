@@ -151,11 +151,9 @@
         <input type="hidden" name="username" value="{{Auth::user()->username}}" />
           <input type="hidden" name="usert" value="{{$user->username}}" />
 
-
-
         <div class="form-group">
     <label for="exampleFormControlTextarea1">Message : </label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" name="text" rows="3"></textarea>
   </div>
   <button type="submit"  class="btn btn-success">Envoyer</button>
         </form>

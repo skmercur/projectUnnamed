@@ -29,15 +29,17 @@ mail($to, $subject, $message, $headers);
 return redirect('/');
 }
 public function sendsms(Request $request){
-  $user = $request->username;
-  if((!empty($user)) && (!empty($request->text)) && (!empty($request->usert))){
+  $user = $request->input('username');
+$text = $request->input('text');
+$usert = $request->input('usert');
+  if((!empty($user)) && (!empty($text)) && (!empty($usert))){
 
   $text = $request->text;
   $text=  preg_replace("/&#?[a-z0-9]+;/i","",$text);
 $usert = $request->usert;
 $val =  DB::table('users')->where('username',$usert)->first();
 $val1 =  DB::table('users')->where('username',$user)->first();
-if(!empty($val->user) && !empty($val1->user) ){
+if(!empty($val->username) && !empty($val1->username) ){
 
   $boundary = uniqid('np');
   $headers = "MIME-Version: 1.0\r\n";
@@ -62,7 +64,7 @@ if(!empty($val->user) && !empty($val1->user) ){
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
            <div class="container">
-           <h3>Dear '.$val->firstname.','.$val->$lastname.'</h3>
+           <h3>Dear '.$val->firstname.','.$val->lastname.'</h3>
            <br>
            <h4>Good day to you </h4>
              <br>
@@ -92,12 +94,13 @@ if(!empty($val->user) && !empty($val1->user) ){
          </body>
          </html>
          ';
-     mail($email, "$val->$firstname, $val->lastname sent you a message", $message, $headers);
-return redirect($user);
+     mail($val->email, "$val->firstname, $val->lastname sent you a message", $message, $headers);
   return redirect('/'.$user);
+}else{
+return redirect('/'.$user);
 }
 }else {
-  return back();
+return back();
 }
 
   }
