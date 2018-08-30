@@ -293,7 +293,7 @@ return back();
     $user = $request->input('user');
     $cause = $request->input('reportcause');
     $detail = $request->input('details');
-
+  $user = decrypt(base64_decode($user));
 
 
 
