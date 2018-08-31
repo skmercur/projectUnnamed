@@ -683,7 +683,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 Google drive shared link
 </label>
 </div>
-<input class="form-control" placeholder="Link" id="linkv" name="linkv" type="url" onkeyup="checkLink()"  style="visibility:hidden" maxlength="60" required>
+<input class="form-control" placeholder="Link" id="linkv" name="linkv" type="url" onkeyup="checkLink()"  style="visibility:hidden" required>
 <small id="status" style="float:left" ></small>
 <script type="text/javascript">
 $(function() {
@@ -696,13 +696,9 @@ $(this).prop('checked',true);
 function checkBox(){
 if(document.getElementById('checkBoxForLink').checked){
 document.getElementById("linkv").style.visibility = "visible";
-document.getElementById("desc").disabled = true;
-document.getElementById("title").disabled = true;
 document.getElementById("inputGroupFile01").disabled = true;
 }else{
 document.getElementById("linkv").style.visibility = "hidden";
-document.getElementById("desc").disabled = false;
-document.getElementById("title").disabled = false;
 document.getElementById("inputGroupFile01").disabled = false;
 }
 }

@@ -181,8 +181,31 @@ return redirect($data);
       $description = $request->input('description');
       $description = preg_replace("/&#?[a-z0-9]+;/i","",$description);
       $title = preg_replace("/&#?[a-z0-9]+;/i","",$title);
+      $link = $request->input('linkv');
+      if(!empty($link)){
+        $posi = strpos($link,"https://drive.google");
+
+if(!empty($title) && !empty($description) && ($posi == 0) && (strlen($link) > 40)){
+
+       fileupload::create([
+           'filename' => substr(md5($link),0,39),
+           'author' => $username,
+           'title' => $title,
+           'description' =>$description,
+           'location'=>$link,
+           'downloads'=>0,
+           'size'=>0,
+
+
+       ]);
+       $this->notify($request);
+       return back();
+}else{
+  return back();
+}
+      }else{
    $file = $request->file('file');
-   if(!empty($title) || !empty($description) || !empty($file)){
+   if(!empty($title) && !empty($description) && !empty($file)){
     $fileArray = array('file' => $file);
    $rules = array(
      'file' => 'mimes:pdf,docx,ppt,zip,rar|required|max:25000' // max 10000kb
@@ -301,7 +324,7 @@ if($val2->count() == 0){
 }
  return back();
  }
-
+}
     /**
      * Display the specified resource.
      *
