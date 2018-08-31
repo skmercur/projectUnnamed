@@ -1,9 +1,9 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="card" style="margin:3%;background-color:#d3d3d3;">
-<div class="container" >
-    <div id="carouselContent" class="carousel slide" data-ride="carousel" data-pause="hover">
+
+<div id="video" style="height:30vh">
+    <!-- <div id="carouselContent" class="carousel slide" data-ride="carousel" data-pause="hover">
         <div class="carousel-inner" role="listbox">
 
             <div class="carousel-item active text-center p-4">
@@ -26,11 +26,17 @@
 							</h3>
 							<br>
 								 <div class="btn-wrapper">
-<!-- <a href="./examples/login.html" class="btn btn-success">Login Page</a>
+<a href="./examples/login.html" class="btn btn-success">Login Page</a>
 <a href="./examples/register.html" class="btn btn-white">Register Page</a> -->
-	<a href="/" class="btn btn-warning">Skip</a>
+	<!-- <a href="/" class="btn btn-warning">Skip</a> -->
 </div>
-            </div>
+<script>
+$('#video').YTPlayer({
+    fitToBackground: true,
+    videoId: 'fwLaEBPB5fw'
+});
+</script>
+            <!-- </div>
 						<div class="carousel-item text-center p-4">
 							<iframe width="560" height="315" src="https://www.youtube.com/embed/fwLaEBPB5fw?rel=0&loop=1&autoplay=1&playlist=fwLaEBPB5fw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -44,8 +50,8 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
-</div>
+    </div> -->
+
 
 
 
@@ -150,11 +156,6 @@
 </div>
 </div>
 
-<script>
-$('.carousel').carousel({
-
-});
-</script>
 
 
 @endsection

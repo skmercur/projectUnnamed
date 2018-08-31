@@ -28,6 +28,7 @@
   <script src="{{asset('assets/js/headroom.min.js')}}"></script>
 
  <script src="{{asset('assets/js/argon.js')}}"></script>
+ <script src="{{asset('js/yback.js')}}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
