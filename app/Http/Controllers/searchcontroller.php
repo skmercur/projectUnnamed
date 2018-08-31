@@ -35,13 +35,30 @@ $users2 = DB::table('users')->where('firstname','LIKE','%'.$value.'%')->where('s
 $users = $users1->merge($users2);
 $output = '<ul class="list-group">';
 foreach ($resaults as $resault ) {
- $output .= '<li  class="list-group-item" style="margin-bottom:10px;margin-top:5px"><a href="/search?q='.$resault->title.'">'.$resault->title.'</a><span class="badge" style="margin-left:60%;">'.$resault->downloads.'</span></li>';
+ $output .= '<li  class="list-group-item" style="margin-bottom:10px;margin-top:5px"><a href="/search?share='.$resault->id.'">'.$resault->title.'</a><span class="badge" style="margin-left:60%;">'.$resault->downloads.'</span></li>';
  $output .= '<br>';
 }
 
 foreach ($users as $user ) {
 
   $output .= '<li  class="list-group-item" style="margin-bottom:10px;margin-top:5px" ><a href="/'.$user->username.'"><img src="'.$user->imgpath.'" style="max-height:40px;max-width:40px;"/> '.$user->firstname.' '.$user->lastname.'</a><span class="badge" style="margin-left:60%;">'.(100-$user->nfiles).'</span></li>';
+ $output .= '<br>';
+}
+$output .= '</ul>';
+
+return response($output, 200)
+                 ->header('Content-Type', 'text/plain');
+}
+}
+
+public function getSuggestionSearchOff(Request $request){
+  if(!empty($request->searchV)){
+    $value = $request->searchV;
+  $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','files.downloads','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->orderBy('files.downloads','desc')->limit(5)->get();
+
+$output = '<ul class="list-group">';
+foreach ($resaults as $resault ) {
+ $output .= '<li  class="list-group-item" style="margin-bottom:10px;margin-top:5px"><a href="/search?share='.$resault->id.'">'.$resault->title.'</a><span class="badge" style="margin-left:60%;">'.$resault->downloads.'</span></li>';
  $output .= '<br>';
 }
 $output .= '</ul>';

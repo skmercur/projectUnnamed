@@ -153,6 +153,13 @@ $.material.init();
                             <li class="nav-item">
                                 <a class="nav-link" style="color:white;" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
+
+                            <form method="post" id="theFormNoti">
+                              <input type="hidden" name="_token" value="{{csrf_token()}}" />
+
+                              <input type="hidden" name="searchV" id="searchV" value=""/>
+                            </form>
+
                         @else
 
 <!--
@@ -280,7 +287,39 @@ echo base64_encode(encrypt(Auth::user()->username));
     </ul>
 
     @guest
+<script type="text/javascript">
 
+        function readThat1(){
+
+                     var query = document.getElementById('navbarsearch1').value;
+                     document.getElementById('searchV').value = document.getElementById('navbarsearch1').value;
+                       var form = $("#theFormNoti");
+                     if(query != '')
+                     {
+                       $.ajaxSetup({
+                         headers: {
+                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                         }
+                     });
+                          $.ajax({
+                               url:"/getsugg1",
+                               method:"POST",
+                              data:form.serialize(),
+                               success:function(output)
+                               {
+
+                                    $('#countryList1').fadeIn();
+                                    $('#countryList1').html(output);
+                               }
+                          });
+                     }
+
+                $(document).on('click', 'li', function(){
+                     $('#navbarsearch1').val($(this).text());
+                     $('#countryList1').fadeOut();
+                });
+              }
+</script>
     @else
     <script type="text/javascript">
   function readThat(){
@@ -313,6 +352,11 @@ echo base64_encode(encrypt(Auth::user()->username));
                $('#countryList').fadeOut();
           });
         }
+
+
+
+
+
 
 
      </script>

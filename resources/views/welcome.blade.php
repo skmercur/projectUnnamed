@@ -117,9 +117,14 @@ input[type="submit"]:hover {
       <div class="input-group mb-12 center">
 
           <div class="col-sm-12 col-xs-6">
-                    <input id="search" name="q" type="text" placeholder="Search for documents">
+                    <input name="q" type="text" id="navbarsearch1" onkeydown="readThat1()" placeholder="Search for documents" autocomplete="off" >
                     <input id="search_submit" value="Rechercher" type="submit">
          </div>
+         <div class="col-sm-12" style="margin-top: 12vh;background-color:#FFF;">
+                  <div id="countryList1" style="width:80%;float:left"></div>
+
+            </div>
+
 
       </div>
        </div>
@@ -198,13 +203,15 @@ input[type="submit"]:hover {
                 <?php $o++;
                 if($o == 6) $o = 1; ?>
                 <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a href="/search?new=<?php echo base64_encode(encrypt($s->namespi)); ?>">
                     <div class="box">
                           <div class="box-icon">
-                              <a href="/search?new={{$s}}"><img src="assets/img/portfolio-icon-<?php echo $o ?>.png" alt=""></a>
+                        <img src="assets/img/portfolio-icon-<?php echo $o ?>.png" alt="">
                           </div>
                         <h3>{{$s->namespi}}</h3>
 
                     </div>
+                  </a>
                 </div>
             @endforeach
             </div>
