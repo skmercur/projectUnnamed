@@ -2,7 +2,12 @@
 
 @section('content')
 
-<div id="video" style="height:30vh">
+<div style="z-index: -99; width: 100%; height: 50vh">
+     <iframe frameborder="0" height="100%" width="100%"
+       src="https://youtube.com/embed/fwLaEBPB5fw?autoplay=1&controls=0&showinfo=0&autohide=1">
+     </iframe>
+</div>
+
     <!-- <div id="carouselContent" class="carousel slide" data-ride="carousel" data-pause="hover">
         <div class="carousel-inner" role="listbox">
 
@@ -29,13 +34,7 @@
 <a href="./examples/login.html" class="btn btn-success">Login Page</a>
 <a href="./examples/register.html" class="btn btn-white">Register Page</a> -->
 	<!-- <a href="/" class="btn btn-warning">Skip</a> -->
-</div>
-<script>
-$('#video').YTPlayer({
-    fitToBackground: true,
-    videoId: 'fwLaEBPB5fw'
-});
-</script>
+
             <!-- </div>
 						<div class="carousel-item text-center p-4">
 							<iframe width="560" height="315" src="https://www.youtube.com/embed/fwLaEBPB5fw?rel=0&loop=1&autoplay=1&playlist=fwLaEBPB5fw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -57,10 +56,17 @@ $('#video').YTPlayer({
 
 
 
-	<div class="card"  style="margin-top: 5%">
+	<div class="card"  style="margin-top: 1%">
 
 			<div class="card-header">
-				<h2>People that might intrest you : </h2>
+        @if(!empty(Request::query('q')))
+
+				<h3>People that share the same speciality as you : </h3>
+        @else
+        <script type="text/javascript">
+            window.location.href = "/";
+        </script>
+        @endif
 			</div>
 
 <div class="container">
