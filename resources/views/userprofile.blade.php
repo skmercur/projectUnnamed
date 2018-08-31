@@ -679,7 +679,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
             <div class="checkbox" onclick="checkBox()" >
 
 <label>
-<input data-toggle="toggle" type="checkbox" id="checkBoxForLink" data-onstyle="success" data-on="Off" data-off="On">
+<input data-toggle="toggle" type="checkbox" id="checkBoxForLink" data-onstyle="success" data-on="On" data-off="Off">
 Google drive shared link
 </label>
 </div>
@@ -695,11 +695,12 @@ checkBox();
 });
 function checkBox(){
 if(document.getElementById('checkBoxForLink').checked){
+  document.getElementById("linkv").style.visibility = "hidden";
+  document.getElementById("inputGroupFile01").disabled = false;
+}else{
+
 document.getElementById("linkv").style.visibility = "visible";
 document.getElementById("inputGroupFile01").disabled = true;
-}else{
-document.getElementById("linkv").style.visibility = "hidden";
-document.getElementById("inputGroupFile01").disabled = false;
 }
 }
 function checkLink(){
