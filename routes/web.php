@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-  
+
     $spec=   DB::table('spicialitys')->orderBy('id', 'asc')->get();
     return view('welcome')->with('spec',$spec);
 });
@@ -51,6 +51,7 @@ Route::get('/vendor',function(){
 Route::get('/index',function(){
   return view('index');
 });
+Route::get('/readVal', 'searchcontroller@getSuggestionSearch');
 Route::get('/admin/resizeIM', 'fileuploadcontroller@resizeIm');
 Route::post('/sendcontacthelp', 'emailController@sch');
 Route::post('/getsugg', 'searchcontroller@getSuggestionSearch');
