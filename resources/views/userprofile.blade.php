@@ -78,7 +78,7 @@
               <h3>{{$user->firstname}}  {{$user->lastname}}
                 <span class="font-weight-light">, {{$user->gender}}</span>
               </h3>
-              <div class="h6 font-weight-300"><i class="material-icons" style="font-size:13pt">email</i> : {{$user->email}}</div>
+
               <div class="h6 mt-4"><i class="material-icons" style="font-size:13pt">school</i> : {{$user->namespi}}</div>
 
               <div><i class="glyphicon glyphicon-asterisk"></i>Joined The Free Education : {{$user->created_at}}</div>
@@ -544,7 +544,7 @@ break;
               <h3>{{Auth::user()->firstname}}  {{Auth::user()->lastname}}
                 <span class="font-weight-light">, {{Auth::user()->gender}}</span>
               </h3>
-              <div class="h6 font-weight-300"><i class="material-icons" style="font-size:13pt">email</i> :{{Auth::user()->email}}</div>
+            
               <div class="h6 mt-4"><i class="material-icons" style="font-size:13pt">school</i> :{{$user->namespi}}</div>
               <div><i class="glyphicon glyphicon-asterisk"></i>Joined The Free Education : {{$user->created_at}}</div>
 
