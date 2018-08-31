@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
 class searchcontroller extends Controller
 {
     /**
@@ -73,15 +74,23 @@ if(!empty($value2)){
 
     $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->orderBy('files.created_at','desc')->get();
   $count = $resaults->count();
-    return view('resaults')->with(['resaults'=>$resaults,'value'=>$value,'count'=>$count]);
+    return view('resaults')->with(['resaults'=>$resaults,'value'=>$value2,'count'=>$count]);
   }else{
     $value3 = $request->share;
     if(!empty($value3)){
     $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.id','=',$value3)->orderBy('files.created_at','desc')->get();
   $count = $resaults->count();
-  return view('resaults')->with(['resaults'=>$resaults,'value'=>$value,'count'=>$count]);
+  return view('resaults')->with(['resaults'=>$resaults,'value'=>$value3,'count'=>$count]);
+}else{
+    $value4 = $request->new;
+    if(!empty($value4)){
+      $value4 = decrypt(base64_decode($value4));
+      $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath','users.namespi')->join('users','files.author','=','users.username')->where('users.namespi','=',$value4)->orderBy('files.created_at','desc')->limit(10)->get();
+        $count = $resaults->count();
+        return view('resaults')->with(['resaults'=>$resaults,'value'=>$value4,'count'=>$count]);
 }else{
     return back();
+  }
   }
   }
 }
