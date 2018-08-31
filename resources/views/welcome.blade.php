@@ -179,8 +179,8 @@ input[type="submit"]:hover {
 
 
         </div>
-         <div class="col-sm-12" style="margin-top: 2%;">
-                  <div id="countryList" style="width:80%; margin-top: 6%;background-color:#FFF;float:left"></div>
+         <div class="col-sm-12" style="margin-top: 12vh;background-color:#FFF;">
+                  <div id="countryList" style="width:80%;float:left"></div>
 
             </div>
 

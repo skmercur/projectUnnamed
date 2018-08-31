@@ -28,19 +28,19 @@ class searchcontroller extends Controller
 public function getSuggestionSearch(Request $request){
   if(!empty($request->searchV)){
     $value = $request->searchV;
-  $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->orderBy('files.downloads','desc')->limit(5)->get();
+  $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','files.downloads','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->orderBy('files.downloads','desc')->limit(5)->get();
 $users1=   DB::table('users')->where('lastname','LIKE','%'.$value.'%')->where('status',1)->orderBy('nfiles', 'asc')->limit(5)->get();
 $users2 = DB::table('users')->where('firstname','LIKE','%'.$value.'%')->where('status',1)->orderBy('nfiles', 'asc')->limit(5)->get();
 $users = $users1->merge($users2);
-$output = '<ul class="list-unstyled">';
+$output = '<ul class="list-group">';
 foreach ($resaults as $resault ) {
- $output .= '<li style="margin-bottom:10px;margin-top:5px">'.$resault->title.'</li>';
+ $output .= '<li  class="list-group-item" style="margin-bottom:10px;margin-top:5px"><a href="/search?q='.$resault->title.'">'.$resault->title.'</a><span class="badge" style="margin-left:60%;">'.$resault->downloads.'</span></li>';
  $output .= '<br>';
 }
 
 foreach ($users as $user ) {
 
-  $output .= '<li><a href="/'.$user->username.'"><img src="'.$user->imgpath.'" style="max-height:40px;max-width:40px;"/> '.$user->firstname.' '.$user->lastname.'</a></li>';
+  $output .= '<li  class="list-group-item" style="margin-bottom:10px;margin-top:5px" ><a href="/'.$user->username.'"><img src="'.$user->imgpath.'" style="max-height:40px;max-width:40px;"/> '.$user->firstname.' '.$user->lastname.'</a><span class="badge" style="margin-left:60%;">'.(100-$user->nfiles).'</span></li>';
  $output .= '<br>';
 }
 $output .= '</ul>';
