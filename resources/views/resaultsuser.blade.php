@@ -82,7 +82,7 @@
             </div>
 
 
-<<<<<<< HEAD
+
             <div class="text-center mt-4">
 
               <a href="/{{$user->username}}">
@@ -96,13 +96,13 @@
 
               <p>{{$user->namespi}}</p>
 
-=======
+
             <div class="text-center mt-5">
 
               <a href="/{{$user->username}}"><h3>{{$user->firstname}}  {{$user->lastname}}
                 <span class="font-weight-light"><small>, {{$user->namespi}}</small></span>
               </h3></a>
->>>>>>> 7060eac7ec0a6b745f49bf7c55401099e58dca06
+
 
             </div>
 
@@ -141,13 +141,13 @@
 		   @foreach($resaults as $resault)
 			  <?php $i++; ?>
 
-<<<<<<< HEAD
+
 
 <div class="col-sm-6">
-=======
+
 
 <div class="col-sm-12">
->>>>>>> 7060eac7ec0a6b745f49bf7c55401099e58dca06
+
 
 				<h3>{{$resault->title}}</h3>
 
@@ -200,9 +200,9 @@
 															<a href="" data-toggle="modal" data-target="#ModalReport{{$resault->id}}">
 																<button type="button" class="btn btn-outline-danger fa fa-user-times" style="margin-left:2%"></button>
 															</a>
-<<<<<<< HEAD
+
 												</div>
-=======
+
                               <div class="dropdown">
 <button class="btn btn-outline-secondary fa fa-share-alt dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:2%" >
 </button>
@@ -235,7 +235,7 @@
 
 <!-- end Modal Downloads -->
 
->>>>>>> 7060eac7ec0a6b745f49bf7c55401099e58dca06
+
 						</form>
 
 						</div>
@@ -254,10 +254,7 @@
             <div class="modal-body text-center mb-1">
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 7060eac7ec0a6b745f49bf7c55401099e58dca06
                 <div class="md-form ml-0 mr-0">
                		 <p class="description">{{$resault->description}}</p>
 
@@ -338,13 +335,13 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
+
 <!--Modal: modal with report Form-->
 
-=======
+
 <!--Modal: modal with report Form-->
 
->>>>>>> 7060eac7ec0a6b745f49bf7c55401099e58dca06
+
 	<br>
 	 @if($i == 2)
 			<div class="card" style="width:800px;padding:10px;" >

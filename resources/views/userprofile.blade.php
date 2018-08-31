@@ -544,7 +544,7 @@ break;
               <h3>{{Auth::user()->firstname}}  {{Auth::user()->lastname}}
                 <span class="font-weight-light">, {{Auth::user()->gender}}</span>
               </h3>
-            
+
               <div class="h6 mt-4"><i class="material-icons" style="font-size:13pt">school</i> :{{$user->namespi}}</div>
               <div><i class="glyphicon glyphicon-asterisk"></i>Joined The Free Education : {{$user->created_at}}</div>
 
@@ -679,20 +679,20 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
             <div class="checkbox" onclick="checkBox()" >
 
 <label>
-<input data-toggle="toggle" type="checkbox" id="checkBoxForLink"  data-on="Off" data-off="On">
+<input data-toggle="toggle" type="checkbox" id="checkBoxForLink" data-onstyle="success" data-on="Off" data-off="On">
 Google drive shared link
 </label>
 </div>
 <input class="form-control" placeholder="Link" id="linkv" name="linkv" type="url" onkeyup="checkLink()"  style="visibility:hidden" required>
 <small id="status" style="float:left" ></small>
 <script type="text/javascript">
-$(function() {
+$(document).ready(function(){
 $('#checkBoxForLink').change(function() {
-$(this).prop('checked',true);
 
+checkBox();
 
 })
-})
+});
 function checkBox(){
 if(document.getElementById('checkBoxForLink').checked){
 document.getElementById("linkv").style.visibility = "visible";
