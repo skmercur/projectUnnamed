@@ -651,7 +651,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                       </div>
-                                      <input class="form-control" placeholder="Title" name="title" type="text" maxlength="60" required>
+                                      <input class="form-control" placeholder="Title" name="title" type="text" maxlength="60"  id="title" required>
                                     </div>
                                   </div>
                                   <div class="form-group">
@@ -659,7 +659,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                       </div>
-                                      <textarea class="form-control" placeholder="Description" name="description" type="text" maxlength="250" required></textarea>
+                                      <textarea class="form-control" placeholder="Description" name="description" type="text" maxlength="250" required id="desc"></textarea>
                                     </div>
                                   </div>
 
@@ -672,6 +672,57 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
           <input type="hidden" name="_token" value="{{csrf_token()}}" />
           <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
         </div>
+<h3>Or</h3>
+<br>
+        <div class="form-group">
+
+            <div class="checkbox" onclick="checkBox()" >
+
+<label>
+<input data-toggle="toggle" type="checkbox" id="checkBoxForLink"  data-on="Off" data-off="On">
+Google drive shared link
+</label>
+</div>
+<input class="form-control" placeholder="Link" id="linkv" name="linkv" type="url" onkeyup="checkLink()"  style="visibility:hidden" maxlength="60" required>
+<small id="status" style="float:left" ></small>
+<script type="text/javascript">
+$(function() {
+$('#checkBoxForLink').change(function() {
+$(this).prop('checked',true);
+
+
+})
+})
+function checkBox(){
+if(document.getElementById('checkBoxForLink').checked){
+document.getElementById("linkv").style.visibility = "visible";
+document.getElementById("desc").disabled = true;
+document.getElementById("title").disabled = true;
+document.getElementById("inputGroupFile01").disabled = true;
+}else{
+document.getElementById("linkv").style.visibility = "hidden";
+document.getElementById("desc").disabled = false;
+document.getElementById("title").disabled = false;
+document.getElementById("inputGroupFile01").disabled = false;
+}
+}
+function checkLink(){
+var s = document.getElementById("linkv").value;
+var status = document.getElementById("status");
+var posi = s.search("https://drive.google");
+if((posi == 0 )&& (s.length > 40)){
+  status.style.color = "green";
+status.innerHTML = "valid ";
+document.getElementById("button_submit").disabled = false;
+}else{
+    status.style.color = "red";
+  status.innerHTML = "not valid ";
+  document.getElementById("button_submit").disabled = true;
+}
+}
+</script>
+            </div>
+
 
                                  <div class="text-center">
                                     <button type="button"  id="button_submit" data-toggle="modal" data-target="#virusModal" data-dismiss="modal" class="btn btn-primary my-4">Add File</button>
@@ -845,7 +896,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 
       </td>
     </tr>
-    
+
     <div class="modal fade" id="Modal{{$file->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -872,7 +923,7 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
   </tbody>
 </table>
 
-   
+
     </div>
 
       </div>
