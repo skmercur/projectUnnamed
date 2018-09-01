@@ -200,6 +200,8 @@ input[type="submit"]:hover {
             <div class="row">
             <?php $o=0; ?>
             @foreach($spec as $s)
+
+
                 <?php $o++;
                 if($o == 6) $o = 1; ?>
                 <div class="col-xs-12 col-sm-6 col-md-4">
@@ -211,6 +213,8 @@ input[type="submit"]:hover {
                         <h3>{{$s->namespi}}</h3>
 
                     </div>
+
+                    
                   </a>
                 </div>
             @endforeach
