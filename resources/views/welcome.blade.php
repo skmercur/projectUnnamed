@@ -198,22 +198,24 @@ input[type="submit"]:hover {
         <div class="container">
 
             <div class="row">
-            <?php $o=0; ?>
+
             @foreach($spec as $s)
 
 
-                <?php $o++;
-                if($o == 6) $o = 1; ?>
+
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <a href="/search?new=<?php echo base64_encode(encrypt($s->namespi)); ?>">
                     <div class="box">
                           <div class="box-icon">
-                        <img src="assets/img/portfolio-icon-<?php echo $o ?>.png" alt="">
+                        <img src="assets/img/{{$s->imspi}}" alt="">
                           </div>
                         <h3>{{$s->namespi}}</h3>
-                        <ul>
+                        <ul  class="list-group" >
+                          <?php $i=1; ?>
                         @foreach($s->files as $ss)
-                        <li>{{$ss->title}}</li>
+
+                        <li class="list-group-item"><?php echo $i."- "; ?>{{$ss->title}}</li>
+                        <?php $i++; ?>
                         @endforeach
                         </ul>
                     </div>
