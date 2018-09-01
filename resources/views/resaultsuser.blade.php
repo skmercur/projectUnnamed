@@ -23,10 +23,13 @@
    @foreach($users as $user)
 
     @if($user->username != '')
-
+		@if($user->username === Auth::user()->username)
+	<?php continue; ?>
+		@endif
 	<div class="col-sm-6" style="padding-top: 12rem;">
 
         <div class="card card-profile shadow">
+
           <div class="px-4">
 
             <div class="row justify-content-center">
@@ -96,16 +99,6 @@
 
               <p>{{$user->namespi}}</p>
 
-
-            <div class="text-center mt-5">
-
-              <a href="/{{$user->username}}"><h3>{{$user->firstname}}  {{$user->lastname}}
-                <span class="font-weight-light"><small>, {{$user->namespi}}</small></span>
-              </h3></a>
-
-
-            </div>
-
         </div>
 
         </div>
@@ -126,7 +119,6 @@
 </div>
 </div>
 </div>
-
 <div class="card" style="margin-top: 12%;margin-bottom: 12%">
 
 						<div class="card-header">
@@ -142,12 +134,7 @@
 			  <?php $i++; ?>
 
 
-
-<div class="col-sm-6">
-
-
 <div class="col-sm-12">
-
 
 				<h3>{{$resault->title}}</h3>
 
@@ -187,12 +174,13 @@
 											<input type="hidden" value="{{$resault->location}}" name="f">
 
 												<div class="btn-group">
-
-
+                          <form method="get" action="check" >
+                          <input type="hidden" value="{{$resault->location}}" name="f">
 															<a  href="" data-toggle="modal" data-target="#ModalDownloads{{$resault->id}}">
 																<button type="submit" class="btn btn-outline-success" style="margin-left: -8%;" >
 															<i class="fa fa-cloud-download-alt"></i></button>
 															</a>
+
 															<a href="" data-toggle="modal" data-target="#Modal{{$resault->id}}">
 															 	<button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button>
 															</a>
@@ -200,9 +188,6 @@
 															<a href="" data-toggle="modal" data-target="#ModalReport{{$resault->id}}">
 																<button type="button" class="btn btn-outline-danger fa fa-user-times" style="margin-left:2%"></button>
 															</a>
-
-												</div>
-
                               <div class="dropdown">
 <button class="btn btn-outline-secondary fa fa-share-alt dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:2%" >
 </button>
@@ -210,31 +195,36 @@
 <input type="url" class="form-control" style="font-size:8pt" value="https://www.thefreeedu.com/search?share=<?php echo $resault->id;?>" onClick="this.select();"  >
 </div>
 </div>
+												</div>
 
-<!-- Modal Downloads-->
-<div class="modal fade" id="ModalDownloads{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-														<div class="modal-dialog" role="document">
-															<div class="modal-content">
-																<div class="modal-header">
-																	<h5 class="modal-title" id="exampleModalLabel">Download {{$resault->title}}</h5>
-																	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																		<span aria-hidden="true">&times;</span>
-																	</button>
-																</div>
-																<div class="modal-body">
-															<iframe data-aa='977909' src='//acceptable.a-ads.com/977909' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
-																</div>
-																<div class="modal-footer">
-																	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-																	<button type="submit" class="btn btn-success" style="margin-left:5px;" >Download</button>
-																	</a>
-																</div>
-															</div>
-														</div>
-</div>
 
-<!-- end Modal Downloads -->
 
+
+
+
+                        <!-- Modal Downloads-->
+                  <div class="modal fade" id="ModalDownloads{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                      <div class="modal-content">
+                                                        <div class="modal-header">
+                                                          <h5 class="modal-title" id="exampleModalLabel">Download {{$resault->title}}</h5>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                          <iframe data-aa='986619' src='//acceptable.a-ads.com/986619' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                          <button type="submit" class="btn btn-success" style="margin-left:5px;" >Download</button>
+                                                          </a>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                  </div>
+
+                  <!-- end Modal Downloads -->
 
 						</form>
 
@@ -291,6 +281,7 @@
 									<input type="hidden" name="_token" value="{{csrf_token()}}" />
 									<input type="hidden" name="user" value="<?php echo base64_encode(encrypt($resault->author)); ?>" />
 
+
 						<ul class="list-group">
 
 								<li class="list-group-item">
@@ -335,21 +326,16 @@
         </div>
     </div>
 </div>
-
 <!--Modal: modal with report Form-->
-
-
-<!--Modal: modal with report Form-->
-
 
 	<br>
 	 @if($i == 2)
-			<div class="card" style="width:800px;padding:10px;" >
+			<div class="card" style="width:100%;padding:10px;" >
 
 					<p style="color:gray; font-size:12pt;">ads</p>
 
 					<div class="card-body" >
-						<iframe data-aa='984814' src='//acceptable.a-ads.com/984814' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
+          <iframe data-aa='977909' src='//acceptable.a-ads.com/977909' scrolling='no' style='border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
 					</div>
 			</div>
 	<?php $i = 0; ?>
@@ -363,9 +349,15 @@
 </div>
 
 </div>
+@if((!empty($count)) && ($count > 7))
+<div class="row" style="margin:2%">
+
+	<div class="col-sm-3 col-centered" style="margin:auto;float:none">
+		<a href="/usearch?q={{$value}}&disp=all"> Display all resaults</a>
+	</div>
 
 </div>
-
-
+@endif
+</div>
 
 @endsection

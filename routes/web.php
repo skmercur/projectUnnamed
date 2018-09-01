@@ -13,8 +13,16 @@
 
 Route::get('/', function () {
 
-    $spec=   DB::table('spicialitys')->join('users','spicialitys.namespi','=','users.namespi')->orderBy('users.nfiles', 'asc')->get();
-    return view('welcome')->with('spec',$spec);
+  $spec=   DB::table('spicialitys')->orderBy('namespi', 'asc')->get();
+  $k=0;
+foreach($spec as $s){
+    $files[$k]=   DB::table('files')->where('namespi',$s->namespi)->orderBy('downloads', 'desc')->limit(3)->get();
+    $s->files = $files[$k];
+    $k++;
+  }
+
+
+    return view('welcome')->with(['spec'=>$spec]);
 });
 
 Auth::routes();

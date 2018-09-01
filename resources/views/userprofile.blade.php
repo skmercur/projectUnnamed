@@ -671,7 +671,24 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
           </div>
           <input type="hidden" name="_token" value="{{csrf_token()}}" />
           <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
+
         </div>
+        <div class="form-group">
+          <p>In which category this file should be: </p>
+
+          <div class="input-group input-group-alternative">
+
+
+
+      <select class="form-control" name="namespi" id="reportcause" >
+@foreach($spec as $s)
+<option value="{{$s->namespi}}">{{$s->namespi}}</option>
+@endforeach
+
+  </select>
+
+</div>
+</div>
 <h3>Or</h3>
 <br>
         <div class="form-group">

@@ -116,6 +116,7 @@ return response()->json(array('status'=>'removed'),200);
 if(!empty($value)){
 $user =   DB::table('users')->where('username',$value)->first();
 $files = DB::table('files')->where('author',$value)->get();
+$spec = DB::table('spicialitys')->orderBy('namespi','asc')->get();
 if(!empty($user->username)){
   $downloads=0;
   $uploads =0;
@@ -129,7 +130,7 @@ if(!empty($user->username)){
   foreach ($followers as $follow) {
     $nbrfollowers++;
   }
-  return view('userprofile')->with(['user'=>$user,'files'=>$files,'downloads'=>$downloads,'uploads'=>$uploads,'followers'=>$followers,'nbrfollowers'=>$nbrfollowers]);
+  return view('userprofile')->with(['user'=>$user,'files'=>$files,'downloads'=>$downloads,'uploads'=>$uploads,'followers'=>$followers,'nbrfollowers'=>$nbrfollowers,'spec'=>$spec]);
 }else {
 
   return view('errors/404');
