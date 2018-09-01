@@ -181,6 +181,7 @@ return redirect($data);
       $description = $request->input('description');
       $description = preg_replace("/&#?[a-z0-9]+;/i","",$description);
       $title = preg_replace("/&#?[a-z0-9]+;/i","",$title);
+      $namespi = $request->input('namespi');
       $link = $request->input('linkv');
       if(!empty($link)){
         $posi = strpos($link,"https://drive.google");
@@ -195,6 +196,7 @@ if(!empty($title) && !empty($description) && ($posi == 0) && (strlen($link) > 40
            'location'=>$link,
            'downloads'=>0,
            'size'=>0,
+           'namespi'=>$namespi,
 
 
        ]);
@@ -290,6 +292,7 @@ if($val2->count() == 0){
          'location'=>$destinationPath.$hash,
          'downloads'=>0,
          'size'=>$size,
+         'namespi'=>$namespi,
 
 
      ]);
