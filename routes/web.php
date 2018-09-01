@@ -16,7 +16,7 @@ Route::get('/', function () {
   $spec=   DB::table('spicialitys')->orderBy('namespi', 'asc')->get();
   $k=0;
 foreach($spec as $s){
-    $files[$k]=   DB::table('files')->where('namespi',$s->namespi)->orderBy('downloads', 'desc')->limit(3)->get();
+    $files[$k]=   DB::table('files')->where('namespi',$s->namespi)->orderBy('created_at', 'desc')->limit(3)->get();
     $s->files = $files[$k];
     $k++;
   }
