@@ -81,7 +81,6 @@
                         @csrf
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative">
-                      
 
                       <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
@@ -94,7 +93,7 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group input-group-alternative">
-                      
+
                                 <input id="password" type="password" placeholder="Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
@@ -112,6 +111,7 @@
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary my-4">Sign in</button>
                   </div>
+                  
                 </form>
               </div>
               <div class="row mt-3">

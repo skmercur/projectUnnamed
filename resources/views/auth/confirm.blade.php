@@ -1,5 +1,12 @@
 @extends('layouts.app')
+@guest
+<script type="text/javascript">
+    window.location.href = "/login";
+</script>
+@else
 @section('content')
+
+
 
 <div class="row">
   <div class="container text-center">
@@ -34,3 +41,4 @@
 </div>
 </div>
 @endsection
+@endguest
