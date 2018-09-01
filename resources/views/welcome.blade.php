@@ -211,10 +211,13 @@ input[type="submit"]:hover {
                         <img src="assets/img/portfolio-icon-<?php echo $o ?>.png" alt="">
                           </div>
                         <h3>{{$s->namespi}}</h3>
-
+                        <ul>
+                        @foreach($s->files as $ss)
+                        <li>{{$ss->title}}</li>
+                        @endforeach
+                        </ul>
                     </div>
 
-                    
                   </a>
                 </div>
             @endforeach

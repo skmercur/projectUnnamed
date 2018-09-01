@@ -13,7 +13,14 @@
 
 Route::get('/', function () {
 
-    $spec=   DB::table('spicialitys')->select('users.username','spicialitys.namespi')->join('users','spicialitys.namespi','=','users.namespi')->orderBy('users.nfiles', 'asc')->get();
+  $spec=   DB::table('spicialitys')->orderBy('spicialitys.id', 'asc')->get();
+  $k=0;
+foreach($spec as $s){
+    $files[$k]=   DB::table('files')->where('namespi',$s->namespi)->orderBy('downloads', 'desc')->get();
+    $s->files = $files[$k];
+    $k++;
+  }
+
 
     return view('welcome')->with(['spec'=>$spec]);
 });
