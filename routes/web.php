@@ -13,9 +13,9 @@
 
 Route::get('/', function () {
 
-    $spec=   DB::table('spicialitys')->select('spicialitys.namespi')->join('files','spicialitys.namespi','=','files.namespi')->orderBy('users.nfiles', 'asc')->get();
+    $spec=   DB::table('spicialitys')->select('users.username','spicialitys.namespi')->join('users','spicialitys.namespi','=','users.namespi')->orderBy('users.nfiles', 'asc')->get();
 
-    return view('welcome')->with(['spec'=>$spec,]);
+    return view('welcome')->with(['spec'=>$spec]);
 });
 
 Auth::routes();
