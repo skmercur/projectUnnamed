@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    
+
     protected $redirectTo = '/';
 
     /**
@@ -35,6 +35,14 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+      session(['url.intended' => url()->previous()]);
+      if(!empty(session()->get('url.intended'))){
+        $this->redirectTo = session()->get('url.intended');
+$this->middleware('guest')->except('logout');
+      }else{
+          $this->redirectTo = '/';
+          $this->middleware('guest')->except('logout');
+      }
+
     }
 }

@@ -120,6 +120,7 @@ class usereditcontroller extends Controller
       $cnpass = $request->input('cnpass');
       $email = $request->input('email');
       $bio = $request->input('bio');
+      $bio = preg_replace("/&#?[a-z0-9]+;/i","",$bio);
       $file = $request->file('image');
       $vuser = DB::table('users')->where('username',$user)->first();
 

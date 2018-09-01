@@ -23,7 +23,7 @@ class RedirectIfAuthenticated
           $email = $request->input('email');
         $impath =  DB::table('users')->where('email',$email)->select('imgpath')->get();
         Session::flash('imgpath',$impath);
-            return redirect('/')->with(['imgpath'=>$impath]);
+             return Redirect::intended('/')->with(['imgpath'=>$impath]);
         }
 
         return $next($request);
