@@ -502,7 +502,7 @@ break;
  ?>
 
 @endif
-  <section class="section section-skew" style="padding-top: 20rem;">
+  <section class="section section-skew" style="padding-top: 22rem;">
 
       <div class="container">
 
