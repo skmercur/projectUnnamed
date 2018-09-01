@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
 
-    $spec=   DB::table('spicialitys')->orderBy('id', 'asc')->get();
+    $spec=   DB::table('spicialitys')->join('users','spicialitys.namespi','=','users.namespi')->orderBy('users.nfiles', 'asc')->get();
     return view('welcome')->with('spec',$spec);
 });
 
