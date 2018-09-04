@@ -186,7 +186,7 @@
     <?php $id = 1; ?>
     @foreach($files as $file)
     <tr>
-      <th scope="row">{{$id}}</th>
+      <th scope="row" style="min-width:20px">{{$id}}</th>
       <td>{{$file->title}}</td>
       <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
         echo $file->description;
