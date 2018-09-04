@@ -168,8 +168,8 @@
 
 <div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="row">
-          <div class="card " style="margin-left:auto; margin-right:auto;">
+      
+
   <div class="modal-content">
     <div class="modal-body p-0">
       <div class="card bg-secondary shadow border-0">
@@ -182,13 +182,13 @@
       <th scope="col">File</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody style="font-size:1.8vh">
     <?php $id = 1; ?>
     @foreach($files as $file)
     <tr>
       <th scope="row" style="min-width:20px">{{$id}}</th>
       <td>{{$file->title}}</td>
-      <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
+      <td><?php if(strlen($file->description)>50) echo substr($file->description,0,50)."...";else{
         echo $file->description;
         $id+=1;
       } ?></td>
@@ -236,9 +236,9 @@
 
     </div>
 
-      </div>
 
-        </div>
+
+
 
           </div>
 
@@ -877,13 +877,13 @@ document.getElementById("button_submit").disabled = false;
       <th scope="col">File</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody style="font-size:1.8vh">
     <?php $id = 1; ?>
     @foreach($files as $file)
     <tr>
       <th scope="row" style="min-width:20px">{{$id}}</th>
       <td >{{$file->title}}</td>
-      <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
+      <td><?php if(strlen($file->description)>50) echo substr($file->description,0,50)."...";else{
         echo $file->description;
         $id +=1;
       } ?></td>
