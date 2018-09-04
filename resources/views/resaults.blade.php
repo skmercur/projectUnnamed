@@ -241,15 +241,7 @@
 </div>
 
 </div>
-@if((!empty($count)) && ($count > 7))
-<div class="row" style="margin:2%">
 
-	<div class="col-sm-3 col-centered" style="margin:auto;float:none">
-		<a href="/search?q={{$value}}&disp=all"> Display all resaults</a>
-	</div>
-
-</div>
-@endif
 </div>
 
 
