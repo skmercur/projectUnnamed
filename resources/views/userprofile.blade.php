@@ -173,7 +173,7 @@
   <div class="modal-content">
     <div class="modal-body p-0">
       <div class="card bg-secondary shadow border-0">
-      <table class="table" >
+      <table class="table-responsive-sm" >
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -868,7 +868,7 @@ document.getElementById("button_submit").disabled = false;
   <div class="modal-content">
     <div class="modal-body p-0">
       <div class="card bg-secondary shadow border-0">
-      <table class="table" >
+      <table class="table-responsive-sm" >
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -881,13 +881,13 @@ document.getElementById("button_submit").disabled = false;
     <?php $id = 1; ?>
     @foreach($files as $file)
     <tr>
-      <th scope="row">{{$id}}</th>
-      <td>{{$file->title}}</td>
+      <th scope="row" style="min-width:20px">{{$id}}</th>
+      <td >{{$file->title}}</td>
       <td><?php if(strlen($file->description)>200) echo substr($file->description,0,200)."...";else{
         echo $file->description;
         $id +=1;
       } ?></td>
-      <td>
+      <td >
 
 
 
@@ -895,15 +895,15 @@ document.getElementById("button_submit").disabled = false;
 
 <div class="btn-group">
                                                       <form class="form-inline" action="delete" method="post">
-                                                      <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
-       <a href="" data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
+                                                      <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="" ><i class="fa fa-cloud-download-alt"></i></button></a>
+       <a href="" data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button></a>
 
 
                                                       @csrf
                                                       <input type="hidden" value="{{$file->id}}" name="fileid" />
                                                       <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
                                                           <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                                                    <button type="submit" class="btn btn-outline-danger fa fa-trash-alt" ></button>
+                                                    <button type="submit" class="btn btn-outline-danger fa fa-trash-alt" style="margin-left: 1%;" ></button>
                                                 </form>
 </div>
 
