@@ -67,7 +67,7 @@ window.location = "/login";
   <div class="row">
         <div class="col-xs-6">
           <div class="container1">
-         <img id="output_image" src="{{asset('assets/img/profil.png')}}" style="width:220px;height:220px;max-width:100%">
+         <img id="output_image" src="{{asset('assets/img/profil.png')}}" onclick="check()" style="width:220px;height:220px;max-width:100%">
 </div>
 
 </div>
@@ -99,7 +99,7 @@ window.location = "/login";
   <input type="hidden" name="_token" value="{{csrf_token()}}" />
 
   <input type="hidden" name="user" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
-    <button class="btn btn-outline-success" type="button" onclick="check()"  style="margin-Left:50%;">Upload</button>
+    <button class="btn btn-outline-success" type="button" onclick="check()" id="uploadbtn"  style="margin-Left:50%;">Upload</button>
   </div>
 </div>
   </div>

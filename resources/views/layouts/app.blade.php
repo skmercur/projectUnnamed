@@ -123,7 +123,7 @@ body{ margin:0px; padding:0px; font-family:helvetica; background:url(image.png);
       if((document.getElementById("x").value >= 0) && (document.getElementById("y").value >= 0) && (  document.getElementById("w").value == document.getElementById("h").value) && (document.getElementById("h").value >0)){
       document.getElementById("useredit").submit();
       }else{
-        alert('Error while cropping please try again');
+        document.getElementById("uploadbtn").disabled = true;
       }
       }
     function LaunchCropper() {
@@ -144,7 +144,11 @@ body{ margin:0px; padding:0px; font-family:helvetica; background:url(image.png);
           document.getElementById("y").value = Math.ceil(event.detail.y);
           document.getElementById("w").value = Math.ceil(event.detail.width);
           document.getElementById("h").value = Math.ceil(event.detail.height);
-
+  if((document.getElementById("x").value >= 0) && (document.getElementById("y").value >= 0) && (  document.getElementById("w").value == document.getElementById("h").value) && (document.getElementById("h").value >0)){
+        document.getElementById("uploadbtn").disabled = false;
+  }else{
+      document.getElementById("uploadbtn").disabled = true;
+  }
   },
       });
     }
