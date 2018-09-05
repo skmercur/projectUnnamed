@@ -372,9 +372,11 @@ if($val2->count() == 0){
     public function delete(Request $request)
     {
       $user = $request->input('username');
+
       if(!empty($user)){
+        $user = decrypt(base64_decode($user));
         $id = $request->input('fileid');
-        $db =DB::table('files')->where('id',$id)->first();
+        $db =DB::table('files')->where('id',$id)->where('author',$user)->first();
         $location = $db->location;
         unlink($location);
         $val = DB::table('users')->where('username',$user)->first();
