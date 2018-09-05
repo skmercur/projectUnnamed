@@ -378,7 +378,10 @@ if($val2->count() == 0){
         $id = $request->input('fileid');
         $db =DB::table('files')->where('id',$id)->where('author',$user)->first();
         $location = $db->location;
-        unlink($location);
+        $posi = strpos($location,"https://");
+        if($posi != 0){
+        unlink($_SERVER['DOCUMENT_ROOT'].'/'.$location);
+      }
         $val = DB::table('users')->where('username',$user)->first();
      $newsize = $val->tsize + $db->size;
      $newnumber = $val->nfiles + 1;
