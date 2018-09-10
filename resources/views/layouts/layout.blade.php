@@ -28,6 +28,12 @@
   <script src="{{asset('assets/js/headroom.min.js')}}"></script>
 
  <script src="{{asset('assets/js/argon.js')}}"></script>
+
+
+
+
+
+
  <script src="{{asset('js/yback.js')}}"></script>
 
     <!-- Fonts -->
@@ -55,6 +61,9 @@
 <!-- <link rel="stylesheet" href="{{ asset('assets/css/error.css') }}" >
 <link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" > -->
   <link href="{{ asset('css/all.css') }}" rel="stylesheet">
+
+  <link href="{{ asset('assets/DataTables/datatables.min.css') }}" rel="stylesheet">
+ 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
 
@@ -111,7 +120,6 @@ $.material.init();
 
         });
         </script>
-
 
 
 
@@ -426,6 +434,19 @@ function LaunchCropper() {
   });
 }
  </script>
+<!-- data table -->
 
+<script src="{{asset('assets/DataTables/datatables.min.js')}}"></script>
+<script src="{{asset('assets/DataTables/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/DataTables/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets/DataTables/buttons.bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/DataTables/jszip.min.js')}}"></script>
+<script src="{{asset('assets/DataTables/pdfmake.min.js')}}"></script>
+<script src="{{asset('assets/DataTables/vfs_fonts.js')}}"></script>
+<script src="{{asset('assets/DataTables/buttons.html5.min.js')}}"></script>
+<script src="{{asset('assets/DataTables/buttons.print.min.js')}}"></script>
+<script src="{{asset('assets/DataTables/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('assets/DataTables/datatables-init.js')}}"></script>
+<!-- data tabel -->
 
 </html>

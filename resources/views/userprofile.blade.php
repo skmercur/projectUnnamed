@@ -90,7 +90,7 @@
 
 
       <button style="margin-top: 30px; margin-left: auto;
-    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form3"><i class="fas fa-file fa-3x"></i></button>
+    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary"  ><i class="fas fa-file fa-3x"></i></button>
            <div class="nav-item">
                   <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabs_2_2" role="tab" aria-controls="profile" aria-selected="false">
                     <span class="nav-link-icon d-block"><i class="ni ni-chat-round"></i></span>
@@ -586,7 +586,12 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 
 @endif
       <button style="margin-top: 30px; margin-left: auto;
-    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form3"><i class="fas fa-file fa-3x"></i></button>
+    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary">
+
+    <a href="#modal-form3"><i class="fas fa-file fa-3x">
+      
+
+    </i></a></button>
            <div class="nav-item">
                   <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabs_2_2" role="tab" aria-controls="profile" aria-selected="false">
                     <span class="nav-link-icon d-block"><i class="ni ni-chat-round"></i></span>
@@ -862,13 +867,14 @@ document.getElementById("button_submit").disabled = false;
 <!-- end modal checking for virus -->
 
 
-<div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
-     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+<section id="modal-form3" >
+
+<div class="modal-dialog modal-dialog-centered modal-lg" >
 
   <div class="modal-content">
     <div class="modal-body p-0">
       <div class="card bg-secondary shadow border-0">
-      <table class="table-responsive-sm" >
+        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -877,7 +883,7 @@ document.getElementById("button_submit").disabled = false;
       <th scope="col">File</th>
     </tr>
   </thead>
-  <tbody style="font-size:1.8vh">
+  <tbody >
     <?php $id = 1; ?>
     @foreach($files as $file)
     <tr>
@@ -892,21 +898,22 @@ document.getElementById("button_submit").disabled = false;
 
 
 
-
+ <form class="form-inline" action="delete" method="post">
 <div class="btn-group">
-                                                      <form class="form-inline" action="delete" method="post">
-                                                      <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="" ><i class="fa fa-cloud-download-alt"></i></button></a>
-       <a href="" data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button></a>
+   
+    <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success fa fa-cloud-download-alt"  ></button></a>
+
+  <a href="" data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" ></button></a>
 
 
                                                       @csrf
                                                       <input type="hidden" value="{{$file->id}}" name="fileid" />
                                                       <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
                                                           <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                                                    <button type="submit" class="btn btn-outline-danger fa fa-trash-alt" style="margin-left: 1%;" ></button>
-                                                </form>
+                                          <button type="submit" class="btn btn-outline-danger fa fa-trash-alt" ></button>
+  
 </div>
-
+ </form>
       </td>
     </tr>
 
@@ -945,9 +952,10 @@ document.getElementById("button_submit").disabled = false;
 
           </div>
 
-</div>
+</section>
 
 <!--/////////////////////////-->
+
 <div id="container-floating">
 
 
@@ -1005,3 +1013,14 @@ document.getElementById("button_submit").disabled = false;
 @endif
 @endguest
 @endsection
+
+    <script type="text/javascript">
+
+      $('#bootstrap-data-table-export').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+        }
+    </script>
