@@ -61,7 +61,7 @@
 <!-- <link rel="stylesheet" href="{{ asset('assets/css/error.css') }}" >
 <link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" > -->
   <link href="{{ asset('css/all.css') }}" rel="stylesheet">
-
+  <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/DataTables/datatables.min.css') }}" rel="stylesheet">
  
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -382,7 +382,6 @@ echo base64_encode(encrypt(Auth::user()->username));
 
 
 
-
 @yield('content')
 
 
@@ -434,6 +433,10 @@ function LaunchCropper() {
   });
 }
  </script>
+
+
+
+
 <!-- data table -->
 
 <script src="{{asset('assets/DataTables/datatables.min.js')}}"></script>
