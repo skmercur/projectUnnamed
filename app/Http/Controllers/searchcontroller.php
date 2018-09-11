@@ -80,41 +80,43 @@ return response($output, 200)
 public function search(Request $request){
 $value = $request->q;
 $dispall =$request->disp;
-if(!empty($value)){
-    $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->orderBy('files.downloads','desc')->get();
-    $count = $resaults->count();
-if(empty($dispall)){
-  $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->orderBy('files.downloads','desc')->limit(7)->get();
+ $value2 = $request->a;
+ $value3 = $request->share;
+ $value4 = $request->new;
+ if(!empty($value)){
+   $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->orderBy('files.downloads','desc')->get();
+      $count = $resaults->count();
+      if(empty($dispall)){
+        $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.title','LIKE','%'.$value.'%')->orWhere('files.description','LIKE','%'.$value.'%')->orderBy('files.downloads','desc')->limit(7)->get();
+      }else{
+      return view('resaults')->with(['resaults'=>$resaults,'value'=>$value,'count'=>$count]);
+    }
+    }
+    if(!empty($value2)){
+      $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->orderBy('files.created_at','desc')->get();
+       $count = $resaults->count();
+        return view('resaults')->with(['resaults'=>$resaults,'value'=>$value2,'count'=>$count]);
+      }
+      if(!empty($value3)){
+$value3 = decrypt(base64_decode($value3));
+        $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.id','=',$value3)->orderBy('files.created_at','desc')->get();
+           $count = 1;
+           foreach ($resaults as $result) {
+             $dd = $result->title;
+           }
+           return view('resaults')->with(['resaults'=>$resaults,'value'=>$dd,'count'=>$count]);
 
+      }
+      if(!empty($value4)){
+         $value4 = decrypt(base64_decode($value4));
+         $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','files.namespi','users.username','users.imgpath','users.namespi')->join('users','files.author','=','users.username')->where('files.namespi',$value4)->orderBy('files.created_at','desc')->limit(10)->get();
+         $count = $resaults->count();
+         return view('resaults')->with(['resaults'=>$resaults,'value'=>$value4,'count'=>$count]);
 }
+$resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->orderBy('files.created_at','desc')->get();
+ $count = $resaults->count();
+  return view('resaults')->with(['resaults'=>$resaults,'value'=>$value2,'count'=>$count]);
 
-  return view('resaults')->with(['resaults'=>$resaults,'value'=>$value,'count'=>$count]);
-}else{
-$value2 = $request->a;
-if(!empty($value2)){
-
-    $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->orderBy('files.created_at','desc')->get();
-  $count = $resaults->count();
-    return view('resaults')->with(['resaults'=>$resaults,'value'=>$value2,'count'=>$count]);
-  }else{
-    $value3 = $request->share;
-    if(!empty($value3)){
-    $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath')->join('users','files.author','=','users.username')->where('files.id','=',$value3)->orderBy('files.created_at','desc')->get();
-  $count = $resaults->count();
-  return view('resaults')->with(['resaults'=>$resaults,'value'=>$value3,'count'=>$count]);
-}else{
-    $value4 = $request->new;
-    if(!empty($value4)){
-      $value4 = decrypt(base64_decode($value4));
-      $resaults=   DB::table('files')->select('files.id','files.title','files.description','files.author','files.location','files.created_at','users.username','users.imgpath','users.namespi')->join('users','files.author','=','users.username')->where('users.namespi','=',$value4)->orderBy('files.created_at','desc')->limit(10)->get();
-        $count = $resaults->count();
-        return view('resaults')->with(['resaults'=>$resaults,'value'=>$value4,'count'=>$count]);
-}else{
-    return back();
-  }
-  }
-  }
-}
 }
 public function usearch(Request $request){
 
