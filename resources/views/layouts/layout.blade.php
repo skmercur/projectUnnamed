@@ -30,7 +30,7 @@
 
  <script src="{{asset('assets/js/argon.js')}}"></script>
 
-
+<script src="{{asset('assets/js/selectpage.min.js')}}"></script>
 
 
 
@@ -64,6 +64,7 @@
   <link href="{{ asset('css/all.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/DataTables/datatables.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/selectpage.css') }}" rel="stylesheet">
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
@@ -385,9 +386,7 @@ echo base64_encode(encrypt(Auth::user()->username));
 
 @yield('content')
 
-
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
