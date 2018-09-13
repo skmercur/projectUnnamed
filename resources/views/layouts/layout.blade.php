@@ -6,69 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
+   
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>The Free Education</title>
+   
     <meta name="keywords" content="Free,Education,Files,People" />
-<meta name="description" content="The Free Education is a free website where you can share and learn new things with people from the world" />
+    
+    <meta name="description" content="The Free Education is a free website where you can share and learn new things with people from the world" />
+
+
+
     <!-- Scripts -->
+        
+        <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}" type="text/javascript"></script>
+        
+        <script src="{{asset('assets/js/popper.min.js')}}"></script>
+       
+        <script src="{{ asset('assets/js/bootstrap.js') }}" type="text/javascript"></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" type="text/javascript"> </script>
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" type="text/javascript"></script>
+        <script src="{{ asset('assets/js/iziToast.min.js') }}" type="text/javascript"></script>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" type="text/javascript"></script>
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+        <script src="{{asset('assets/js/headroom.min.js')}}"></script>
 
-<script src="{{ asset('assets/js/jquery.js') }}" type="text/javascript"></script>
+        <script src="{{asset('js/yback.js')}}"></script>
 
-<script src="{{ asset('assets/js/iziToast.min.js') }}" type="text/javascript"></script>
-
-  <script src="{{asset('assets/js/headroom.min.js')}}"></script>
-
- <script src="{{asset('assets/js/argon.js')}}"></script>
-
-
-
-
-
-
- <script src="{{asset('js/yback.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
+        
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+          
+        <link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
+      
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- icons -->
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Styles -->
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" >
+        <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
 
-    <!-- <link href="{{ asset('assets/css/simple-sidebar.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/DataTables/datatables.min.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('assets/css/argon.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/floating_button.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
 
-    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}" > -->
-    <link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
-<!-- <link rel="stylesheet" href="{{ asset('assets/css/error.css') }}" >
-<link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" > -->
-  <link href="{{ asset('css/all.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/DataTables/datatables.min.css') }}" rel="stylesheet">
- 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.min.css" />
-
-
-<script type="text/javascript" src="{{asset('js/notifications.js')}}"></script>
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        
 
 
 @if(!empty($user->username))
