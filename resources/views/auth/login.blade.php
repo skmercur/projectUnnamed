@@ -71,7 +71,7 @@
 <div class="container pt-lg-md">
         <div class="row justify-content-center">
           <div class="col-lg-5">
-            <div class="card bg-secondary shadow border-0">
+            <div class="card shadow border-0">
 
               <div class="card-body px-lg-5 py-lg-5">
                 <div class="text-center text-muted mb-4">
@@ -116,12 +116,12 @@
               </div>
               <div class="row mt-3">
                 <div class="col-6">
-                  <a href="/reset" class="text-light">
+                  <a href="/reset" class="grey-text text-lighten-4">
                     <small>Forgot password?</small>
                   </a>
                 </div>
                 <div class="col-6 text-right">
-                  <a href="/register" class="text-light">
+                  <a href="/register" class="grey-text text-lighten-4">
                     <small>Create new account</small>
                   </a>
                 </div>
