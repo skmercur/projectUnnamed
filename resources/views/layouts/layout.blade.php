@@ -53,7 +53,7 @@
 
         <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}" > -->
+    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}" >
     <link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
 <!-- <link rel="stylesheet" href="{{ asset('assets/css/error.css') }}" >
 <link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" > -->
@@ -120,14 +120,6 @@ $.material.init();
 
         });
         </script>
-
-
-
-
-<!-- -->
-
-
-
 
 
 
