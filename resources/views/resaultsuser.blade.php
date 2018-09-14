@@ -141,9 +141,14 @@
 <div class="card">
 
   <!-- Card image -->
-  <div class="card-profile-image animated fadeInDown">
+  <div class="card-profile-image shadow grey darken-3 animated fadeInDown">
     <a href="/{{$resault->author}}" class="">
-    <img height="160" width="160" class="rounded-circle" src="{{$resault->imgpath}}" alt="Card image cap">
+    <img height="160" width="160" class="rounded-circle" style="
+    border-style: double;
+    border-color: white;
+    margin: 20px;
+    box-shadow: 6px 8px 9px 5px rgba(33, 37, 41, 0.63);
+" src="{{$resault->imgpath}}" alt="Card image cap">
  
       <div class="mask rgba-white-slight"></div>
     </a>
@@ -171,7 +176,7 @@
 
       <li class="list-inline-item pr-2 white-text"><i class="fa fa-user-o pr-1"></i>{{$resault->author}}</li>
       <li class="list-inline-item pr-2 white-text"><i class="fa fa-clock-o pr-1"></i>{{$resault->created_at}}</li>
-
+      <li class="list-inline-item pr-2 white-text"><i class="fa fa-location-arrow pr-1"></i>{{$resault->namespi}}</li>
       <form method="get" action="check" >
 
                       <input type="hidden" value="{{$resault->location}}" name="f">
@@ -200,6 +205,161 @@
 </div>
     </ul>
   </div>
+  <div class="share">
+    <div class="toggle"></div>
+    <ul>
+        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+    </ul>
+</div>
+<!-- css-->
+<style>
+body {
+    margin:0;
+    padding:0;
+    background:#003030;
+}
+.share {
+    position:absolute;
+    top:90%;
+    left:90%;
+    transform:translate(-50%,-50%) rotate(45deg);
+    width:80px;
+    height:80px;
+}
+.share ul {
+    position:relative;
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+}
+.share ul li {
+    position:absolute;
+    top:0;
+    left:0;
+    list-style:none;
+    width:100%;
+    height:100%;
+    border-radius:10px;
+    background:#fff;
+    transition:0.5s;
+    overflow:hidden;
+}
+.share ul.active li {
+    transform:scale(0.95);
+}
+.share ul li a {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    line-height:80px;
+    text-align:center;
+    font-size:30px;
+    color:#2196f3;
+    transition:.5s;
+}
+.share ul li a .fa {
+    transform:rotate(-45deg);
+}
+.share ul li a:hover {
+    color:#fff;
+    background:#2196f3;
+}
+.share ul.active li:nth-child(1){
+    top:-100%;
+    left:-100%;
+    transition-delay:0s;
+}
+.share ul.active li:nth-child(2){
+    top:-100%;
+    left:0;
+    transition-delay:0.2s;
+}
+.share ul.active li:nth-child(3){
+    top:-100%;
+    left:100%;
+    transition-delay:0.4s;
+}
+.share ul.active li:nth-child(4){
+    top:0;
+    left:100%;
+    transition-delay:0.6s;
+}
+.share ul.active li:nth-child(5){
+    top:100%;
+    left:100%;
+    transition-delay:0.8s;
+}
+.share ul.active li:nth-child(6){
+    top:100%;
+    left:0;
+    transition-delay:1s;
+}
+.share ul.active li:nth-child(7){
+    top:100%;
+    left:-100%;
+    transition-delay:1.2s;
+}
+.share ul.active li:nth-child(8){
+    top:0;
+    left:-100%;
+    transition-delay:1.4s;
+}
+.toggle {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#e91e63;
+    transform:scale(0.95);
+    overflow:hidden;
+    border-radius:10px;
+    z-index:1;
+    cursor:pointer;
+}
+.toggle:before {
+    content:'\f1e0';
+    font-family:fontAwesome;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    text-align:center;
+    line-height:80px;
+    color:#fff;
+    font-size:30px;
+    transform:rotate(-45deg);
+}
+
+.toggle.active:before {
+    content:'\f00d';
+}
+    
+    
+ </style>   
+<!-- css-->
+<!-- js-->
+<script>
+$(document).ready(function(){
+    $('.toggle').click(function(){
+        $('.toggle').toggleClass('active');
+        $('ul').toggleClass('active');
+    });
+});
+</script>
+<!-- js-->
+
 
 </div>
 <!-- Card -->
