@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>The Free Education</title>
-   
+
     <meta name="keywords" content="Free,Education,Files,People" />
 
     <meta name="description" content="The Free Education is a free website where you can share and learn new things with people from the world" />
@@ -53,7 +53,7 @@
 
         <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}" > -->
+    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}" > 
     <link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
 <!-- <link rel="stylesheet" href="{{ asset('assets/css/error.css') }}" >
 <link rel="stylesheet" href="{{ asset('assets/css/notifications.css') }}" > -->
