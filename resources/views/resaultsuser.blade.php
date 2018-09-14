@@ -26,7 +26,7 @@
 		@if($user->username === Auth::user()->username)
 	<?php continue; ?>
 		@endif
-	<div class="col-sm-6" style="padding-top: 12rem;">
+	<div class="col-sm-6 animated fadeInDown" style="padding-top: 12rem;">
 
         <div class="card card-profile shadow">
 
@@ -95,7 +95,7 @@
             </div>
 
              <div class="text-center">
-             <i class="fab mr--8 fa-clock-o"></i>
+             <i class="fa mr--8 fa-clock-o"></i>
 
               <p>{{$user->namespi}}</p>
 
@@ -104,7 +104,7 @@
         </div>
 
     </div>
-
+</div>
     @else
             <div class="search-result-item-body">
                 <div class="row">
@@ -134,73 +134,75 @@
 			  <?php $i++; ?>
 
 
+
 <div class="col-sm-12">
 
-				<h3>{{$resault->title}}</h3>
+<!-- Card -->
+<div class="card">
 
-						<div class="col-sm-12">
+  <!-- Card image -->
+  <div class="card-profile-image animated fadeInDown">
+    <a href="/{{$resault->author}}" class="">
+    <img height="160" width="160" class="rounded-circle" src="{{$resault->imgpath}}" alt="Card image cap">
+ 
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
 
-										<a href="/{{$resault->author}}" class="pull-left">
-											<img src="{{$resault->imgpath}}" class="media-photo" height="60" width="60">
-										</a>
-						</div>
+  <!-- Card content -->
+  <div class="card-body animated fadeInUp">
 
-						<div class="col-sm-12">
+    <!-- Title -->
+    <h4 class="card-title">{{$resault->title}}</h4>
+    <hr>
+    <!-- Text -->
+    <p class="card-text"><?php if(strlen($resault->description)>200){
+                              echo substr($resault->description,0,200)."...";
+                              }
+                             else{
+                    echo $resault->description;
+                               } ?></p>
 
-								<span class="media-meta pull-right" style="font-size:12">{{$resault->created_at}}</span>
+  </div>
 
-									<h6 class="title">
-										published by : <a href="/{{$resault->author}}">{{$resault->author}}</a>
+  <!-- Card footer -->
+  <div class="rounded-bottom grey darken-3 text-center pt-3 animated fadeInDown">
+    <ul class="list-unstyled list-inline font-small">
 
-									</h6>
+      <li class="list-inline-item pr-2 white-text"><i class="fa fa-user-o pr-1"></i>{{$resault->author}}</li>
+      <li class="list-inline-item pr-2 white-text"><i class="fa fa-clock-o pr-1"></i>{{$resault->created_at}}</li>
 
-				      					 <p class="summary">
-													<?php if(strlen($resault->description)>200){
-															echo substr($resault->description,0,200)."...";
-															}
-	 													 else{
-						        echo $resault->description;
-						   							   } ?>
+      <form method="get" action="check" >
 
-						   				  </p>
+                      <input type="hidden" value="{{$resault->location}}" name="f">
 
-						</div>
-
-
-						<div class="col-sm-12">
-
-						<form method="get" action="check" >
-
-											<input type="hidden" value="{{$resault->location}}" name="f">
-
-												<div class="btn-group">
+                        <div class="btn-group">
                           <form method="get" action="check" >
                           <input type="hidden" value="{{$resault->location}}" name="f">
-															<a  href="" data-toggle="modal" data-target="#ModalDownloads{{$resault->id}}">
-																<button type="submit" class="btn btn-outline-success" style="margin-left: -8%;" >
-															<i class="fa fa-cloud-download-alt"></i></button>
-															</a>
+                              <a  href="" data-toggle="modal" data-target="#ModalDownloads{{$resault->id}}">
+                                <button type="submit" class="btn btn-outline-success fa fa-cloud-download white-text" style="margin-left: -8%;" >
+                              </button>
+                              </a>
 
-															<a href="" data-toggle="modal" data-target="#Modal{{$resault->id}}">
-															 	<button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: 1%;"></button>
-															</a>
+                              <a href="" data-toggle="modal" data-target="#Modal{{$resault->id}}">
+                                <button type="button" class="btn btn-outline-warning fa fa-eye white-text " style="margin-left: 1%;"></button>
+                              </a>
 
-															<a href="" data-toggle="modal" data-target="#ModalReport{{$resault->id}}">
-																<button type="button" class="btn btn-outline-danger fa fa-user-times" style="margin-left:2%"></button>
-															</a>
+                              <a href="" data-toggle="modal" data-target="#ModalReport{{$resault->id}}">
+                                <button type="button" class="btn btn-outline-danger fa fa-user-times white-text" style="margin-left:2%"></button>
+                              </a>
                               <div class="dropdown">
-<button class="btn btn-outline-secondary fa fa-share-alt dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:2%" >
+<button class="btn btn-outline-secondary fa fa-share-alt dropdown-toggle white-text" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:2%" >
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 <input type="url" class="form-control" style="font-size:8pt" value="https://www.thefreeedu.com/search?share=<?php echo base64_encode(encrypt($resault->id));?>" onClick="this.select();"  >
 </div>
 </div>
-												</div>
+    </ul>
+  </div>
 
-
-
-
-
+</div>
+<!-- Card -->
 
                         <!-- Modal Downloads-->
                   <div class="modal fade" id="ModalDownloads{{$resault->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">

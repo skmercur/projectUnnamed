@@ -90,7 +90,7 @@
 
 
       <button style="margin-top: 30px; margin-left: auto;
-    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary"  ><i class="fas fa-file fa-3x"></i></button>
+    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary"  ><i class="fa fa-file fa-3x"></i></button>
            <div class="nav-item">
                   <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabs_2_2" role="tab" aria-controls="profile" aria-selected="false">
                     <span class="nav-link-icon d-block"><i class="ni ni-chat-round"></i></span>
@@ -199,7 +199,7 @@
 
 
 <div class="btn-group">
-                                                      <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download-alt"></i></button></a>
+                                                      <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download"></i></button></a>
        <a href="" data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
 
 </div>
@@ -252,20 +252,20 @@
 
   <div class="nd3 nds" data-toggle="tooltip" data-placement="left" ><img class="reminder">
 
-	 <p class="letter"><i class="fas fa-flag" data-toggle="modal" data-target="#ModalReport" style="margin-top:7px;"></i></p>
+	 <p class="letter"><i class="fa fa-flag" data-toggle="modal" data-target="#ModalReport" style="margin-top:7px;"></i></p>
 
     <form action="reportguest" method="post">
   		<input type="hidden" name="_token" value="{{csrf_token()}}" />
 		</form>
-  <!-- <p class="letter"><i class="fas fa-flag"style="margin-top:7px;"></i></p>  -->
+  <!-- <p class="letter"><i class="fa fa-flag"style="margin-top:7px;"></i></p>  -->
   </div>
   <div class="nd1 nds" data-toggle="tooltip" data-placement="left"><img class="reminder">
-    <p class="letter"><i class="fas fa-comment" data-toggle="modal" data-target="#ModalContact" style="margin-top:7px;"></i></p>
+    <p class="letter"><i class="fa fa-comment" data-toggle="modal" data-target="#ModalContact" style="margin-top:7px;"></i></p>
   </div>
 
   <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="newmail()">
-    <p class="plus"><i class="fas fa-ellipsis-v"></i></p>
-    <img class="edit fas fa-ellipsis-v" >
+    <p class="plus"><i class="fa fa-ellipsis-v"></i></p>
+    <img class="edit fa fa-ellipsis-v" >
 
   </div>
 
@@ -553,11 +553,11 @@ break;
               <div class="col-md-12">
                 @if((Auth::user()->nfiles > 0) && (Auth::user()->tsize > 0) )
             <button style="margin-top: 30px; margin-left: auto;
-    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form2"><i class="fas fa-cloud-upload-alt fa-3x"></i></button>
+    margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#modal-form2"><i class="fa fa-cloud-upload fa-3x"></i></button>
     @else
 
     <button style="margin-top: 30px; margin-left: auto;
-margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#RunOutSpaceModal"><i class="fas fa-cloud-upload-alt fa-3x"></i></button>
+margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary" data-toggle="modal" data-target="#RunOutSpaceModal"><i class="fa fa-cloud-upload fa-3x"></i></button>
 
 
 <div class="modal fade" id="RunOutSpaceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -585,19 +585,97 @@ margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" c
 </div>
 
 @endif
-      <button style="margin-top: 30px; margin-left: auto;
+     <button data-toggle="collapse" data-target="#modal-form3" style="margin-top: 30px; margin-left: auto;
     margin-right: auto;width: 90px;height: 90px; border-radius: 50%" type="button" class="btn btn-icon btn-2 btn-primary">
 
-    <a href="#modal-form3"><i class="fas fa-file fa-3x">
+   <i class="fa fa-file fa-3x">
       
 
-    </i></a></button>
+    </i></button></a>
            <div class="nav-item">
                   <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabs_2_2" role="tab" aria-controls="profile" aria-selected="false">
                     <span class="nav-link-icon d-block"><i class="ni ni-chat-round"></i></span>
                   </a>
                 </div>
 
+
+<section id="modal-form3" class="collapse" >
+
+
+        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">File</th>
+    </tr>
+  </thead>
+  <tbody >
+    <?php $id = 1; ?>
+    @foreach($files as $file)
+    <tr>
+      <th scope="row" style="min-width:20px">{{$id}}</th>
+      <td >{{$file->title}}</td>
+      <td><?php if(strlen($file->description)>50) echo substr($file->description,0,50)."...";else{
+        echo $file->description;
+        $id +=1;
+      } ?></td>
+      <td >
+
+
+
+
+ <form class="form-inline" action="delete" method="post">
+<div class="btn-group">
+   
+    <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success fa fa-cloud-download"  ></button></a>
+
+  <a href="" data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" ></button></a>
+
+
+                                                      @csrf
+                                                      <input type="hidden" value="{{$file->id}}" name="fileid" />
+                                                      <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
+                                                          <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                                          <button type="submit" class="btn btn-outline-danger fa fa-trash" ></button>
+  
+</div>
+ </form>
+      </td>
+    </tr>
+
+    <div class="modal fade" id="Modal{{$file->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <p class="description">{{$file->description}}.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+      </div>
+
+</div>
+ </div>
+
+  </div>
+
+@endforeach
+  </tbody>
+</table>
+
+
+
+
+
+</section>
 
 
 
@@ -867,105 +945,18 @@ document.getElementById("button_submit").disabled = false;
 <!-- end modal checking for virus -->
 
 
-<section id="modal-form3" >
-
-<div class="modal-dialog modal-dialog-centered modal-lg" >
-
-  <div class="modal-content">
-    <div class="modal-body p-0">
-      <div class="card bg-secondary shadow border-0">
-        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">File</th>
-    </tr>
-  </thead>
-  <tbody >
-    <?php $id = 1; ?>
-    @foreach($files as $file)
-    <tr>
-      <th scope="row" style="min-width:20px">{{$id}}</th>
-      <td >{{$file->title}}</td>
-      <td><?php if(strlen($file->description)>50) echo substr($file->description,0,50)."...";else{
-        echo $file->description;
-        $id +=1;
-      } ?></td>
-      <td >
-
-
-
-
- <form class="form-inline" action="delete" method="post">
-<div class="btn-group">
-   
-    <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success fa fa-cloud-download-alt"  ></button></a>
-
-  <a href="" data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" ></button></a>
-
-
-                                                      @csrf
-                                                      <input type="hidden" value="{{$file->id}}" name="fileid" />
-                                                      <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
-                                                          <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                                          <button type="submit" class="btn btn-outline-danger fa fa-trash-alt" ></button>
-  
-</div>
- </form>
-      </td>
-    </tr>
-
-    <div class="modal fade" id="Modal{{$file->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <p class="description">{{$file->description}}.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
-      </div>
-
-</div>
- </div>
-
-  </div>
-
-@endforeach
-  </tbody>
-</table>
-
-
-    </div>
-
-      </div>
-
-        </div>
-
-          </div>
-
-</section>
-
 <!--/////////////////////////-->
 
 <div id="container-floating">
 
 
   <div class="nd1 nds" data-toggle="tooltip" data-placement="left"><img class="reminder">
-    <p class="letter"><i class="fas fa-comment" data-toggle="modal" data-target="#ModalContact" style="margin-top:7px;"></i></p>
+    <p class="letter"><i class="fa fa-comment" data-toggle="modal" data-target="#ModalContact" style="margin-top:7px;"></i></p>
   </div>
 
   <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" >
-    <p class="plus"><i class="fas fa-ellipsis-v"></i></p>
-    <img class="edit fas fa-ellipsis-v" >
+    <p class="plus"><i class="fa fa-ellipsis-v"></i></p>
+    <img class="edit fa fa-ellipsis-v" >
 
   </div>
 </div>
