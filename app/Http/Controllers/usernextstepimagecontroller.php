@@ -55,10 +55,9 @@ class usernextstepimagecontroller extends Controller
  }
     }
 
-    public function getSpeciality(){
-      $spec=   DB::table('spicialitys')->orderBy('namespi','asc')->get();
 
-return view('auth/nextstep')->with('spec',$spec);
+    public function getSpeciality(){
+    
     }
 
     /**

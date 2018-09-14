@@ -25,6 +25,16 @@ foreach($spec as $s){
     return view('welcome')->with(['spec'=>$spec]);
 });
 
+Route::get('/groupcreator', function () {
+$users =  DB::table('users')->where('username',Auth::user()->username)->first();
+$followers = explode(',',$users->followers);
+$k=0;
+foreach ($followers as $user) {
+   $members[$k] = DB::table('users')->where('username',$user)->first();
+   $k++;
+}
+return view('addgroup')->with('members',$members);
+});
 Auth::routes();
 Route::get('/usersdata',function(){
   return abort(404);
@@ -62,6 +72,9 @@ Route::get('/index',function(){
 Route::get('/readVal', 'searchcontroller@getSuggestionSearch');
 Route::get('/admin/resizeIM', 'fileuploadcontroller@resizeIm');
 Route::post('/sendcontacthelp', 'emailController@sch');
+Route::post('/newgroup', 'groupscontroller@newGroup');
+Route::post('/nm', 'groupscontroller@NewChatMessage');
+Route::post('/getm', 'groupscontroller@getNewMessage');
 Route::post('/getsugg', 'searchcontroller@getSuggestionSearch');
 Route::post('/getsugg1', 'searchcontroller@getSuggestionSearchOff');
 Route::post('/getnoti', 'PageController@getNotification');
@@ -92,7 +105,10 @@ Route::post('/sendcontact','emailController@send');
 Route::post('/sendsms','emailController@sendsms');
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/auth/nextstep','usernextstepimagecontroller@saveUploadFile');
-Route::get('/auth/nextstep','usernextstepimagecontroller@getSpeciality');
+Route::get('/auth/nextstep',function(){
+  $spec=   DB::table('spicialitys')->orderBy('namespi','asc')->get();
+return view('auth/nextstep')->with('spec',$spec);
+});
 Route::get('/send','emailController@send');
 Route::post('/resend','emailController@resend');
 Route::post('/reportcause','emailController@report');
