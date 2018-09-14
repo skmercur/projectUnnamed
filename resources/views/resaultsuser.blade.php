@@ -141,9 +141,14 @@
 <div class="card">
 
   <!-- Card image -->
-  <div class="card-profile-image animated fadeInDown">
+  <div class="card-profile-image shadow grey darken-3 animated fadeInDown">
     <a href="/{{$resault->author}}" class="">
-    <img height="160" width="160" class="rounded-circle" src="{{$resault->imgpath}}" alt="Card image cap">
+    <img height="160" width="160" class="rounded-circle" style="
+    border-style: double;
+    border-color: white;
+    margin: 20px;
+    box-shadow: 6px 8px 9px 5px rgba(33, 37, 41, 0.63);
+" src="{{$resault->imgpath}}" alt="Card image cap">
  
       <div class="mask rgba-white-slight"></div>
     </a>
@@ -171,7 +176,7 @@
 
       <li class="list-inline-item pr-2 white-text"><i class="fa fa-user-o pr-1"></i>{{$resault->author}}</li>
       <li class="list-inline-item pr-2 white-text"><i class="fa fa-clock-o pr-1"></i>{{$resault->created_at}}</li>
-
+      <li class="list-inline-item pr-2 white-text"><i class="fa fa-location-arrow pr-1"></i>{{$resault->namespi}}</li>
       <form method="get" action="check" >
 
                       <input type="hidden" value="{{$resault->location}}" name="f">

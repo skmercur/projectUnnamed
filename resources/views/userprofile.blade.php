@@ -98,6 +98,83 @@
                 </div>
 
 
+<section id="modal-form3" class="collapse" >
+
+
+        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">File</th>
+    </tr>
+  </thead>
+  <tbody >
+    <?php $id = 1; ?>
+    @foreach($files as $file)
+    <tr>
+      <th scope="row" style="min-width:20px">{{$id}}</th>
+      <td >{{$file->title}}</td>
+      <td><?php if(strlen($file->description)>50) echo substr($file->description,0,50)."...";else{
+        echo $file->description;
+        $id +=1;
+      } ?></td>
+      <td >
+
+
+
+
+ <form class="form-inline" action="delete" method="post">
+<div class="btn-group">
+   
+    <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success fa fa-cloud-download"  ></button></a>
+
+  <a href="" data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" ></button></a>
+
+
+                                                      @csrf
+                                                      <input type="hidden" value="{{$file->id}}" name="fileid" />
+                                                      <input type="hidden" name="username" value="<?php echo base64_encode(encrypt(Auth::user()->username)); ?>" />
+                                                          <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                                          <button type="submit" class="btn btn-outline-danger fa fa-trash" ></button>
+  
+</div>
+ </form>
+      </td>
+    </tr>
+
+    <div class="modal fade" id="Modal{{$file->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <p class="description">{{$file->description}}.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+      </div>
+
+</div>
+ </div>
+
+  </div>
+
+@endforeach
+  </tbody>
+</table>
+
+
+
+
+
+</section>
 
 
             </div>
@@ -166,83 +243,6 @@
   </div>
 </div>
 
-<div class="modal fade" id="modal-form3" tabindex="-1" role="dialog" aria-labelledby="modal-form3" style="display: none;" aria-hidden="true">
-     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      
-
-  <div class="modal-content">
-    <div class="modal-body p-0">
-      <div class="card bg-secondary shadow border-0">
-      <table class="table-responsive-sm" >
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">File</th>
-    </tr>
-  </thead>
-  <tbody style="font-size:1.8vh">
-    <?php $id = 1; ?>
-    @foreach($files as $file)
-    <tr>
-      <th scope="row" style="min-width:20px">{{$id}}</th>
-      <td>{{$file->title}}</td>
-      <td><?php if(strlen($file->description)>50) echo substr($file->description,0,50)."...";else{
-        echo $file->description;
-        $id+=1;
-      } ?></td>
-      <td>
-
-
-
-
-
-<div class="btn-group">
-                                                      <a href ="{{$file->location}}"><button type="button" class="btn btn-outline-success" style="margin-left: -8%;" ><i class="fa fa-cloud-download"></i></button></a>
-       <a href="" data-toggle="modal" data-target="#Modal{{$file->id}}"> <button type="button" class="btn btn-outline-warning fa fa-eye" style="margin-left: -7%;"></button></a>
-
-</div>
-
-      </td>
-    </tr>
-    <div class="modal fade" id="Modal{{$file->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Descrption</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <p class="description">{{$file->description}}.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-@endforeach
-  </tbody>
-</table>
-
-    </div>
-
-  </div>
-
-    </div>
-
-
-
-
-
-          </div>
-
-</div>
 
 
 
