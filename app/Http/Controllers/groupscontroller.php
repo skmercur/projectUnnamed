@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\groups;
+use Illuminate\Support\Facades\DB;
 class groupscontroller extends Controller
 {
     /**
@@ -43,7 +44,9 @@ echo "yes";
      public function NewChatMessage(Request $request){
       $fhandle = fopen('hello','a+');
       $message = $request->input('message');
-      fwrite($fhandle,$message."\n");
+      $username = $request->input('username');
+      $val = DB::table('users')->where('username',$username)->first();
+      fwrite($fhandle,$message."##user=".$username."##img=".$val->imgpath."##f=".$val->firstname."##l=".$val->lastname."\n");
       fclose($fhandle);
 
      }
