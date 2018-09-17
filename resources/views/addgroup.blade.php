@@ -8,7 +8,6 @@
 <input type="text" name="name" value="" />
 <input type="text" id="selectPage" class="form-control" value="" name="inviteuser" >
 <script>
-
 var tag_data = [
   @foreach($members as $member)
     {id:{{$member->id}} ,name:'{{$member->username}}',desc:'{{$member->lastname}} {{$member->firstname}}'},
@@ -180,8 +179,10 @@ $.ajaxSetup({
 
 <script type="text/javascript">
 function encrypt(){
+  if(document.getElementById('message').value !== ''){
  var encrypted = CryptoJS.AES.encrypt(document.getElementById('message').value, "hello");
  document.getElementById('message1').value = encrypted.toString();
+  }
 }
 </script>
 
