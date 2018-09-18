@@ -121,6 +121,9 @@ Route::post('/edit','usereditcontroller@userEdit');
 Route::post('/delete','fileuploadcontroller@delete');
 Route::get('/search','searchcontroller@search');
 Route::get('/usearch','searchcontroller@usearch');
+Route::get('/groups/{slug}', [
+  'uses' => 'PageController@getPage'
+])->where('slug', '([A-Za-z0-9\-\/]+)');
 Route::get('{slug}', [
     'uses' => 'PageController@getPage'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');
