@@ -22,6 +22,7 @@ class Fileupload extends Migration
           $table->string('location',191);
           $table->integer('downloads');
           $table->integer('size');
+          $table->string('namespi',80);
           $table->timestamps();
       });
     }
