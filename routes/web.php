@@ -24,10 +24,10 @@ foreach($spec as $s){
 
     return view('welcome')->with(['spec'=>$spec]);
 });
-Route::get('/groupcreat',function(){
-  return view('groupcreat');
+Route::get('/groupcreator',function(){
+  return view('groupcreator');
 });
-Route::get('/groupcreat', function () {
+Route::get('/groupcreator', function () {
 $users =  DB::table('users')->where('username',Auth::user()->username)->first();
 $followers = explode(',',$users->followers);
 $k=0;
@@ -35,7 +35,7 @@ foreach ($followers as $user) {
    $members[$k] = DB::table('users')->where('username',$user)->first();
    $k++;
 }
-return view('groupcreat')->with('members',$members);
+return view('groupcreator')->with('members',$members);
 //return view('addgroup')
 });
 Auth::routes();
