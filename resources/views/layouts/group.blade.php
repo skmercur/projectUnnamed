@@ -11,7 +11,7 @@
     <!-- Stylesheets
     ================================================= -->
 		
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/groupe/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/groupe/css/style.css')}}">
 		
     <link rel="stylesheet" href="{{asset('assets/groupe/css/ionicons.min.css')}}">
@@ -25,17 +25,19 @@
     <!--Favicon-->
     <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
 	</head>
+
     <body>    
     @yield('content')
 
-        <!-- Scripts
+     
+    
+	</body>
+       <!-- Scripts
     ================================================= -->
     <script src="{{asset('assets/groupe/js/jquery-3.1.1.min.js')}}"></script>
 
     <script src="{{asset('assets/groupe/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/groupe/js/jquery.appear.min.js')}}"></script>
-		<script src="{{asset('assets/groupe/js/jquery.incremental-counter.js')}}"></script>
+        <script src="{{asset('assets/groupe/js/jquery.incremental-counter.js')}}"></script>
     <script src="{{asset('assets/groupe/js/script.js')}}"></script>
-    
-	</body>
 </html>
