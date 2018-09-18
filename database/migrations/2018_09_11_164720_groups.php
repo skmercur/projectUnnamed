@@ -16,7 +16,7 @@ class Groups extends Migration
       Schema::create('groups', function (Blueprint $table) {
       $table->increments('id');
       $table->string('name',80);
-      $table->string('groupid',150);
+      $table->string('groupid',150)->unique();
       $table->string('admin',30);
       $table->longText('members');
       $table->longText('pmembers');
