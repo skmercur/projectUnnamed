@@ -87,7 +87,7 @@ $('#selectPage').selectPage({
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Type</label>
   </div>
-  <select class="custom-select" id="inputGroupSelect01">
+  <select class="custom-select" id="inputGroupSelect01" name="type">
     <option selected>Choose...</option>
     <option value="1">Public</option>
     <option value="2">private</option>
@@ -107,7 +107,7 @@ $('#selectPage').selectPage({
     <span class="input-group-text">Enable chat</span>
   </div>
   <div class="input-group-text">
-      <input type="checkbox" aria-label="Checkbox for following text input">
+      <input type="checkbox" aria-label="Checkbox for following text input" name="chat">
     </div>
     </div>
 </div>

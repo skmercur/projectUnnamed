@@ -21,6 +21,12 @@ public function newGroup(Request $request){
   if(!empty($user)){
     $name = $request->input('name');
     $invite = $request->input('inviteuser');
+    $type = $request->input('type');
+    if($request->input('chat')){
+    $chat = 1;
+    }else{
+    $chat = 0;
+    }
     groups::create([
     'name'=>$name,
     'groupid'=>'group-'.substr(md5($name.mt_rand(1000,9999)),0,143),
@@ -28,7 +34,7 @@ public function newGroup(Request $request){
     'members'=>'',
     'pmembers'=>$invite,
     'type'=>0,
-    'chat'=>1,
+    'chat'=>$chat,
     'key'=>mt_rand(1000,9999),
 
     ]);

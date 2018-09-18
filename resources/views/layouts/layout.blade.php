@@ -277,7 +277,7 @@ echo base64_encode(encrypt(Auth::user()->username));
                                                      document.getElementById('logout-form').submit();" style="color:black;">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="/groupcreat" style="color:black;">Create Groupe</a>
+                                    <a class="dropdown-item" href="/groupcreator" style="color:black;">Create a groupe</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
