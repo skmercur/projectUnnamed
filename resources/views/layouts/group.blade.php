@@ -13,7 +13,7 @@
     <!-- Stylesheets
     ================================================= -->
 		
-    <link rel="stylesheet" href="{{asset('assets/groupe/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/groupe/css/style.css')}}">
 		
     <link rel="stylesheet" href="{{asset('assets/groupe/css/ionicons.min.css')}}">
