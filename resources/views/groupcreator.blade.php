@@ -51,24 +51,6 @@
                    <form action="newgroup" method="post">
 @CSRF
 <input type="hidden" name="username" value="{{Auth::user()->username}}" />
-<script>
-
-var tag_data = [
-  @foreach($members as $member)
-    {id:{{$member->id}} ,name:'{{$member->username}}',desc:'{{$member->lastname}} {{$member->firstname}}'},
-    @endforeach
-];
-
-$('#selectPage').selectPage({
-    showField : 'desc',
-    keyField : 'name',
-    data : tag_data,
-    selectOnly : true,
-      pagination : false,
-      listSize : 35,
-      multiple : true
-});
-</script>
 
  <div class="row">
                       <div class="form-group col-md-12">
@@ -82,7 +64,7 @@ $('#selectPage').selectPage({
                     <div class="row">
                       <div class="form-group col-md-12">
                         <label for="selectPage" class="sr-only">Users Groupe</label>
-                        <input id="selectPage" class="form-control input-group-lg" type="text" name="inviteuser" placeholder="Users Groupe"/>
+                        <input id="selectPage" class="form-control" type="text" name="inviteuser" placeholder="Users Groupe"/>
                       </div>
                     </div>
                     <div class="row">
@@ -121,6 +103,26 @@ $('#selectPage').selectPage({
 
 
 </form>
+<script>
+
+var tag_data = [
+  @foreach($members as $member)
+    {id:{{$member->id}} ,name:'{{$member->username}}',desc:'{{$member->lastname}} {{$member->firstname}}'},
+    @endforeach
+];
+
+$('#selectPage').selectPage({
+    showField : 'desc',
+    lang:'en',
+    keyField : 'name',
+    data : tag_data,
+    selectOnly : true,
+      pagination : false,
+      listSize : 35,
+      multiple : true
+});
+</script>
+
          
                 
                   <!-- <button class="btn btn-primary">Create Now</button>
