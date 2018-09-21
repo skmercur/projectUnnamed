@@ -70,14 +70,12 @@ $('#selectPage').selectPage({
 });
 </script>
 
- <div class="row">
-                      <div class="form-group col-md-12">
-                        <label for="namegroupe" class="sr-only">Name Groupe</label>
-                        <input id="namegroupe" class="form-control input-group-lg" type="text" name="name"  placeholder="Groupe name"/>
+                    <div class="row">
+                       <div class="form-group col-md-12">
+                         <label for="namegroupe" class="sr-only">Name Groupe</label>
+                      <input id="namegroupe" class="form-control input-group-lg" type="text" name="name"  placeholder="Groupe name"/>
                       </div>
                     </div>
-
-
 
                     <div class="row">
                       <div class="form-group col-md-12">
@@ -90,7 +88,7 @@ $('#selectPage').selectPage({
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Type</label>
   </div>
-  <select class="custom-select" id="inputGroupSelect01" name="type">
+  <select class="custom-select" id="inputGroupSelect01">
     <option selected>Choose...</option>
     <option value="1">Public</option>
     <option value="2">private</option>
@@ -110,7 +108,7 @@ $('#selectPage').selectPage({
     <span class="input-group-text">Enable chat</span>
   </div>
   <div class="input-group-text">
-      <input type="checkbox" aria-label="Checkbox for following text input" name="chat">
+      <input type="checkbox" aria-label="Checkbox for following text input">
     </div>
     </div>
 </div>
