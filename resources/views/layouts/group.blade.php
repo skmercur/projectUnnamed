@@ -15,7 +15,7 @@
 		
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/groupe/css/style.css')}}">
-		
+	<link rel="stylesheet" href="{{asset('css/all.css')}}">		
     <link rel="stylesheet" href="{{asset('assets/groupe/css/ionicons.min.css')}}">
     
     <link rel="stylesheet" href="{{asset('assets/groupe/css/font-awesome.min.css')}}">
