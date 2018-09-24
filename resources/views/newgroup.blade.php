@@ -13,7 +13,7 @@
     			<div class="col-md-3 static">
          
             <div class="profile-card">
-            	<img src="http://placehold.it/300x300" alt="user" class="profile-photo" />
+            	
             	<h5><a href="#" class="text-white">Test</a></h5>
             	<a href="#" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>
             </div><!--profile card ends-->
@@ -28,15 +28,9 @@
             <div id="chat-block">
               <div class="title">Chat online</div>
               <ul class="online-users list-inline">
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Sophia Lee"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="John Doe"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Alexis Clark"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="James Carter"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Robert Cook"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Richard Bell"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Anna Young"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Julia Cox"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.html" title="Hichem"><img src="{{asset('assets/img/3d3d660132d05053ba2709f2e46def978.png')}}" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.html" title="Sofiane"><img src="{{asset('assets/img/Sofiane.jpg')}}" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.html" title="Walid"><img src="{{asset('assets/img/Walid.jpg')}}" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
               </ul>
             </div><!--chat block ends-->
           </div>
@@ -49,8 +43,8 @@
             	<div class="row">
             		<div class="col-md-7 col-sm-7">
                   <div class="form-group">
-                    <img src="http://placehold.it/300x300" alt="" class="profile-photo-md" />
-                    <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish"></textarea>
+                    <img src="{{asset('assets/img/sms.png')}}" alt="" class="profile-photo-md" />
+                    <textarea name="texts" style="font-size: small;" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish"></textarea>
                   </div>
                 </div>
             		<div class="col-md-5 col-sm-5">
@@ -70,9 +64,9 @@
             <!-- Post Content
             ================================================= -->
             <div class="post-content">
-              <img src="http://placehold.it/1920x1280" alt="post-image" class="img-responsive post-image" />
+              <img src="{{asset('assets/img/pexels-photo-1068523.jpg')}}" alt="post-image" class="img-responsive post-image" />
               <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
+                <img src="{{asset('assets/img/Sofiane.jpg')}}" alt="user" class="profile-photo-md pull-left" />
                 <div class="post-detail">
                   <div class="user-info">
                     <h5><a href="timeline.html" class="profile-link">Alexis Clark</a> <span class="following">following</span></h5>
@@ -281,42 +275,29 @@
           ================================================= -->
     			<div class="col-md-2 static">
             <div class="suggestions" id="sticky-sidebar">
-              <h4 class="grey">Who to Follow</h4>
+              <h4 style="background-color: #9e9e9e05 ">Who to Follow</h4>
               <div class="follow-user">
-                <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
+                <img src="{{asset('assets/img/Walid.jpg')}}" alt="" class="profile-photo-sm pull-left" />
                 <div>
-                  <h5><a href="timeline.html">Diana Amber</a></h5>
+                  <h5><a href="timeline.html">Walid</a></h5>
                   <a href="#" class="text-green">Add friend</a>
                 </div>
               </div>
               <div class="follow-user">
-                <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
+                <img src="{{asset('assets/img/Sofiane.jpg')}}" alt="" class="profile-photo-sm pull-left" />
                 <div>
-                  <h5><a href="timeline.html">Cris Haris</a></h5>
+                  <h5><a href="timeline.html">Sofiane</a></h5>
                   <a href="#" class="text-green">Add friend</a>
                 </div>
               </div>
               <div class="follow-user">
-                <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
+                <img src="{{asset('assets/img/3d3d660132d05053ba2709f2e46def978.png')}}" alt="" class="profile-photo-sm pull-left" />
                 <div>
-                  <h5><a href="timeline.html">Brian Walton</a></h5>
+                  <h5><a href="timeline.html">Hichem</a></h5>
                   <a href="#" class="text-green">Add friend</a>
                 </div>
               </div>
-              <div class="follow-user">
-                <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
-                <div>
-                  <h5><a href="timeline.html">Olivia Steward</a></h5>
-                  <a href="#" class="text-green">Add friend</a>
-                </div>
-              </div>
-              <div class="follow-user">
-                <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
-                <div>
-                  <h5><a href="timeline.html">Sophia Page</a></h5>
-                  <a href="#" class="text-green">Add friend</a>
-                </div>
-              </div>
+             
             </div>
           </div>
     		</div>

@@ -10,19 +10,18 @@
 		<meta name="robots" content="index, follow" />
 		<title>Create Groupe</title>
 
-    <!-- Stylesheets
-    ================================================= -->
+    <!-- Stylesheets ================================================= -->
 		
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/groupe/css/style.css')}}">
-	<link rel="stylesheet" href="{{asset('css/all.css')}}">		
-    <link rel="stylesheet" href="{{asset('assets/groupe/css/ionicons.min.css')}}">
+			
+   
     
-    <link rel="stylesheet" href="{{asset('assets/groupe/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
     
     <link rel="stylesheet" href="{{asset('assets/css/selectpage.css')}}">
     <!--Google Font-->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i" rel="stylesheet">
+    
     
     <!--Favicon-->
     <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
