@@ -121,11 +121,6 @@ $.material.init();
         });
         </script>
 
-
-
-
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-top: -0.25%;">
     <div class="header-left">
                             <div class="logo-name text-white">

@@ -31,7 +31,7 @@ public function newGroup(Request $request){
     }else{
     $chat = 0;
     }
-    groups::create([
+   groups::create([
     'name'=>$name,
     'groupid'=>$groupid,
     'admin'=>$user,
@@ -42,7 +42,8 @@ public function newGroup(Request $request){
     'key'=>mt_rand(1000,9999),
 
     ]);
-echo "yes";
+    
+return view('newgroup');
   }
 
 }
@@ -90,7 +91,7 @@ return response()->json(array('msg'=>$file,'nbrl'=>count($file)),200);
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

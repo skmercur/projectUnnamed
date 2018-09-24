@@ -80,12 +80,7 @@
   </select>
 </div>
 </div>
-                    <div class="row">
-                    <div class="form-group col-md-12">
-  <input type="file" class="custom-file-input" id="customFile">
-  <label class="custom-file-label" for="customFile">Groupe Photo</label>
-</div>
-</div>
+
 <div class="row">
 <div class="input-group">
   <div class="input-group-prepend">
