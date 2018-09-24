@@ -16,12 +16,16 @@ class groupscontroller extends Controller
     {
 
     }
+
+    
 public function newGroup(Request $request){
   $user = $request->input('username');
   if(!empty($user)){
     $name = $request->input('name');
     $invite = $request->input('inviteuser');
+    $groupid = 'group-'.substr(md5($name.mt_rand(1000,9999)),0,143);
     $type = $request->input('type');
+    mkdir("usersdata/".$groupid);
     if($request->input('chat')){
     $chat = 1;
     }else{
@@ -29,7 +33,7 @@ public function newGroup(Request $request){
     }
     groups::create([
     'name'=>$name,
-    'groupid'=>'group-'.substr(md5($name.mt_rand(1000,9999)),0,143),
+    'groupid'=>$groupid,
     'admin'=>$user,
     'members'=>'',
     'pmembers'=>$invite,
