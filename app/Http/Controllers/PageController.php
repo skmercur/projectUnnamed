@@ -141,6 +141,21 @@ if(!empty($user->username)){
 
 }
 
+public function getGroups(Request $request)
+{
+
+  $value = $request['slug'];
+if(!empty($value)){
+$group =   DB::table('groups')->where('groupid',$value)->first();
+
+return view('newgroup')->with(['name'=>$group->name,'groupid'=>$group->groupid]);
+}else {
+
+return view('errors/404');
+
+}
+}
+
 
     /**
      * Show the form for creating a new resource.

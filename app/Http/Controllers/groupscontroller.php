@@ -43,7 +43,7 @@ public function newGroup(Request $request){
 
     ]);
     
-return view('newgroup');
+return redirect('/groups/'.$groupid)->with(['name'=>$group->name,'groupid'=>$group->$groupid]);
   }
 
 }
@@ -91,6 +91,9 @@ return response()->json(array('msg'=>$file,'nbrl'=>count($file)),200);
      */
     public function show($id)
     {
+        
+    }
+    public function newStatus(Request $request){
         
     }
 

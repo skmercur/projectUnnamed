@@ -14,7 +14,7 @@
          
             <div class="profile-card">
             	
-            	<h5><a href="#" class="text-white">Test</a></h5>
+            	<h5><a href="#" class="text-white">{{$name}}</a></h5>
             	<a href="#" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>
             </div><!--profile card ends-->
             <ul class="nav-news-feed">
@@ -41,10 +41,15 @@
             ================================================= -->
             <div class="create-post">
             	<div class="row">
+              <form id="status" method="POST" action="ns">
+              @CSRF
+              <input type="hidden" name="username" value="{{Auth::user()->username}}" />
+              <input type="hidden" name="groupid" value="{{$groupid}}" />
+              <input type="hidden" name="type" value="0" />
             		<div class="col-md-7 col-sm-7">
                   <div class="form-group">
                     <img src="{{asset('assets/img/sms.png')}}" alt="" class="profile-photo-md" />
-                    <textarea name="texts" style="font-size: small;" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish"></textarea>
+                    <textarea name="description" style="font-size: small;" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish"></textarea>
                   </div>
                 </div>
             		<div class="col-md-5 col-sm-5">
@@ -55,8 +60,9 @@
                       <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
                       <li><a href="#"><i class="ion-map"></i></a></li>
                     </ul>
-                    <button class="btn btn-primary pull-right">Publish</button>
+                    <button type="submit" class="btn btn-primary pull-right">Publish</button>
                   </div>
+                  </form>
                 </div>
             	</div>
             </div><!-- Post Create Box End-->
