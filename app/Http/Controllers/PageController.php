@@ -147,8 +147,8 @@ public function getGroups(Request $request)
   $value = $request['slug'];
 if(!empty($value)){
 $group =   DB::table('groups')->where('groupid',$value)->first();
-
-return view('newgroup')->with(['name'=>$group->name,'groupid'=>$group->groupid]);
+$status =   DB::table('status')->where('groupid',$group->groupid)->orderBy('created_at','desc')->get();
+return view('newgroup')->with(['name'=>$group->name,'groupid'=>$group->groupid,'status'=>$status]);
 }else {
 
 return view('errors/404');

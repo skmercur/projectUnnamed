@@ -273,6 +273,13 @@ echo base64_encode(encrypt(Auth::user()->username));
                                         {{ __('Logout') }}
                                     </a>
                                     <a class="dropdown-item" href="/groupcreator" style="color:black;">Create a groupe</a>
+                                    @if(!empty($groups))
+                                    @foreach($groups as $group)
+                                    <a class="dropdown-item" href="/groups/{{$group->groupid}}" style="color:black;">{{$group->name}}</a>
+
+                                    @endforeach
+
+                                    @endif
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

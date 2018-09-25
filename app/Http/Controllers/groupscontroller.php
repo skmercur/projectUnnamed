@@ -35,7 +35,7 @@ public function newGroup(Request $request){
     'name'=>$name,
     'groupid'=>$groupid,
     'admin'=>$user,
-    'members'=>'',
+    'members'=>$user,
     'pmembers'=>$invite,
     'type'=>0,
     'chat'=>$chat,

@@ -29,14 +29,16 @@ class statuscontroller extends Controller
         $groupid = $request->groupid;
         $type = $request->input('typetoupload');
         $desc = $request->description;
+        $db = DB::table('users')->where('username',$user)->first();
         switch($type){
             case 0:{
                 DB::table('status')->insert(
-                    ['author' => $user, 
+                    ['author' => $db->firstname.' '.$db->lastname, 
                     'groupid' => $groupid,
                     'type'=>0,
                     'description'=>$desc,
-                    'flocation'=>'none']
+                    'flocation'=>'none',
+                    'created_at'=>date('Y-m-d H:i:s')]
                 );
                 return response()->json(array('status'=>'status uploaded','type'=>$type),200);
 break;
@@ -59,11 +61,12 @@ if($validator->fails()){
     $destinationPath = "usersdata/".$groupid."/";
     $file->move($destinationPath,$hash);
     DB::table('status')->insert(
-        ['author' => $user, 
+        ['author' =>$db->firstname.' '.$db->lastname,  
         'groupid' => $groupid,
-        'type'=>0,
+        'type'=>1,
         'description'=>$desc,
-        'flocation'=>$destinationPath.$hash]
+        'flocation'=>$destinationPath.$hash,
+        'created_at'=>date('Y-m-d H:i:s')]
     );
         return response()->json(array('status'=>'image uploaded','type'=>$type),200);
 }
@@ -137,11 +140,12 @@ if($validator->fails()){
     }else{
    
         DB::table('status')->insert(
-            ['author' => $user, 
+            ['author' => $db->firstname.' '.$db->lastname,  
             'groupid' => $groupid,
-            'type'=>0,
+            'type'=>2,
             'description'=>$desc,
-            'flocation'=>$destinationPath.$hash]
+            'flocation'=>$destinationPath.$hash,
+            'created_at'=>date('Y-m-d H:i:s')]
         );
             return response()->json(array('status'=>'file uploaded ','type'=>$type),200);
     
@@ -179,6 +183,22 @@ if($validator->fails()){
     }
     public function newStatus(Request $request){
        return back();
+    }
+    public function newcomment(Request $request){
+        $user = $request->username;
+        $groupid = $request->groupid;
+        $comment = $request->comment;
+        if(!empty($user) && !empty($groupid)&&!empty($comment)){
+            $db = DB::table('users')->where('username',$user)->first();
+            DB::table('status')->insert(
+                ['author' => $db->firstname.' '.$db->lastname,  
+                'groupid' => $groupid,
+                'comment'=>$comment,
+                'flocation'=>'none',
+                'created_at'=>date('Y-m-d H:i:s')]
+            );
+            echo "yes";
+        }
     }
 
     /**

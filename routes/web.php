@@ -20,9 +20,13 @@ foreach($spec as $s){
     $s->files = $files[$k];
     $k++;
   }
-
+if(!empty(Auth::user()->username)){
+  $groups=   DB::table('groups')->where('admin',Auth::user()->username)->orWhere('members','LIKE',"%".Auth::user()->username."%")->orderBy('name', 'asc')->get();
+  return view('welcome')->with(['spec'=>$spec,'groups'=>$groups]);
+}else{
 
     return view('welcome')->with(['spec'=>$spec]);
+}
 });
 Route::get('/groupcreator',function(){
   return view('groupcreator');
@@ -88,6 +92,7 @@ Route::post('/newf', 'PageController@newFollower');
 Route::post('/rmf', 'PageController@unfollow');
 Route::post('/resetpassword', 'emailController@resetpass');
 Route::post('/groups/ns','statuscontroller@create');
+Route::post('/groups/nc','statuscontroller@newcomment');
 Route::get('/reset', function (){
   return view('auth/reset');
 });
