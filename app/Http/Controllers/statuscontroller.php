@@ -27,11 +27,10 @@ class statuscontroller extends Controller
     {
         $user = $request->username;
         $groupid = $request->groupid;
-        $type = $request->type;
+        $type = $request->input('typetoupload');
         $desc = $request->description;
         switch($type){
             case 0:{
-                
                 DB::table('status')->insert(
                     ['author' => $user, 
                     'groupid' => $groupid,
@@ -39,44 +38,48 @@ class statuscontroller extends Controller
                     'description'=>$desc,
                     'flocation'=>'none']
                 );
-                    
-                break;
+                return response()->json(array('status'=>'status uploaded','type'=>$type),200);
+break;
+               
             }
             case 1:{
-                $file = $request->file('file');
+                $file = $request->file('imageupload');
+                echo "first good";
                 if(!empty($file)){
-                    $fileArray = array('file' => $file);
+                    echo "good";
+                    $fileArray = array('imageupload' => $file);
                     $rules = array(
-                      'file' => 'mimes:jpeg,png,jpg|required|max:2000' // max 10000kb
+                      'imageupload' => 'mimes:jpeg,png,jpg|required|max:2000' // max 10000kb
                     );
                  $validator = Validator::make($fileArray, $rules);
 if($validator->fails()){
-    return back();
+    return response()->json(array('status'=>'image not supported','type'=>$type),200);
 }else{
     $hash = md5($file->getClientOriginalName().mt_rand(1000,9999)).".".$file->getClientOriginalExtension();
     $destinationPath = "usersdata/".$groupid."/";
     $file->move($destinationPath,$hash);
-    status::create([
-        'author'=>$user,
-        'groupid'=>$groupid,
-        'type'=>1,
+    DB::table('status')->insert(
+        ['author' => $user, 
+        'groupid' => $groupid,
+        'type'=>0,
         'description'=>$desc,
-        'floacation'=>$destinationPath.$hash,
-        ]);
-    
+        'flocation'=>$destinationPath.$hash]
+    );
+        return response()->json(array('status'=>'image uploaded','type'=>$type),200);
 }
                 }else{
                     break;
                 }
-                break;
+                
+               
             }
             case 2:{
 
-                $file = $request->file('file');
+                $file = $request->file('fileupload');
                 if(!empty($file)){
-                    $fileArray = array('file' => $file);
+                    $fileArray = array('fileupload' => $file);
                     $rules = array(
-                      'file' => 'mimes:jpeg,png,jpg|required|max:2000' // max 10000kb
+                      'fileupload' => 'mimes:pdf,docx,ppt,zip,rar,m|required|max:25000' // max 10000kb
                     );
                  $validator = Validator::make($fileArray, $rules);
 if($validator->fails()){
@@ -133,13 +136,14 @@ if($validator->fails()){
     
     }else{
    
-        status::create([
-            'author'=>$user,
-            'groupid'=>$groupid,
-            'type'=>2,
+        DB::table('status')->insert(
+            ['author' => $user, 
+            'groupid' => $groupid,
+            'type'=>0,
             'description'=>$desc,
-            'floacation'=>$destinationPath.$hash,
-            ]);
+            'flocation'=>$destinationPath.$hash]
+        );
+            return response()->json(array('status'=>'file uploaded ','type'=>$type),200);
     
     
 
@@ -147,16 +151,20 @@ if($validator->fails()){
 
                
     }
-}
+
        }
+        
+    
+    
+
+}
+    
+            }
+        }    
+      
         
     }
 }
-    break;
-            }
-        
-      
-        }
     }
 
     /**

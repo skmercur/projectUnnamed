@@ -41,11 +41,12 @@
             ================================================= -->
             <div class="create-post">
             	<div class="row">
-              <form id="status" method="POST" action="ns">
+             
+              <form id="status" method="POST" action="ns" enctype="multipart/form-data">
               @CSRF
+              <input id="type" type="hidden" name="typetoupload" value="0" />
               <input type="hidden" name="username" value="{{Auth::user()->username}}" />
               <input type="hidden" name="groupid" value="{{$groupid}}" />
-              <input type="hidden" name="type" value="0" />
             		<div class="col-md-7 col-sm-7">
                   <div class="form-group">
                     <img src="{{asset('assets/img/sms.png')}}" alt="" class="profile-photo-md" />
@@ -55,13 +56,48 @@
             		<div class="col-md-5 col-sm-5">
                   <div class="tools">
                     <ul class="publishing-tools list-inline">
-                      <li><a href="#"><i class="ion-compose"></i></a></li>
-                      <li><a href="#"><i class="ion-images"></i></a></li>
-                      <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
-                      <li><a href="#"><i class="ion-map"></i></a></li>
+                      <li><a href="#" onclick="typeUpload(0);"><i class="ion-compose"></i></a></li>
+                      <li><a href="#" onclick="typeUpload(1);"><i class="ion-images"></i></a></li>
+                      <li><a href="#" onclick="typeUpload(2);"><i class="ion-document"></i></a></li>
+                      
                     </ul>
-                    <button type="submit" class="btn btn-primary pull-right">Publish</button>
+                    <button type="submit" class="btn btn-primary pull-right" >Publish</button>
                   </div>
+                  <div class="row">
+                  <div class="col-md-7 col-sm-7">
+                  <div class="form-group">
+                    <input type="file" name="imageupload" style="visibility: hidden;" id="imageupload"/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-7 col-sm-7">
+                  <div class="form-group">
+                    <input type="file" name="fileupload" style="visibility: hidden;" id="fileupload"/>
+                  </div>
+                </div>
+                  <script>
+function typeUpload(val){
+  document.getElementById("type").value = val;
+  switch(val){
+    case 0:{
+      document.getElementById("imageupload").style.visibility = "hidden";
+      document.getElementById("fileupload").style.visibility = "hidden";
+      break;
+    }
+    case 1:{
+      document.getElementById("imageupload").style.visibility = "visible";
+      document.getElementById("fileupload").style.visibility = "hidden";
+      break;
+    }
+    case 2:{
+      document.getElementById("imageupload").style.visibility = "hidden";
+      document.getElementById("fileupload").style.visibility = "visible";
+      break;
+    }
+  }
+}
+              </script>
+              </div>
                   </form>
                 </div>
             	</div>
