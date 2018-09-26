@@ -110,6 +110,7 @@ function typeUpload(val){
             @switch($statu->type)
             @case(0)
             <div class="post-content">
+            <p  style="font-size:5vh">{{$statu->description}}</p>
               <div class="post-container">
                 <img src="/{{$statu->imgpath->imgpath}}" alt="user" class="profile-photo-md pull-left" />
                 <div class="post-detail">
