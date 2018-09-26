@@ -111,10 +111,10 @@ function typeUpload(val){
             @case(0)
             <div class="post-content">
               <div class="post-container">
-                <img src="/{{Auth::user()->imgpath}}" alt="user" class="profile-photo-md pull-left" />
+                <img src="/{{$statu->imgpath->imgpath}}" alt="user" class="profile-photo-md pull-left" />
                 <div class="post-detail">
                   <div class="user-info">
-                    <h5><a href="/{{$statu->author}}" class="profile-link">{{$statu->author}}</a> <span class="following">following</span></h5>
+                    <h5><a href="/{{$statu->username}}" class="profile-link">{{$statu->author}}</a> <span class="following">following</span></h5>
                     <p class="text-muted">Published a status at {{$statu->created_at}}</p>
                   </div>
                   <div class="reaction">
@@ -122,25 +122,33 @@ function typeUpload(val){
                     <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
                   </div>
                   <div class="line-divider"></div>
-                  <div class="post-text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
-                  </div>
-                  <div class="line-divider"></div>
-                  <div class="post-comment">
-                    <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm" />
-                    <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
-                  </div>
-                  <div class="post-comment">
-                    <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm" />
-                    <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
-                  </div>
-                  <div class="post-comment">
-                    <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm" />
-                    <input type="text" class="form-control" placeholder="Post a comment">
-                  </div>
-                </div>
-              </div>
-            </div>
+                  <div id="comments">
+    @foreach($comments as $comment)
+    @if($comment->statusid === $statu->id)
+    
+    <div class="post-comment">
+      <img src="/{{$comment->imgpath->imgpath}}" alt="" class="profile-photo-sm" />
+      <p><a href="/{{$comment->username}}" class="profile-link">{{$comment->author}} </a><i class="em em-laughing"></i> {{$comment->comment}}</p>
+    </div>
+    @endif
+    @endforeach
+    </div>
+    <form action="nc" method="POST" id="newcomment">
+    @CSRF
+    
+              <input type="hidden" name="username" value="{{Auth::user()->username}}" />
+              <input type="hidden" name="groupid" value="{{$groupid}}" />
+              <input type="hidden" name="statusid" value="{{$statu->id}}" />
+    <div class="post-comment">
+   
+      <img src="/{{Auth::user()->username}}" alt="" class="profile-photo-sm" />
+      <input type="text" class="form-control" name="comment" placeholder="Post a comment">
+      </form>
+    
+    </div>
+  </div>
+</div>
+</div>
             @break
             @case(1)
             <div class="post-content">
@@ -163,20 +171,21 @@ function typeUpload(val){
     </div>
     <div class="line-divider"></div>
     <div id="comments">
+    @foreach($comments as $comment)
+    @if($comment->statusid === $statu->id)
     <div class="post-comment">
       <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm" />
-      <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+      <p><a href="timeline.html" class="profile-link">{{$comment->author}} </a><i class="em em-laughing"></i> {{$comment->comment}}</p>
     </div>
-    <div class="post-comment">
-      <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm" />
-      <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+    @endif
+    @endforeach
     </div>
-    </div>
-    <form action="nc" methode="POST" id="newcomment">
+    <form action="nc" method="POST" id="newcomment">
     @CSRF
     
               <input type="hidden" name="username" value="{{Auth::user()->username}}" />
               <input type="hidden" name="groupid" value="{{$groupid}}" />
+              <input type="hidden" name="statusid" value="{{$statu->id}}" />
     <div class="post-comment">
    
       <img src="/{{Auth::user()->username}}" alt="" class="profile-photo-sm" />
@@ -212,17 +221,28 @@ function typeUpload(val){
       <p>{{$statu->description}} <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
     </div>
     <div class="line-divider"></div>
+    <div id="comments">
+    @foreach($comments as $comment)
+    @if($comment->statusid === $statu->id)
     <div class="post-comment">
       <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm" />
-      <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+      <p><a href="timeline.html" class="profile-link">{{$comment->author}} </a><i class="em em-laughing"></i> {{$comment->comment}}</p>
     </div>
-    <div class="post-comment">
-      <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm" />
-      <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+    @endif
+    @endforeach
     </div>
+    <form action="nc" method="POST" id="newcomment">
+    @CSRF
+    
+              <input type="hidden" name="username" value="{{Auth::user()->username}}" />
+              <input type="hidden" name="groupid" value="{{$groupid}}" />
+              <input type="hidden" name="statusid" value="{{$statu->id}}" />
     <div class="post-comment">
-      <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm" />
-      <input type="text" class="form-control" placeholder="Post a comment">
+   
+      <img src="/{{Auth::user()->username}}" alt="" class="profile-photo-sm" />
+      <input type="text" class="form-control" name="comment" placeholder="Post a comment">
+      </form>
+    
     </div>
   </div>
 </div>

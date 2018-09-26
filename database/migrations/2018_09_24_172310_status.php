@@ -16,6 +16,7 @@ class Status extends Migration
         Schema::create('status', function (Blueprint $table) {
             $table->increments('id');
             $table->string('author',80);
+            $table->string('username',80);
             $table->string('groupid',150);
             $table->integer('type');
             $table->longText('description');

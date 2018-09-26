@@ -148,7 +148,14 @@ public function getGroups(Request $request)
 if(!empty($value)){
 $group =   DB::table('groups')->where('groupid',$value)->first();
 $status =   DB::table('status')->where('groupid',$group->groupid)->orderBy('created_at','desc')->get();
-return view('newgroup')->with(['name'=>$group->name,'groupid'=>$group->groupid,'status'=>$status]);
+foreach($status as $statu){
+  $statu->imgpath = DB::table('users')->select('imgpath')->where('username',$statu->username)->first();
+}
+$comments =   DB::table('comments')->where('groupid',$group->groupid)->orderBy('created_at','desc')->get();
+foreach($comments as $comment){
+  $comment->imgpath = DB::table('users')->select('imgpath')->where('username',$comment->username)->first();
+}
+return view('newgroup')->with(['name'=>$group->name,'groupid'=>$group->groupid,'status'=>$status,'comments'=>$comments]);
 }else {
 
 return view('errors/404');

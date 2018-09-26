@@ -33,7 +33,8 @@ class statuscontroller extends Controller
         switch($type){
             case 0:{
                 DB::table('status')->insert(
-                    ['author' => $db->firstname.' '.$db->lastname, 
+                    ['author' => $db->firstname.' '.$db->lastname,
+                    'username'=>$user, 
                     'groupid' => $groupid,
                     'type'=>0,
                     'description'=>$desc,
@@ -61,7 +62,8 @@ if($validator->fails()){
     $destinationPath = "usersdata/".$groupid."/";
     $file->move($destinationPath,$hash);
     DB::table('status')->insert(
-        ['author' =>$db->firstname.' '.$db->lastname,  
+        ['author' =>$db->firstname.' '.$db->lastname,
+        'username'=>$user,  
         'groupid' => $groupid,
         'type'=>1,
         'description'=>$desc,
@@ -140,7 +142,8 @@ if($validator->fails()){
     }else{
    
         DB::table('status')->insert(
-            ['author' => $db->firstname.' '.$db->lastname,  
+            ['author' => $db->firstname.' '.$db->lastname,
+            'username'=>$user,
             'groupid' => $groupid,
             'type'=>2,
             'description'=>$desc,
@@ -188,16 +191,19 @@ if($validator->fails()){
         $user = $request->username;
         $groupid = $request->groupid;
         $comment = $request->comment;
+        $statusid = $request->statusid;
         if(!empty($user) && !empty($groupid)&&!empty($comment)){
             $db = DB::table('users')->where('username',$user)->first();
-            DB::table('status')->insert(
-                ['author' => $db->firstname.' '.$db->lastname,  
+            DB::table('comments')->insert(
+                ['author' => $db->firstname.' '.$db->lastname,
+                'username'=>$user,  
                 'groupid' => $groupid,
+                'statusid'=>$statusid,
                 'comment'=>$comment,
                 'flocation'=>'none',
                 'created_at'=>date('Y-m-d H:i:s')]
             );
-            echo "yes";
+            return back();
         }
     }
 

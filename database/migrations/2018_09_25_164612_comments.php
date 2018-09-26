@@ -16,7 +16,9 @@ class Comments extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('author',80);
+            $table->string('username',80);
             $table->string('groupid',150);
+            $table->integer('statusid');
             $table->string('comment',150);
             $table->longText('flocation');
             $table->timestamps();
